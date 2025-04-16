@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import SmoothScrolling from "@/components/ui/SmoothScrolling";
+import Footer from "@/components/Footer";
+
+const trajanPro = localFont({
+  src: "../public/fonts/trajanpro_bold.woff2",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +33,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <SmoothScrolling>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );
