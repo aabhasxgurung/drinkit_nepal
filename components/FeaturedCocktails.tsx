@@ -3,29 +3,27 @@ import { ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import FeaturedCocktailCard from "./FeaturedCocktailCard";
 
 const FeaturedCocktails = () => {
   const featuredCocktails = [
     {
       id: "1",
-      name: "Himalayan Negroni",
+      title: "Himalayan Negroni",
       description:
         "A timeless cocktail that highlights the flavors of quality whiskey, featuring the unique taste of Hapusa Gin and Timbur.",
       ingredients: ["Hapusa Gin", "Timbur", "Vermouth", "Campari", "Ice cubes"],
-      instructions: [
-        "Place sugar cube in glass and saturate with bitters",
-        "Add a splash of water and muddle",
-        "Add ice cubes and whiskey",
-        "Stir gently",
-        "Garnish with orange peel",
-      ],
       imageUrl: "/sula/featuredHapusa.jpg",
+      method: "stir",
       difficulty: "Easy" as "Easy" | "Medium" | "Advanced",
       tags: ["Signature", "Popular"],
+      category: "Negroni",
+      base: "Gin",
+      garnish: "Orange peel",
     },
     {
       id: "2",
-      name: "Botanical Gin Fizz",
+      title: "Botanical Gin Fizz",
       description:
         "A refreshing, effervescent cocktail perfect for summer evenings, combining the delicate flavors of botanical gin with citrus notes.",
       ingredients: [
@@ -36,17 +34,13 @@ const FeaturedCocktails = () => {
         "Lemon wheel",
         "Ice cubes",
       ],
-      instructions: [
-        "Add gin, lemon juice, and simple syrup to a shaker with ice",
-        "Shake vigorously for 15 seconds",
-        "Strain into a collins glass filled with ice",
-        "Top with club soda",
-        "Garnish with lemon wheel",
-      ],
-
       imageUrl: "/sula/featuredHapusa.jpg",
+      method: "shake",
       difficulty: "Medium" as "Easy" | "Medium" | "Advanced",
       tags: ["Refreshing", "Summer"],
+      category: "Fizz",
+      base: "Gin",
+      garnish: "Lemon wheel",
     },
   ];
 
@@ -162,7 +156,7 @@ const FeaturedCocktails = () => {
                     </div>
                   </div>
                 )}
-                {/* <CocktailCard {...cocktail} /> */}
+                <FeaturedCocktailCard {...cocktail} />
               </motion.div>
             ))}
           </motion.div>

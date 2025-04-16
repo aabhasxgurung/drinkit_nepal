@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,34 +7,31 @@ import { MdClose, MdMenu } from "react-icons/md";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const location = usePathname(); // Current route
-
-  let lastScrollY = 0;
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY === 0) {
-        setIsScrolled(false);
-        setIsHidden(false);
-      } else if (currentScrollY > lastScrollY) {
-        setIsHidden(true); // Hide navbar when scrolling down
+        // At the top — reset scroll state here if needed
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolling down
+        // Add effects like hiding navbar here
       } else {
-        setIsHidden(false);
-        setIsScrolled(true); // Show navbar with white background when scrolling up
+        // Scrolling up
+        // Add effects like showing sticky navbar here
       }
 
-      lastScrollY = currentScrollY;
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);

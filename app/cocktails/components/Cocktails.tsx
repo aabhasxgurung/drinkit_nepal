@@ -14,7 +14,6 @@ const Cocktails = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with Parallax Effect */}
       <div className="relative h-[600px] overflow-hidden">
         <motion.div
           initial={{ scale: 1.1 }}
@@ -79,7 +78,6 @@ const Cocktails = () => {
           ))}
         </div>
 
-        {/* Enhanced CTA Section */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <motion.div
@@ -119,12 +117,12 @@ const Cocktails = () => {
                     </svg>
                   </Link>
                 </div>
-                <div className="relative h-64 md:h-full">
+                <div className="relative h-80 md:h-80">
                   <Image
-                    src="/bar-accessories.jpg"
+                    src="/home/bar-accessories.jpg"
                     fill
                     alt="Bar accessories"
-                    className="object-cover rounded-lg"
+                    className="object-cover object-center rounded-lg"
                   />
                 </div>
               </div>

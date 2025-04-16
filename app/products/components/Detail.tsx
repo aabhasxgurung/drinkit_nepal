@@ -1,6 +1,7 @@
 "use client";
 import { Bottle } from "@/constants/product";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -69,7 +70,9 @@ export function Detail({ bottle }: BottleDetailProps) {
         className="flex justify-center my-12"
       >
         <div className="relative w-64 h-64 md:w-80 md:h-80">
-          <img
+          <Image
+            width={400}
+            height={400}
             src={img}
             alt={name}
             className="object-contain w-full h-full transition-transform duration-500 hover:scale-105"

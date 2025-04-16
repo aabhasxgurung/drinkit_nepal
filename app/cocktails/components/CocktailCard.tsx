@@ -1,29 +1,21 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, Droplet, ChevronDown, ChevronUp } from "lucide-react";
+import { Droplet, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { RecipeContent } from "./RecipeContent";
-
-interface CocktailCardProps {
-  id: string;
-  name: string;
-  description: string;
-  ingredients: string[];
-  instructions: string[];
-  imageUrl: string;
-  difficulty: "Easy" | "Medium" | "Advanced";
-}
+import { CocktailDataProps } from "@/constants/cocktail";
 
 const CocktailCard = ({
-  name,
   description,
   ingredients,
-  instructions,
   imageUrl,
   difficulty,
-}: CocktailCardProps) => {
+  method,
+  garnish,
+  title,
+}: CocktailDataProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -46,7 +38,7 @@ const CocktailCard = ({
 
   return (
     <motion.div
-      className="overflow-hidden flex flex-col lg:flex-row justify-center items-center w-full h-full px-4"
+      className="overflow-hidden flex flex-col lg:flex-row w-full h-full lg:py-8 lg:px-12 lg:items-start rounded-xl"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ y: -5 }}
@@ -55,23 +47,20 @@ const CocktailCard = ({
         willChange: "transform",
       }}
     >
-      {/* Image Container */}
-      <div className="overflow-hidden relative">
-        <motion.div
-          transition={{ duration: 0.3 }}
-          className="relative w-full h-full"
-        >
-          <Image
-            src={imageUrl}
-            alt={name}
-            width={400}
-            height={400}
-            className="object-cover w-[400x] h-[300px] object-center"
-          />
-        </motion.div>
+      {/* Left Column – Bottle and Label (lg:) */}
+      <div className="relative lg:w-2/5 flex flex-col items-center text-center lg:px-4">
+        <h2 className="hidden lg:block text-[#7B0323] text-3xl font-serif leading-tight my-4">
+          &quot;{title}&quot;
+        </h2>
 
-        {/* Difficulty Badge */}
-        <div className="absolute top-4 right-4">
+        <Image
+          src={imageUrl}
+          alt={title}
+          width={450}
+          height={400}
+          className="object-cover w-full md:w-[400x] h-[300px] object-center"
+        />
+        <div className="absolute top-4 right-4 lg:hidden">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,17 +72,27 @@ const CocktailCard = ({
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6">
+      {/* Right Column – Recipe Info (lg:) */}
+      <div className="p-6 lg:w-3/5 lg:flex lg:flex-col lg:items-center">
         <motion.h3
-          className="text-xl font-medium text-gray-900 mb-2"
+          className="text-xl font-medium text-gray-900 mb-2 lg:hidden"
           animate={{ color: isHovered ? "#7B0323" : "#111827" }}
         >
-          {name}
+          {title}
         </motion.h3>
-        <p className="text-gray-600 mb-4 text-sm line-clamp-2 font-sans">
+        <p className="text-gray-600 mb-4 text-sm line-clamp-2 font-sans lg:hidden">
           {description}
         </p>
+        <div className="hidden lg:block w-12 border-t border-gray-400 mb-6" />
+
+        <h4 className="italic font-semibold mb-2 hidden lg:block">
+          Ingredients:
+        </h4>
+        <ul className="text-center mb-6 text-sm hidden lg:block">
+          {ingredients.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
 
         {isMobile && (
           <motion.button
@@ -116,28 +115,32 @@ const CocktailCard = ({
 
         <AnimatePresence>
           {isMobile ? (
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <RecipeContent
-                    ingredients={ingredients}
-                    instructions={instructions}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <RecipeContent ingredients={ingredients} method={method} />
+              </motion.div>
+            )
           ) : (
-            <div className="mt-4">
-              <RecipeContent
-                ingredients={ingredients}
-                instructions={instructions}
-              />
+            // lg: Desktop Method / Garnish / Glass
+            <div className="hidden lg:grid grid-cols-3 divide-x divide-gray-300 text-center text-sm w-full border-t pt-4">
+              <div className="px-4">
+                <p className="italic font-semibold mb-1">Method:</p>
+                <p>{method}</p>
+              </div>
+              <div className="px-4">
+                <p className="italic font-semibold mb-1">Garnish:</p>
+                <p>{garnish}</p>
+              </div>
+              <div className="px-4">
+                <p className="italic font-semibold mb-1">Glass:</p>
+                <p>🥂</p>
+              </div>
             </div>
           )}
         </AnimatePresence>

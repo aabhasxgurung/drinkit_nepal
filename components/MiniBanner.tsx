@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 
 const brands = [
   {

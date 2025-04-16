@@ -1,9 +1,17 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 import gsap from "gsap";
 import CocktailCard from "@/app/cocktails/components/CocktailCard";
+import { CocktailDataProps } from "@/constants/cocktail";
+
+interface ModalProps {
+  modal: {
+    active: boolean;
+    index: number;
+  };
+  cocktails: CocktailDataProps[];
+}
 
 const scaleAnimation = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
@@ -21,42 +29,39 @@ const scaleAnimation = {
   },
 };
 
-export default function Modal({ modal, cocktails }: any) {
+export default function Modal({ modal, cocktails }: ModalProps) {
   const { active, index } = modal;
-  const modalContainer = useRef(null);
-  const cursor = useRef(null);
-  const cursorLabel = useRef(null);
+  const modalContainer = useRef<HTMLDivElement | null>(null);
+  const cursor = useRef<HTMLDivElement | null>(null);
+  const cursorLabel = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    //Move Container
-    let xMoveContainer = gsap.quickTo(modalContainer.current, "left", {
+    const xMoveContainer = gsap.quickTo(modalContainer.current, "left", {
       duration: 0.8,
       ease: "power3",
     });
-    let yMoveContainer = gsap.quickTo(modalContainer.current, "top", {
+    const yMoveContainer = gsap.quickTo(modalContainer.current, "top", {
       duration: 0.8,
       ease: "power3",
     });
-    //Move cursor
-    let xMoveCursor = gsap.quickTo(cursor.current, "left", {
+    const xMoveCursor = gsap.quickTo(cursor.current, "left", {
       duration: 0.5,
       ease: "power3",
     });
-    let yMoveCursor = gsap.quickTo(cursor.current, "top", {
+    const yMoveCursor = gsap.quickTo(cursor.current, "top", {
       duration: 0.5,
       ease: "power3",
     });
-    //Move cursor label
-    let xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {
+    const xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {
       duration: 0.45,
       ease: "power3",
     });
-    let yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {
+    const yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {
       duration: 0.45,
       ease: "power3",
     });
 
-    window.addEventListener("mousemove", (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const { pageX, pageY } = e;
       xMoveContainer(pageX);
       yMoveContainer(pageY);
@@ -64,7 +69,10 @@ export default function Modal({ modal, cocktails }: any) {
       yMoveCursor(pageY);
       xMoveCursorLabel(pageX);
       yMoveCursorLabel(pageY);
-    });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
@@ -74,54 +82,28 @@ export default function Modal({ modal, cocktails }: any) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "enter" : "closed"}
-        className="h-[450px] w-[1000px] absolute bg-white overflow-hidden pointer-events-none flex justify-center items-center"
+        className="h-[466px] w-[1200px] absolute bg-gray-100 overflow-hidden pointer-events-none flex justify-center items-center rounded-lg"
       >
-        {/* <div
-          style={{
-            top: index * -100 + "%",
-            transitionTimingFunction: "cubic-bezier(0.76, 0, 0.24, 1)",
-          }}
-          className="h-full w-full absolute transition-[top] duration-500"
-        >
-          {cocktails.map((project: { src: any; color: any }, index: any) => {
-            const { src, color } = project;
-            return (
-              <div
-                className="h-full w-full flex justify-center items-center"
-                key={`modal_${index}`}
-              >
-                <Image
-                  src={src}
-                  width={300}
-                  height={0}
-                  alt="image"
-                  className="h-auto"
-                />
-              </div>
-            );
-          })}
-        </div> */}
-        {active && cocktails[index] && (
-          <div className="h-full w-full absolute flex justify-center items-center">
-            <CocktailCard {...cocktails[index]} />
+        {active && cocktails.length > 0 && (
+          <div className="h-full w-full absolute overflow-hidden">
+            <div
+              style={{
+                top: `-${index * 100}%`,
+                transition: "top 0.5s cubic-bezier(0.76, 0, 0.24, 1)",
+              }}
+              className="h-full w-full absolute"
+            >
+              {cocktails.map((cocktail: CocktailDataProps, i: number) => (
+                <div
+                  key={`modal_${i}`}
+                  className="h-full w-full flex justify-center items-center"
+                >
+                  <CocktailCard {...cocktail} />
+                </div>
+              ))}
+            </div>
           </div>
         )}
-      </motion.div>
-      <motion.div
-        ref={cursor}
-        className="w-20 h-20 rounded-[50%] bg-[#455CE9] text-white absolute z-10 flex justify-center items-center text-sm pointer-events-none"
-        variants={scaleAnimation}
-        initial="initial"
-        animate={active ? "enter" : "closed"}
-      ></motion.div>
-      <motion.div
-        ref={cursorLabel}
-        className="bg-transparent"
-        variants={scaleAnimation}
-        initial="initial"
-        animate={active ? "enter" : "closed"}
-      >
-        View
       </motion.div>
     </>
   );

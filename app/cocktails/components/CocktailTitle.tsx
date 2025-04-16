@@ -1,6 +1,22 @@
 import React from "react";
 
-const CocktailTitle = ({ index, title, setModal, category }: any) => {
+type ModalState = {
+  active: boolean;
+  index: number;
+};
+
+interface CocktailTitleProps {
+  index: number;
+  title: string;
+  category: string;
+  setModal: (state: ModalState) => void;
+}
+const CocktailTitle: React.FC<CocktailTitleProps> = ({
+  index,
+  title,
+  setModal,
+  category,
+}) => {
   return (
     <div
       onMouseEnter={() => {
