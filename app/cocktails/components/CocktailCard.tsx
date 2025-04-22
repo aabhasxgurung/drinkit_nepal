@@ -52,14 +52,15 @@ const CocktailCard = ({
         <h2 className="hidden lg:block text-[#7B0323] text-3xl font-serif leading-tight my-4">
           &quot;{title}&quot;
         </h2>
-
-        <Image
-          src={imageUrl}
-          alt={title}
-          width={450}
-          height={400}
-          className="object-cover w-full md:w-[400x] h-[300px] object-center"
-        />
+        <div className="w-full h-full">
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={450}
+            height={400}
+            className="object-cover lg:object-contain object-center w-full lg:w-[300px] h-[300px] mx-auto"
+          />
+        </div>
         <div className="absolute top-4 right-4 lg:hidden">
           <motion.div
             initial={{ opacity: 0, y: -10 }}

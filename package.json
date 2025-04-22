@@ -11,18 +11,22 @@
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "framer-motion": "^12.7.3",
     "gsap": "^3.12.7",
     "lucide-react": "^0.488.0",
     "next": "14.2.26",
+    "nodemailer": "^6.10.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.5.0",
     "swiper": "^11.2.6",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.2.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

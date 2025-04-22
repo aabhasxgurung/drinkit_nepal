@@ -83,7 +83,7 @@ export const Bottles = [
       "And Almonds",
     ],
     volume: "750ml",
-    alcoholPercentage: "43%",
+    alcoholPercentage: "70CL 43% ABV",
   },
   {
     id: 2,
@@ -97,7 +97,7 @@ export const Bottles = [
     flavors:
       "Clean Juniper with Fresh Lemon Peel on the nose and a zing of ginger on the finish",
     pairings: [],
-    highlights: [],
+    highlights: ["India's first London Dry Gin"],
     volume: "750ml",
     alcoholPercentage: "70cl 40% abv",
   },
@@ -289,8 +289,9 @@ export const Bottles = [
     description:
       "When Luxardo marasca cherries are harvested at the beginning of every summer, they are put in alcoholic infusion in larch-wood vats together with some leaves and branches of the same trees for up to three years. When ready, both the liquid and the solid parts are distilled in traditional copper pot stills, separating the heart from heads and tails. Only the heart of the distillate is then allowed to mature in ash-wood vats. The last process consists in transforming the distillate in liqueur by adding a simple syrup of water and sugar lowering the ABV to 32%. Crystal clear in colour, the aroma is typical of marasca cherry distillate with strong alcohol spirit and roasted nuttiness, while the taste results smooth but sharp at the same time with hints of dark chocolate, vanilla and orange marmalade. The tall green bottle with its red cap is still hand-plaited in straw within the company, and resembles the Maraschino bottles produced in Zara in the early days, where the straw was placed in order to prevent damage during transportation. Luxardo Maraschino Originale can be enjoyed in many classic cocktails or neat as an after dinner drink. It is also ideal over fruits such as strawberries, pineapples, oranges etc. or as a flavor in confectionary and ice creams.",
     background: "/backgrounds/Maraschino-1.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "Spiritious sweet cherry with hints of dark chocolate, vinalla and a touch of orange marmalade",
     pairings: [],
     highlights: ["GMO Free", "Kosher Certified", "Vegan friendly"],
     volume: "750ml",
@@ -302,13 +303,20 @@ export const Bottles = [
     img: "/sula/luxardo_sambuca-1.png",
     slug: "luxardo-sambuca",
     category: "liqueur",
-    description: "A traditional anise-flavored liqueur from Italy.",
+    description: `A traditional Italian liqueur is Luxardo Sambuca dei Cesari.
+The main components that set Luxardo Sambuca dei Cesari apart are star ani, sugar, alcohol, herbs and spices, and pure volcanic water from Luxardo's own springs. Luxardo Sambuca dei Cesari is a premium product because it is still made using the original family recipe, uses premium raw materials, and uses state-of-the-art production techniques to ensure the finest quality possible. The anise plant, which originated in China, was already well-known and valued for its medicinal qualities in antiquity. Over the ages, it moved throughout Mediterranean countries, where it was used extensively to make common foods and desserts. `,
     background: "/backgrounds/sambucabg.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "syrupy mouth feel, very sweet, clean rich aniseed and liquorice with subtle coriander",
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Star anise, herbs and spices, alcohol, sugar",
+      "and pure volcanic water from Luxardo own springs",
+      "are the key ingredients",
+    ],
     volume: "750ml",
+    alcoholPercentage: "38% alc.by vol.",
   },
   {
     id: 14,
@@ -316,13 +324,15 @@ export const Bottles = [
     img: "/sula/luxardo_bitter.png",
     slug: "luxardo-bitter-rosso",
     category: "liqueur",
-    description: "A balanced and aromatic bitter liqueur for cocktails.",
+    description: `Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants with alcohol and water After being combined in accordance with a recipe created by the Luxardo Family, these infusions are filtered and put into bottles. Luxardo Bitter is distinguished by its bright red colour, unique gentian and wormwood flavours, and herbal and citrussy scents. Enjoy it neat or over ice as an aperitivo, and it's perfect for many traditional cocktails like the Americano or Negroni. You will have the ideal "Shakerato" if you try it forcefully shaken and double strained in a coupette.`,
     background: "/backgrounds/bitterbg.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "herbaceous quinine bitterness balanced with syrupy sweetness flavoured with blood orange zest. Gently bitter and persistent",
     pairings: [],
     highlights: [],
     volume: "750ml",
+    alcoholPercentage: "25% alc.by vol.",
   },
   {
     id: 15,
@@ -330,13 +340,16 @@ export const Bottles = [
     img: "/sula/luxardo_aperitivo.png",
     slug: "luxardo-aperitivo",
     category: "liqueur",
-    description: "A refreshing and citrus-forward Italian aperitif.",
+    description:
+      "The outcome of a well balanced infusion of different citrus fruits, herbs, and roots is Luxardo Aperitivo. It is the best product to prepare low ABV beverages that are appropriate for aperitivo events because of its modest alcoholic content. For the ideal Spritz, combine it with soda and Prosecco.",
     background: "/backgrounds/aperitivobg.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "slightly bitter, with flavours of zesty orange marmalade and pink grapefruit. Rhubarb and gentian notes.",
     pairings: [],
     highlights: [],
     volume: "750ml",
+    alcoholPercentage: "11% or 15% alc. by vol.",
   },
   {
     id: 16,
@@ -344,12 +357,15 @@ export const Bottles = [
     img: "/sula/luxardo-cherry.png",
     slug: "luxardo-cherry-liqueur",
     category: "liqueur",
-    description: "A rich cherry liqueur, perfect for classic cocktails.",
+    description: `Produced since 1821, Luxardo's second speciality after Maraschino Originale
+A portion of the juice from Luxardo marasca cherries is separated and allowed to age until natural fermentation takes place when they are picked at the start of each summer. To prevent further fermentation, neutral alcohol is added to the juice whenever a specific alcohol by volume is reached. The juice is then left to age in oak vats. The perfume of freshly squeezed cherry juice was strong, and the colour was clear and deep red.  `,
     background: "/backgrounds/chreey-bg.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "intense, thick and syrupy with sweetness partially offset by fruit tartness. Very strong flavored – concentrated cherry juice and cherry jam with black pepper spice.",
     pairings: [],
     highlights: [],
+    alcoholPercentage: "30% alc. by vol.",
     volume: "750ml",
   },
   {
@@ -358,14 +374,15 @@ export const Bottles = [
     img: "/sula/luxardotriple.jpg",
     slug: "luxardo-triple-sec",
     category: "liqueur",
-    description:
-      "A high-quality orange liqueur used in cocktails like Margaritas.",
+    description: `Luxardo has been producing Triplum, a traditional "triple sec," according to the original production parameters since the first half of the 1800s. In that century's custom, the term "triple sec" denoted a liqueur made from the dried and distilled peels of three different citrus fruits: mostly curaçao, a bitter orange from the Dutch Antilles, from the island with the same name, along with sweet oranges and mandarins. The three citrus fruit varieties listed above are distilled, with the "heads" and "tails" separated, to produce Luxardo Triplum. The only portion that is transferred to a second distillation is the "heart," or the best and centre portion. The Luxardo recipe calls for additional ingredients such vervain, pennyroyal, and dried orange flowers (zagara). All of this contributes to the distillate's distinct, sophisticated scent. The distillate undergoes sugaring, diluting, and filtering. It is among the few liqueurs that may be made through distillation.`,
     background: "/backgrounds/triple-sec.jpg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      "Smooth enveloping flavour of citrus fruits a very well rounded and mature taste.",
     pairings: [],
     highlights: [],
     volume: "750ml",
+    alcoholPercentage: "39% alc. by vol",
   },
   {
     id: 18,
@@ -373,13 +390,16 @@ export const Bottles = [
     img: "/sula/angioletto.png",
     slug: "luxardo-hazelnut-liqueur",
     category: "liqueur",
-    description: "A smooth and nutty liqueur, great for dessert cocktails.",
+    description:
+      "Luxardo Angioletto Hazelnut Liqueur is obtained from a blending process of real hazelnut infusion with a number of natural extracts, including cocoa and vanilla. Enjoy Luxardo Angioletto Hazelnut Liqueur either straight up and chilled, or on the rocks.",
     background: "/home/vodka-bg.jpeg",
-    country: "",
-    flavors: "",
+    country: "Italy",
+    flavors:
+      " Lightly syrupy. Rich toasted hazelnut with biscuit, walnut, almond and hints of mocha coffee, citrus, vanilla and cocoa powder.",
     pairings: [],
     highlights: [],
     volume: "750ml",
+    alcoholPercentage: "24% alc. by vol",
   },
   {
     id: 19,
@@ -394,6 +414,7 @@ export const Bottles = [
     pairings: [],
     highlights: [],
     volume: "750ml",
+    alcoholPercentage: "",
   },
   {
     id: 20,

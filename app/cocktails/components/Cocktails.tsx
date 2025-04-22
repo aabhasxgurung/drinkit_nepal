@@ -14,7 +14,7 @@ const Cocktails = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
   return (
     <div className="min-h-screen bg-white">
-      <div className="relative h-[600px] overflow-hidden">
+      <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -22,27 +22,28 @@ const Cocktails = () => {
           className="absolute inset-0"
         >
           <Image
-            src="/backgrounds/cocktailbg.jpg"
+            src="/home/footerbg.png"
             fill
             alt="Cocktails background"
-            className="object-cover object-center"
+            className="object-contain object-bottom"
             priority
           />
-          <div className="absolute inset-0 bg-black/30" />
         </motion.div>
-
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="relative z-10 h-full flex flex-col items-center justify-center text-white"
-        >
-          <h1 className="text-7xl font-serif mb-6">Craft Cocktails</h1>
-          <p className="text-xl max-w-2xl text-center text-gray-100">
-            Discover the art of mixology with our carefully curated collection
-            of signature cocktails
-          </p>
-        </motion.div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-7xl font-serif text-black mb-4">
+              Our Cocktails
+            </h1>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto px-4 font-sans">
+              Discover our carefully curated selection of Cocktail
+            </p>
+          </motion.div>
+        </div>
       </div>
 
       <HomeWrapper>
@@ -77,6 +78,15 @@ const Cocktails = () => {
             </div>
           ))}
         </div>
+        {/* <div className="max-w-7xl mx-auto px-6 md:px-10">
+          {cocktailsData.map((cocktail, index) => (
+            <div key={index}>
+              <div className="flex flex-col gap-10">
+                <CocktailCard {...cocktail} />
+              </div>
+            </div>
+          ))}
+        </div> */}
 
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -90,12 +100,10 @@ const Cocktails = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center p-8 md:p-12">
                 <div className="text-white">
                   <h2 className="text-3xl font-semibold mb-4">
-                    Elevate Your Home Bar
+                    Elevate Your Bar
                   </h2>
-                  <p className="text-gray-100 mb-8">
-                    From premium spirits to professional-grade tools, find
-                    everything you need to craft the perfect cocktail experience
-                    at home.
+                  <p className="text-gray-100 mb-8 font-sans">
+                    Take a look at our premium Gins, wines to liquers
                   </p>
                   <Link
                     href="/products"

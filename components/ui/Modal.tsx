@@ -82,7 +82,7 @@ export default function Modal({ modal, cocktails }: ModalProps) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "enter" : "closed"}
-        className="h-[466px] w-[1200px] absolute bg-gray-100 overflow-hidden pointer-events-none flex justify-center items-center rounded-lg"
+        className="h-[434px] w-[1136px] absolute bg-gray-100 overflow-hidden pointer-events-none flex justify-center items-center rounded-lg"
       >
         {active && cocktails.length > 0 && (
           <div className="h-full w-full absolute overflow-hidden">

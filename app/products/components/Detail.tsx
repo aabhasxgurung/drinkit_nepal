@@ -106,8 +106,33 @@ export function Detail({ bottle }: BottleDetailProps) {
               <p className="text-gray-700 font-light">{alcoholPercentage}</p>
             </>
           )}
-
+          {flavors && (
+            <>
+              <h3 className="text-xl font-light text-wine-700 mb-4">
+                Flavours
+              </h3>
+              <p className="text-gray-700 font-light">{flavors}</p>
+            </>
+          )}
           {/* Suggested Pairing */}
+        </motion.div>
+
+        {/* Right Column */}
+        <motion.div variants={fadeIn} className="space-y-6">
+          {highlights && (
+            <>
+              <h3 className="text-xl font-light text-wine-700 mb-4">
+                {category} Highlights
+              </h3>
+              <ul className="space-y-2">
+                {highlights.map((highlight, index) => (
+                  <li key={index} className="text-gray-700 font-light">
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {pairings && pairings.length > 0 && (
             <>
               <h3 className="text-xl font-light text-wine-700 mb-4 mt-8">
@@ -117,32 +142,6 @@ export function Detail({ bottle }: BottleDetailProps) {
                 {pairings.map((pairing, index) => (
                   <li key={index} className="text-gray-700 font-light">
                     {pairing}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </motion.div>
-
-        {/* Right Column */}
-        <motion.div variants={fadeIn} className="space-y-6">
-          {flavors && (
-            <>
-              <h3 className="text-xl font-light text-wine-700 mb-4">
-                Flavours
-              </h3>
-              <p className="text-gray-700 font-light">{flavors}</p>
-            </>
-          )}
-          {highlights && (
-            <>
-              <h3 className="text-xl font-light text-wine-700 mb-4 mt-8">
-                {category} Highlights
-              </h3>
-              <ul className="space-y-2">
-                {highlights.map((highlight, index) => (
-                  <li key={index} className="text-gray-700 font-light">
-                    {highlight}
                   </li>
                 ))}
               </ul>

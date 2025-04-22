@@ -94,7 +94,6 @@ const Products = () => {
             className="object-contain object-bottom"
             priority
           />
-          <div className="absolute inset-0 bg-black/30" />
         </motion.div>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
@@ -103,10 +102,10 @@ const Products = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-serif text-white mb-4">
+            <h1 className="text-5xl md:text-7xl font-serif text-black mb-4">
               Our Collection
             </h1>
-            <p className="text-gray-200 text-lg max-w-2xl mx-auto px-4">
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto px-4 font-sans">
               Discover our carefully curated selection of premium wines and
               spirits
             </p>
@@ -129,7 +128,7 @@ const Products = () => {
               value={searchTerm}
               onChange={handleSearchChange}
               placeholder="Search our collection..."
-              className="w-full pl-10 pr-4 py-3 rounded-full bg-white/50 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7B0323] focus:border-transparent shadow-inner"
+              className="w-full pl-10 pr-4 py-3 font-sans rounded-full bg-white/50 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7B0323] focus:border-transparent shadow-inner"
             />
             {searchTerm && (
               <button
@@ -142,7 +141,7 @@ const Products = () => {
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-6 py-3 ${
+            className={`flex items-center gap-2 px-6 py-3 font-sans ${
               showFilters ? "bg-gray-700" : "bg-[#7B0323]"
             } text-white rounded-full hover:bg-[#5B0219] transition-colors duration-300`}
           >
@@ -208,7 +207,7 @@ const Products = () => {
       </div>
 
       {/* Results Counter */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-4">
+      <div className="max-w-[1400px] font-sans mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-4">
         <p className="text-gray-600">
           Showing {filteredBottles.length} of {Bottles.length} products
         </p>

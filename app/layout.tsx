@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+
 import SmoothScrolling from "@/components/ui/SmoothScrolling";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const trajanPro = localFont({
   src: "../public/fonts/trajanpro_bold.woff2",
