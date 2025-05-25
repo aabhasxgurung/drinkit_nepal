@@ -4,13 +4,13 @@ export interface Bottle {
   name: string;
   description: string;
   img: string;
-  volume: string;
+  volume?: string;
   grapeVarietal?: string;
-  category: string;
-  country: string;
-  flavors: string;
-  pairings: string[];
-  highlights: string[];
+  category?: string;
+  country?: string;
+  flavors?: string;
+  pairings?: string[];
+  highlights?: string[];
   alcoholPercentage?: string;
 }
 export const FeaturedProduct = [
@@ -279,6 +279,17 @@ export const Bottles = [
     highlights: ["India’s first Zinfandel.", "Not aged in barrels."],
     volume: "750ml",
     grapeVarietal: "100% Zinfandel.",
+  },
+  {
+    id: 13,
+    name: "Luxardo Maraschino Cherries",
+    img: "/sula/Maraschino-Cherries-2.jpg",
+    slug: "luxardo-maraschino-cherriese",
+    category: "liqueur",
+    description:
+      "These are candied cherries soaked in Luxardo marasca cherry syrup. The percentage of marasca cherries in jars and tins is about 50% and so is the percentage of syrup. No thickening agents of any type and no preservatives are used and the dark red color is all natural. Their unique taste comes from the marasca cherry syrup which is made starting from the same juice used to prepare the infusion for the Cherry Liqueur “Sangue Morlacco”. A cutting edge system of pasteurization guarantees the maximum level of preservation and safety. Luxardo Original Maraschino Cherries accurate candying process confers to the fruit a crispiness which is rare to find amongst competing brands. Today, like in the golden age of cocktails, Luxardo Original Maraschino Cherries are used in the worlds’ best bars and by the most famous mixologists as a garnish in their creations. The syrup itself may be used in many cocktails as a flavored sugar. They are also ideal over ice cream.",
+    background: "/backgrounds/Maraschino-1.jpg",
+    country: "Italy",
   },
   {
     id: 12,

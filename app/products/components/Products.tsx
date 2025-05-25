@@ -275,37 +275,6 @@ const Products = () => {
           </div>
         )}
       </div>
-
-      {/* Newsletter Section */}
-      <div className="bg-gradient-to-br from-[#7B0323] to-[#5B0219] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl font-serif text-white mb-4">
-              Stay Updated
-            </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Subscribe to our newsletter to receive updates about new products,
-              special offers, and expert recommendations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-full bg-white/10 text-white placeholder:text-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent"
-              />
-              <button className="px-8 py-3 bg-white text-[#7B0323] rounded-full hover:bg-gray-100 transition-colors duration-300 font-semibold">
-                Subscribe
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
     </div>
   );
 };

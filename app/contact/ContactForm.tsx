@@ -26,8 +26,21 @@ const ContactForm = () => {
     message: Yup.string().required("Message is required"),
   });
 
-  const handleSubmit = (values: typeof initialValues) => {
-    console.log(values);
+  const handleSubmit = async (values: typeof initialValues) => {
+    const res = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        subject: values.subject,
+        message: values.message,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to send message");
+    }
   };
 
   return (
@@ -43,9 +56,16 @@ const ContactForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={(values) => {
-            handleSubmit(values);
-            setFormSubmitted(true);
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
+              await handleSubmit(values);
+              setFormSubmitted(true);
+            } catch (err) {
+              console.error(err);
+              // you could show an error state here
+            } finally {
+              setSubmitting(false);
+            }
           }}
         >
           {({
@@ -58,7 +78,7 @@ const ContactForm = () => {
           }) => (
             <Form className="space-y-5">
               {formSubmitted ? (
-                <div className="bg-green-50 text-green-800 p-4 rounded-lg mb-6">
+                <div className="bg-green-50 text-green-800 p-4 rounded-lg mb-6 font-sans">
                   <p className="font-medium">Thank you for your message!</p>
                   <p className="mt-1">
                     We have received your inquiry and will get back to you

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Wine, Grape, Award, Star, Users } from "lucide-react";
 
 const stats = [
-  { icon: Wine, label: "Premium Wines", value: "100+" },
+  { icon: Wine, label: "Premium Liquor", value: "27+" },
   { icon: Award, label: "Years Experience", value: "3+" },
   { icon: Users, label: "Happy Clients", value: "1000+" },
   { icon: Star, label: "Expert Reviews", value: "50+" },
