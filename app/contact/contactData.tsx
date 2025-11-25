@@ -8,14 +8,14 @@ export const CONTACT_INFO = {
   },
   EMAIL: {
     title: "Email Us",
-    content: <>drinkit@gmail.com</>,
+    content: <>Drinkitimportandexport@gmail.com</>,
     icon: <Mail className="h-5 w-5 text-wine-900" />,
   },
   PHONE: {
     title: "Call Us",
     content: (
       <>
-        +977-975323421
+        +977 9819810683
         <br />
         Mon–Fri from 9am to 6pm
       </>

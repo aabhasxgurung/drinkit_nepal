@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,24 +35,24 @@ const Footer = () => {
               and casual enthusiasts alike.
             </p>
             <div className="flex space-x-4 pt-4">
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-400 hover:text-wine-900 transition-colors"
               >
                 <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
+              </a> */}
+              <Link
+                href="https://www.instagram.com/drinkit.np/"
                 className="text-gray-400 hover:text-wine-900 transition-colors"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a
+              </Link>
+              {/* <a
                 href="#"
                 className="text-gray-400 hover:text-wine-900 transition-colors"
               >
                 <Twitter className="h-5 w-5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -88,16 +88,19 @@ const Footer = () => {
             <ul className="space-y-3 font-sans">
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-wine-900 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-600 text-sm">+1 (555) 123-4567</span>
+                <span className="text-gray-600 text-sm">+977 9819810683</span>
               </li>
               <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-wine-900 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 text-sm">
-                  contactdrinkit.com
+                  Drinkitimportandexport@gmail.com
                 </span>
               </li>
-              <li className="text-gray-600 text-sm mt-4">
-                Baluwatar, Kathmandu
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-wine-900 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-600 text-sm">
+                  Baluatar, Kathmandu
+                </span>
               </li>
             </ul>
           </div>

@@ -4,45 +4,46 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import FeaturedCocktailCard from "./FeaturedCocktailCard";
+import { cocktailsData } from "@/constants/cocktail";
 
 const FeaturedCocktails = () => {
-  const featuredCocktails = [
-    {
-      id: "1",
-      title: "Himalayan Negroni",
-      description:
-        "A timeless cocktail that highlights the flavors of quality whiskey, featuring the unique taste of Hapusa Gin and Timbur.",
-      ingredients: ["Hapusa Gin", "Timbur", "Vermouth", "Campari", "Ice cubes"],
-      imageUrl: "/sula/featuredHapusa.jpg",
-      method: "stir",
-      difficulty: "Easy" as "Easy" | "Medium" | "Advanced",
-      tags: ["Signature", "Popular"],
-      category: "Negroni",
-      base: "Gin",
-      garnish: "Orange peel",
-    },
-    {
-      id: "2",
-      title: "Botanical Gin Fizz",
-      description:
-        "A refreshing, effervescent cocktail perfect for summer evenings, combining the delicate flavors of botanical gin with citrus notes.",
-      ingredients: [
-        "2 oz Botanical Gin",
-        "1 oz fresh lemon juice",
-        "3/4 oz simple syrup",
-        "Club soda",
-        "Lemon wheel",
-        "Ice cubes",
-      ],
-      imageUrl: "/sula/featuredHapusa.jpg",
-      method: "shake",
-      difficulty: "Medium" as "Easy" | "Medium" | "Advanced",
-      tags: ["Refreshing", "Summer"],
-      category: "Fizz",
-      base: "Gin",
-      garnish: "Lemon wheel",
-    },
-  ];
+  // const featuredCocktails = [
+  //   {
+  //     id: "1",
+  //     title: "Himalayan Negroni",
+  //     description:
+  //       "A timeless cocktail that highlights the flavors of quality whiskey, featuring the unique taste of Hapusa Gin and Timbur.",
+  //     ingredients: ["Hapusa Gin", "Timbur", "Vermouth", "Campari", "Ice cubes"],
+  //     imageUrl: "/sula/featuredHapusa.jpg",
+  //     method: "stir",
+  //     difficulty: "Easy" as "Easy" | "Medium" | "Advanced",
+  //     tags: ["Signature", "Popular"],
+  //     category: "Negroni",
+  //     base: "Gin",
+  //     garnish: "Orange peel",
+  //   },
+  //   {
+  //     id: "2",
+  //     title: "Botanical Gin Fizz",
+  //     description:
+  //       "A refreshing, effervescent cocktail perfect for summer evenings, combining the delicate flavors of botanical gin with citrus notes.",
+  //     ingredients: [
+  //       "2 oz Botanical Gin",
+  //       "1 oz fresh lemon juice",
+  //       "3/4 oz simple syrup",
+  //       "Club soda",
+  //       "Lemon wheel",
+  //       "Ice cubes",
+  //     ],
+  //     imageUrl: "/sula/featuredHapusa.jpg",
+  //     method: "shake",
+  //     difficulty: "Medium" as "Easy" | "Medium" | "Advanced",
+  //     tags: ["Refreshing", "Summer"],
+  //     category: "Fizz",
+  //     base: "Gin",
+  //     garnish: "Lemon wheel",
+  //   },
+  // ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -139,7 +140,7 @@ const FeaturedCocktails = () => {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             variants={containerVariants}
           >
-            {featuredCocktails.map((cocktail) => (
+            {cocktailsData.slice(0, 3).map((cocktail) => (
               <motion.div
                 key={cocktail.id}
                 variants={itemVariants}

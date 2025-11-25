@@ -20,6 +20,6 @@ export const links = [
 export const footerLinks = [
   {
     title: "Instagram",
-    href: "/",
+    href: "https://www.instagram.com/drinkit.np/",
   },
 ];
