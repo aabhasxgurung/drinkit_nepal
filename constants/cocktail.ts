@@ -17,7 +17,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "1",
     title: "Himalyan Negroni",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A mountain twist on the classic Italian aperitivo, featuring Timbur-infused Hapusa Gin for a unique numbing sensation paired with the bitterness of Campari and Vermouth.",
     ingredients: [
       "30ml Hapusa Gin",
       "Timbur (Himalayan Sichuan Pepper) Infused",
@@ -34,7 +35,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "2",
     title: "Apricot Smash",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A fruity and refreshing concoction enhancing Hapusa Gin with the sweetness of apricot jam and fresh apple juice, balanced by a zesty lime kick.",
     ingredients: [
       "50ml Hapusa Gin",
       "2 Bar Spoons Apricot Jam",
@@ -52,7 +54,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "3",
     title: "Himalyan Gimlet",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A crisp and citrusy classic reinvented with Himalayan Gin, offering a perfect balance of sweet and sour notes.",
     ingredients: ["60ml Hapusa Gin", "20ml Sugar syrup", "20ml Lime juice"],
     imageUrl: "/cocktails/gimlet.jpg",
     difficulty: "Easy",
@@ -64,8 +67,9 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "4",
     title: "NY Sour",
-    description: "A timeless cocktail made with Gin, and sugar.",
-    ingredients: ["50ml Hapusa Gin", "20ml Simp[le syrup", "20ml Lemon Juice"],
+    description:
+      "A sophisticated whiskey sour variation using Hapusa Gin as the base, topped with a red wine float for a stunning visual and complex flavor profile.",
+    ingredients: ["50ml Hapusa Gin", "20ml Simple syrup", "20ml Lemon Juice"],
     imageUrl: "/cocktails/nysour.jpg",
     difficulty: "Easy",
     category: "Classic",
@@ -76,7 +80,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "5",
     title: "Southside",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A refreshing gin-based cocktail often described as a mojito for gin lovers, featuring fresh mint and lime.",
     ingredients: [
       "50ml Greater Than Gin",
       "20ml Lime Juice",
@@ -93,7 +98,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "6",
     title: "Greater Martini",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "The quintessential gin cocktail, clean and elegant, highlighting the botanicals of Greater Than Gin with a touch of dry vermouth.",
     ingredients: ["60ml Greater Than", "10ml Dry vermouth"],
     imageUrl: "/cocktails/greatermartini.png",
     difficulty: "Easy",
@@ -105,7 +111,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "7",
     title: "Greater Gin Basil Smash",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A modern classic that's vibrant and herbal, muddling fresh basil to release a peppery aroma that complements the gin perfectly.",
     ingredients: [
       "60ml Greater Than Gin",
       "15ml Fresh Lime juice",
@@ -122,7 +129,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "8",
     title: "Greater Salty Dog",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A tangy and savory delight combining gin and grapefruit juice with a hint of hibiscus, served in a salt-rimmed glass.",
     ingredients: [
       "45ml Greater Than Gin",
       "90ml Grapefruit Super Juice",
@@ -138,7 +146,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "9",
     title: "Hemingway Special",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A daiquiri variation created for Ernest Hemingway, featuring maraschino liqueur and grapefruit juice for a tart, complex finish without sugar.",
     ingredients: [
       "60ml.- 2oz. White Rhum",
       "30ml.- 1oz. Fresh pink grapefruit juice",
@@ -156,7 +165,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "10",
     title: "Maratonic",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A simple yet unique highball refreshing the palate with the nutty, cherry notes of Maraschino liqueur and tonic water.",
     ingredients: [
       "45ml.- 1½oz. Luxardo Maraschino Originale",
       "7.5ml.- ¼oz. Fresh Lemon Juice",
@@ -173,7 +183,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "11",
     title: "Aviation",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A pre-prohibition classic with a lovely pale sky-blue hue, offering floral and citrus notes from the gin, maraschino, and lemon.",
     ingredients: [
       "45ml.- 1.5 oz Greater Than London Dry Gin",
       "30ml.- 1 oz. Luxardo Maraschino Originale Liqueur",
@@ -189,10 +200,11 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "12",
     title: "Morlacco Fizz",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A lively fizz showcasing the rich, blood-red cherry flavors of Sangue Morlacco, brightened with lemon and cherry juice.",
     ingredients: [
       "45 ml. – 1 ½ oz. Greater Than London Dry Gin",
-      `20 ml. – ⅔ oz. Fresh lemon juice`,
+      "20 ml. – ⅔ oz. Fresh lemon juice",
       "20 ml. – ⅔ oz. Luxardo Original Maraschino Cherry Juice",
       "15 ml. – ½ oz. Luxardo Cherry Liqueur “Sangue Morlacco”",
     ],
@@ -206,7 +218,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "13",
     title: "Cherry Negoni",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A rich twist on the Negroni, swapping Campari for the deep, intense cherry flavor of Sangue Morlacco liqueur.",
     ingredients: [
       "45 ml. – 1 ½ oz. Luxardo London Dry Gin",
       "25 ml. – ¾ oz. Luxardo Cherry Liqueur “Sangue Morlacco”",
@@ -222,7 +235,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "14",
     title: "Luxi Style",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A breezy highball combining gin and cherry liqueur, lengthened with soda for an easy-drinking, refreshing serve.",
     ingredients: [
       "45 ml. – 1 ½ oz. Luxardo London Dry Gin",
       "15 ml. – ½ oz. Luxardo Cherry Liqueur “Sangue Morlacco”",
@@ -238,7 +252,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "15",
     title: "Vacanza",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A holiday in a glass, blending bitter Aperitivo warmth with zest red grapefruit and triple sec.",
     ingredients: [
       "40 ml. – 1 ¼ oz. Luxardo Aperitivo",
       "40 ml. – 1 ¼ oz. Fresh pink grapefruit juice",
@@ -254,7 +269,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "16",
     title: "Whitelady",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A silky, sour classic combining the botanical punch of gin with the sweet orange notes of Triple Sec and fresh lemon.",
     ingredients: [
       "60 ml. – 2 oz. Luxardo London Dry Gin",
       "30 ml. – 1 oz. Luxardo Triplum Triple Sec",
@@ -270,7 +286,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "17",
     title: "Margarita",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "The world's most popular tequila cocktail, balancing earth agave notes with bright lime and sweet orange liqueur.",
     ingredients: [
       "60 ml. – 2 oz. Tequila Blanco",
       "10 ml. – ⅓ oz. Luxardo Triplum Triple Sec",
@@ -286,7 +303,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "18",
     title: "Negroni",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "The iconic Italian aperitif. Equal parts gin, vermouth, and bitters create a perfectly balanced, bittersweet masterpiece.",
     ingredients: [
       "40 ml. – 1 ⅓ oz. Luxardo Bitter",
       "40 ml. – 1 ⅓ oz. Greater Than London Dry Gin",
@@ -303,7 +321,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "19",
     title: "Bitter Shakerato",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A simple Italian favorite, shaking Luxardo Bitter vigorously with ice to create a cold, frothy, and intensely herbal drink.",
     ingredients: ["60 ml. – 2 oz. Luxardo Bitter"],
     imageUrl: "/cocktails/shakerato.png",
     difficulty: "Easy",
@@ -315,7 +334,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "20",
     title: "Boulevardier",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "The Negroni's autumnal cousin, substituting gin for the rich, spicy warmth of Rye Whisky.",
     ingredients: [
       "45 ml. – 1 ½ oz. Rye Whisky",
       "30 ml. – 1 oz. Luxardo Bitter",
@@ -331,7 +351,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "21",
     title: "Sorrentino",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A refreshing spritz-style drink marrying the zest of Limoncello with the depth of bitter and vermouth.",
     ingredients: [
       "30 ml. – 1 oz. Luxardo Limoncello",
       "30 ml. – 1 oz. Luxardo Bitter",
@@ -348,7 +369,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "22",
     title: "Jungle Samba",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A tropical explosion of flavors featuring rum, pineapple, and lime, with a kick of Sambuca and bitter.",
     ingredients: [
       "35 ml. – 1 ⅙ oz Rhum",
       "15 ml. – ½ oz. Luxardo Bitter",
@@ -367,7 +389,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "23",
     title: "Aperitivo Spritz",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "The quintessential sunset drink. Light, bubbly, and bittersweet, featuring Luxardo Aperitivo and Prosecco.",
     ingredients: [
       "60 ml. – 2 oz. Luxardo Aperitivo",
       "50 ml. – 1 ⅔ oz. Prosecco",
@@ -383,7 +406,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "24",
     title: "Bicicletta",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A drier, more bitter alternative to the Spritz, named after the wobbly bike rides home after a few of these.",
     ingredients: [
       "50 ml. – 1 ⅔ oz. Luxardo Aperitivo",
       "Top with Aranciata Amara / Fresh orange juice",
@@ -398,7 +422,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "25",
     title: "Il Santo",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A complex and herbal cocktail layering gin, aperitivo, and maraschino with a touch of citrus.",
     ingredients: [
       "45 ml. – 1 ½ oz. Luxardo London Dry Gin",
       "15 ml. – ½ oz. Luxardo Aperitivo",
@@ -416,7 +441,8 @@ export const cocktailsData: CocktailDataProps[] = [
   {
     id: "26",
     title: "Angioletto & Lime",
-    description: "A timeless cocktail made with Gin, and sugar.",
+    description:
+      "A simple and sweet hazelnut-herb liqueur served with fresh lime for a balanced, digestible sip.",
     ingredients: [
       "60 ml. – 2 oz. Luxardo Angioletto",
       "15 ml. – ½ oz. Fresh lime juice",

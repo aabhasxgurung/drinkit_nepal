@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Link from "next/link";
-import { Filter, Search, X } from "lucide-react";
+import { Filter, Search, X, Check } from "lucide-react";
 import { Bottles } from "@/constants/product";
 
 type Bottle = {
@@ -27,14 +27,24 @@ const fadeInUp = {
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [showFilters, setShowFilters] = useState<boolean>(false);
+  const [showMobileFilters, setShowMobileFilters] = useState<boolean>(false);
   const [filteredBottles, setFilteredBottles] = useState<Bottle[]>(Bottles);
   const [filters, setFilters] = useState<FiltersState>({
     categories: [],
   });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Extract unique categories from bottles data
   const categories = [...new Set(Bottles.map((bottle) => bottle.category))];
+
+  // Get counts for each category
+  const getCategoryCount = (category: string) => {
+    return Bottles.filter((b) => b.category === category).length;
+  };
 
   // Handle search input change
   const handleSearchChange = (e: {
@@ -77,8 +87,10 @@ const Products = () => {
     setFilteredBottles(result);
   }, [searchTerm, filters]);
 
+  if (!mounted) return null;
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50/50">
       {/* Hero Section */}
       <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
         <motion.div
@@ -95,17 +107,17 @@ const Products = () => {
             priority
           />
         </motion.div>
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/5">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center px-4"
           >
-            <h1 className="text-5xl md:text-7xl font-serif text-black mb-4">
+            <h1 className="text-5xl md:text-7xl font-serif text-gray-900 mb-4 tracking-tight">
               Our Collection
             </h1>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto px-4 font-sans">
+            <p className="text-gray-700 text-lg max-w-2xl mx-auto font-sans tracking-wide">
               Discover our carefully curated selection of premium wines and
               spirits
             </p>
@@ -113,167 +125,195 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Search and Filter Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-4 items-center justify-between"
-        >
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Search our collection..."
-              className="w-full pl-10 pr-4 py-3 font-sans rounded-full bg-white/50 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#7B0323] focus:border-transparent shadow-inner"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-6 py-3 font-sans ${
-              showFilters ? "bg-gray-700" : "bg-[#7B0323]"
-            } text-white rounded-full hover:bg-[#5B0219] transition-colors duration-300`}
-          >
-            <Filter className="w-5 h-5" />
-            <span>{showFilters ? "Hide Filters" : "Filter"}</span>
-          </button>
-        </motion.div>
-
-        {/* Filter Panel */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Mobile Filter Toggle */}
+          <div className="lg:hidden mb-6">
+            <button
+              onClick={() => setShowMobileFilters(!showMobileFilters)}
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm text-gray-900 font-medium"
             >
-              <div className="mt-4 bg-white/90 backdrop-blur-md rounded-xl shadow-lg p-6">
-                <h3 className="text-lg font-medium text-gray-800 mb-4">
-                  Filters
-                </h3>
+              <Filter className="w-5 h-5" />
+              <span>{showMobileFilters ? "Hide Filters" : "Show Filters"}</span>
+            </button>
+          </div>
 
-                <div className="space-y-6">
-                  {/* Category filters */}
-                  <div>
-                    <h4 className="text-md font-medium text-gray-700 mb-2">
-                      Categories
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {categories.map((category) => (
-                        <button
-                          key={category}
-                          onClick={() => toggleCategory(category)}
-                          className={`px-3 py-1 rounded-full text-sm ${
+          {/* Sidebar Filters - Desktop & Mobile */}
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`lg:w-1/4 lg:block ${
+              showMobileFilters ? "block" : "hidden"
+            } space-y-8`}
+          >
+            <div className="lg:sticky lg:top-24 space-y-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+              {/* Search in Sidebar for Desktop */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  placeholder="Search products..."
+                  className="w-full pl-10 pr-10 py-3 bg-gray-50 border-0 rounded-xl focus:ring-2 focus:ring-[#7B0323]/20 focus:bg-white transition-all duration-300 font-sans"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-serif font-semibold text-gray-900">
+                    Categories
+                  </h3>
+                  {filters.categories.length > 0 && (
+                    <button
+                      onClick={() => setFilters({ categories: [] })}
+                      className="text-xs text-[#7B0323] hover:underline font-medium"
+                    >
+                      Reset
+                    </button>
+                  )}
+                </div>
+                <div className="space-y-3">
+                  {categories.map((category) => (
+                    <label
+                      key={category}
+                      className="flex items-center justify-between group cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-5 h-5 rounded border flex items-center justify-center transition-colors duration-200 ${
                             filters.categories.includes(category)
-                              ? "bg-[#7B0323] text-white"
-                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                          } transition-colors duration-200`}
+                              ? "bg-[#7B0323] border-[#7B0323]"
+                              : "border-gray-300 group-hover:border-[#7B0323]"
+                          }`}
+                        >
+                          {filters.categories.includes(category) && (
+                            <Check className="w-3.5 h-3.5 text-white" />
+                          )}
+                        </div>
+                        <input
+                          type="checkbox"
+                          className="hidden"
+                          checked={filters.categories.includes(category)}
+                          onChange={() => toggleCategory(category)}
+                        />
+                        <span
+                          className={`text-sm capitalize ${
+                            filters.categories.includes(category)
+                              ? "text-gray-900 font-medium"
+                              : "text-gray-600 group-hover:text-gray-900"
+                          }`}
                         >
                           {category}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Reset filters button */}
-                  <button
-                    onClick={() =>
-                      setFilters({
-                        categories: [],
-                      })
-                    }
-                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-300 text-sm"
-                  >
-                    Reset Filters
-                  </button>
+                        </span>
+                      </div>
+                      <span className="text-xs text-gray-400 font-sans">
+                        {getCategoryCount(category)}
+                      </span>
+                    </label>
+                  ))}
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            </div>
+          </motion.aside>
 
-      {/* Results Counter */}
-      <div className="max-w-[1400px] font-sans mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-4">
-        <p className="text-gray-600">
-          Showing {filteredBottles.length} of {Bottles.length} products
-        </p>
-      </div>
+          {/* Product Grid */}
+          <main className="lg:w-3/4">
+            <div className="mb-6 flex items-center justify-between">
+              <p className="text-gray-600 font-sans">
+                Found{" "}
+                <span className="font-semibold text-gray-900">
+                  {filteredBottles.length}
+                </span>{" "}
+                products
+              </p>
+            </div>
 
-      {/* Products Display */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {filteredBottles.length > 0 ? (
-          <motion.div
-            initial="initial"
-            animate="animate"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16"
-          >
-            {filteredBottles.map((bottle) => (
+            {filteredBottles.length > 0 ? (
               <motion.div
-                key={bottle.slug}
-                variants={fadeInUp}
-                className="group relative"
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
               >
-                <Link href={`/products/${bottle.slug}`}>
-                  <div className="relative flex flex-col items-center">
-                    {/* Bottle Image with Reflection */}
-                    <div className="relative">
-                      <motion.div
-                        whileHover={{ y: -20 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                        className="relative z-10"
-                      >
-                        <Image
-                          src={bottle.img}
-                          width={280}
-                          height={400}
-                          alt={bottle.name}
-                          className="transform-gpu transition-transform duration-500 hover:scale-105 w-[280px] h-[400px] object-cover"
-                        />
-                      </motion.div>
-                    </div>
-
-                    {/* Product Info */}
+                <AnimatePresence>
+                  {filteredBottles.map((bottle) => (
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-center mt-6 relative z-20"
+                      layout
+                      key={bottle.slug}
+                      variants={fadeInUp}
+                      initial="initial"
+                      animate="animate"
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      className="group"
                     >
-                      <h3 className="font-serif text-2xl text-[#7B0323] mb-2 group-hover:text-[#5B0219] transition-colors">
-                        {bottle.name}
-                      </h3>
-                      <p className="text-gray-600 font-light capitalize tracking-wide">
-                        {bottle.category}
-                      </p>
+                      <Link href={`/products/${bottle.slug}`}>
+                        <div className="relative bg-white rounded-2xl p-6 transition-all duration-300 hover:shadow-xl border border-gray-100 h-full flex flex-col">
+                          <div className="relative aspect-[3/4] mb-6 overflow-hidden rounded-lg bg-gray-50">
+                            <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.4 }}
+                              className="w-full h-full relative"
+                            >
+                              <Image
+                                src={bottle.img}
+                                fill
+                                alt={bottle.name}
+                                className="object-contain p-4"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              />
+                            </motion.div>
+                          </div>
+
+                          <div className="text-center mt-auto">
+                            <span className="text-xs font-medium tracking-wider text-[#7B0323] uppercase mb-2 block">
+                              {bottle.category}
+                            </span>
+                            <h3 className="font-serif text-xl text-gray-900 mb-2 group-hover:text-[#7B0323] transition-colors line-clamp-2">
+                              {bottle.name}
+                            </h3>
+                          </div>
+                        </div>
+                      </Link>
                     </motion.div>
-                  </div>
-                </Link>
+                  ))}
+                </AnimatePresence>
               </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <div className="text-center py-16">
-            <h3 className="text-2xl text-gray-700 mb-4">No products found</h3>
-            <p className="text-gray-500">
-              Try adjusting your search or filters to find what you&apos;re
-              looking for.
-            </p>
-          </div>
-        )}
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex flex-col items-center justify-center py-20 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200"
+              >
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                  <Search className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-serif text-gray-900 mb-2">
+                  No products found
+                </h3>
+                <p className="text-gray-500 max-w-sm mx-auto">
+                  We couldn&apos;t find any products matching your search. Try
+                  adjusting your filters or search terms.
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setFilters({ categories: [] });
+                  }}
+                  className="mt-6 px-6 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  Clear all filters
+                </button>
+              </motion.div>
+            )}
+          </main>
+        </div>
       </div>
     </div>
   );

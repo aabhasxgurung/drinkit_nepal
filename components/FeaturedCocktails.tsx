@@ -7,44 +7,6 @@ import FeaturedCocktailCard from "./FeaturedCocktailCard";
 import { cocktailsData } from "@/constants/cocktail";
 
 const FeaturedCocktails = () => {
-  // const featuredCocktails = [
-  //   {
-  //     id: "1",
-  //     title: "Himalayan Negroni",
-  //     description:
-  //       "A timeless cocktail that highlights the flavors of quality whiskey, featuring the unique taste of Hapusa Gin and Timbur.",
-  //     ingredients: ["Hapusa Gin", "Timbur", "Vermouth", "Campari", "Ice cubes"],
-  //     imageUrl: "/sula/featuredHapusa.jpg",
-  //     method: "stir",
-  //     difficulty: "Easy" as "Easy" | "Medium" | "Advanced",
-  //     tags: ["Signature", "Popular"],
-  //     category: "Negroni",
-  //     base: "Gin",
-  //     garnish: "Orange peel",
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "Botanical Gin Fizz",
-  //     description:
-  //       "A refreshing, effervescent cocktail perfect for summer evenings, combining the delicate flavors of botanical gin with citrus notes.",
-  //     ingredients: [
-  //       "2 oz Botanical Gin",
-  //       "1 oz fresh lemon juice",
-  //       "3/4 oz simple syrup",
-  //       "Club soda",
-  //       "Lemon wheel",
-  //       "Ice cubes",
-  //     ],
-  //     imageUrl: "/sula/featuredHapusa.jpg",
-  //     method: "shake",
-  //     difficulty: "Medium" as "Easy" | "Medium" | "Advanced",
-  //     tags: ["Refreshing", "Summer"],
-  //     category: "Fizz",
-  //     base: "Gin",
-  //     garnish: "Lemon wheel",
-  //   },
-  // ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -68,11 +30,6 @@ const FeaturedCocktails = () => {
 
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background Pattern */}
-      {/* <div className="absolute inset-0 -z-10 opacity-5">
-        <div className="absolute inset-y-0 left-1/2 -z-10 ml-[-50vw] w-[100vw] bg-white [background:repeating-linear-gradient(90deg,#7B0323_0,#7B0323_1px,transparent_0,transparent_20px)]" />
-      </div> */}
-
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <motion.div
           initial="hidden"
@@ -137,7 +94,7 @@ const FeaturedCocktails = () => {
 
           {/* Cocktails Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
           >
             {cocktailsData.slice(0, 3).map((cocktail) => (
@@ -160,21 +117,6 @@ const FeaturedCocktails = () => {
                 <FeaturedCocktailCard {...cocktail} />
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* Bottom CTA */}
-          <motion.div className="mt-12 text-center" variants={itemVariants}>
-            <p className="text-gray-600 mb-6">
-              Want to learn more about mixology? Join our community of cocktail
-              enthusiasts!
-            </p>
-            <Link
-              href="/community"
-              className="inline-flex items-center text-[#7B0323] font-medium hover:text-[#9B0C3C] transition-colors"
-            >
-              Join the Community
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
           </motion.div>
         </motion.div>
       </div>

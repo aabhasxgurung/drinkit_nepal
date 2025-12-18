@@ -35,6 +35,15 @@ export const FeaturedProduct = [
       "Greater Than is India’s first craft gin, featuring juniper-forward flavors with hints of citrus and spice, perfect for refreshing cocktails.",
   },
   {
+    id: 21,
+    name: "The Whistler Irish Whiskey",
+    img: "/home/whsitler.jpg",
+    slug: "the-whistler-irish-whiskey",
+    category: "whiskey",
+    description:
+      "The Whistler Irish Whiskey is a premium triple-distilled blend, aged in bourbon barrels for a smooth, rich character with notes of honey, vanilla, and salted caramel.",
+  },
+  {
     id: 3,
     name: "Luxardo Maraschino Orginale",
     img: "/sula/featuredLux.png",
@@ -100,6 +109,22 @@ export const Bottles = [
     highlights: ["India's first London Dry Gin"],
     volume: "750ml",
     alcoholPercentage: "70cl 40% abv",
+  },
+  {
+    id: 21,
+    name: "The Whistler Irish Whiskey",
+    img: "/sula/whistlerbottle.png",
+    slug: "the-whistler-irish-whiskey",
+    category: "whiskey",
+    description:
+      "The Whistler Irish Whiskey is a premium triple-distilled blend, aged in bourbon barrels for a smooth, rich character with notes of honey, vanilla, and salted caramel.",
+    background: "/home/vodka-bg.jpeg",
+    country: "Ireland",
+    flavors: "Sweet honey, vanilla, salted caramel, with a smooth oak finish.",
+    pairings: ["Dark chocolate", "Smoked salmon", "Hard cheeses"],
+    highlights: ["Triple Distilled", "Aged in Bourbon Barrels"],
+    volume: "750ml",
+    alcoholPercentage: "40% alc. by vol",
   },
   {
     id: 3,

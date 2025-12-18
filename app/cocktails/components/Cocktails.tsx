@@ -60,21 +60,16 @@ const Cocktails = () => {
                     category={cocktail.base}
                   />
                 </div>
-                <div className="lg:hidden flex flex-col gap-10">
-                  <CocktailCard {...cocktail} />
-                </div>
               </div>
             ))}
           </div>
           <Modal modal={modal} cocktails={cocktailsData} />
         </section>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:hidden grid md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {cocktailsData.map((cocktail, index) => (
-            <div key={index}>
-              <div className="lg:hidden flex flex-col gap-10">
-                <CocktailCard {...cocktail} />
-              </div>
+            <div key={index} className="flex flex-col h-full">
+              <CocktailCard {...cocktail} />
             </div>
           ))}
         </div>

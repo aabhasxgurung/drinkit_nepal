@@ -17,6 +17,12 @@ const brands = [
     description: "India's Leading Wine Brand",
   },
   {
+    id: 5,
+    name: "The Whistler",
+    img: "/home/whistler.png",
+    description: "Irish Whiskey Excellence",
+  },
+  {
     id: 3,
     name: "Luxardo",
     img: "/home/Luxardologo.png",
@@ -57,14 +63,14 @@ const MiniBanner = () => {
           </motion.div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {brands.map((brand, index) => (
             <motion.div
               key={brand.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
               className="group relative bg-white rounded-xl p-6 shadow-md transition-all duration-300"
             >
