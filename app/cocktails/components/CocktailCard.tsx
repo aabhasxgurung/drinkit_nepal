@@ -5,7 +5,7 @@ import { Droplet, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { RecipeContent } from "./RecipeContent";
-import { CocktailDataProps } from "@/constants/cocktail";
+import type { CocktailWithIngredients } from "@/lib/types";
 
 const CocktailCard = ({
   description,
@@ -15,9 +15,8 @@ const CocktailCard = ({
   method,
   garnish,
   title,
-}: CocktailDataProps) => {
+}: CocktailWithIngredients) => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useIsMobile();
 
@@ -47,7 +46,7 @@ const CocktailCard = ({
         willChange: "transform",
       }}
     >
-      {/* Left Column – Bottle and Label (lg:) */}
+      {/* Left Column – Bottle and Label */}
       <div className="relative lg:w-2/5 flex flex-col items-center text-center lg:px-4">
         <h2 className="hidden lg:block text-[#7B0323] text-3xl font-serif leading-tight my-4">
           &quot;{title}&quot;
@@ -73,7 +72,7 @@ const CocktailCard = ({
         </div>
       </div>
 
-      {/* Right Column – Recipe Info (lg:) */}
+      {/* Right Column – Recipe Info */}
       <div className="p-6 lg:w-3/5 lg:flex lg:flex-col lg:items-center">
         <motion.h3
           className="text-xl font-medium text-gray-900 mb-2 lg:hidden"
@@ -90,8 +89,10 @@ const CocktailCard = ({
           Ingredients:
         </h4>
         <ul className="text-center mb-6 text-sm hidden lg:block">
-          {ingredients.map((item, idx) => (
-            <li key={idx}>{item}</li>
+          {ingredients.map((item) => (
+            <li key={item.id}>
+              {item.amount} {item.name}
+            </li>
           ))}
         </ul>
 
@@ -128,7 +129,6 @@ const CocktailCard = ({
               </motion.div>
             )
           ) : (
-            // lg: Desktop Method / Garnish / Glass
             <div className="hidden lg:grid grid-cols-3 divide-x divide-gray-300 text-center text-sm w-full border-t pt-4">
               <div className="px-4">
                 <p className="italic font-semibold mb-1">Method:</p>

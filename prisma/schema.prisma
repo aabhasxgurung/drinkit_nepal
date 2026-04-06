@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// BRAND
+// The 5 spirits/wine brands Drink It Nepal distributes.
+// Currently hardcoded in MiniBanner.tsx — needs to be dynamic because
+// new brand partnerships can be added without touching source code.
+// ──────────────────────────────────────────────────────────────────────────────
+model Brand {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  logo        String    // path to logo image in /public, e.g. "/home/hapusalogo.png"
+  description String    // short tagline shown in MiniBanner, e.g. "India's Leading Wine Brand"
+  country     String
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// PRODUCT
+// The full product catalog (27+ bottles) currently hardcoded in
+// constants/product.ts. New products must be addable by the business owner
+// without a code deploy.
+//
+// isFeatured + featuredImage + featuredOrder replace the separate
+// FeaturedProduct[] array that currently lives alongside Bottles[].
+// ──────────────────────────────────────────────────────────────────────────────
+model Product {
+  id                  Int                  @id @default(autoincrement())
+  name                String
+  slug                String               @unique
+  description         String               @db.Text
+  image               String               // main bottle image path
+  backgroundImage     String?              // lifestyle/background image path
+  volume              String?              // e.g. "750ml"
+  alcoholPercentage   String?              // e.g. "43% ABV"
+  country             String?
+  category            String               // "gin" | "wines" | "whiskey" | "liqueur" | "bitter"
+  flavors             String?              @db.Text
+  grapeVarietal       String?              // wines only
+  pairings            String[]             // food pairing suggestions
+  highlights          String[]             // bullet-point selling points
+  isFeatured          Boolean              @default(false)
+  featuredImage       String?              // separate hero image used in FeaturedProducts carousel
+  featuredOrder       Int?                 // sort order within the featured carousel
+  brandId             Int
+  brand               Brand                @relation(fields: [brandId], references: [id])
+  cocktailIngredients CocktailIngredient[]
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// COCKTAIL
+// The 26 cocktail recipes hardcoded in constants/cocktail.ts.
+// New cocktail recipes (e.g. seasonal specials) should be addable without a
+// code deploy.
+//
+// isFeatured + featuredOrder replace the current logic that hardcodes the
+// first 5 entries from cocktailsData[] as the homepage featured cocktails.
+// ──────────────────────────────────────────────────────────────────────────────
+model Cocktail {
+  id            Int                    @id @default(autoincrement())
+  title         String
+  slug          String                 @unique
+  description   String                 @db.Text
+  imageUrl      String
+  difficulty    CocktailDifficulty
+  category      String                 // e.g. "Classic"
+  base          String                 // display name of the base spirit, e.g. "Hapusa"
+  method        String                 // preparation instructions
+  garnish       String?
+  isFeatured    Boolean                @default(false)
+  featuredOrder Int?                   // sort order in the homepage FeaturedCocktails section
+  ingredients   CocktailIngredient[]
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+}
+
+enum CocktailDifficulty {
+  Easy
+  Medium
+  Advanced
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// COCKTAIL INGREDIENT
+// Each line in a cocktail's ingredient list.
+// productId is optional — set only when the ingredient is a product
+// Drink It Nepal actually sells, enabling "buy what's in this recipe" links.
+// ──────────────────────────────────────────────────────────────────────────────
+model CocktailIngredient {
+  id         Int      @id @default(autoincrement())
+  cocktailId Int
+  cocktail   Cocktail @relation(fields: [cocktailId], references: [id], onDelete: Cascade)
+  name       String   // e.g. "Hapusa Gin", "Fresh lime juice"
+  amount     String   // e.g. "30ml", "2 bar spoons"
+  order      Int      @default(0)
+  productId  Int?     // optional FK to a sold product
+  product    Product? @relation(fields: [productId], references: [id])
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// CAROUSEL SLIDE
+// The rotating hero banner images hardcoded in components/Banner.tsx.
+// Marketing needs to swap/reorder slides for campaigns without a code deploy.
+// ──────────────────────────────────────────────────────────────────────────────
+model CarouselSlide {
+  id        Int      @id @default(autoincrement())
+  image     String   // image path, e.g. "/home/carousel1.jpg"
+  altText   String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// COMPANY STAT
+// The four stats hardcoded in components/About.tsx:
+// "27+ Premium Liquor", "3+ Years Experience", "1000+ Happy Clients", etc.
+// These numbers grow as the business grows and shouldn't require code changes.
+// icon stores the Lucide icon name so the frontend can render the right icon.
+// ──────────────────────────────────────────────────────────────────────────────
+model CompanyStat {
+  id        Int      @id @default(autoincrement())
+  value     String   // e.g. "27+"
+  label     String   // e.g. "Premium Liquor"
+  icon      String   // Lucide icon name, e.g. "Wine", "Award", "Users", "Star"
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// CONTACT INFO
+// Address, email, phone, and hours hardcoded in app/contact/contactData.tsx.
+// The business may move, change numbers, or adjust hours without a code deploy.
+// subValue holds a secondary line (e.g. business hours displayed under the phone).
+// ──────────────────────────────────────────────────────────────────────────────
+model ContactInfo {
+  id        Int      @id @default(autoincrement())
+  type      String   // "address" | "email" | "phone"
+  title     String   // e.g. "Our Location", "Email Us", "Call Us"
+  value     String   // the address / email address / phone number
+  subValue  String?  // e.g. "Mon–Fri from 9am to 6pm" (shown under the phone number)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

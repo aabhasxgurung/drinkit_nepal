@@ -1,12 +1,10 @@
-import React from "react";
-import Products from "./[slug]/Products";
+import { prisma } from "@/lib/prisma"
+import Products from "./[slug]/Products"
 
-const page = () => {
-  return (
-    <div>
-      <Products />
-    </div>
-  );
-};
+export default async function ProductsPage() {
+  const products = await prisma.product.findMany({
+    orderBy: { name: "asc" },
+  })
 
-export default page;
+  return <Products products={products} />
+}

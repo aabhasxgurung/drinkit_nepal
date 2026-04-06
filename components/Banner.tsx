@@ -1,34 +1,13 @@
 "use client";
 import Image from "next/image";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import Link from "next/link";
+import type { CarouselSlide } from "@prisma/client";
 
-const carouselImages = [
-  {
-    id: 1,
-    src: "/home/carousel1.jpg",
-  },
-  {
-    id: 2,
-    src: "/home/carousel2.jpg",
-  },
-  {
-    id: 3,
-    src: "/home/carousel3.jpg",
-  },
-  {
-    id: 4,
-    src: "/backgrounds/Maraschino-1.jpg",
-  },
-];
-
-const Banner = () => {
+export default function Banner({ slides }: { slides: CarouselSlide[] }) {
   return (
     <>
       <div className="w-full md:h-screen relative justify-center">
@@ -42,17 +21,16 @@ const Banner = () => {
           loop={true}
           className="mySwiper relative w-full h-screen md:h-full inset-0 -z-10 top-0"
         >
-          {carouselImages.map((item, i) => (
-            <SwiperSlide key={i}>
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id}>
               <div className="w-full h-full">
                 <Image
-                  src={item.src}
+                  src={slide.image}
                   fill
-                  alt="Premium Spirits Background"
+                  alt={slide.altText ?? "Premium Spirits Background"}
                   className="object-cover"
                   priority
                 />
-                {/* Dark Overlay for better text visibility */}
                 <div className="absolute inset-0 bg-black/50" />
               </div>
             </SwiperSlide>
@@ -108,6 +86,4 @@ const Banner = () => {
       </div>
     </>
   );
-};
-
-export default Banner;
+}

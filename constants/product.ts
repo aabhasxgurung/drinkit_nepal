@@ -12,6 +12,7 @@ export interface Bottle {
   pairings?: string[];
   highlights?: string[];
   alcoholPercentage?: string;
+  background?: string;
 }
 export const FeaturedProduct = [
   {

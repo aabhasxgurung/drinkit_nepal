@@ -1,12 +1,13 @@
-import React from "react";
-import Cocktails from "./components/Cocktails";
+import { prisma } from "@/lib/prisma"
+import Cocktails from "./components/Cocktails"
 
-const page = () => {
-  return (
-    <div>
-      <Cocktails />
-    </div>
-  );
-};
+export default async function CocktailsPage() {
+  const cocktails = await prisma.cocktail.findMany({
+    include: {
+      ingredients: { orderBy: { order: "asc" } },
+    },
+    orderBy: { title: "asc" },
+  })
 
-export default page;
+  return <Cocktails cocktails={cocktails} />
+}

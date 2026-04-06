@@ -1,21 +1,18 @@
-import { notFound } from "next/navigation";
-import { Bottles } from "@/constants/product";
-import { Detail } from "./Detail"; // keep Detail as a client component
+import { notFound } from "next/navigation"
+import { prisma } from "@/lib/prisma"
+import { Detail } from "./Detail"
 
-export const dynamicParams = false;
-
-// Required for static export on a dynamic segment
-export function generateStaticParams() {
-  return Bottles.map((b) => ({ slug: b.slug }));
+export async function generateStaticParams() {
+  const products = await prisma.product.findMany({ select: { slug: true } })
+  return products.map((p) => ({ slug: p.slug }))
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const product = Bottles.find((b) => b.slug === params.slug);
-  if (!product) return notFound();
+export default async function Page({ params }: { params: { slug: string } }) {
+  const product = await prisma.product.findUnique({
+    where: { slug: params.slug },
+  })
 
-  return (
-    <div className="min-h-screen bg-amber-50/30 py-12">
-      <Detail bottle={product} />
-    </div>
-  );
+  if (!product) return notFound()
+
+  return <Detail product={product} />
 }

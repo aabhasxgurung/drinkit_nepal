@@ -1,16 +1,15 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-
 import gsap from "gsap";
 import CocktailCard from "@/app/cocktails/components/CocktailCard";
-import { CocktailDataProps } from "@/constants/cocktail";
+import type { CocktailWithIngredients } from "@/lib/types";
 
 interface ModalProps {
   modal: {
     active: boolean;
     index: number;
   };
-  cocktails: CocktailDataProps[];
+  cocktails: CocktailWithIngredients[];
 }
 
 const scaleAnimation = {
@@ -93,7 +92,7 @@ export default function Modal({ modal, cocktails }: ModalProps) {
               }}
               className="h-full w-full absolute"
             >
-              {cocktails.map((cocktail: CocktailDataProps, i: number) => (
+              {cocktails.map((cocktail, i) => (
                 <div
                   key={`modal_${i}`}
                   className="h-full w-full flex justify-center items-center"

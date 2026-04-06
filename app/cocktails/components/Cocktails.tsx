@@ -2,16 +2,20 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-
 import { useState } from "react";
 import HomeWrapper from "@/components/ui/HomeWrapper";
-import { cocktailsData } from "@/constants/cocktail";
+import type { CocktailWithIngredients } from "@/lib/types";
 import CocktailTitle from "./CocktailTitle";
 import CocktailCard from "./CocktailCard";
 import Modal from "@/components/ui/Modal";
 
-const Cocktails = () => {
+export default function Cocktails({
+  cocktails,
+}: {
+  cocktails: CocktailWithIngredients[];
+}) {
   const [modal, setModal] = useState({ active: false, index: 0 });
+
   return (
     <div className="min-h-screen bg-white">
       <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
@@ -49,39 +53,27 @@ const Cocktails = () => {
       <HomeWrapper>
         <section className="z-0">
           <div className="max-w-7xl mx-auto px-6 md:px-10 hidden lg:block">
-            {cocktailsData.map((cocktail, index) => (
-              <div key={index}>
-                <div className="">
-                  <CocktailTitle
-                    index={index}
-                    title={cocktail.title}
-                    setModal={setModal}
-                    key={index}
-                    category={cocktail.base}
-                  />
-                </div>
+            {cocktails.map((cocktail, index) => (
+              <div key={cocktail.id}>
+                <CocktailTitle
+                  index={index}
+                  title={cocktail.title}
+                  setModal={setModal}
+                  category={cocktail.base}
+                />
               </div>
             ))}
           </div>
-          <Modal modal={modal} cocktails={cocktailsData} />
+          <Modal modal={modal} cocktails={cocktails} />
         </section>
 
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {cocktailsData.map((cocktail, index) => (
-            <div key={index} className="flex flex-col h-full">
+          {cocktails.map((cocktail) => (
+            <div key={cocktail.id} className="flex flex-col h-full">
               <CocktailCard {...cocktail} />
             </div>
           ))}
         </div>
-        {/* <div className="max-w-7xl mx-auto px-6 md:px-10">
-          {cocktailsData.map((cocktail, index) => (
-            <div key={index}>
-              <div className="flex flex-col gap-10">
-                <CocktailCard {...cocktail} />
-              </div>
-            </div>
-          ))}
-        </div> */}
 
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -135,6 +127,4 @@ const Cocktails = () => {
       </HomeWrapper>
     </div>
   );
-};
-
-export default Cocktails;
+}

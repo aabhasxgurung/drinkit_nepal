@@ -2,41 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import type { Brand } from "@prisma/client";
 
-const brands = [
-  {
-    id: 1,
-    name: "Hapusa",
-    img: "/home/hapusalogo.png",
-    description: "Premium Indian Craft Gin",
-  },
-  {
-    id: 2,
-    name: "Sula",
-    img: "/home/sulalogo.png",
-    description: "India's Leading Wine Brand",
-  },
-  {
-    id: 5,
-    name: "The Whistler",
-    img: "/home/whistler.png",
-    description: "Irish Whiskey Excellence",
-  },
-  {
-    id: 3,
-    name: "Luxardo",
-    img: "/home/Luxardologo.png",
-    description: "Italian Liqueur Excellence",
-  },
-  {
-    id: 4,
-    name: "Greater Than",
-    img: "/home/greaterthanlogo.png",
-    description: "India's Permium Gin",
-  },
-];
-
-const MiniBanner = () => {
+export default function MiniBanner({ brands }: { brands: Brand[] }) {
   return (
     <section className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,9 +32,9 @@ const MiniBanner = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {brands.map((brand, index) => (
+          {brands.map((brand) => (
             <motion.div
-              key={index}
+              key={brand.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -76,7 +44,7 @@ const MiniBanner = () => {
             >
               <div className="aspect-square relative mb-4 bg-white rounded-lg overflow-hidden">
                 <Image
-                  src={brand.img}
+                  src={brand.logo}
                   fill
                   alt={brand.name}
                   className="object-contain p-4 duration-300"
@@ -96,6 +64,4 @@ const MiniBanner = () => {
       </div>
     </section>
   );
-};
-
-export default MiniBanner;
+}

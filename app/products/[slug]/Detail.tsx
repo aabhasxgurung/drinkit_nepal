@@ -1,5 +1,5 @@
 "use client";
-import { Bottle } from "@/constants/product";
+import type { Product } from "@prisma/client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -18,17 +18,11 @@ const staggerContainer = {
   },
 };
 
-export function Detail({ bottle }: { bottle: Bottle }) {
-  if (!bottle) {
-    return (
-      <div className="text-center text-2xl text-amber-600">Wine not found</div>
-    );
-  }
-
+export function Detail({ product }: { product: Product }) {
   const {
     name,
     description,
-    img,
+    image,
     volume,
     category,
     country,
@@ -37,11 +31,11 @@ export function Detail({ bottle }: { bottle: Bottle }) {
     highlights,
     grapeVarietal,
     alcoholPercentage,
-  } = bottle;
+  } = product;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative mt-10">
-      {/* Wine Title */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative mt-12">
+      {/* Title */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -58,7 +52,7 @@ export function Detail({ bottle }: { bottle: Bottle }) {
         </div>
       </motion.div>
 
-      {/* Wine Image */}
+      {/* Bottle image */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -69,7 +63,7 @@ export function Detail({ bottle }: { bottle: Bottle }) {
           <Image
             width={400}
             height={400}
-            src={img}
+            src={image}
             alt={name}
             className="object-contain w-full h-full transition-transform duration-500 hover:scale-105"
           />
@@ -93,7 +87,6 @@ export function Detail({ bottle }: { bottle: Bottle }) {
             </>
           )}
 
-          {/* Alcohol Percentage */}
           {alcoholPercentage && (
             <>
               <h3 className="text-xl font-light text-wine-700 mb-4">
@@ -102,6 +95,7 @@ export function Detail({ bottle }: { bottle: Bottle }) {
               <p className="text-gray-700 font-light">{alcoholPercentage}</p>
             </>
           )}
+
           {flavors && (
             <>
               <h3 className="text-xl font-light text-wine-700 mb-4">
@@ -110,12 +104,11 @@ export function Detail({ bottle }: { bottle: Bottle }) {
               <p className="text-gray-700 font-light">{flavors}</p>
             </>
           )}
-          {/* Suggested Pairing */}
         </motion.div>
 
         {/* Right Column */}
         <motion.div variants={fadeIn} className="space-y-6">
-          {highlights && (
+          {highlights.length > 0 && (
             <>
               <h3 className="text-xl font-light text-wine-700 mb-4">
                 {category} Highlights
@@ -129,7 +122,8 @@ export function Detail({ bottle }: { bottle: Bottle }) {
               </ul>
             </>
           )}
-          {pairings && pairings.length > 0 && (
+
+          {pairings.length > 0 && (
             <>
               <h3 className="text-xl font-light text-wine-700 mb-4 mt-8">
                 Suggested Pairing

@@ -2,16 +2,25 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Wine, Grape, Award, Star, Users } from "lucide-react";
+import {
+  Wine,
+  Grape,
+  Award,
+  Star,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+import type { CompanyStat } from "@prisma/client";
 
-const stats = [
-  { icon: Wine, label: "Premium Liquor", value: "27+" },
-  { icon: Award, label: "Years Experience", value: "3+" },
-  { icon: Users, label: "Happy Clients", value: "1000+" },
-  { icon: Star, label: "Expert Reviews", value: "50+" },
-];
+const ICON_MAP: Record<string, LucideIcon> = {
+  Wine,
+  Award,
+  Users,
+  Star,
+  Grape,
+};
 
-const About = () => {
+export default function About({ stats }: { stats: CompanyStat[] }) {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
@@ -64,21 +73,29 @@ const About = () => {
                 </p>
 
                 <div className="grid grid-cols-2 gap-6 mb-8">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="bg-white p-4 rounded-lg shadow-sm text-center"
-                    >
-                      <stat.icon className="w-8 h-8 mx-auto mb-2 text-[#7B0323]" />
-                      <div className="font-bold text-2xl text-[#7B0323]">
-                        {stat.value}
-                      </div>
-                      <div className="text-gray-600 text-sm">{stat.label}</div>
-                    </motion.div>
-                  ))}
+                  {stats.map((stat, index) => {
+                    const Icon = ICON_MAP[stat.icon] ?? Wine;
+                    return (
+                      <motion.div
+                        key={stat.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.4 + index * 0.1,
+                        }}
+                        className="bg-white p-4 rounded-lg shadow-sm text-center"
+                      >
+                        <Icon className="w-8 h-8 mx-auto mb-2 text-[#7B0323]" />
+                        <div className="font-bold text-2xl text-[#7B0323]">
+                          {stat.value}
+                        </div>
+                        <div className="text-gray-600 text-sm">
+                          {stat.label}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </motion.div>
             </div>
@@ -133,6 +150,4 @@ const About = () => {
       </div>
     </main>
   );
-};
-
-export default About;
+}

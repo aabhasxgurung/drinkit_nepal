@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
 import { ArrowRight, Star, TrendingUp, Award } from "lucide-react";
-
 import "swiper/css";
 import "swiper/css/pagination";
-import { FeaturedProduct } from "@/constants/product";
+import type { Product } from "@prisma/client";
 
-const FeaturedProducts = () => {
+export default function FeaturedProducts({
+  products,
+}: {
+  products: Product[];
+}) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,13 +93,13 @@ const FeaturedProducts = () => {
                 1600: { slidesPerView: 3.5, spaceBetween: 20 },
               }}
             >
-              {FeaturedProduct.map((product, i) => (
+              {products.map((product, i) => (
                 <SwiperSlide
-                  key={product.slug || i}
+                  key={product.slug}
                   className="group relative mt-4 bg-white rounded-xl overflow-x-hidden transition-all duration-300"
                 >
                   <div className="p-4">
-                    {/* Badge for special products */}
+                    {/* Best seller badge on first item */}
                     {i === 0 && (
                       <div className="absolute top-6 left-6 z-10">
                         <div className="flex items-center gap-1 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -117,17 +119,16 @@ const FeaturedProducts = () => {
                       </div>
                     </div>
 
-                    {/* Image with gradient overlay */}
+                    {/* Image */}
                     <div className="relative overflow-hidden rounded-lg">
                       <div className="aspect-[4/4]">
                         <Image
-                          src={product.img}
+                          src={product.featuredImage ?? product.image}
                           fill
                           alt={product.name}
-                          className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500 "
+                          className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
                     </div>
 
                     {/* Content */}
@@ -165,6 +166,4 @@ const FeaturedProducts = () => {
       </div>
     </section>
   );
-};
-
-export default FeaturedProducts;
+}
