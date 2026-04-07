@@ -1,10 +1,12 @@
 "use client";
 import { ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FeaturedCocktailCard from "./FeaturedCocktailCard";
 import type { CocktailWithIngredients } from "@/lib/types";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function FeaturedCocktails({
   cocktails,
@@ -12,6 +14,30 @@ export default function FeaturedCocktails({
   cocktails: CocktailWithIngredients[];
 }) {
   const [activeCocktailId, setActiveCocktailId] = useState(cocktails[0]?.id);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const el = headingRef.current;
+    if (!el) return;
+    const words = el.querySelectorAll<HTMLSpanElement>(".reveal-word");
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        words,
+        { opacity: 0, y: 65, skewY: 4 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 0.9,
+          stagger: 0.09,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%" },
+        }
+      );
+    }, el);
+    return () => ctx.revert();
+  }, []);
   const activeCocktail =
     cocktails.find((c) => c.id === activeCocktailId) ?? cocktails[0];
 
@@ -62,9 +88,15 @@ export default function FeaturedCocktails({
                   Signature Selection
                 </span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-serif text-gray-900 mb-6 leading-[1.1] tracking-tight">
-                Curated <br />
-                <span className="italic font-light text-gray-500">
+              <h2
+                ref={headingRef}
+                className="text-5xl md:text-7xl font-serif text-gray-900 mb-6 leading-[1.1] tracking-tight overflow-hidden"
+              >
+                <span className="reveal-word inline-block mr-[0.25em]" style={{ willChange: "transform, opacity" }}>
+                  Curated
+                </span>
+                <br />
+                <span className="reveal-word inline-block italic font-light text-gray-500" style={{ willChange: "transform, opacity" }}>
                   Masterpieces
                 </span>
               </h2>

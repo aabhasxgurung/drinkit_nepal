@@ -29,7 +29,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-dm-serif-display)"],
+        serif: ["var(--font-cormorant)", "Georgia", "serif"],
         trajan: ["var(--font-trajan)", "serif"],
         league: ["var(--font-league-spartan)"],
         sans: [

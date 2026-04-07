@@ -8,6 +8,7 @@ import { ArrowRight, Star, TrendingUp, Award } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
 import type { Product } from "@prisma/client";
+import WordReveal from "@/components/ui/WordReveal";
 
 export default function FeaturedProducts({
   products,
@@ -52,12 +53,11 @@ export default function FeaturedProducts({
               </span>
             </motion.div>
 
-            <motion.h1
-              variants={itemVariants}
+            <WordReveal
+              text="Our Featured Products"
+              as="h1"
               className="text-3xl md:text-5xl mb-4 font-serif"
-            >
-              Our Featured Products
-            </motion.h1>
+            />
 
             <motion.p
               variants={itemVariants}
@@ -126,8 +126,14 @@ export default function FeaturedProducts({
                           src={product.featuredImage ?? product.image}
                           fill
                           alt={product.name}
-                          className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
+                        {/* Slide-up hover overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-end justify-center pb-7">
+                          <span className="text-white text-xs font-medium tracking-[0.28em] uppercase border-b border-white/50 pb-1">
+                            View Details
+                          </span>
+                        </div>
                       </div>
                     </div>
 
