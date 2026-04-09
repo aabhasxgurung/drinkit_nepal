@@ -1,84 +1,49 @@
 "use client";
+
 import Link from "next/link";
-import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion } from "framer-motion";
-import { ArrowRight, Star, TrendingUp, Award } from "lucide-react";
 import "swiper/css";
-import "swiper/css/pagination";
 import type { Product } from "@prisma/client";
 import WordReveal from "@/components/ui/WordReveal";
+import { Sparkles } from "lucide-react";
 
 export default function FeaturedProducts({
   products,
 }: {
   products: Product[];
 }) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
-    <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto 2xl:max-w-full">
-        <motion.div
-          className="lg:col-span-3 lg:sticky lg:top-24 lg:h-fit"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-        >
+    <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-[#FAF8F5]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-full/ mx-auto 2xl:max-w-full">
+        {/* ── Left: heading + CTA ─────────────────────────────────── */}
+        <div className="lg:col-span-3 lg:sticky lg:top-24 lg:h-fit">
           <div className="max-w-md">
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-2 mb-4"
-            >
-              <Award className="h-5 w-5 text-wine" />
-              <span className="text-sm font-medium text-wine uppercase tracking-wider">
-                Premium Selection
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-12 bg-[#7B0323]"></div>
+              <Sparkles className="h-4 w-4 text-[#7B0323]" />
+              <span className="text-sm font-semibold text-[#7B0323] uppercase tracking-[0.2em]">
+                Signature Selection
               </span>
-            </motion.div>
-
+            </div>
             <WordReveal
-              text="Our Featured Products"
-              as="h1"
-              className="text-3xl md:text-5xl mb-4 font-serif"
+              text="Selected for Nepal."
+              as="h2"
+              className="font-playfair italic font-normal text-[#1C1814] mb-8"
+              style={{ fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.15 }}
             />
 
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-600 mb-6 font-sans"
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 text-xs uppercase tracking-widest text-[#8B1A1A]"
             >
-              Discover our handpicked selection of premium spirits, each bottle
-              telling its own unique story of craftsmanship and tradition.
-            </motion.p>
-
-            <motion.div variants={itemVariants}>
-              <Link
-                href="/products"
-                className="group inline-flex items-center px-6 py-3 bg-wine text-white rounded-lg hover:bg-wine-dark transition-all duration-300"
-              >
-                <span className="font-medium">Discover Collection</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </motion.div>
+              <span>Discover Collection</span>
+              <span>→</span>
+            </Link>
           </div>
-        </motion.div>
+        </div>
 
+        {/* ── Right: product carousel ─────────────────────────────── */}
         <div className="lg:col-span-9 relative">
           <div className="w-full flex relative z-10">
             <Swiper
@@ -93,73 +58,52 @@ export default function FeaturedProducts({
                 1600: { slidesPerView: 3.5, spaceBetween: 20 },
               }}
             >
-              {products.map((product, i) => (
+              {products.map((product) => (
                 <SwiperSlide
                   key={product.slug}
-                  className="group relative mt-4 bg-white rounded-xl overflow-x-hidden transition-all duration-300"
+                  className="group mt-4 bg-white rounded-xl overflow-hidden"
+                  style={{ border: "0.5px solid #E8E3DC" }}
                 >
-                  <div className="p-4">
-                    {/* Best seller badge on first item */}
-                    {i === 0 && (
-                      <div className="absolute top-6 left-6 z-10">
-                        <div className="flex items-center gap-1 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                          <TrendingUp className="h-4 w-4 text-wine" />
-                          <span className="text-xs font-medium text-wine">
-                            Best Seller
-                          </span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Product Rating */}
-                    <div className="absolute top-6 right-6 z-10">
-                      <div className="flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full">
-                        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-xs font-medium">4.9</span>
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <div className="aspect-square">
+                      <Image
+                        src={product.featuredImage ?? product.image}
+                        fill
+                        alt={product.name}
+                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-end justify-center pb-7">
+                        <span className="text-white text-[10px] uppercase tracking-widest border-b border-white/50 pb-1">
+                          View Details
+                        </span>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Image */}
-                    <div className="relative overflow-hidden rounded-lg">
-                      <div className="aspect-[4/4]">
-                        <Image
-                          src={product.featuredImage ?? product.image}
-                          fill
-                          alt={product.name}
-                          className="object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                        />
-                        {/* Slide-up hover overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-end justify-center pb-7">
-                          <span className="text-white text-xs font-medium tracking-[0.28em] uppercase border-b border-white/50 pb-1">
-                            View Details
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="mt-6">
-                      <p className="text-sm text-wine uppercase tracking-wider font-medium">
-                        {product.category}
-                      </p>
-                      <h2 className="text-xl font-semibold mt-2 line-clamp-1">
-                        {product.name}
-                      </h2>
-                      <p className="mt-2 text-gray-600 line-clamp-2 font-sans">
-                        Experience the finest craftsmanship in every bottle,
-                        carefully selected for connoisseurs.
-                      </p>
-
-                      <div className="mt-4 flex items-center justify-between">
-                        <Link
-                          href={`/products/${product.slug}`}
-                          className="group inline-flex items-center text-wine hover:text-wine-dark transition-colors"
-                        >
-                          <span className="font-medium">View Details</span>
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </Link>
-                      </div>
-                    </div>
+                  {/* Card content */}
+                  <div className="p-5">
+                    <p className="text-[10px] uppercase tracking-widest text-[#9A8F84] mb-2">
+                      {product.category}
+                    </p>
+                    <h3
+                      className="font-playfair italic font-normal text-[#1C1814] mb-4"
+                      style={{
+                        fontSize: "clamp(18px, 1.6vw, 22px)",
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {product.name}
+                    </h3>
+                    <Link
+                      href={`/products/${product.slug}`}
+                      className="inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-200 text-[10px] uppercase tracking-widest text-[#8B1A1A]"
+                    >
+                      <span>View Details</span>
+                      <span>→</span>
+                    </Link>
                   </div>
                 </SwiperSlide>
               ))}
@@ -167,7 +111,7 @@ export default function FeaturedProducts({
           </div>
 
           {/* Background shape */}
-          <div className="hidden lg:block w-[96.5%] h-[570px] absolute bg-[#FBF4E7] left-12 top-0 z-0" />
+          <div className="hidden lg:block w-[96.5%] h-[570px] absolute bg-[#F5EFE6] left-12 top-0 z-0 rounded-xl" />
         </div>
       </div>
     </section>

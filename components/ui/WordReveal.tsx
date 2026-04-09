@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,6 +8,7 @@ type HeadingTag = "h1" | "h2" | "h3" | "h4";
 interface WordRevealProps {
   text: string;
   className?: string;
+  style?: React.CSSProperties;
   as?: HeadingTag;
   delay?: number;
 }
@@ -15,6 +16,7 @@ interface WordRevealProps {
 export default function WordReveal({
   text,
   className = "",
+  style,
   as: Tag = "h2",
   delay = 0,
 }: WordRevealProps) {
@@ -53,7 +55,7 @@ export default function WordReveal({
   }, [delay]);
 
   return (
-    <Tag ref={containerRef} className={`overflow-hidden ${className}`}>
+    <Tag ref={containerRef} className={`overflow-hidden ${className}`} style={style}>
       {text.split(" ").map((word, i) => (
         <span
           key={i}
