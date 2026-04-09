@@ -1,14 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import Hero from "@/components/Hero";
 import OurBrands from "@/components/OurBrands";
-import About from "@/components/About";
+// import About from "@/components/About";
 import AboutTeaser from "@/components/AboutTeaser";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import FeaturedCocktails from "@/components/FeaturedCocktails";
 import HomeCta from "@/components/HomeCta";
 
 export default async function Home() {
-  const [featuredProducts, featuredCocktails, stats] = await Promise.all([
+  const [featuredProducts, featuredCocktails] = await Promise.all([
     prisma.product.findMany({
       where: { isFeatured: true },
       orderBy: { featuredOrder: "asc" },
