@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-white animate-pulse">
+    <div className="min-h-screen bg-[#FAF8F5] animate-pulse">
       {/* Banner skeleton */}
       <div className="w-full h-screen bg-gray-200" />
       {/* Brands skeleton */}

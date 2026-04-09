@@ -2,14 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Wine,
-  Grape,
-  Award,
-  Star,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
+import { Wine, Grape, Award, Star, Users, type LucideIcon } from "lucide-react";
 import type { CompanyStat } from "@prisma/client";
 
 const ICON_MAP: Record<string, LucideIcon> = {

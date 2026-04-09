@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import SmoothScrolling from "@/components/ui/SmoothScrolling";
@@ -13,6 +13,14 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -44,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} antialiased`}
+        className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} antialiased`}
       >
         <CustomCursor />
         <SmoothScrolling>
@@ -52,6 +60,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </SmoothScrolling>
+        <div aria-hidden="true" className="grain-overlay" />
       </body>
     </html>
   );

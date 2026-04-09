@@ -30,6 +30,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
         trajan: ["var(--font-trajan)", "serif"],
         league: ["var(--font-league-spartan)"],
         sans: [

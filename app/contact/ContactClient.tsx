@@ -6,6 +6,7 @@ import { PAGE_STYLES } from "./contactData";
 import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import type { ContactInfo } from "@prisma/client";
+import TopoPattern from "@/components/ui/TopoPattern";
 
 const ICON_BY_TYPE: Record<string, React.ReactNode> = {
   address: <MapPin className="h-5 w-5 text-wine-900" />,
@@ -19,7 +20,7 @@ export default function ContactClient({
   contactInfo: ContactInfo[];
 }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FAF8F5]">
       {/* Hero Section */}
       <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
         <motion.div
@@ -56,8 +57,11 @@ export default function ContactClient({
       </div>
 
       {/* Contact Info + Form */}
-      <section className={PAGE_STYLES.sectionPadding}>
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className={`${PAGE_STYLES.sectionPadding} relative overflow-hidden`}>
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <TopoPattern opacity={0.04} />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <motion.div

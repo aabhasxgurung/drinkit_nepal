@@ -17,7 +17,7 @@ export default function Cocktails({
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FAF8F5]">
       <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
         <motion.div
           initial={{ scale: 1.1 }}
@@ -75,7 +75,7 @@ export default function Cocktails({
           ))}
         </div>
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#FAF8F5]">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
