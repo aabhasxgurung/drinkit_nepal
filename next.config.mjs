@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["swiper"],
   trailingSlash: true,
   images: {
     remotePatterns: [
