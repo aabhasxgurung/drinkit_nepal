@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import type { Product } from "@prisma/client";
 import WordReveal from "@/components/ui/WordReveal";
 import { Sparkles } from "lucide-react";
@@ -43,25 +41,14 @@ export default function FeaturedProducts({
           </div>
         </div>
 
-        {/* ── Right: product carousel ─────────────────────────────── */}
+        {/* ── Right: product scroll ─────────────────────────────── */}
         <div className="lg:col-span-9 relative">
-          <div className="w-full flex relative z-10">
-            <Swiper
-              slidesPerView={3.5}
-              spaceBetween={20}
-              className="mySwiper !pb-5"
-              breakpoints={{
-                320: { slidesPerView: 1, spaceBetween: 10 },
-                640: { slidesPerView: 2, spaceBetween: 15 },
-                1024: { slidesPerView: 2.1, spaceBetween: 20 },
-                1280: { slidesPerView: 2.7, spaceBetween: 20 },
-                1600: { slidesPerView: 3.5, spaceBetween: 20 },
-              }}
-            >
+          <div className="relative z-10 w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-4 pb-5 w-max mt-4">
               {products.map((product) => (
-                <SwiperSlide
+                <div
                   key={product.slug}
-                  className="group mt-4 bg-white rounded-xl overflow-hidden"
+                  className="group flex-shrink-0 w-[78vw] sm:w-[44vw] lg:w-[290px] xl:w-[320px] 2xl:w-[360px] bg-white rounded-xl overflow-hidden"
                   style={{ border: "0.5px solid #E8E3DC" }}
                 >
                   {/* Image */}
@@ -72,7 +59,7 @@ export default function FeaturedProducts({
                         fill
                         alt={product.name}
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 78vw, (max-width: 1024px) 44vw, 360px"
                       />
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-end justify-center pb-7">
@@ -105,9 +92,9 @@ export default function FeaturedProducts({
                       <span>→</span>
                     </Link>
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            </div>
           </div>
 
           {/* Background shape */}

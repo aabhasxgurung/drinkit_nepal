@@ -19,47 +19,13 @@ body {
   background-size: 256px 256px;
 }
 
-/* ===== Custom Cursor ===== */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
+/* ===== Hide Scrollbars ===== */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(123, 3, 35, 0.55);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-    height 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-    border-color 0.35s ease,
-    opacity 0.2s ease;
-  will-change: left, top;
-}
-
-.cursor-ring.cursor-expanded {
-  width: 64px;
-  height: 64px;
-  border-color: rgba(123, 3, 35, 0.85);
-  background: rgba(123, 3, 35, 0.05);
-}
-
-.cursor-dot {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  background: #7b0323;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  will-change: left, top;
+*::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===== Grain Texture Overlay ===== */

@@ -6,7 +6,6 @@ import "./globals.css";
 import SmoothScrolling from "@/components/ui/SmoothScrolling";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -54,7 +53,6 @@ export default function RootLayout({
       <body
         className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} antialiased`}
       >
-        <CustomCursor />
         <SmoothScrolling>
           <Navbar />
           {children}

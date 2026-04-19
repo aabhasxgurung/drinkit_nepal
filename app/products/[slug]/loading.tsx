@@ -1,43 +1,57 @@
 export default function Loading() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-12 animate-pulse">
-      {/* Title */}
-      <div className="text-center mb-10 space-y-4">
-        <div className="h-12 w-96 bg-gray-200 rounded mx-auto" />
-        <div className="h-4 w-2/3 bg-gray-100 rounded mx-auto" />
-        <div className="h-4 w-1/2 bg-gray-100 rounded mx-auto" />
-      </div>
-
-      {/* Bottle image */}
-      <div className="flex justify-center my-12">
-        <div className="w-80 h-80 bg-gray-100 rounded-full" />
-      </div>
-
-      {/* Details grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto border-t border-gray-100 pt-10">
-        <div className="space-y-6">
-          <div className="h-5 w-40 bg-gray-200 rounded" />
-          <div className="h-4 w-full bg-gray-100 rounded" />
-          <div className="h-5 w-40 bg-gray-200 rounded mt-4" />
-          <div className="h-4 w-3/4 bg-gray-100 rounded" />
+    <div className="flex flex-col lg:flex-row bg-[#0f0f0f] min-h-screen">
+      {/* Left panel skeleton */}
+      <div className="relative lg:w-[45%] bg-[#0f0f0f]">
+        <div className="relative w-full aspect-[3/4] lg:aspect-auto lg:h-screen">
+          {/* Bottle placeholder */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-40 h-72 bg-white/5 rounded-xl animate-pulse" />
+          </div>
+          {/* Text placeholder at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10 space-y-3">
+            <div className="h-2 w-24 bg-white/10 rounded animate-pulse" />
+            <div className="h-8 w-56 bg-white/10 rounded animate-pulse" />
+            <div className="h-2 w-36 bg-white/10 rounded animate-pulse" />
+          </div>
         </div>
-        <div className="space-y-6">
-          <div className="h-5 w-40 bg-gray-200 rounded" />
+      </div>
+
+      {/* Right panel skeleton */}
+      <div className="lg:w-[55%] bg-[#FAF8F5] px-6 md:px-12 lg:px-14 xl:px-20 pt-12 lg:pt-24 pb-28 space-y-14">
+        {/* Pulled quote */}
+        <div className="space-y-3">
+          <div className="h-6 w-full bg-[#E8E3DC] rounded animate-pulse" />
+          <div className="h-6 w-5/6 bg-[#E8E3DC] rounded animate-pulse" />
+          <div className="h-6 w-3/4 bg-[#E8E3DC] rounded animate-pulse" />
+        </div>
+
+        {/* Spec pills */}
+        <div className="flex gap-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-4 w-full bg-gray-100 rounded" />
+            <div key={i} className="h-3 w-16 bg-[#E8E3DC] rounded animate-pulse" />
           ))}
         </div>
-        <div className="md:col-span-2 mt-6 border-t border-gray-100 pt-6">
-          <div className="grid grid-cols-3 gap-4">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="border border-gray-100 rounded-lg p-4 text-center space-y-2">
-                <div className="h-3 w-12 bg-gray-100 rounded mx-auto" />
-                <div className="h-5 w-20 bg-gray-200 rounded mx-auto" />
-              </div>
+
+        {/* Botanicals */}
+        <div className="space-y-4">
+          <div className="h-2 w-20 bg-[#E8E3DC] rounded animate-pulse" />
+          <div className="flex flex-wrap gap-2">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-7 w-20 bg-[#EDE8E1] rounded-full animate-pulse" />
             ))}
+          </div>
+        </div>
+
+        {/* Tasting notes */}
+        <div className="space-y-4">
+          <div className="h-2 w-24 bg-[#E8E3DC] rounded animate-pulse" />
+          <div className="space-y-2">
+            <div className="h-5 w-full bg-[#E8E3DC] rounded animate-pulse" />
+            <div className="h-5 w-4/5 bg-[#E8E3DC] rounded animate-pulse" />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,16 +1,25 @@
 import { prisma } from "@/lib/prisma";
 import type { Brand, Product } from "@prisma/client";
 import AnimatedBrandSection from "@/components/ui/AnimatedBrandSection";
+import ProductsHero from "./components/ProductsHero";
 
 const BRAND_META: Record<string, string> = {
-  hapusa: "Himachal Pradesh, India · Est. 2017",
+  "nao-spirits": "India",
   luxardo: "Padova, Italy · Est. 1821",
   sula: "Nashik, India · Est. 1999",
   whistler: "County Louth, Ireland · Est. 2013",
-  "greater-than": "New Delhi, India · Est. 2016",
 };
 
-const BRAND_ORDER = ["hapusa", "luxardo", "sula", "whistler", "greater-than"];
+// These two brands are merged into a single NAO Spirits section
+const NAO_SPIRITS_SLUGS = ["hapusa", "greater-than"];
+
+// Standalone brands (in display order)
+const STANDALONE_SLUGS = ["luxardo", "sula", "whistler"];
+
+// Display name overrides
+const BRAND_DISPLAY_NAMES: Record<string, string> = {
+  luxardo: "Luxardo S.p.A",
+};
 
 type BrandWithProducts = Brand & { products: Product[] };
 
@@ -24,47 +33,63 @@ export default async function ProductsPage() {
     },
   });
 
-  // Sort per spec order; any unknown brands appended at end
-  const known = BRAND_ORDER.map((slug) =>
-    brands.find((b) => b.slug === slug)
-  ).filter((b): b is BrandWithProducts => !!b);
+  const brandMap = new Map(
+    brands.map((b) => [b.slug, b as BrandWithProducts])
+  );
 
-  const knownSlugs = new Set(BRAND_ORDER);
-  const rest = brands.filter(
+  // Merge hapusa + greater-than into a single virtual NAO Spirits brand
+  const naoBrands = NAO_SPIRITS_SLUGS.map((s) => brandMap.get(s)).filter(
+    (b): b is BrandWithProducts => !!b
+  );
+  const naoProducts = naoBrands.flatMap((b) => b.products);
+  const naoSection: BrandWithProducts | null =
+    naoBrands.length > 0
+      ? {
+          ...naoBrands[0],
+          id: -1,
+          slug: "nao-spirits",
+          name: "NAO Spirits",
+          products: naoProducts,
+        }
+      : null;
+
+  const standaloneBrands = STANDALONE_SLUGS.map((s) => brandMap.get(s)).filter(
+    (b): b is BrandWithProducts => !!b
+  );
+
+  const knownSlugs = new Set([...NAO_SPIRITS_SLUGS, ...STANDALONE_SLUGS]);
+  const unknownBrands = brands.filter(
     (b): b is BrandWithProducts => !knownSlugs.has(b.slug)
   );
 
-  const orderedBrands = [...known, ...rest];
   const totalProducts = brands.reduce((sum, b) => sum + b.products.length, 0);
+
+  const orderedSections: { brand: BrandWithProducts; index: number }[] = [];
+  if (naoSection) orderedSections.push({ brand: naoSection, index: 0 });
+  standaloneBrands.forEach((b, i) =>
+    orderedSections.push({ brand: b, index: naoSection ? i + 1 : i })
+  );
+  unknownBrands.forEach((b, i) =>
+    orderedSections.push({
+      brand: b,
+      index: (naoSection ? 1 : 0) + standaloneBrands.length + i,
+    })
+  );
 
   return (
     <main className="bg-[#FAF8F5] min-h-screen">
-      {/* Page header */}
-      <div className="pt-[80px] md:pt-[120px] pb-16 px-6 md:px-12 lg:px-16">
-        <div className="max-w-[1400px] mx-auto">
-          <p className="uppercase tracking-[0.16em] text-[10px] text-[#9A8F84] mb-4">
-            Our Collection
-          </p>
-          <h1
-            className="font-playfair italic text-[#1C1814] leading-[1.1]"
-            style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
-          >
-            {totalProducts} spirits worth knowing.
-          </h1>
-          <p className="text-[14px] text-[#9A8F84] mt-4">
-            Five brands. Carefully chosen. All available in Kathmandu.
-          </p>
-        </div>
-      </div>
+      {/* Hero */}
+      <ProductsHero totalProducts={totalProducts} />
 
       {/* Brand sections */}
       <div className="pb-24">
-        {orderedBrands.map((brand, i) => (
+        {orderedSections.map(({ brand, index }) => (
           <AnimatedBrandSection
             key={brand.slug}
             brand={brand}
-            brandIndex={i}
+            brandIndex={index}
             origin={BRAND_META[brand.slug] ?? ""}
+            displayName={BRAND_DISPLAY_NAMES[brand.slug]}
           />
         ))}
       </div>

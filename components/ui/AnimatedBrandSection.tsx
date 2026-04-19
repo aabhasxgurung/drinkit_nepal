@@ -11,12 +11,14 @@ interface Props {
   brand: BrandWithProducts;
   brandIndex: number;
   origin: string;
+  displayName?: string;
 }
 
 export default function AnimatedBrandSection({
   brand,
   brandIndex,
   origin,
+  displayName,
 }: Props) {
   const headerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -99,7 +101,7 @@ export default function AnimatedBrandSection({
               className="font-playfair italic text-[#1C1814] leading-[1.1]"
               style={{ fontSize: "clamp(28px, 4vw, 48px)" }}
             >
-              {brand.name}
+              {displayName ?? brand.name}
             </h2>
             {origin && (
               <p className="font-mono text-[10px] text-[#9A8F84] mt-1">
@@ -112,12 +114,6 @@ export default function AnimatedBrandSection({
             <span className="font-mono text-[11px] text-[#9A8F84]">
               {brand.products.length} products
             </span>
-            <Link
-              href={`/products?brand=${brand.slug}`}
-              className="uppercase tracking-[0.12em] text-[9px] text-[#8B1A1A] hover:underline"
-            >
-              View all →
-            </Link>
           </div>
         </div>
       </div>
