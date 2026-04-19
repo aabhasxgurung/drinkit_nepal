@@ -90,7 +90,6 @@ const STATS = [
 export default function DistributionPage() {
   return (
     <div className="bg-[#FAF8F5]">
-
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="bg-[#1C1814] h-screen flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-[96px] md:pt-[128px] pb-14">
         <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -130,7 +129,7 @@ export default function DistributionPage() {
           transition={{ delay: 0.55, duration: 0.7 }}
           className="font-mono text-[10px] text-[#9A8F84] mt-12 max-w-[280px] leading-[1.9] uppercase tracking-wider"
         >
-          Partner with Nepal's most trusted spirits importer and distributor.
+          Partner with Nepal&apos;s most trusted spirits importer and distributor.
         </motion.p>
       </section>
 
@@ -202,7 +201,6 @@ export default function DistributionPage() {
       {/* ── Coverage ────────────────────────────────────────────── */}
       <section className="px-6 md:px-12 lg:px-16 py-24 md:py-36 border-b border-[#E8E3DC]">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
-
           {/* Left — text + regions */}
           <div>
             <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10">
@@ -217,9 +215,9 @@ export default function DistributionPage() {
               <span style={{ color: "#7B0323" }}>serving.</span>
             </h2>
             <p className="font-mono text-[12px] text-[#9A8F84] leading-[2.1] mb-12 max-w-[400px]">
-              We currently operate across the Kathmandu Valley with plans
-              to expand into Pokhara and beyond. Our logistics ensure
-              every bottle arrives in perfect condition.
+              We currently operate across the Kathmandu Valley with plans to
+              expand into Pokhara and beyond. Our logistics ensure every bottle
+              arrives in perfect condition.
             </p>
 
             <div className="grid grid-cols-2 gap-0">
@@ -263,7 +261,6 @@ export default function DistributionPage() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -277,16 +274,16 @@ export default function DistributionPage() {
             className="font-playfair italic text-[#1C1814] leading-[1.05] mb-8"
             style={{ fontSize: "clamp(28px, 4.5vw, 64px)" }}
           >
-            Let's put the
+            Let&apos;s put the
             <br />
             <span style={{ color: "#7B0323" }}>right spirits</span>
             <br />
             in your hands.
           </h2>
           <p className="font-mono text-[12px] text-[#9A8F84] leading-[2.1] mb-14 max-w-[420px]">
-            Whether you're opening a new venue or looking to upgrade your
-            current portfolio, we'd love to talk. Reach us directly and
-            we'll get back within 24 hours.
+            Whether you&apos;re opening a new venue or looking to upgrade your
+            current portfolio, we&apos;d love to talk. Reach us directly and
+            we&apos;ll get back within 24 hours.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -306,7 +303,6 @@ export default function DistributionPage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

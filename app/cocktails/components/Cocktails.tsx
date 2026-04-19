@@ -350,8 +350,8 @@ export default function Cocktails({
             variants={heroLine}
             className="font-mono uppercase tracking-[0.22em] text-[9px] text-[#9A8F84] mb-10 md:mb-14"
           >
-            The Bartender's Selection&nbsp;&nbsp;·&nbsp;&nbsp;{cocktails.length}{" "}
-            Recipes
+            The Bartender&apos;s Selection&nbsp;&nbsp;·&nbsp;&nbsp;
+            {cocktails.length} Recipes
           </motion.p>
 
           <h1
@@ -383,8 +383,8 @@ export default function Cocktails({
           transition={{ delay: 0.55, duration: 0.7 }}
           className="font-mono text-[10px] text-[#9A8F84] mt-12 max-w-[260px] leading-[1.9] uppercase tracking-wider"
         >
-          Crafted with the world's finest spirits — available at your favourite
-          Kathmandu bar.
+          Crafted with the world&apos;s finest spirits — available at your
+          favourite Kathmandu bar.
         </motion.p>
       </section>
 

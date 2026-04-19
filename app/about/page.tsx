@@ -41,7 +41,7 @@ const JOURNEY = [
   {
     year: "2020",
     title: "Founded",
-    body: "Drink It Nepal is established with a singular mission: bring the world's finest spirits to Kathmandu's bars and tables.",
+    body: "Drink It Nepal is established with a singular mission: bring the world&apos;s finest spirits to Kathmandu&apos;s bars and tables.",
   },
   {
     year: "2021",
@@ -56,7 +56,7 @@ const JOURNEY = [
   {
     year: "2023",
     title: "Cocktail Culture",
-    body: "We begin hosting bartender education programmes, elevating Nepal's craft cocktail scene from the ground up.",
+    body: "We begin hosting bartender education programmes, elevating Nepal&apos;s craft cocktail scene from the ground up.",
   },
   {
     year: "2024",
@@ -70,7 +70,6 @@ const JOURNEY = [
 export default function AboutPage() {
   return (
     <div className="bg-[#FAF8F5]">
-
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="bg-[#1C1814] h-screen flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-[96px] md:pt-[128px] pb-14">
         <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -78,7 +77,8 @@ export default function AboutPage() {
             variants={heroLine}
             className="font-mono uppercase tracking-[0.22em] text-[9px] text-[#9A8F84] mb-10 md:mb-14"
           >
-            Drink It&nbsp;&nbsp;·&nbsp;&nbsp;Nepal&nbsp;&nbsp;·&nbsp;&nbsp;Est. 2020
+            Drink It&nbsp;&nbsp;·&nbsp;&nbsp;Nepal&nbsp;&nbsp;·&nbsp;&nbsp;Est.
+            2020
           </motion.p>
 
           <h1
@@ -149,12 +149,12 @@ export default function AboutPage() {
               variants={fadeUp}
               className="font-mono text-[12px] text-[#9A8F84] leading-[2.1] max-w-[540px]"
             >
-              Drink It Nepal is the country&apos;s premier spirits importer
-              and distributor, bringing the world&apos;s finest distilleries
-              to Kathmandu&apos;s tables and bars. Founded in 2020, we&apos;ve
-              built a curated portfolio spanning heritage Scotch whiskies,
-              craft gins, premium rums, and beyond — each label chosen for
-              its story, quality, and character.
+              Drink It Nepal is the country&apos;s premier spirits importer and
+              distributor, bringing the world&apos;s finest distilleries to
+              Kathmandu&apos;s tables and bars. Founded in 2020, we&apos;ve
+              built a curated portfolio spanning heritage Scotch whiskies, craft
+              gins, premium rums, and beyond — each label chosen for its story,
+              quality, and character.
             </motion.p>
           </motion.div>
 
@@ -168,10 +168,7 @@ export default function AboutPage() {
       </div>
 
       {/* Chapter 2 — What We Stand For (slides over Ch 1) */}
-      <div
-        className="relative h-[200vh] -mt-[100vh]"
-        style={{ zIndex: 20 }}
-      >
+      <div className="relative h-[200vh] -mt-[100vh]" style={{ zIndex: 20 }}>
         <div className="sticky top-0 h-screen bg-[#1C1814] rounded-t-[28px] overflow-hidden flex flex-col justify-center px-6 md:px-12 lg:px-16 shadow-[0_-20px_60px_rgba(0,0,0,0.45)]">
           <motion.div
             variants={sectionStagger}
@@ -208,12 +205,12 @@ export default function AboutPage() {
                 {
                   n: "II",
                   title: "Quality",
-                  body: "From temperature-controlled warehousing to white-glove delivery, we treat every bottle like it belongs in a collector's cellar.",
+                  body: "From temperature-controlled warehousing to white-glove delivery, we treat every bottle like it belongs in a collector&apos;s cellar.",
                 },
                 {
                   n: "III",
                   title: "Education",
-                  body: "We invest in Nepal's bartending community through tastings, masterclasses, and one-on-one brand training.",
+                  body: "We invest in Nepal&apos;s bartending community through tastings, masterclasses, and one-on-one brand training.",
                 },
               ].map((pillar) => (
                 <div
@@ -247,10 +244,7 @@ export default function AboutPage() {
       </div>
 
       {/* Chapter 3 — Who We Serve (slides over Ch 2) */}
-      <div
-        className="relative h-[200vh] -mt-[100vh]"
-        style={{ zIndex: 30 }}
-      >
+      <div className="relative h-[200vh] -mt-[100vh]" style={{ zIndex: 30 }}>
         <div className="sticky top-0 h-screen bg-[#FAF8F5] rounded-t-[28px] overflow-hidden flex flex-col justify-center px-6 md:px-12 lg:px-16 shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
           <motion.div
             variants={sectionStagger}
@@ -281,11 +275,11 @@ export default function AboutPage() {
               {[
                 {
                   title: "Hotels & Bars",
-                  body: "Premium on-trade partners across Kathmandu's finest hospitality venues.",
+                  body: "Premium on-trade partners across Kathmandu&apos;s finest hospitality venues.",
                 },
                 {
                   title: "Restaurants",
-                  body: "Curated wine and spirits lists for Nepal's leading dining destinations.",
+                  body: "Curated wine and spirits lists for Nepal&apos;s leading dining destinations.",
                 },
                 {
                   title: "Retail",
@@ -377,7 +371,6 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
-
     </div>
   );
 }

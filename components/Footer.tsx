@@ -18,13 +18,12 @@ const Footer = () => {
       </div>
 
       <div className="relative z-10 flex flex-col flex-1">
-
         {/* ── Editorial hero ─────────────────────────────────────── */}
         <div className="flex-1 flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-20 md:pt-28 pb-12 md:pb-16">
-
           <div>
             <p className="font-mono uppercase tracking-[0.22em] text-[9px] text-[#9A8F84] mb-10 md:mb-14">
-              Drink It&nbsp;&nbsp;·&nbsp;&nbsp;Kathmandu, Nepal&nbsp;&nbsp;·&nbsp;&nbsp;27°42′N&nbsp;85°19′E
+              Drink It&nbsp;&nbsp;·&nbsp;&nbsp;Kathmandu,
+              Nepal&nbsp;&nbsp;·&nbsp;&nbsp;27°42′N&nbsp;85°19′E
             </p>
 
             <h2
@@ -32,21 +31,23 @@ const Footer = () => {
               style={{ fontSize: "clamp(68px, 12.5vw, 196px)" }}
             >
               <span className="block">The</span>
-              <span className="block pl-[14%] md:pl-[18%] text-[#7B0323]">world</span>
+              <span className="block pl-[14%] md:pl-[18%] text-[#7B0323]">
+                world
+              </span>
               <span className="block pl-[6%] md:pl-[8%]">in your</span>
               <span className="block pl-[28%] md:pl-[38%]">glass.</span>
             </h2>
           </div>
 
           <p className="font-mono text-[10px] text-[#9A8F84] mt-10 md:mt-14 max-w-[280px] leading-[1.8] uppercase tracking-wider">
-            Premium spirits sourced from the world's finest distilleries — brought to Kathmandu.
+            Premium spirits sourced from the world&apos;s finest distilleries —
+            brought to Kathmandu.
           </p>
         </div>
 
         {/* ── Info grid ──────────────────────────────────────────── */}
         <div className="border-t border-[#FAF8F5]/10 px-6 md:px-12 lg:px-16 py-12 md:py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
-
             {/* Brand */}
             <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
               <Link href="/" className="inline-block">
@@ -158,7 +159,6 @@ const Footer = () => {
             Please drink responsibly &middot; 21+
           </p>
         </div>
-
       </div>
     </footer>
   );
