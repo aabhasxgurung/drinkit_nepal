@@ -2,12 +2,9 @@ import { PrismaClient, CocktailDifficulty } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// ---------------------------------------------------------------------------
-// Cloudinary asset map — keyed by logical name, values are live delivery URLs.
-// Extension included so browsers get correct content-type headers.
-// ---------------------------------------------------------------------------
+// ── Cloudinary asset map ──────────────────────────────────────────────────────
 const C = {
-  // ── Brand logos ────────────────────────────────────────────────────────
+  // Brand logos
   hapusaLogo:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/hapusalogo_dkzogh.png",
   sulaLogo:
@@ -16,12 +13,10 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/whistler_n5mlx3.png",
   luxardoLogo:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/Luxardologo_xfui74.png",
-  // Greater Than logo not uploaded — using the product shot as fallback
   greaterThanLogo:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/greaterThanFeatured_onn79k.jpg",
 
-  // ── Carousel ───────────────────────────────────────────────────────────
-  // carousel1 & carousel2 not uploaded — substituting atmospheric product shots
+  // Carousel
   carousel1:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredHapusa_hbrchu.jpg",
   carousel2:
@@ -31,8 +26,7 @@ const C = {
   carousel4:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/Maraschino-Cherries_kbcgys.jpg",
 
-  // ── Product bottles ────────────────────────────────────────────────────
-  // Plain hapusa & greaterThan bottles not uploaded — using featured shots
+  // Product bottles
   hapusaBottle:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredHapusa_hbrchu.jpg",
   greaterThanBottle:
@@ -81,7 +75,7 @@ const C = {
   coffeeBitter:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/coffee_amkvht.jpg",
 
-  // ── Featured product images (homepage carousel) ────────────────────────
+  // Featured / hero images
   featHapusa:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredHapusa_hbrchu.jpg",
   featGreaterThan:
@@ -99,12 +93,11 @@ const C = {
   featShiraz:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/shirazFeature_xvbze8.jpg",
 
-  // ── Background / lifestyle images ─────────────────────────────────────
+  // Background / lifestyle
   hapusaBg:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/Hapusa-Gin-lifestyle_deed4m.jpg",
-  // Other backgrounds not uploaded — omitted (null in DB)
 
-  // ── Cocktail images ────────────────────────────────────────────────────
+  // Cocktail images
   himalayanNegroni:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/himalyannegroni_s0c5gm.jpg",
   apricotSmash:
@@ -131,7 +124,6 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/vacanza_scf946.jpg",
   bicicletta:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/bicicletta_nhfzze.jpg",
-  // Cocktails without dedicated shots — using nearest product image
   hemingway:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredLux_rbv8jd.png",
   maratonic:
@@ -158,202 +150,256 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/angioletto_tzd5nh.png",
 } as const;
 
-// ---------------------------------------------------------------------------
-// Seed data
-// ---------------------------------------------------------------------------
-
+// ── Brands ────────────────────────────────────────────────────────────────────
 const brands = [
   {
     slug: "hapusa",
     name: "Hapusa",
     logo: C.hapusaLogo,
-    description: "Premium Indian Craft Gin",
+    description:
+      "Premium Indian Craft Gin distilled with foraged Himalayan botanicals.",
     country: "India",
   },
   {
     slug: "sula",
     name: "Sula",
     logo: C.sulaLogo,
-    description: "India's Leading Wine Brand",
+    description: "India's leading wine brand, crafted in the Nashik Valley.",
     country: "India",
   },
   {
     slug: "the-whistler",
     name: "The Whistler",
     logo: C.whistlerLogo,
-    description: "Irish Whiskey Excellence",
+    description: "Triple-distilled Irish whiskey from County Louth, Ireland.",
     country: "Ireland",
   },
   {
     slug: "luxardo",
     name: "Luxardo",
     logo: C.luxardoLogo,
-    description: "Italian Liqueur Excellence",
+    description: "Family-owned Italian liqueur house producing since 1821.",
     country: "Italy",
   },
   {
     slug: "greater-than",
     name: "Greater Than",
     logo: C.greaterThanLogo,
-    description: "India's Premium Gin",
+    description: "India's first London Dry Gin, copper pot distilled in Goa.",
     country: "India",
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Products
-// ---------------------------------------------------------------------------
-
+// ── Products ──────────────────────────────────────────────────────────────────
 const products = [
-  // ── Hapusa ───────────────────────────────────────────────────────────────
+  // ── Hapusa ─────────────────────────────────────────────────────────────────
   {
     slug: "hapusa-himalayan-dry-gin",
     name: "Hapusa Himalayan Dry Gin",
     brandSlug: "hapusa",
     category: "gin",
     description:
-      "Hapusa is a premium Himalayan dry gin, distilled with foraged botanicals from the region, creating a bold and aromatic spirit. Juniper, known as Hapusa in Sanskrit, is what gives their gin its name as well as its wild smell and scent. This scarce juniper berry, which grows close to the Himalayan snow line, offers a lovely framework around which the other botanicals are thoughtfully placed.",
+      "Hapusa is a premium Himalayan dry gin, distilled with foraged botanicals found close to the snowline. Juniper — known as Hapusa in Sanskrit — gives this gin its name and its wild, piney character. Each bottle is a portrait of the Himalayas.",
     image: C.hapusaBottle,
     featuredImage: C.featHapusa,
     backgroundImage: C.hapusaBg,
-    volume: "750ml",
-    alcoholPercentage: "70CL 43% ABV",
+    volume: "700ml",
+    alcoholPercentage: "43% ABV",
     country: "India",
+    region: "Himachal Pradesh & Goa, India",
     flavors:
-      "Hapusa is a sipping Gin best appreciated straight from the freezer. Expect pine forests and wildflowers on the nose with a bold earthiness on the palate and a long, delicately spiced, finish",
+      "Himalayan Juniper, Coriander Seeds, Raw Mango, Gondhoraj Lime, Ginger, Turmeric, Almonds",
+    tastingNotes:
+      "Pine forests and wildflowers on the nose with a distinctly earthy Himalayan quality. The palate brings bold juniper, tart raw mango, and a warming ginger heat. Long, delicately spiced finish with lingering piney juniper.",
+    servingSuggestion:
+      "Best served neat from the freezer to let the botanicals open up slowly. In a G&T, pair with a slice of raw mango, a sprig of rosemary, and quality Indian tonic.",
+    awards: ["Gold — India International Spirits Challenge"],
     pairings: [],
     highlights: [
-      "Made with Juniper from the Himalayas",
-      "Along with Coriander Seeds, Turmeric, Ginger, Gondhoraj, Mango",
-      "And Almonds",
+      "Himalayan juniper foraged close to the snowline",
+      "Seven botanicals — all sourced within India",
+      "Distilled in small batches in Goa",
     ],
     isFeatured: true,
     featuredOrder: 0,
   },
 
-  // ── Greater Than ─────────────────────────────────────────────────────────
+  // ── Greater Than ───────────────────────────────────────────────────────────
   {
     slug: "greater-than-london-dry-gin",
     name: "Greater Than London Dry Gin",
     brandSlug: "greater-than",
     category: "gin",
     description:
-      "GIN, BUT GREATER! The first-ever London Dry Gin made in India. Copper pot distilled with botanicals sourced from India and around the world. This gin has clean juniper and fresh lemon peel on the nose and a zing of ginger on the finish. Distilled in Goa with nine unique botanicals: Juniper berries, Coriander seeds, Almond, Angelica root, Fennel, Lemongrass, Orange peel, Chamomile & Ginger.",
+      "India's first London Dry Gin, copper pot distilled in Goa with nine botanicals sourced from India and around the world. Clean, classic, and unapologetically bold — built for the Martini glass as much as the highball.",
     image: C.greaterThanBottle,
     featuredImage: C.featGreaterThan,
-    volume: "750ml",
-    alcoholPercentage: "70cl 40% abv",
+    volume: "700ml",
+    alcoholPercentage: "40% ABV",
     country: "India",
+    region: "Goa, India",
     flavors:
-      "Clean Juniper with Fresh Lemon Peel on the nose and a zing of ginger on the finish",
+      "Juniper Berries, Coriander Seeds, Almond, Angelica Root, Fennel, Lemongrass, Orange Peel, Chamomile, Ginger",
+    tastingNotes:
+      "Clean juniper and fresh lemon peel on the nose, with a soft floral note from chamomile. Bright citrus and coriander lead on the palate, giving way to a warm, clean ginger finish.",
+    servingSuggestion:
+      "Ideal in a classic Martini with dry vermouth and a lemon twist. In a G&T, keep it simple — quality Indian tonic and a long strip of lemon peel.",
+    awards: [],
     pairings: [],
-    highlights: ["India's first London Dry Gin"],
+    highlights: [
+      "India's first London Dry Gin",
+      "Copper pot distilled in Goa",
+      "Nine botanicals from India and around the world",
+    ],
     isFeatured: true,
     featuredOrder: 1,
   },
 
-  // ── The Whistler ─────────────────────────────────────────────────────────
+  // ── The Whistler ───────────────────────────────────────────────────────────
   {
     slug: "the-whistler-irish-whiskey",
     name: "The Whistler Irish Whiskey",
     brandSlug: "the-whistler",
     category: "whiskey",
     description:
-      "The Whistler Irish Whiskey is a premium triple-distilled blend, aged in bourbon barrels for a smooth, rich character with notes of honey, vanilla, and salted caramel.",
+      "Triple-distilled and aged in ex-bourbon barrels, The Whistler is a blended Irish whiskey built around smoothness. Honey, vanilla, and salted caramel define the character — approachable enough for newcomers, considered enough for the serious drinker.",
     image: C.whistlerBottle,
     featuredImage: C.featWhistler,
-    volume: "750ml",
-    alcoholPercentage: "40% alc. by vol",
+    volume: "700ml",
+    alcoholPercentage: "40% ABV",
     country: "Ireland",
-    flavors: "Sweet honey, vanilla, salted caramel, with a smooth oak finish.",
-    pairings: ["Dark chocolate", "Smoked salmon", "Hard cheeses"],
-    highlights: ["Triple Distilled", "Aged in Bourbon Barrels"],
+    region: "County Louth, Ireland",
+    flavors: "Honey, Vanilla, Salted Caramel, Toasted Oak, Dried Fruit",
+    tastingNotes:
+      "Gentle honey and vanilla on the nose with a soft toasted grain quality. Smooth on the palate — caramel sweetness, a touch of oak, and subtle dried fruit. Clean, mellow finish with lingering salted caramel.",
+    servingSuggestion:
+      "Serve neat or with a single large ice cube to open it up slowly. Exceptional in an Old Fashioned with a good Demerara syrup and a fat orange peel.",
+    awards: [],
+    pairings: ["Dark chocolate", "Smoked salmon", "Hard aged cheeses"],
+    highlights: [
+      "Triple distilled for exceptional smoothness",
+      "Aged in ex-bourbon barrels",
+      "Blended Irish whiskey",
+    ],
     isFeatured: true,
     featuredOrder: 2,
   },
 
-  // ── Sula wines ───────────────────────────────────────────────────────────
+  // ── Sula wines ─────────────────────────────────────────────────────────────
   {
     slug: "sula-chenin-blanc",
     name: "Sula Chenin Blanc",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "A refreshing and easy-drinking white wine, with some residual sugar, which gives it a slight sweetness, smartly balanced by its delightful acidity. A beautiful Chenin Blanc made with the most ultimate respect for the environment, following strict sustainable practices.",
+      "India's best-selling white wine. Refreshing and easy-drinking, with slight residual sweetness smartly balanced by bright acidity. Made with genuine respect for the environment under strict sustainable practices.",
     image: C.cheninBlanc,
     featuredImage: C.featCheninBlanc,
     volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
     country: "India",
-    flavors: "Ripe Tropical Fruit and Hints of Honey",
-    pairings: ["Salad, Gujarati Thali", "Vegetable Quiche, Rawa Fried Fish"],
-    highlights: [
-      "India's Best Selling White Wine",
-      "An easy drinking off-dry white wine",
-      "Great to offer to first time wine drinkers",
-    ],
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Ripe Tropical Fruit, Honey, Fresh Citrus, Lychee, Green Apple",
+    tastingNotes:
+      "Aromas of tropical fruit with hints of honey and beeswax. Off-dry palate with ripe guava and lychee, balanced by refreshing acidity. Clean, fruit-forward finish that lingers gently.",
+    servingSuggestion:
+      "Serve chilled at 8–10°C. Pairs beautifully with light salads, fried seafood, vegetarian Indian dishes, and Gujarati thali.",
+    awards: [],
     grapeVarietal: "100% Chenin Blanc",
+    pairings: [
+      "Light salads",
+      "Gujarati thali",
+      "Vegetable quiche",
+      "Rawa fried fish",
+    ],
+    highlights: [
+      "India's best-selling white wine",
+      "Off-dry style — ideal for first-time wine drinkers",
+      "Sustainably farmed grapes",
+    ],
   },
   {
     slug: "sula-late-harvest",
     name: "Sula Late Harvest",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Bask in Sula's Late Harvest Chenin Blanc, the first Indian wine to win Silver at the Paris Wine Cup and Decanter World Wine Awards. Sweet and rich, with notes of honey, this wine is a true delight for the palate.",
+      "India's most loved dessert wine — the first Indian wine to win Silver at both the Paris Wine Cup and Decanter World Wine Awards. Concentrated, honeyed, and luxuriously sweet with a defining streak of acidity that keeps it from tipping into excess.",
     image: C.lateHarvest,
     volume: "750ml",
+    alcoholPercentage: "11% ABV",
     country: "India",
-    flavors: "Rich aromas of apricot, mango, raisins with luscious acidity.",
-    pairings: [
-      "Cheese cake, panna cotta",
-      "Gubani-ka-meetha",
-      "Gulab jamun, blue cheese",
-    ],
-    highlights: [
-      "India's most loved dessert wine",
-      "Very aromatic and the first ever Late Harvest Chenin Blanc of India",
-    ],
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Dried Apricot, Mango, Golden Raisins, Honey, Orange Blossom",
+    tastingNotes:
+      "Intensely aromatic nose of dried apricot, mango, and honeyed richness. Full-bodied palate with concentrated sweetness balanced by vibrant acidity. Long, complex finish with layers of stone fruit.",
+    servingSuggestion:
+      "Serve well chilled at 6–8°C. A natural match for blue cheese, foie gras, crème brûlée, and gulab jamun.",
+    awards: ["Silver — Paris Wine Cup", "Silver — Decanter World Wine Awards"],
     grapeVarietal: "85% Chenin Blanc, 15% Muscat",
+    pairings: ["Blue cheese", "Crème brûlée", "Gulab jamun", "Foie gras"],
+    highlights: [
+      "First Indian wine to win Silver at the Paris Wine Cup",
+      "Silver at Decanter World Wine Awards",
+      "India's first Late Harvest Chenin Blanc",
+    ],
   },
   {
     slug: "sula-shiraz-cabernet",
     name: "Sula Shiraz Cabernet",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Silky and earthy, this Shiraz Cabernet is packed with dark cherries, pepper and mocha notes. A super food-friendly wine and India's favorite red wine.",
+      "India's best-selling red wine. Silky and earthy with dark cherries, black pepper, and mocha. A food-friendly structure that works equally well with a spiced curry or a chargrilled steak.",
     image: C.shirazCabernet,
     featuredImage: C.featShiraz,
     volume: "750ml",
+    alcoholPercentage: "13% ABV",
     country: "India",
-    flavors:
-      "Blackberry, black plum, ripe cherry, olives, pepper, mocha with hints of spices.",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Blackberry, Dark Cherry, Black Plum, Black Pepper, Mocha, Olive",
+    tastingNotes:
+      "Deep ruby. Aromas of dark cherry, blackberry, and black pepper with mocha undertones. Medium-full body with silky tannins and an earthy, persistent finish.",
+    servingSuggestion:
+      "Serve at 16–18°C. An excellent partner for barbecued meats, chicken tikka masala, rajma masala, and aged hard cheeses.",
+    awards: [],
+    grapeVarietal: "85% Shiraz, 15% Cabernet Sauvignon",
     pairings: [
-      "Barbecued meats, medium spicy curries like chicken tikka masala",
-      "Rajma masala, mutton roganjosh",
+      "Barbecued meats",
+      "Chicken tikka masala",
+      "Rajma masala",
+      "Aged cheese",
     ],
-    highlights: ["India's best-selling red wine!"],
-    grapeVarietal: "85% Shiraz, 15% Cabernet Sauvignon.",
+    highlights: [
+      "India's best-selling red wine",
+      "Silky, food-friendly tannin structure",
+    ],
   },
   {
     slug: "sula-tropical-rose",
-    name: "Sula Tropical Rose",
+    name: "Sula Tropical Rosé",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Experience Sula's Tropicale Rosé, India's first and only Gold winner at the International Wine Challenge. A refreshing burst of tropical fruit and berry flavours, perfect for any celebration.",
+      "India's first and only Gold winner at the International Wine Challenge. A sparkling rosé that delivers an exuberant burst of tropical fruit — peach, passion fruit, and guava — in a vibrant, celebratory package.",
     image: C.tropical,
     featuredImage: C.featTropical,
     volume: "750ml",
+    alcoholPercentage: "12% ABV",
     country: "India",
-    flavors:
-      "Aromas of peach and passion fruit with hints of guava at the finish.",
-    pairings: [
-      "Aperitif, salads",
-      "Fried seafood appetizers, anda masala, white sauce pasta",
-    ],
-    highlights: ["Special edition sparkling rosé."],
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Peach, Passion Fruit, Guava, Watermelon, Fresh Citrus",
+    tastingNotes:
+      "Vibrant salmon-pink with fine bubbles. Exuberant aromas of peach and passion fruit with a hint of guava. Light-bodied with refreshing citrus acidity and a clean, tropical finish.",
+    servingSuggestion:
+      "Serve very well chilled at 6–8°C. A perfect aperitif. Great with fried seafood, light salads, and spiced appetizers.",
+    awards: ["Gold — International Wine Challenge"],
     grapeVarietal: "70% Chenin Blanc, 30% Riesling and Syrah",
+    pairings: ["Fried seafood", "Light salads", "Spiced appetizers"],
+    highlights: [
+      "India's first and only Gold winner at the International Wine Challenge",
+      "Special edition sparkling rosé",
+    ],
     isFeatured: true,
     featuredOrder: 5,
   },
@@ -361,114 +407,178 @@ const products = [
     slug: "sula-brut",
     name: "Sula Brut",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Celebrate with Sula Brut, a lively sparkling wine and medalist at the Paris Wine Cup and Decanter Awards. Crisp, refreshing, with citrus and green apple notes.",
+      "Lively and celebratory. Sula Brut is a Champagne-method sparkling wine offering crisp green apple and pear aromas with a dry, refreshing finish — a medalist at both the Paris Wine Cup and Decanter Awards.",
     image: C.brut,
     volume: "750ml",
+    alcoholPercentage: "12% ABV",
     country: "India",
-    flavors: "Aromas of apples & pears.",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Green Apple, Ripe Pear, Fresh Citrus, Toasted Brioche",
+    tastingNotes:
+      "Fine, persistent bubbles. Aromas of crisp green apple and pear with a subtle toasty note. Dry palate with lively citrus acidity and a clean, fresh finish.",
+    servingSuggestion:
+      "Serve well chilled at 6–8°C as an aperitif. Works beautifully alongside fried chicken, Indian pakoras, and smoked salmon.",
+    awards: [
+      "Medalist — Paris Wine Cup",
+      "Medalist — Decanter World Wine Awards",
+    ],
     pairings: [
-      "Salad, French fries",
-      "Smoked salmon, fried chicken",
+      "Smoked salmon",
+      "Fried chicken",
       "Indian pakoras",
-      "Hara bhara kebab",
+      "French fries",
     ],
     highlights: [
-      "Light Sparkling Fruity Wine",
-      "Versatile wine perfect for everyday",
+      "Champagne-method sparkling wine",
+      "Medalist at Paris Wine Cup and Decanter Awards",
+      "Light, dry, and versatile",
     ],
   },
   {
     slug: "sula-seco",
     name: "Sula Seco",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Citrusy, delicious and versatile; this is what you can expect from Seco, an endearing sparkling wine made from Chenin Blanc.",
+      "Citrusy, delicious, and endearingly versatile. Seco is a semi-sparkling wine made from Chenin Blanc, built for easy drinking and even easier cocktail making.",
     image: C.seco,
     volume: "750ml",
+    alcoholPercentage: "12% ABV",
     country: "India",
-    flavors:
-      "Hints of ripe fruit, melon & passion fruit on the palate and a citrusy, lingering finish.",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Melon, Passion Fruit, Ripe Pear, Citrus Zest",
+    tastingNotes:
+      "Delicate aromas of ripe melon and passion fruit. Light-bodied with gentle fruitiness, refreshing citrus acidity, and a clean, lingering finish.",
+    servingSuggestion:
+      "Serve chilled. Ideal as a spritz base — top with tonic and a squeeze of lime. Works as a light aperitif on its own.",
+    awards: [],
+    grapeVarietal: "100% Chenin Blanc",
     pairings: [
-      "Aperitifs, frittata",
-      "South Asian curries (yellow curry)",
+      "South Asian curries",
       "Indian pakoras",
+      "Frittata",
+      "Aperitifs",
     ],
     highlights: [
-      "Light sparkling fruity wine",
+      "Semi-sparkling — softer fizz than a full Brut",
       "Ideal for sparkling wine cocktails",
-      "Perfect for everyday celebrations",
+      "100% Chenin Blanc from Nashik",
     ],
-    grapeVarietal: "100% Chenin Blanc",
   },
   {
     slug: "sula-sparkling-shiraz",
     name: "Sula Sparkling Shiraz",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Uncork Sula's Sparkling Shiraz, India's first and only sparkling red wine and a Gold Medal winner at the India Wine Awards.",
+      "India's first and only sparkling red wine — a Gold Medal winner at the India Wine Awards. Pomegranate, dark berries, and warming spice in an effervescent, celebratory format.",
     image: C.sparklingShiraz,
     volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
     country: "India",
-    flavors: "Pomegranate, dark berries, spices, smoke.",
-    pairings: ["Dark chocolate dessert, chili chicken", "Dabeli, mutton rahra"],
-    highlights: ["Prosecco method for a fruit-forward wine!"],
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Pomegranate, Dark Berries, Black Pepper, Smoke, Warm Spice",
+    tastingNotes:
+      "Deep ruby with energetic bubbles. Aromas of pomegranate and dark berries with smoky spice complexity. Full-flavored palate with vibrant fruitiness and a warm, spiced finish.",
+    servingSuggestion:
+      "Serve lightly chilled at 12–14°C. Pairs boldly with dark chocolate desserts, chili chicken, and dabeli.",
+    awards: ["Gold — India Wine Awards"],
     grapeVarietal: "100% Shiraz",
+    pairings: [
+      "Dark chocolate dessert",
+      "Chili chicken",
+      "Dabeli",
+      "Mutton rahra",
+    ],
+    highlights: [
+      "India's first and only sparkling red wine",
+      "Gold Medal at the India Wine Awards",
+      "Prosecco method — fruit-forward and vibrant",
+    ],
   },
   {
     slug: "sula-zinfandel-rose",
     name: "Sula Zinfandel Rosé",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Citrus, cranberries and ripe fruits notes; this rosé wine has so much to offer. Beautifully made from Zinfandel, its residual sugar is nicely balanced by its refreshing acidity.",
+      "India's first Zinfandel Rosé. Cranberry, citrus, and ripe stone fruit with residual sweetness smartly balanced by refreshing acidity. Light, vibrant, and made for Indian summers.",
     image: C.zinfRose,
     volume: "750ml",
+    alcoholPercentage: "12% ABV",
     country: "India",
-    flavors: "Intense notes of citrus, cranberry & ripe fruit.",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Cranberry, Citrus, Strawberry, Ripe Stone Fruit, Watermelon",
+    tastingNotes:
+      "Bright pink. Fresh cranberry and citrus on the nose. Off-dry palate with juicy strawberry and stone fruit, crisp acidity, and a clean, refreshing finish.",
+    servingSuggestion:
+      "Serve well chilled. Great with spicy Indian dishes, Chinese appetizers, and as a standalone summer sipper.",
+    awards: [],
+    grapeVarietal: "100% Zinfandel",
     pairings: [
-      "Salad, Chinese appetizers",
-      "Indian pakoras, chicken/paneer chilli",
+      "Spiced Indian dishes",
+      "Chinese appetizers",
+      "Paneer chilli",
+      "Light salads",
     ],
     highlights: [
       "India's first ever Zinfandel Rosé",
-      "Light, refreshing wine with a great mouthfeel",
-      "Perfect for Indian Summers",
-      "Value for money",
+      "Off-dry — sweet and refreshing",
+      "Perfect for Indian summers",
     ],
-    grapeVarietal: "100% Zinfandel.",
   },
   {
     slug: "sula-zinfandel-red",
     name: "Sula Zinfandel Red",
     brandSlug: "sula",
-    category: "wines",
+    category: "wine",
     description:
-      "Generous, fruit-forward and playful, this Zinfandel is a structured and balanced red wine, supported by its delightful plum and dark berries notes.",
+      "Generous, fruit-forward, and playful. India's first Zinfandel — unoaked and built to show off the grape's natural exuberance. Red berries, dark plum, and a warm cinnamon spice.",
     image: C.zinfRed,
     volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
     country: "India",
-    flavors: "Aromas of red berries, blackberries, plums & hints of cinnamon",
-    pairings: ["Curries, cold cuts", "Spicy noodles", "Teriyaki."],
-    highlights: ["India's first Zinfandel.", "Not aged in barrels."],
-    grapeVarietal: "100% Zinfandel.",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Red Berries, Blackberry, Dark Plum, Cinnamon, Warm Spice",
+    tastingNotes:
+      "Aromas of red berries, blackberry, and dark plum with hints of cinnamon. Medium-bodied with soft tannins, vibrant fruitiness, and a clean, easy finish.",
+    servingSuggestion:
+      "Serve at 16°C. Naturally food-friendly — works with spiced curries, cold cuts, teriyaki, and spicy noodles.",
+    awards: [],
+    grapeVarietal: "100% Zinfandel",
+    pairings: ["Spiced curries", "Cold cuts", "Teriyaki", "Spicy noodles"],
+    highlights: [
+      "India's first Zinfandel",
+      "Unoaked — pure, fruit-forward expression",
+      "Soft tannins, great food wine",
+    ],
   },
 
-  // ── Luxardo liqueurs ─────────────────────────────────────────────────────
+  // ── Luxardo ────────────────────────────────────────────────────────────────
   {
     slug: "luxardo-maraschino-cherries",
     name: "Luxardo Maraschino Cherries",
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "These are candied cherries soaked in Luxardo marasca cherry syrup. No thickening agents of any type and no preservatives are used and the dark red color is all natural.",
+      "The cocktail world's most coveted garnish. Candied marasca cherries soaked in Luxardo's own syrup — no artificial colors, no thickening agents, no preservatives. Just the pure, deep flavor of the fruit.",
     image: C.maraschCherries,
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Marasca Cherry, Dark Fruit Syrup, Almond, Vanilla",
+    tastingNotes:
+      "Intensely sweet dark cherry flavor with a rich, thick syrup. Notes of almond and subtle bitterness from the marasca skin give balance. Concentrated and complex — nothing like a grocery store cherry.",
+    servingSuggestion:
+      "The essential garnish for Manhattans, Old Fashioneds, and Whiskey Sours. Also extraordinary over vanilla ice cream or folded into a clafoutis.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "No artificial colors, thickeners, or preservatives",
+      "All-natural dark red color from the fruit itself",
+      "Made from Luxardo's own marasca cherry orchards",
+    ],
   },
   {
     slug: "luxardo-maraschino-originale",
@@ -476,37 +586,52 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Crystal clear in colour, the aroma is typical of marasca cherry distillate with strong alcohol spirit and roasted nuttiness, while the taste results smooth but sharp at the same time with hints of dark chocolate, vanilla and orange marmalade.",
+      "The original. Produced since 1821, Luxardo Maraschino is crystal clear with a character unlike any other liqueur — marasca cherry distillate, roasted nuttiness, dark chocolate, and a touch of orange marmalade. The backbone of some of history's greatest cocktails.",
     image: C.maraschOriginale,
     featuredImage: C.featMaraschino,
-    volume: "750ml",
-    alcoholPercentage: "32% alc. by vol.",
+    volume: "700ml",
+    alcoholPercentage: "32% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
     flavors:
-      "Spiritous sweet cherry with hints of dark chocolate, vanilla and a touch of orange marmalade",
+      "Marasca Cherry, Roasted Almond, Dark Chocolate, Vanilla, Orange Marmalade",
+    tastingNotes:
+      "Crystal clear. Distinctive marasca cherry distillate on the nose with roasted nuttiness and a strong spirit character. Smooth but sharp on the palate — dark chocolate, vanilla, and a bright orange marmalade note. Long, complex finish.",
+    servingSuggestion:
+      "Essential in the Aviation, Hemingway Daiquiri, and Tuxedo. Can be served straight over ice as a digestif, or used to macerate fruit for dessert.",
+    awards: ["Gold — International Spirits Challenge"],
     pairings: [],
-    highlights: ["GMO Free", "Kosher Certified", "Vegan friendly"],
+    highlights: [
+      "Produced continuously since 1821",
+      "Made from Luxardo's own marasca cherry orchards in Torreglia",
+      "GMO Free · Kosher Certified · Vegan Friendly",
+    ],
     isFeatured: true,
     featuredOrder: 3,
   },
   {
     slug: "luxardo-sambuca",
-    name: "Luxardo Sambuca",
+    name: "Luxardo Sambuca dei Cesari",
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "A traditional Italian liqueur, Luxardo Sambuca dei Cesari. The main components are star anise, sugar, alcohol, herbs and spices, and pure volcanic water from Luxardo's own springs.",
+      "A traditional Italian liqueur rooted in star anise, herbs, and pure volcanic water from Luxardo's own springs. The Italian ritual of 'con la mosca' — three coffee beans, a flame, and a shot — was made for this.",
     image: C.sambuca,
-    volume: "750ml",
-    alcoholPercentage: "38% alc. by vol.",
+    volume: "700ml",
+    alcoholPercentage: "38% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
     flavors:
-      "Syrupy mouth feel, very sweet, clean rich aniseed and liquorice with subtle coriander",
+      "Star Anise, Liquorice, Fennel Seed, Subtle Coriander, Sweet Herbs",
+    tastingNotes:
+      "Intensely sweet with a bold, clean anise character on the nose. Syrupy mouthfeel with rich liquorice and fennel. Long, warming herbal finish that lingers.",
+    servingSuggestion:
+      "The classic ritual: serve neat at room temperature with three coffee beans ('con la mosca'), light briefly, extinguish, swirl, and sip. Also works beautifully in coffee cocktails.",
+    awards: [],
     pairings: [],
     highlights: [
-      "Star anise, herbs and spices, alcohol, sugar",
-      "And pure volcanic water from Luxardo's own springs",
-      "Are the key ingredients",
+      "Made with star anise and pure volcanic spring water",
+      "The original Italian 'con la mosca' ritual",
     ],
   },
   {
@@ -515,16 +640,25 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants with alcohol and water. Distinguished by its bright red colour, unique gentian and wormwood flavours, and herbal and citrussy scents.",
+      "Vibrant red, intensely herbal, and genuinely complex. Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants before blending — a method that preserves the integrity of each botanical. The foundation of a proper Negroni.",
     image: C.bitterRosso,
     featuredImage: C.featBitter,
-    volume: "750ml",
-    alcoholPercentage: "25% alc. by vol.",
+    volume: "700ml",
+    alcoholPercentage: "25% ABV",
     country: "Italy",
-    flavors:
-      "Herbaceous quinine bitterness balanced with syrupy sweetness flavoured with blood orange zest. Gently bitter and persistent",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Gentian Root, Wormwood, Blood Orange Zest, Quinine, Bitter Herbs",
+    tastingNotes:
+      "Bright red with an intense herbal and citrus aroma. Complex gentian bitterness balanced with blood orange and sweet herbs on the palate. Persistent, gently bitter finish with a clean herbal warmth.",
+    servingSuggestion:
+      "The foundation of a proper Negroni or Boulevardier. Equally excellent over ice with soda and an orange slice as a standalone aperitif.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Botanicals infused separately to preserve individual character",
+      "Naturally vibrant red — no artificial color",
+      "Lower ABV makes it versatile as a Campari alternative",
+    ],
     isFeatured: true,
     featuredOrder: 4,
   },
@@ -534,15 +668,25 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "The outcome of a well balanced infusion of different citrus fruits, herbs, and roots. For the ideal Spritz, combine it with soda and Prosecco.",
+      "A lighter-style Italian aperitivo made from a balanced infusion of citrus fruits, herbs, and roots. Zesty orange, pink grapefruit, and a gentle rhubarb bitterness — built for the Spritz.",
     image: C.aperitivo,
-    volume: "750ml",
-    alcoholPercentage: "11% or 15% alc. by vol.",
+    volume: "700ml",
+    alcoholPercentage: "11% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
     flavors:
-      "Slightly bitter, with flavours of zesty orange marmalade and pink grapefruit. Rhubarb and gentian notes.",
+      "Orange Marmalade, Pink Grapefruit, Rhubarb, Gentian, Floral Herbs",
+    tastingNotes:
+      "Vibrant orange-amber. Zesty orange marmalade and grapefruit on the nose with a floral, herbal lift. Lightly bitter palate with a clean, refreshing finish that invites the next sip.",
+    servingSuggestion:
+      "Build the classic Aperitivo Spritz: 3 parts Prosecco, 2 parts Luxardo Aperitivo, 1 part soda. Serve over ice with an orange wheel. Lower ABV than Aperol.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Lower ABV than Aperol — lighter and more refreshing",
+      "Made from a balanced infusion of citrus, herbs, and roots",
+      "The ideal Spritz base",
+    ],
   },
   {
     slug: "luxardo-cherry-liqueur",
@@ -550,15 +694,24 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Produced since 1821, Luxardo's second speciality after Maraschino Originale. Intense cherry colour, the perfume of freshly squeezed cherry juice.",
+      "Produced since 1821, Luxardo's second speciality after Maraschino Originale. Sangue Morlacco — 'Morlacco Blood' — is a deep, concentrated cherry liqueur with the perfume of freshly squeezed cherry juice and a thick, syrupy body.",
     image: C.cherryLiqueur,
-    volume: "750ml",
-    alcoholPercentage: "30% alc. by vol.",
+    volume: "700ml",
+    alcoholPercentage: "30% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
     flavors:
-      "Intense, thick and syrupy with sweetness partially offset by fruit tartness. Concentrated cherry juice and cherry jam with black pepper spice.",
+      "Marasca Cherry, Cherry Jam, Black Pepper Spice, Dark Fruit, Tartness",
+    tastingNotes:
+      "Intense cherry-red. Aroma of freshly squeezed cherry juice with a warming pepper note. Thick and syrupy on the palate — concentrated cherry jam flavor with fruit tartness partially cutting the sweetness. Warm, spiced finish.",
+    servingSuggestion:
+      "Key ingredient in the Blood & Sand and Singapore Sling. A Cherry Negroni built with this is extraordinary. Also excellent drizzled over vanilla panna cotta.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Produced since 1821 — Luxardo's second oldest recipe",
+      "Made from Luxardo's own marasca cherry orchards",
+    ],
   },
   {
     slug: "luxardo-triple-sec",
@@ -566,15 +719,24 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Luxardo has been producing Triplum, a traditional 'triple sec', since the first half of the 1800s. Made from the dried and distilled peels of curaçao, sweet oranges, and mandarins.",
+      "Produced since the first half of the 1800s, Luxardo Triplum is a traditional triple sec made from the dried and distilled peels of curaçao oranges, sweet oranges, and mandarins. Smooth, rounded, and properly citrusy.",
     image: C.tripleSec,
-    volume: "750ml",
-    alcoholPercentage: "39% alc. by vol",
+    volume: "700ml",
+    alcoholPercentage: "39% ABV",
     country: "Italy",
-    flavors:
-      "Smooth enveloping flavour of citrus fruits, a very well rounded and mature taste.",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Curaçao Orange, Sweet Orange, Mandarin, Dried Citrus Peel",
+    tastingNotes:
+      "Crystal clear with vibrant orange and mandarin aromas. Smooth, rounded citrus flavor on the palate with a natural sweetness and a clean, dry orange finish. More depth than most triple secs.",
+    servingSuggestion:
+      "Essential in a Margarita, Cosmopolitan, White Lady, and Sidecar. Use anywhere Cointreau is called for — and at a higher ABV it carries further in the glass.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Made from three varieties of orange peel — curaçao, sweet, and mandarin",
+      "Higher ABV than most triple secs — better carry in cocktails",
+      "Produced continuously since the 1800s",
+    ],
   },
   {
     slug: "luxardo-hazelnut-liqueur",
@@ -582,201 +744,315 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Luxardo Angioletto Hazelnut Liqueur is obtained from a blending process of real hazelnut infusion with a number of natural extracts, including cocoa and vanilla.",
+      "Angioletto is made from a blending process of real hazelnut infusion with natural extracts of cocoa and vanilla. Rich, indulgent, and surprisingly complex — closer to praline in a glass than a simple nut liqueur.",
     image: C.hazelnut,
-    volume: "750ml",
-    alcoholPercentage: "24% alc. by vol",
+    volume: "700ml",
+    alcoholPercentage: "24% ABV",
     country: "Italy",
-    flavors:
-      "Lightly syrupy. Rich toasted hazelnut with biscuit, walnut, almond and hints of mocha coffee, citrus, vanilla and cocoa powder.",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Toasted Hazelnut, Cocoa, Vanilla, Almond, Walnut, Mocha",
+    tastingNotes:
+      "Rich, lightly syrupy. Intense toasted hazelnut on the nose with cocoa and warm biscuit. Walnut, almond, and mocha notes on the palate, with hints of vanilla and citrus. Long, indulgent finish.",
+    servingSuggestion:
+      "Serve neat as a digestif over a single ice cube. Excellent in espresso cocktails and extraordinary poured warm over vanilla gelato.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Made from real hazelnut infusion with natural cocoa and vanilla",
+      "Lower ABV — ideal as a dessert digestif",
+    ],
   },
   {
     slug: "luxardo-absinthe-fata-verde",
     name: "Luxardo Absinthe Fata Verde",
     brandSlug: "luxardo",
     category: "liqueur",
-    description: "A classic absinthe with a strong anise and herbal profile.",
+    description:
+      "The 'Green Fairy.' A classic-style absinthe built from grand wormwood, green anise, and Florence fennel. High in ABV, intensely herbal, and steeped in ritual — the traditional louche is half the experience.",
     image: C.absinthe,
-    volume: "750ml",
+    volume: "700ml",
+    alcoholPercentage: "70% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors:
+      "Grand Wormwood, Green Anise, Florence Fennel, Swiss Star Anise, Herbs",
+    tastingNotes:
+      "Brilliant green, going milky white on the louche. Intense herbal and anise aromatics with a distinctly medicinal, complex nose. Bold anise leads the palate with wormwood bitterness, fennel, and a long herbal finish.",
+    servingSuggestion:
+      "Pour 30ml into a glass. Place a sugar cube on a slotted spoon. Slowly drip 90ml of ice-cold water over the cube to trigger the louche. A few drops in a Sazerac or Corpse Reviver No. 2 are transformative.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "70% ABV — handle with respect",
+      "Traditional louche ritual with iced water and a sugar cube",
+      "A few drops elevate a Sazerac beyond recognition",
+    ],
   },
 
-  // ── Luxardo bitters ───────────────────────────────────────────────────────
+  // ── Luxardo bitters ────────────────────────────────────────────────────────
   {
     slug: "luxardo-rhubarb-bitter",
     name: "Luxardo Rhubarb Bitter",
     brandSlug: "luxardo",
     category: "bitter",
-    description: "A bittersweet rhubarb-based bitter for unique cocktails.",
+    description:
+      "A bittersweet rhubarb-forward bitter with earthy gentian complexity. Tart, herbal, and intriguing — a distinctive addition to any bitter-forward cocktail or Spritz variation.",
     image: C.rhubarbBitter,
-    volume: "750ml",
+    volume: "700ml",
+    alcoholPercentage: "30% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Rhubarb, Gentian Root, Chinese Rhubarb, Earthy Herbs",
+    tastingNotes:
+      "Tart rhubarb and earthy bitter herbs on the nose. Fresh and slightly sweet on entry, turning drier with gentian bitterness mid-palate. Clean, mildly bitter finish.",
+    servingSuggestion:
+      "Add a few dashes to a whiskey sour for a tart twist. Works in Negroni variations and Aperol Spritz substitutions. Try it with prosecco and soda.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Rhubarb-forward profile — distinctive and tart",
+      "Versatile in cocktails as a Campari or Aperol alternative",
+    ],
   },
   {
     slug: "luxardo-chamomile-bitter",
     name: "Luxardo Chamomile Bitter",
     brandSlug: "luxardo",
     category: "bitter",
-    description: "A delicate chamomile-based bitter for unique cocktails.",
+    description:
+      "A delicate, floral bitter built around chamomile with herbal complexity. Softer than most bitters and uniquely approachable — an unexpected and elegant cocktail ingredient.",
     image: C.chamomileBitter,
-    volume: "750ml",
+    volume: "700ml",
+    alcoholPercentage: "30% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Chamomile, Honey, Floral Herbs, Gentle Bitterness",
+    tastingNotes:
+      "Floral chamomile tea aroma with a light honey sweetness. Soft and approachable on the palate with gentle herbal bitterness. Clean, subtly floral finish.",
+    servingSuggestion:
+      "Pairs beautifully with gin in a White Negroni variation. Add to gin and tonic for a floral dimension, or sip straight over ice as a gentle aperitif.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Chamomile-forward — softer and more floral than traditional bitters",
+      "Elegant in White Negroni variations",
+    ],
   },
   {
     slug: "luxardo-orange-bitter",
     name: "Luxardo Orange Bitter",
     brandSlug: "luxardo",
     category: "bitter",
-    description: "A vibrant orange-based bitter for cocktails and digestifs.",
+    description:
+      "Vibrant, citrus-forward bitter made from orange peel infusions. Bright and zesty with a dry, herbal backbone — brings immediacy and lift to cocktails that need a citrus edge.",
     image: C.orangeBitter,
-    volume: "750ml",
+    volume: "700ml",
+    alcoholPercentage: "30% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Orange Peel, Blood Orange, Citrus Zest, Bitter Herbs",
+    tastingNotes:
+      "Bright orange peel on the nose with a clean zesty lift. Orange marmalade on the palate balanced by herbal bitterness. Dry, clean, citrus-driven finish.",
+    servingSuggestion:
+      "Excellent in a Spritz with prosecco and soda. Add to a gin and tonic for citrus depth, or use in any cocktail where you'd reach for a citrus bitter.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Orange peel forward — bright and immediately citrusy",
+      "Versatile aperitif and cocktail component",
+    ],
   },
   {
     slug: "luxardo-coffee-bitter",
     name: "Luxardo Coffee Bitter",
     brandSlug: "luxardo",
     category: "bitter",
-    description: "A rich coffee-based bitter for complex cocktails.",
+    description:
+      "Rich, dark, and deeply coffee-forward. Made from coffee infusions with complementary herbal bitterness. A serious ingredient for espresso cocktails and after-dinner serves.",
     image: C.coffeeBitter,
-    volume: "750ml",
+    volume: "700ml",
+    alcoholPercentage: "30% ABV",
     country: "Italy",
+    region: "Torreglia, Padova, Italy",
+    flavors: "Roasted Coffee, Dark Chocolate, Espresso, Bitter Herbs",
+    tastingNotes:
+      "Intense roasted coffee and dark chocolate on the nose. Rich espresso on the palate with herbal bitterness and a hint of cocoa. Long, warming, coffee-driven finish.",
+    servingSuggestion:
+      "The foundation of a proper Espresso Martini or Coffee Negroni. Excellent poured over vanilla ice cream, or stirred into an Old Fashioned with bourbon.",
+    awards: [],
     pairings: [],
-    highlights: [],
+    highlights: [
+      "Coffee-forward — rich and immediately expressive",
+      "Essential for espresso cocktails",
+    ],
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Cocktails — 26 recipes, first 5 featured on homepage
-// ---------------------------------------------------------------------------
+// ── Cocktails ─────────────────────────────────────────────────────────────────
+// productSlug is resolved to productId at seed time
+type IngredientInput = {
+  amount: string;
+  name: string;
+  order: number;
+  productSlug?: string;
+};
 
-const cocktails = [
+const cocktails: Array<{
+  slug: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  difficulty: CocktailDifficulty;
+  category: string;
+  base: string;
+  method: string;
+  garnish?: string;
+  isFeatured?: boolean;
+  featuredOrder?: number;
+  ingredients: IngredientInput[];
+}> = [
   {
     slug: "himalayan-negroni",
     title: "Himalayan Negroni",
     description:
-      "A mountain twist on the classic Italian aperitivo, featuring Timbur-infused Hapusa Gin for a unique numbing sensation paired with the bitterness of Campari and Vermouth.",
+      "A mountain twist on the Italian aperitivo classic, featuring Timbur-infused Hapusa Gin for a subtle Himalayan numbing sensation alongside Campari and sweet vermouth.",
     imageUrl: C.himalayanNegroni,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Hapusa",
-    method: "Stir all ingredients with ice and strain into a chilled glass.",
+    method: "Stir",
     garnish: "Orange peel",
     isFeatured: true,
     featuredOrder: 0,
     ingredients: [
-      { amount: "30ml", name: "Hapusa Gin", order: 0 },
       {
-        amount: "",
-        name: "Timbur (Himalayan Sichuan Pepper) Infused",
-        order: 1,
+        amount: "30ml",
+        name: "Hapusa Gin (Timbur-infused)",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
       },
-      { amount: "15ml", name: "Vermouth", order: 2 },
-      { amount: "15ml", name: "Campari", order: 3 },
+      { amount: "15ml", name: "Sweet Vermouth", order: 1 },
+      { amount: "15ml", name: "Campari", order: 2 },
     ],
   },
   {
     slug: "apricot-smash",
     title: "Apricot Smash",
     description:
-      "A fruity and refreshing concoction enhancing Hapusa Gin with the sweetness of apricot jam and fresh apple juice, balanced by a zesty lime kick.",
+      "A fruity, refreshing smash that pairs Hapusa Gin with apricot jam, fresh apple juice, and lime for a boldly seasonal serve.",
     imageUrl: C.apricotSmash,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Hapusa",
     method: "Shake",
-    garnish: "Dry Apricot, Mint Sprig",
+    garnish: "Dried apricot, mint sprig",
     isFeatured: true,
     featuredOrder: 1,
     ingredients: [
-      { amount: "50ml", name: "Hapusa Gin", order: 0 },
-      { amount: "2 Bar Spoons", name: "Apricot Jam", order: 1 },
-      { amount: "30ml", name: "Apple Juice", order: 2 },
-      { amount: "15ml", name: "Lime Juice", order: 3 },
-      { amount: "5–7 pcs", name: "Mint", order: 4 },
+      {
+        amount: "50ml",
+        name: "Hapusa Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
+      { amount: "2 bar spoons", name: "Apricot jam", order: 1 },
+      { amount: "30ml", name: "Apple juice", order: 2 },
+      { amount: "15ml", name: "Lime juice", order: 3 },
+      { amount: "5–7 leaves", name: "Fresh mint", order: 4 },
     ],
   },
   {
     slug: "himalayan-gimlet",
     title: "Himalayan Gimlet",
     description:
-      "A crisp and citrusy classic reinvented with Himalayan Gin, offering a perfect balance of sweet and sour notes.",
+      "A crisp, citrusy classic reinvented with Hapusa Gin — perfect balance of sweet and sour with the gin's wild botanicals at the center.",
     imageUrl: C.gimlet,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Hapusa",
     method: "Shake, fine strain",
-    garnish: "Lime wheel (Peel)",
+    garnish: "Lime wheel",
     isFeatured: true,
     featuredOrder: 2,
     ingredients: [
-      { amount: "60ml", name: "Hapusa Gin", order: 0 },
-      { amount: "20ml", name: "Sugar syrup", order: 1 },
-      { amount: "20ml", name: "Lime juice", order: 2 },
+      {
+        amount: "60ml",
+        name: "Hapusa Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
+      { amount: "20ml", name: "Simple syrup", order: 1 },
+      { amount: "20ml", name: "Fresh lime juice", order: 2 },
     ],
   },
   {
     slug: "ny-sour",
     title: "NY Sour",
     description:
-      "A sophisticated whiskey sour variation using Hapusa Gin as the base, topped with a red wine float for a stunning visual and complex flavor profile.",
+      "A sophisticated gin sour with Hapusa at the base, finished with a red wine float for a striking two-tone visual and a complex flavour profile.",
     imageUrl: C.nySour,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Hapusa",
     method: "Shake",
-    garnish: "",
+    garnish: "Red wine float",
     isFeatured: true,
     featuredOrder: 3,
     ingredients: [
-      { amount: "50ml", name: "Hapusa Gin", order: 0 },
+      {
+        amount: "50ml",
+        name: "Hapusa Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
       { amount: "20ml", name: "Simple syrup", order: 1 },
-      { amount: "20ml", name: "Lemon Juice", order: 2 },
+      { amount: "20ml", name: "Fresh lemon juice", order: 2 },
+      { amount: "Float", name: "Red wine", order: 3 },
     ],
   },
   {
     slug: "southside",
     title: "Southside",
     description:
-      "A refreshing gin-based cocktail often described as a mojito for gin lovers, featuring fresh mint and lime.",
+      "Often called a mojito for gin lovers. Fresh mint, lime, and Greater Than Gin — simple, clean, and endlessly refreshing.",
     imageUrl: C.southside,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Greater Than",
     method: "Shake and fine strain",
-    garnish: "Mint Leaf",
+    garnish: "Mint leaf",
     isFeatured: true,
     featuredOrder: 4,
     ingredients: [
-      { amount: "50ml", name: "Greater Than Gin", order: 0 },
-      { amount: "20ml", name: "Lime Juice", order: 1 },
+      {
+        amount: "50ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      { amount: "20ml", name: "Fresh lime juice", order: 1 },
       { amount: "15ml", name: "Simple syrup", order: 2 },
-      { amount: "6–8", name: "Mint leaves", order: 3 },
+      { amount: "6–8 leaves", name: "Fresh mint", order: 3 },
     ],
   },
   {
     slug: "greater-martini",
     title: "Greater Martini",
     description:
-      "The quintessential gin cocktail, clean and elegant, highlighting the botanicals of Greater Than Gin with a touch of dry vermouth.",
+      "The quintessential gin cocktail — clean and elegant. Greater Than's botanicals shine with just a touch of dry vermouth and a lemon twist.",
     imageUrl: C.greaterMartini,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Greater Than",
     method: "Stir",
-    garnish: "Lemon Peel",
+    garnish: "Lemon peel",
     ingredients: [
-      { amount: "60ml", name: "Greater Than", order: 0 },
+      {
+        amount: "60ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
       { amount: "10ml", name: "Dry vermouth", order: 1 },
     ],
   },
@@ -784,34 +1060,44 @@ const cocktails = [
     slug: "greater-gin-basil-smash",
     title: "Greater Gin Basil Smash",
     description:
-      "A modern classic that's vibrant and herbal, muddling fresh basil to release a peppery aroma that complements the gin perfectly.",
+      "Vibrant and herbal. Muddled fresh basil releases a peppery aroma that complements the clean juniper and citrus notes of Greater Than perfectly.",
     imageUrl: C.ginBasil,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Greater Than",
-    method: "Build",
+    method: "Shake",
     garnish: "Basil sprig",
     ingredients: [
-      { amount: "60ml", name: "Greater Than Gin", order: 0 },
-      { amount: "15ml", name: "Fresh Lime juice", order: 1 },
+      {
+        amount: "60ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      { amount: "15ml", name: "Fresh lime juice", order: 1 },
       { amount: "15ml", name: "Simple syrup", order: 2 },
-      { amount: "8–10", name: "Basil leaves", order: 3 },
+      { amount: "8–10 leaves", name: "Fresh basil", order: 3 },
     ],
   },
   {
     slug: "greater-salty-dog",
     title: "Greater Salty Dog",
     description:
-      "A tangy and savory delight combining gin and grapefruit juice with a hint of hibiscus, served in a salt-rimmed glass.",
+      "Tangy and savory — grapefruit juice, hibiscus syrup, and Greater Than Gin in a salt-rimmed glass. One of the most underrated gin serves.",
     imageUrl: C.saltyDog,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Greater Than",
     method: "Shake",
-    garnish: "Grapefruit",
+    garnish: "Grapefruit slice, salt rim",
     ingredients: [
-      { amount: "45ml", name: "Greater Than Gin", order: 0 },
-      { amount: "90ml", name: "Grapefruit Super Juice", order: 1 },
+      {
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      { amount: "90ml", name: "Fresh grapefruit juice", order: 1 },
       { amount: "20ml", name: "Hibiscus syrup", order: 2 },
     ],
   },
@@ -819,55 +1105,76 @@ const cocktails = [
     slug: "hemingway-special",
     title: "Hemingway Special",
     description:
-      "A daiquiri variation created for Ernest Hemingway, featuring maraschino liqueur and grapefruit juice for a tart, complex finish without sugar.",
+      "A daiquiri variation created for Ernest Hemingway himself — tart and complex with maraschino and grapefruit, no sugar added.",
     imageUrl: C.hemingway,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Maraschino Originale",
-    method: "Shake & Double strain",
-    garnish: "Lime Zest",
+    method: "Shake and double strain",
+    garnish: "Lime zest",
     ingredients: [
-      { amount: "60ml", name: "White Rum", order: 0 },
+      { amount: "60ml", name: "White rum", order: 0 },
       { amount: "30ml", name: "Fresh pink grapefruit juice", order: 1 },
-      { amount: "15ml", name: "Luxardo Maraschino Originale", order: 2 },
-      { amount: "15ml", name: "Fresh Lime Juice", order: 3 },
-      { amount: "7.5ml", name: "Sugar syrup", order: 4 },
+      {
+        amount: "15ml",
+        name: "Luxardo Maraschino Originale",
+        productSlug: "luxardo-maraschino-originale",
+        order: 2,
+      },
+      { amount: "15ml", name: "Fresh lime juice", order: 3 },
+      { amount: "7.5ml", name: "Simple syrup", order: 4 },
     ],
   },
   {
     slug: "maratonic",
     title: "Maratonic",
     description:
-      "A simple yet unique highball refreshing the palate with the nutty, cherry notes of Maraschino liqueur and tonic water.",
+      "A simple, elegant highball showcasing the nutty cherry notes of Maraschino Originale, lengthened with tonic and lifted with absinthe.",
     imageUrl: C.maratonic,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Maraschino Originale",
     method: "Build",
-    garnish: "Rosemary sprig & cucumber slice",
+    garnish: "Rosemary sprig, cucumber slice",
     ingredients: [
-      { amount: "45ml", name: "Luxardo Maraschino Originale", order: 0 },
-      { amount: "7.5ml", name: "Fresh Lemon Juice", order: 1 },
+      {
+        amount: "45ml",
+        name: "Luxardo Maraschino Originale",
+        productSlug: "luxardo-maraschino-originale",
+        order: 0,
+      },
+      { amount: "7.5ml", name: "Fresh lemon juice", order: 1 },
       { amount: "Top with", name: "Tonic water", order: 2 },
-      { amount: "Spray of", name: "Luxardo Absinthe", order: 3 },
+      {
+        amount: "Spray of",
+        name: "Luxardo Absinthe",
+        productSlug: "luxardo-absinthe-fata-verde",
+        order: 3,
+      },
     ],
   },
   {
     slug: "aviation",
     title: "Aviation",
     description:
-      "A pre-prohibition classic with a lovely pale sky-blue hue, offering floral and citrus notes from the gin, maraschino, and lemon.",
+      "A pre-Prohibition classic with a pale sky-blue hue. Gin, maraschino, and lemon — floral, complex, and effortlessly beautiful in the glass.",
     imageUrl: C.aviation,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Maraschino Originale",
-    method: "Shake & Double strain",
-    garnish: "Lemon zest & Luxardo Original Maraschino Cherry",
+    method: "Shake and double strain",
+    garnish: "Lemon zest, Luxardo cherry",
     ingredients: [
-      { amount: "45ml", name: "Greater Than London Dry Gin", order: 0 },
+      {
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
       {
         amount: "30ml",
-        name: "Luxardo Maraschino Originale Liqueur",
+        name: "Luxardo Maraschino Originale",
+        productSlug: "luxardo-maraschino-originale",
         order: 1,
       },
       { amount: "15ml", name: "Fresh lemon juice", order: 2 },
@@ -877,24 +1184,26 @@ const cocktails = [
     slug: "morlacco-fizz",
     title: "Morlacco Fizz",
     description:
-      "A lively fizz showcasing the rich, blood-red cherry flavors of Sangue Morlacco, brightened with lemon and cherry juice.",
+      "A lively, blood-red fizz built around the intense cherry character of Sangue Morlacco, brightened with lemon and gin.",
     imageUrl: C.morlaccoFizz,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Cherry Liqueur",
-    method: "Stir all ingredients with ice and strain into a chilled glass.",
-    garnish: "Luxardo Original Maraschino Cherry",
+    method: "Shake and fine strain",
+    garnish: "Luxardo cherry",
     ingredients: [
-      { amount: "45ml", name: "Greater Than London Dry Gin", order: 0 },
-      { amount: "20ml", name: "Fresh lemon juice", order: 1 },
       {
-        amount: "20ml",
-        name: "Luxardo Original Maraschino Cherry Juice",
-        order: 2,
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
       },
+      { amount: "20ml", name: "Fresh lemon juice", order: 1 },
+      { amount: "20ml", name: "Maraschino cherry juice", order: 2 },
       {
         amount: "15ml",
-        name: 'Luxardo Cherry Liqueur "Sangue Morlacco"',
+        name: "Luxardo Cherry Liqueur",
+        productSlug: "luxardo-cherry-liqueur",
         order: 3,
       },
     ],
@@ -903,75 +1212,107 @@ const cocktails = [
     slug: "cherry-negroni",
     title: "Cherry Negroni",
     description:
-      "A rich twist on the Negroni, swapping Campari for the deep, intense cherry flavor of Sangue Morlacco liqueur.",
+      "A rich, deeply fruited twist on the Negroni — Sangue Morlacco stands in for Campari, adding a concentrated cherry sweetness alongside the vermouth.",
     imageUrl: C.cherryNegroni,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Cherry Liqueur",
     method: "Stir",
-    garnish: "Lemon zest & Luxardo Original Maraschino Cherry",
+    garnish: "Lemon zest, Luxardo cherry",
     ingredients: [
-      { amount: "45ml", name: "Luxardo London Dry Gin", order: 0 },
+      {
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
       {
         amount: "25ml",
-        name: 'Luxardo Cherry Liqueur "Sangue Morlacco"',
+        name: "Luxardo Cherry Liqueur",
+        productSlug: "luxardo-cherry-liqueur",
         order: 1,
       },
-      { amount: "25ml", name: "Sweet Vermouth", order: 2 },
+      { amount: "25ml", name: "Sweet vermouth", order: 2 },
     ],
   },
   {
     slug: "luxi-style",
     title: "Luxi Style",
     description:
-      "A breezy highball combining gin and cherry liqueur, lengthened with soda for an easy-drinking, refreshing serve.",
+      "A breezy, cherry-forward highball — gin and Sangue Morlacco lengthened with soda. A perfect long drink for a warm evening.",
     imageUrl: C.luxiStyle,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Cherry Liqueur",
     method: "Build",
-    garnish: "Rosemary & lemon zest",
+    garnish: "Rosemary, lemon zest",
     ingredients: [
-      { amount: "45ml", name: "Luxardo London Dry Gin", order: 0 },
+      {
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
       {
         amount: "15ml",
-        name: 'Luxardo Cherry Liqueur "Sangue Morlacco"',
+        name: "Luxardo Cherry Liqueur",
+        productSlug: "luxardo-cherry-liqueur",
         order: 1,
       },
-      { amount: "Top with", name: "Soda", order: 2 },
+      { amount: "Top with", name: "Soda water", order: 2 },
     ],
   },
   {
     slug: "vacanza",
     title: "Vacanza",
     description:
-      "A holiday in a glass, blending bitter Aperitivo warmth with zesty red grapefruit and triple sec.",
+      "Holiday in a glass. Luxardo Aperitivo and Triple Sec shake together with fresh pink grapefruit for a bright, bittersweet serve.",
     imageUrl: C.vacanza,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Triple Sec",
-    method: "Shake & Strain",
-    garnish: "Grapefruit Zest",
+    method: "Shake and strain",
+    garnish: "Grapefruit zest",
     ingredients: [
-      { amount: "40ml", name: "Luxardo Aperitivo", order: 0 },
+      {
+        amount: "40ml",
+        name: "Luxardo Aperitivo",
+        productSlug: "luxardo-aperitivo",
+        order: 0,
+      },
       { amount: "40ml", name: "Fresh pink grapefruit juice", order: 1 },
-      { amount: "20ml", name: "Luxardo Triplum – Triple Sec", order: 2 },
+      {
+        amount: "20ml",
+        name: "Luxardo Triple Sec",
+        productSlug: "luxardo-triple-sec",
+        order: 2,
+      },
     ],
   },
   {
     slug: "white-lady",
     title: "White Lady",
     description:
-      "A silky, sour classic combining the botanical punch of gin with the sweet orange notes of Triple Sec and fresh lemon.",
+      "A silky, sharp pre-Prohibition classic. Gin, triple sec, and fresh lemon — elegant in its simplicity and properly citrusy.",
     imageUrl: C.whiteLady,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Triple Sec",
-    method: "Shake & Strain",
-    garnish: "Lemon Zest",
+    method: "Shake and strain",
+    garnish: "Lemon zest",
     ingredients: [
-      { amount: "60ml", name: "Luxardo London Dry Gin", order: 0 },
-      { amount: "30ml", name: "Luxardo Triplum Triple Sec", order: 1 },
+      {
+        amount: "60ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      {
+        amount: "30ml",
+        name: "Luxardo Triple Sec",
+        productSlug: "luxardo-triple-sec",
+        order: 1,
+      },
       { amount: "10ml", name: "Fresh lemon juice", order: 2 },
     ],
   },
@@ -979,16 +1320,21 @@ const cocktails = [
     slug: "margarita",
     title: "Margarita",
     description:
-      "The world's most popular tequila cocktail, balancing earthy agave notes with bright lime and sweet orange liqueur.",
+      "The world's most ordered cocktail. Earthy tequila, bright lime, and orange liqueur — deceptively simple, deceptively hard to get right.",
     imageUrl: C.margarita,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Triple Sec",
-    method: "Shake & Double strain",
-    garnish: "Lime zest & rim of salt",
+    method: "Shake and double strain",
+    garnish: "Lime zest, salt rim",
     ingredients: [
       { amount: "60ml", name: "Tequila Blanco", order: 0 },
-      { amount: "10ml", name: "Luxardo Triplum Triple Sec", order: 1 },
+      {
+        amount: "10ml",
+        name: "Luxardo Triple Sec",
+        productSlug: "luxardo-triple-sec",
+        order: 1,
+      },
       { amount: "10ml", name: "Fresh lime juice", order: 2 },
     ],
   },
@@ -996,65 +1342,91 @@ const cocktails = [
     slug: "negroni",
     title: "Negroni",
     description:
-      "The iconic Italian aperitif. Equal parts gin, vermouth, and bitters create a perfectly balanced, bittersweet masterpiece.",
+      "The iconic Italian aperitivo. Equal parts gin, vermouth, and bitter — perfectly balanced, bittersweet, and impossible to improve upon.",
     imageUrl: C.negroni,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Bitter",
-    method: "Build",
-    garnish: "Lemon Zest",
+    method: "Build over ice",
+    garnish: "Orange peel",
     ingredients: [
-      { amount: "40ml", name: "Luxardo Bitter", order: 0 },
-      { amount: "40ml", name: "Greater Than London Dry Gin", order: 1 },
-      { amount: "40ml", name: "Sweet Vermouth", order: 2 },
-      { amount: "2 dashes", name: "Angostura Bitters", order: 3 },
+      {
+        amount: "40ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      {
+        amount: "40ml",
+        name: "Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 1,
+      },
+      { amount: "40ml", name: "Sweet vermouth", order: 2 },
     ],
   },
   {
     slug: "bitter-shakerato",
     title: "Bitter Shakerato",
     description:
-      "A simple Italian favorite, shaking Luxardo Bitter vigorously with ice to create a cold, frothy, and intensely herbal drink.",
+      "An Italian institution. Luxardo Bitter shaken hard with ice until cold and frothy, strained into a coupe — intensely herbal and refreshing.",
     imageUrl: C.shakerato,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Bitter",
-    method: "Shake & double strain",
+    method: "Shake hard and double strain",
     garnish: "Lemon zest",
-    ingredients: [{ amount: "60ml", name: "Luxardo Bitter", order: 0 }],
+    ingredients: [
+      {
+        amount: "60ml",
+        name: "Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 0,
+      },
+    ],
   },
   {
     slug: "boulevardier",
     title: "Boulevardier",
     description:
-      "The Negroni's autumnal cousin, substituting gin for the rich, spicy warmth of Rye Whisky.",
+      "The Negroni's autumnal cousin — rye whisky replaces gin, adding a spicy warmth that pairs beautifully with Luxardo Bitter and sweet vermouth.",
     imageUrl: C.boulevardier,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Bitter",
-    method: "Build",
-    garnish: "Lemon Zest",
+    method: "Stir",
+    garnish: "Orange peel",
     ingredients: [
-      { amount: "45ml", name: "Rye Whisky", order: 0 },
-      { amount: "30ml", name: "Luxardo Bitter", order: 1 },
-      { amount: "30ml", name: "Sweet Vermouth", order: 2 },
+      { amount: "45ml", name: "Rye whisky", order: 0 },
+      {
+        amount: "30ml",
+        name: "Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 1,
+      },
+      { amount: "30ml", name: "Sweet vermouth", order: 2 },
     ],
   },
   {
     slug: "sorrentino",
     title: "Sorrentino",
     description:
-      "A refreshing spritz-style drink marrying the zest of Limoncello with the depth of bitter and vermouth.",
+      "A Spritz-style serve layering Limoncello, Luxardo Bitter, and sweet vermouth — bright, complex, and topped with soda for lift.",
     imageUrl: C.sorrentino,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Bitter",
-    method: "Stir all ingredients with ice and strain into a chilled glass.",
+    method: "Build over ice",
     garnish: "Orange peel",
     ingredients: [
       { amount: "30ml", name: "Luxardo Limoncello", order: 0 },
-      { amount: "30ml", name: "Luxardo Bitter", order: 1 },
-      { amount: "30ml", name: "Sweet Vermouth", order: 2 },
+      {
+        amount: "30ml",
+        name: "Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 1,
+      },
+      { amount: "30ml", name: "Sweet vermouth", order: 2 },
       { amount: "Top with", name: "Soda water", order: 3 },
     ],
   },
@@ -1062,17 +1434,27 @@ const cocktails = [
     slug: "jungle-samba",
     title: "Jungle Samba",
     description:
-      "A tropical explosion of flavors featuring rum, pineapple, and lime, with a kick of Sambuca and bitter.",
+      "A tropical explosion of rum, pineapple, and lime with the anise punch of Sambuca and the herbal edge of Luxardo Bitter.",
     imageUrl: C.jungleSamba,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
-    base: "Luxardo Bitter",
-    method: "Stir all ingredients with ice and strain into a chilled glass.",
+    base: "Luxardo Sambuca",
+    method: "Shake and strain",
     garnish: "Orange peel",
     ingredients: [
-      { amount: "35ml", name: "Rum", order: 0 },
-      { amount: "15ml", name: "Luxardo Bitter", order: 1 },
-      { amount: "10ml", name: "Luxardo Sambuca dei Cesari", order: 2 },
+      { amount: "35ml", name: "White rum", order: 0 },
+      {
+        amount: "15ml",
+        name: "Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 1,
+      },
+      {
+        amount: "10ml",
+        name: "Luxardo Sambuca dei Cesari",
+        productSlug: "luxardo-sambuca",
+        order: 2,
+      },
       { amount: "45ml", name: "Fresh pineapple juice", order: 3 },
       { amount: "15ml", name: "Fresh lime juice", order: 4 },
       { amount: "1 bar spoon", name: "Demerara sugar", order: 5 },
@@ -1082,35 +1464,45 @@ const cocktails = [
     slug: "aperitivo-spritz",
     title: "Aperitivo Spritz",
     description:
-      "The quintessential sunset drink. Light, bubbly, and bittersweet, featuring Luxardo Aperitivo and Prosecco.",
+      "The quintessential sunset drink. Luxardo Aperitivo and Prosecco with soda — light, bubbly, and bittersweet. Named after the city, made for the moment.",
     imageUrl: C.aperitivoSpritz,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Aperitivo",
-    method: "Build",
-    garnish: "Orange Zest",
+    method: "Build over ice",
+    garnish: "Orange wheel",
     ingredients: [
-      { amount: "60ml", name: "Luxardo Aperitivo", order: 0 },
+      {
+        amount: "60ml",
+        name: "Luxardo Aperitivo",
+        productSlug: "luxardo-aperitivo",
+        order: 0,
+      },
       { amount: "50ml", name: "Prosecco", order: 1 },
-      { amount: "Top with", name: "Soda", order: 2 },
+      { amount: "Top with", name: "Soda water", order: 2 },
     ],
   },
   {
     slug: "bicicletta",
     title: "Bicicletta",
     description:
-      "A drier, more bitter alternative to the Spritz, named after the wobbly bike rides home after a few of these.",
+      "Drier and more bitter than the Spritz — Luxardo Aperitivo with Aranciata Amara, named after the wobbly bicycle rides home.",
     imageUrl: C.bicicletta,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Aperitivo",
-    method: "Build",
-    garnish: "Orange Zest",
+    method: "Build over ice",
+    garnish: "Orange zest",
     ingredients: [
-      { amount: "50ml", name: "Luxardo Aperitivo", order: 0 },
+      {
+        amount: "50ml",
+        name: "Luxardo Aperitivo",
+        productSlug: "luxardo-aperitivo",
+        order: 0,
+      },
       {
         amount: "Top with",
-        name: "Aranciata Amara / Fresh orange juice",
+        name: "Aranciata Amara (or fresh orange juice)",
         order: 1,
       },
     ],
@@ -1119,43 +1511,59 @@ const cocktails = [
     slug: "il-santo",
     title: "Il Santo",
     description:
-      "A complex and herbal cocktail layering gin, aperitivo, and maraschino with a touch of citrus.",
+      "Complex and layered — gin, aperitivo, and maraschino with lime. A house cocktail that shows what Luxardo's range can do together.",
     imageUrl: C.ilSanto,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Aperitivo",
-    method: "Shake & Strain",
-    garnish: "Orange Zest",
+    method: "Shake and strain",
+    garnish: "Orange zest",
     ingredients: [
-      { amount: "45ml", name: "Luxardo London Dry Gin", order: 0 },
-      { amount: "15ml", name: "Luxardo Aperitivo", order: 1 },
-      { amount: "15ml", name: "Lime juice", order: 2 },
-      { amount: "10ml", name: "Luxardo Liquore Sant'Antonio", order: 3 },
-      { amount: "10ml", name: "Luxardo Maraschino Originale", order: 4 },
+      {
+        amount: "45ml",
+        name: "Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      {
+        amount: "15ml",
+        name: "Luxardo Aperitivo",
+        productSlug: "luxardo-aperitivo",
+        order: 1,
+      },
+      { amount: "15ml", name: "Fresh lime juice", order: 2 },
+      {
+        amount: "10ml",
+        name: "Luxardo Maraschino Originale",
+        productSlug: "luxardo-maraschino-originale",
+        order: 3,
+      },
     ],
   },
   {
     slug: "angioletto-and-lime",
     title: "Angioletto & Lime",
     description:
-      "A simple and sweet hazelnut-herb liqueur served with fresh lime for a balanced, digestible sip.",
+      "Simple and indulgent — Luxardo's hazelnut liqueur with fresh lime. The citrus cuts the sweetness and makes it unexpectedly easy to drink.",
     imageUrl: C.angiolettoLime,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
     base: "Luxardo Angioletto",
-    method: "Stir",
-    garnish: "4 Lime Wedges",
+    method: "Stir over ice",
+    garnish: "Lime wedges",
     ingredients: [
-      { amount: "60ml", name: "Luxardo Angioletto", order: 0 },
+      {
+        amount: "60ml",
+        name: "Luxardo Hazelnut Liqueur",
+        productSlug: "luxardo-hazelnut-liqueur",
+        order: 0,
+      },
       { amount: "15ml", name: "Fresh lime juice", order: 1 },
     ],
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Carousel slides — 4 slides, all using real uploaded images
-// ---------------------------------------------------------------------------
-
+// ── Carousel slides ───────────────────────────────────────────────────────────
 const carouselSlides = [
   {
     image: C.carousel1,
@@ -1183,21 +1591,15 @@ const carouselSlides = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Company stats
-// ---------------------------------------------------------------------------
-
+// ── Company stats ─────────────────────────────────────────────────────────────
 const companyStats = [
-  { value: "27+", label: "Premium Liquor", icon: "Wine", order: 0 },
-  { value: "3+", label: "Years Experience", icon: "Award", order: 1 },
+  { value: "27+", label: "Premium Spirits", icon: "Wine", order: 0 },
+  { value: "3+", label: "Years Operating", icon: "Award", order: 1 },
   { value: "1000+", label: "Happy Clients", icon: "Users", order: 2 },
   { value: "50+", label: "Expert Reviews", icon: "Star", order: 3 },
 ];
 
-// ---------------------------------------------------------------------------
-// Contact info
-// ---------------------------------------------------------------------------
-
+// ── Contact info ──────────────────────────────────────────────────────────────
 const contactInfo = [
   {
     type: "address",
@@ -1215,17 +1617,15 @@ const contactInfo = [
     type: "phone",
     title: "Call Us",
     value: "+977 9819810683",
-    subValue: "Mon–Fri from 9am to 6pm",
+    subValue: "Mon–Fri, 9am – 6pm",
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
-
+// ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   console.log("🌱 Seeding database…");
 
+  // ── Brands ────────────────────────────────────────────────────────────────
   console.log("  → Brands");
   for (const brand of brands) {
     await prisma.brand.upsert({
@@ -1235,6 +1635,7 @@ async function main() {
     });
   }
 
+  // ── Products ──────────────────────────────────────────────────────────────
   console.log("  → Products");
   for (const { brandSlug, ...product } of products) {
     await prisma.product.upsert({
@@ -1244,6 +1645,13 @@ async function main() {
     });
   }
 
+  // Build product slug → id map for wiring cocktail ingredient productIds
+  const productRows = await prisma.product.findMany({
+    select: { id: true, slug: true },
+  });
+  const productIdBySlug = new Map(productRows.map((p) => [p.slug, p.id]));
+
+  // ── Cocktails ─────────────────────────────────────────────────────────────
   console.log("  → Cocktails");
   for (const { ingredients, ...cocktail } of cocktails) {
     const existing = await prisma.cocktail.findUnique({
@@ -1255,21 +1663,32 @@ async function main() {
         where: { cocktailId: existing.id },
       });
     }
+
+    const resolvedIngredients = ingredients.map(({ productSlug, ...rest }) => ({
+      ...rest,
+      ...(productSlug && productIdBySlug.has(productSlug)
+        ? { productId: productIdBySlug.get(productSlug) }
+        : {}),
+    }));
+
     await prisma.cocktail.upsert({
       where: { slug: cocktail.slug },
-      update: { ...cocktail, ingredients: { create: ingredients } },
-      create: { ...cocktail, ingredients: { create: ingredients } },
+      update: { ...cocktail, ingredients: { create: resolvedIngredients } },
+      create: { ...cocktail, ingredients: { create: resolvedIngredients } },
     });
   }
 
+  // ── Carousel ──────────────────────────────────────────────────────────────
   console.log("  → Carousel slides");
   await prisma.carouselSlide.deleteMany();
   await prisma.carouselSlide.createMany({ data: carouselSlides });
 
+  // ── Company stats ─────────────────────────────────────────────────────────
   console.log("  → Company stats");
   await prisma.companyStat.deleteMany();
   await prisma.companyStat.createMany({ data: companyStats });
 
+  // ── Contact info ──────────────────────────────────────────────────────────
   console.log("  → Contact info");
   await prisma.contactInfo.deleteMany();
   await prisma.contactInfo.createMany({ data: contactInfo });
