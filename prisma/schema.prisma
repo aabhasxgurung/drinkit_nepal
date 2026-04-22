@@ -33,6 +33,10 @@ model Product {
   category            String
   flavors             String?
   grapeVarietal       String?
+  tastingNotes        String?
+  region              String?
+  servingSuggestion   String?
+  awards              String[]
   pairings            String[]
   highlights          String[]
   isFeatured          Boolean              @default(false)

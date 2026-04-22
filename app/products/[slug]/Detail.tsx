@@ -1,7 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Prisma } from "@prisma/client";
@@ -9,61 +8,50 @@ import type { CocktailWithIngredients } from "@/lib/types";
 
 type ProductWithBrand = Prisma.ProductGetPayload<{ include: { brand: true } }>;
 
-// Emil: strong ease-out — cubic-bezier(0.23, 1, 0.32, 1)
-const EASE = [0.23, 1, 0.32, 1] as const;
+// ── Tasting note parser ───────────────────────────────────────────────────────
+// Expects "Nose: ... Palate: ... Finish: ..." — returns null if no structure found.
+function parseTastingNotes(raw: string) {
+  const noseIdx = raw.search(/Nose:/i);
+  const palateIdx = raw.search(/Palate:/i);
+  const finishIdx = raw.search(/Finish:/i);
 
-// ─── Animation helpers ────────────────────────────────────────────────────────
+  if (noseIdx === -1 && palateIdx === -1 && finishIdx === -1) return null;
 
-// Left-panel text: clip-path reveal upward on page load, staggered
-function loadClip(delayMs: number, reduce: boolean) {
-  if (reduce)
-    return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      transition: { duration: 0.2, delay: delayMs / 1000 },
-    };
-  return {
-    initial: { clipPath: "inset(0 0 100% 0)" },
-    animate: { clipPath: "inset(0 0 0% 0)" },
-    transition: { duration: 0.4, delay: delayMs / 1000, ease: EASE },
-  };
+  const slice = (start: number, labelLen: number, end: number) =>
+    raw.slice(start + labelLen, end === -1 ? undefined : end).trim();
+
+  const nose =
+    noseIdx !== -1
+      ? slice(noseIdx, "Nose:".length, palateIdx !== -1 ? palateIdx : finishIdx)
+      : undefined;
+  const palate =
+    palateIdx !== -1
+      ? slice(palateIdx, "Palate:".length, finishIdx)
+      : undefined;
+  const finish =
+    finishIdx !== -1 ? slice(finishIdx, "Finish:".length, -1) : undefined;
+
+  return { nose, palate, finish };
 }
 
-// Right-panel sections: clip-path reveal upward on scroll
-function scrollClip(reduce: boolean) {
-  if (reduce)
-    return {
-      initial: { opacity: 0 },
-      whileInView: { opacity: 1 },
-      viewport: { once: true } as const,
-      transition: { duration: 0.2 },
-    };
-  return {
-    initial: { clipPath: "inset(0 0 100% 0)" },
-    whileInView: { clipPath: "inset(0 0 0% 0)" },
-    viewport: { once: true, margin: "-60px" } as const,
-    transition: { duration: 0.38, ease: EASE },
-  };
+// ── Scroll-reveal hook ────────────────────────────────────────────────────────
+function useReveal(threshold = 0.15) {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
 }
 
-// Cocktail rows: translateY(12px)→0, opacity 0→1, 50ms stagger on scroll
-function rowAnim(i: number, reduce: boolean) {
-  if (reduce)
-    return {
-      initial: { opacity: 0 },
-      whileInView: { opacity: 1 },
-      viewport: { once: true } as const,
-      transition: { duration: 0.15 },
-    };
-  return {
-    initial: { opacity: 0, transform: "translateY(12px)" },
-    whileInView: { opacity: 1, transform: "translateY(0px)" },
-    viewport: { once: true } as const,
-    transition: { duration: 0.28, delay: i * 0.05, ease: EASE },
-  };
-}
-
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
 
 export function Detail({
   product,
@@ -72,230 +60,457 @@ export function Detail({
   product: ProductWithBrand;
   cocktails: CocktailWithIngredients[];
 }) {
-  const reduce = useReducedMotion() ?? false;
+  const tasting = product.tastingNotes ? parseTastingNotes(product.tastingNotes) : null;
+  const flavors = product.flavors?.split(",").map((f) => f.trim()).filter(Boolean) ?? [];
+  const highlights = product.highlights ?? [];
+  const pairings = product.pairings ?? [];
+  const awards = product.awards ?? [];
 
-  const botanicals =
-    product.flavors
-      ?.split(",")
-      .map((f) => f.trim())
-      .filter(Boolean) ?? [];
+  const specsInfo = [
+    { label: "Region", value: product.region },
+    { label: "Country", value: product.country ?? product.brand.country },
+    { label: "Alcohol", value: product.alcoholPercentage },
+    { label: "Volume", value: product.volume },
+    { label: "Category", value: product.category },
+  ].filter((s): s is { label: string; value: string } => !!s.value);
 
-  // Specs live on the left panel only — not repeated on the right
-  const specs = [
-    product.volume,
-    product.alcoholPercentage,
-    product.category,
-  ].filter(Boolean) as string[];
+  const tastingReveal = useReveal();
+  const detailsReveal = useReveal();
+  const highlightsReveal = useReveal();
+  const cocktailsReveal = useReveal();
 
   return (
-    <div className="flex flex-col lg:flex-row bg-[#0f0f0f]">
-      {/* ── Left panel (45%) — sticky on desktop ────────────────── */}
-      <aside className="relative lg:sticky lg:top-0 lg:self-start lg:w-[45%]">
-        {/* Mobile: aspect-ratio height; Desktop: viewport height */}
-        <div className="relative w-full aspect-[3/4] lg:aspect-auto lg:h-screen">
-          {/* Bottle: scale 0.97→1 on load, 400ms ease-out */}
-          <motion.div
-            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={product.image}
-              alt={product.name}
-              className="object-contain"
-              width={1200}
-              height={1200}
-              priority
-            />
-          </motion.div>
+    <div>
 
-          {/* Gradient overlay — heavy at bottom for text legibility, light at top */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-          {/* Bottom: brand → name only */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-            {/* Brand label */}
-            <motion.p
-              {...loadClip(0, reduce)}
-              className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#F5F0E8]/60 mb-2"
+      {/* ══ HERO ════════════════════════════════════════════════════════════════ */}
+      <section
+        className="relative flex flex-col lg:flex-row"
+        style={{ backgroundColor: "#1C1814", minHeight: "100svh" }}
+      >
+        {/* Left — text */}
+        <div className="flex flex-col justify-between lg:w-[52%] px-6 md:px-12 lg:px-16 pt-28 md:pt-36 pb-12 lg:pb-20 order-2 lg:order-1">
+          {/* Eyebrow */}
+          <div>
+            <p
+              className="font-mono uppercase tracking-[0.25em] text-[10px]"
+              style={{ color: "#9A8F84", marginBottom: 32 }}
             >
-              {product.brand.name}
-            </motion.p>
+              {product.brand.name}&nbsp;&nbsp;·&nbsp;&nbsp;{product.category}
+            </p>
 
-            {/* Product name */}
-            <motion.h1
-              {...loadClip(80, reduce)}
-              className="font-playfair italic text-[#F5F0E8] leading-[1.0]"
-              style={{ fontSize: "clamp(26px, 3vw, 44px)" }}
+            <h1
+              className="font-playfair italic"
+              style={{
+                fontSize: "clamp(40px, 5.5vw, 80px)",
+                color: "#FAF8F5",
+                lineHeight: 1.0,
+                marginBottom: 24,
+              }}
             >
               {product.name}
-            </motion.h1>
+            </h1>
+
+            <p
+              className="font-mono leading-[1.9]"
+              style={{ fontSize: 12, color: "#9A8F84", maxWidth: 420, marginBottom: 40 }}
+            >
+              {product.description}
+            </p>
+          </div>
+
+          {/* Bottom spec row */}
+          <div className="flex flex-wrap gap-x-8 gap-y-4 pt-8" style={{ borderTop: "0.5px solid rgba(255,255,255,0.08)" }}>
+            {specsInfo.slice(0, 4).map((s) => (
+              <div key={s.label}>
+                <p
+                  className="font-mono uppercase text-[8px] tracking-[0.2em]"
+                  style={{ color: "rgba(245,240,232,0.25)", marginBottom: 4 }}
+                >
+                  {s.label}
+                </p>
+                <p className="font-mono text-[12px]" style={{ color: "#FAF8F5" }}>
+                  {s.value}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      </aside>
 
-      {/* ── Right panel (55%) — natural scroll ──────────────────── */}
-      <div className="lg:w-[55%] bg-[#FAF8F5] px-6 md:px-12 lg:px-14 xl:px-20 pt-12 lg:pt-24 pb-28">
-
-        {/* ① Specs — ABV / Volume / Category as prominent stat blocks */}
-        {specs.length > 0 && (
-          <motion.div
-            {...scrollClip(reduce)}
-            className="flex items-stretch gap-0 mb-12 border border-[#E8E3DC]"
-          >
-            {specs.map((s, i) => {
-              const labels = ["ABV", "Volume", "Category"];
-              const label = labels[
-                [product.alcoholPercentage, product.volume, product.category].indexOf(s)
-              ] ?? "";
-              return (
-                <div
-                  key={s}
-                  className={`flex-1 flex flex-col items-center justify-center px-4 py-5 ${
-                    i < specs.length - 1 ? "border-r border-[#E8E3DC]" : ""
-                  }`}
-                >
-                  <span className="font-mono text-[8px] uppercase tracking-[0.25em] text-[#9A8F84] mb-2">
-                    {label}
-                  </span>
-                  <span
-                    className="font-playfair italic text-[#1C1814] leading-none"
-                    style={{ fontSize: "clamp(20px, 2vw, 28px)" }}
-                  >
-                    {s}
-                  </span>
-                </div>
-              );
-            })}
-          </motion.div>
-        )}
-
-        {/* ② Opening description */}
-        <motion.blockquote
-          {...scrollClip(reduce)}
-          className="font-playfair italic text-[#2C2420] leading-[1.75]"
-          style={{ fontSize: "clamp(18px, 2vw, 24px)" }}
+        {/* Right — bottle */}
+        <div
+          className="relative lg:w-[48%] order-1 lg:order-2"
+          style={{ minHeight: "55svh" }}
         >
-          {product.description}
-        </motion.blockquote>
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-contain"
+            style={{ padding: "48px 40px" }}
+            priority
+          />
+          {/* Subtle gradient fade at bottom on mobile */}
+          <div
+            className="absolute bottom-0 left-0 right-0 lg:hidden pointer-events-none"
+            style={{
+              height: 80,
+              background: "linear-gradient(to top, #1C1814, transparent)",
+            }}
+          />
+        </div>
+      </section>
 
-        {/* ② Flavour profile — only if botanicals exist */}
-        {botanicals.length > 0 && (
-          <>
-            <div className="h-px bg-[#E8E3DC] mt-12 mb-10" />
+      {/* ══ TASTING NOTES ═══════════════════════════════════════════════════════ */}
+      {(product.tastingNotes || flavors.length > 0) && (
+        <section
+          ref={tastingReveal.ref}
+          className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+          style={{
+            backgroundColor: "#FAF8F5",
+            opacity: tastingReveal.visible ? 1 : 0,
+            transform: tastingReveal.visible ? "none" : "translateY(20px)",
+            transition: "opacity 600ms ease-out, transform 600ms cubic-bezier(0.22,1,0.36,1)",
+          }}
+        >
+          <p
+            className="font-mono uppercase text-[9px] tracking-[0.28em]"
+            style={{ color: "#9A8F84", marginBottom: 40 }}
+          >
+            Tasting Notes
+          </p>
 
-            <div>
-              <motion.p
-                {...scrollClip(reduce)}
-                className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#6B6158] mb-5"
-              >
-                Flavour Profile
-              </motion.p>
-
-              {/* Flowing inline text — first botanical in wine red, rest muted */}
-              <motion.p
-                {...scrollClip(reduce)}
-                className="font-mono text-[13px] uppercase tracking-[0.1em] leading-[2.2] text-[#3D3530]"
-              >
-                {botanicals.map((b, i) => (
-                  <Fragment key={b}>
-                    <span style={i === 0 ? { color: "#8B1A1A" } : undefined}>
-                      {b}
-                    </span>
-                    {i < botanicals.length - 1 && (
-                      <span className="mx-2.5 text-[#C9C2B8]">·</span>
-                    )}
-                  </Fragment>
-                ))}
-              </motion.p>
-            </div>
-          </>
-        )}
-
-        {/* ③ Tasting notes — prose paragraph, not pills */}
-        {product.grapeVarietal && (
-          <>
-            <div className="h-px bg-[#E8E3DC] mt-12 mb-10" />
-
-            <div>
-              <motion.p
-                {...scrollClip(reduce)}
-                className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#6B6158] mb-5"
-              >
-                Tasting Notes
-              </motion.p>
-              <motion.p
-                {...scrollClip(reduce)}
-                className="font-playfair italic text-[#1C1814] leading-[1.8]"
-                style={{ fontSize: "clamp(17px, 1.5vw, 21px)" }}
-              >
-                {product.grapeVarietal}
-              </motion.p>
-            </div>
-          </>
-        )}
-
-        {/* ④ Cocktails featuring this spirit */}
-        {cocktails.length > 0 && (
-          <>
-            <div className="h-px bg-[#E8E3DC] mt-12 mb-10" />
-
-            <div>
-              <motion.p
-                {...scrollClip(reduce)}
-                className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#6B6158] mb-6"
-              >
-                Try it in
-              </motion.p>
-              <div>
-                {cocktails.map((c, i) => (
-                  <motion.div key={c.id} {...rowAnim(i, reduce)}>
-                    <Link
-                      href="/cocktails"
-                      className="group flex items-center gap-4 py-4 border-b border-[#E8E3DC] last:border-0"
+          {/* Structured nose / palate / finish */}
+          {tasting ? (
+            <div className="grid md:grid-cols-3 gap-10 md:gap-14 mb-12">
+              {[
+                { label: "Nose", text: tasting.nose },
+                { label: "Palate", text: tasting.palate },
+                { label: "Finish", text: tasting.finish },
+              ]
+                .filter((n) => n.text)
+                .map((n) => (
+                  <div key={n.label}>
+                    <p
+                      className="font-mono uppercase text-[9px] tracking-[0.2em]"
+                      style={{ color: "#7B0323", marginBottom: 12 }}
                     >
-                      {/* Cocktail thumbnail */}
-                      <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-[#1C1814]">
-                        <Image
-                          src={c.imageUrl}
-                          fill
-                          alt={c.title}
-                          className="object-cover"
-                          sizes="48px"
-                        />
-                      </div>
+                      {n.label}
+                    </p>
+                    <p
+                      className="font-playfair italic leading-[1.75]"
+                      style={{ fontSize: 17, color: "#1C1814" }}
+                    >
+                      {n.text}
+                    </p>
+                  </div>
+                ))}
+            </div>
+          ) : product.tastingNotes ? (
+            <p
+              className="font-playfair italic leading-[1.8] max-w-3xl mb-12"
+              style={{ fontSize: 19, color: "#1C1814" }}
+            >
+              {product.tastingNotes}
+            </p>
+          ) : null}
 
-                      {/* Name + method */}
-                      <div className="flex-1 min-w-0">
-                        <p
-                          className="font-playfair italic text-[#1C1814] text-[15px] leading-snug
-                                     transition-colors duration-200
-                                     [@media(hover:hover)_and_(pointer:fine)]:group-hover:text-[#7B0323]"
-                        >
-                          {c.title}
-                        </p>
-                        <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#9A8F84] mt-0.5">
-                          {c.method}
-                        </p>
-                      </div>
-
-                      {/* Arrow */}
-                      <span
-                        className="font-mono text-[10px] text-[#C9C2B8] flex-shrink-0
-                                   transition-colors duration-200
-                                   [@media(hover:hover)_and_(pointer:fine)]:group-hover:text-[#7B0323]"
-                      >
-                        →
-                      </span>
-                    </Link>
-                  </motion.div>
+          {/* Flavor tags */}
+          {flavors.length > 0 && (
+            <div>
+              <p
+                className="font-mono uppercase text-[8px] tracking-[0.22em]"
+                style={{ color: "#C9C2B8", marginBottom: 12 }}
+              >
+                Flavour profile
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {flavors.map((f, i) => (
+                  <span
+                    key={f}
+                    className="font-mono text-[10px] uppercase tracking-[0.1em] px-4 py-1.5 rounded-full"
+                    style={{
+                      backgroundColor: i === 0 ? "#7B0323" : "#EDE8E1",
+                      color: i === 0 ? "#FAF8F5" : "#6B6259",
+                    }}
+                  >
+                    {f}
+                  </span>
                 ))}
               </div>
             </div>
-          </>
-        )}
-      </div>
+          )}
+        </section>
+      )}
+
+      {/* ══ SPECIFICATIONS + SERVING + PAIRINGS ═════════════════════════════════ */}
+      <section
+        ref={detailsReveal.ref}
+        className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+        style={{
+          backgroundColor: "#1C1814",
+          borderTop: "0.5px solid rgba(255,255,255,0.06)",
+          opacity: detailsReveal.visible ? 1 : 0,
+          transform: detailsReveal.visible ? "none" : "translateY(20px)",
+          transition: "opacity 600ms ease-out, transform 600ms cubic-bezier(0.22,1,0.36,1)",
+        }}
+      >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-12">
+
+          {/* Specs */}
+          <div>
+            <p
+              className="font-mono uppercase text-[9px] tracking-[0.28em]"
+              style={{ color: "rgba(245,240,232,0.3)", marginBottom: 24 }}
+            >
+              Specifications
+            </p>
+            <div>
+              {specsInfo.map((s) => (
+                <div
+                  key={s.label}
+                  className="flex justify-between py-3.5"
+                  style={{ borderBottom: "0.5px solid rgba(255,255,255,0.06)" }}
+                >
+                  <span
+                    className="font-mono uppercase text-[9px] tracking-[0.12em]"
+                    style={{ color: "rgba(245,240,232,0.3)" }}
+                  >
+                    {s.label}
+                  </span>
+                  <span className="font-mono text-[11px]" style={{ color: "#FAF8F5" }}>
+                    {s.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Serving suggestion */}
+          {product.servingSuggestion && (
+            <div>
+              <p
+                className="font-mono uppercase text-[9px] tracking-[0.28em]"
+                style={{ color: "rgba(245,240,232,0.3)", marginBottom: 24 }}
+              >
+                How to Serve
+              </p>
+              <p
+                className="font-playfair italic leading-[1.75]"
+                style={{ fontSize: 16, color: "#FAF8F5" }}
+              >
+                {product.servingSuggestion}
+              </p>
+            </div>
+          )}
+
+          {/* Pairings */}
+          {pairings.length > 0 && (
+            <div>
+              <p
+                className="font-mono uppercase text-[9px] tracking-[0.28em]"
+                style={{ color: "rgba(245,240,232,0.3)", marginBottom: 24 }}
+              >
+                Pairs With
+              </p>
+              <div className="flex flex-col gap-3">
+                {pairings.map((p) => (
+                  <div
+                    key={p}
+                    className="flex items-center gap-3"
+                    style={{ borderBottom: "0.5px solid rgba(255,255,255,0.06)", paddingBottom: 10 }}
+                  >
+                    <span style={{ color: "#7B0323", fontSize: 12 }}>—</span>
+                    <span className="font-mono text-[11px]" style={{ color: "rgba(245,240,232,0.6)" }}>
+                      {p}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ══ HIGHLIGHTS ══════════════════════════════════════════════════════════ */}
+      {highlights.length > 0 && (
+        <section
+          ref={highlightsReveal.ref}
+          className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+          style={{
+            backgroundColor: "#FAF8F5",
+            borderTop: "0.5px solid #E8E3DC",
+            opacity: highlightsReveal.visible ? 1 : 0,
+            transform: highlightsReveal.visible ? "none" : "translateY(20px)",
+            transition: "opacity 600ms ease-out, transform 600ms cubic-bezier(0.22,1,0.36,1)",
+          }}
+        >
+          <p
+            className="font-mono uppercase text-[9px] tracking-[0.28em]"
+            style={{ color: "#9A8F84", marginBottom: 32 }}
+          >
+            Highlights
+          </p>
+
+          <div>
+            {highlights.map((h, i) => (
+              <div
+                key={i}
+                className="grid gap-4 py-6"
+                style={{
+                  borderTop: "0.5px solid #E8E3DC",
+                  gridTemplateColumns: "56px 1fr",
+                }}
+              >
+                <span
+                  className="font-mono text-[10px]"
+                  style={{ color: "#C9C2B8", paddingTop: 4 }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p
+                  className="font-playfair italic leading-[1.65]"
+                  style={{ fontSize: 18, color: "#1C1814" }}
+                >
+                  {h}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Awards — appended at the bottom of this cream section */}
+          {awards.length > 0 && (
+            <div className="mt-16 pt-12" style={{ borderTop: "0.5px solid #E8E3DC" }}>
+              <p
+                className="font-mono uppercase text-[9px] tracking-[0.28em]"
+                style={{ color: "#9A8F84", marginBottom: 20 }}
+              >
+                Awards &amp; Recognition
+              </p>
+              <div className="flex flex-col gap-0">
+                {awards.map((award, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-4 py-3.5"
+                    style={{ borderBottom: "0.5px solid #E8E3DC" }}
+                  >
+                    <span className="font-mono text-[9px] shrink-0 mt-0.5" style={{ color: "#7B0323" }}>
+                      —
+                    </span>
+                    <span className="font-mono text-[11px] leading-[1.7]" style={{ color: "#6B6259" }}>
+                      {award}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Awards standalone if no highlights */}
+      {awards.length > 0 && highlights.length === 0 && (
+        <section
+          className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+          style={{ backgroundColor: "#FAF8F5", borderTop: "0.5px solid #E8E3DC" }}
+        >
+          <p
+            className="font-mono uppercase text-[9px] tracking-[0.28em]"
+            style={{ color: "#9A8F84", marginBottom: 20 }}
+          >
+            Awards &amp; Recognition
+          </p>
+          <div className="flex flex-col gap-0">
+            {awards.map((award, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-4 py-3.5"
+                style={{ borderBottom: "0.5px solid #E8E3DC" }}
+              >
+                <span className="font-mono text-[9px] shrink-0 mt-0.5" style={{ color: "#7B0323" }}>
+                  —
+                </span>
+                <span className="font-mono text-[11px] leading-[1.7]" style={{ color: "#6B6259" }}>
+                  {award}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ══ COCKTAILS ═══════════════════════════════════════════════════════════ */}
+      {cocktails.length > 0 && (
+        <section
+          ref={cocktailsReveal.ref}
+          className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+          style={{
+            backgroundColor: "#1C1814",
+            borderTop: "0.5px solid rgba(255,255,255,0.06)",
+            opacity: cocktailsReveal.visible ? 1 : 0,
+            transform: cocktailsReveal.visible ? "none" : "translateY(20px)",
+            transition: "opacity 600ms ease-out, transform 600ms cubic-bezier(0.22,1,0.36,1)",
+          }}
+        >
+          <p
+            className="font-mono uppercase text-[9px] tracking-[0.28em]"
+            style={{ color: "rgba(245,240,232,0.3)", marginBottom: 40 }}
+          >
+            Make It Into
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {cocktails.map((c) => (
+              <Link
+                key={c.id}
+                href={`/cocktails/${c.slug}`}
+                className="group block"
+                style={{ textDecoration: "none" }}
+              >
+                {/* Image */}
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: "4/5", backgroundColor: "#0f0f0f", marginBottom: 16 }}
+                >
+                  <Image
+                    src={c.imageUrl}
+                    alt={c.title}
+                    fill
+                    className="object-cover"
+                    style={{
+                      transition: "transform 600ms cubic-bezier(0.22,1,0.36,1)",
+                    }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), transparent 50%)" }}
+                  />
+                </div>
+
+                {/* Info */}
+                <p
+                  className="font-playfair italic"
+                  style={{
+                    fontSize: 20,
+                    color: "#FAF8F5",
+                    marginBottom: 6,
+                    transition: "color 200ms ease",
+                  }}
+                >
+                  {c.title}
+                </p>
+                <p
+                  className="font-mono uppercase text-[9px] tracking-[0.15em]"
+                  style={{ color: "#9A8F84" }}
+                >
+                  {c.method}&nbsp;&nbsp;·&nbsp;&nbsp;{c.difficulty}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
     </div>
   );
 }
