@@ -1,11 +1,18 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { useLenis } from "@studio-freight/react-lenis";
 import type { CocktailWithIngredients } from "@/lib/types";
+import CatalogCard from "./CatalogCard";
+
+type SignatureCocktail = {
+  slug: string;
+  title: string;
+  imageUrl: string;
+  base: string;
+};
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -38,243 +45,6 @@ function Pill({
   );
 }
 
-// ─── Catalog Card ─────────────────────────────────────────────────────────────
-
-function CatalogCard({
-  cocktail,
-  index,
-  onClick,
-}: {
-  cocktail: CocktailWithIngredients;
-  index: number;
-  onClick: () => void;
-}) {
-  const num = String(index + 1).padStart(2, "0");
-
-  const diffColor: Record<string, string> = {
-    Easy: "#69B578",
-    Medium: "#D4A843",
-    Advanced: "#7B0323",
-  };
-
-  return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.3) }}
-      onClick={onClick}
-      className="group relative overflow-hidden rounded-2xl cursor-pointer bg-[#1C1814]"
-      style={{ aspectRatio: "3 / 4" }}
-    >
-      {/* Image */}
-      <Image
-        src={cocktail.imageUrl}
-        fill
-        alt={cocktail.title}
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      />
-
-      {/* Permanent gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/10" />
-
-      {/* Hover darkening */}
-      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      {/* ── Top row ── */}
-      <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
-        <span className="font-mono text-[10px] text-white/40">{num}</span>
-        <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-white/55 bg-black/25 backdrop-blur-sm px-2.5 py-1 rounded-full">
-          {cocktail.category}
-        </span>
-      </div>
-
-      {/* ── Bottom content ── */}
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        {/* Meta */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-white/80">
-            {cocktail.base}
-          </span>
-          <span className="text-white/45">·</span>
-          <span
-            className="font-mono text-[8px] uppercase tracking-[0.14em]"
-            style={{ color: diffColor[cocktail.difficulty] ?? "#9A8F84" }}
-          >
-            {cocktail.difficulty}
-          </span>
-        </div>
-
-        {/* Name */}
-        <h3
-          className="font-playfair italic text-white leading-[1.05] mb-4"
-          style={{ fontSize: "clamp(20px, 2.2vw, 26px)" }}
-        >
-          {cocktail.title}
-        </h3>
-
-        {/* Hover reveal */}
-        <div className="h-[14px] overflow-hidden">
-          <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out flex items-center gap-2">
-            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/55">
-              View Recipe
-            </span>
-            <span className="text-white/35 text-[10px]">→</span>
-          </div>
-        </div>
-      </div>
-    </motion.article>
-  );
-}
-
-// ─── Recipe Drawer ────────────────────────────────────────────────────────────
-
-function RecipeDrawer({
-  cocktail,
-  onClose,
-}: {
-  cocktail: CocktailWithIngredients | null;
-  onClose: () => void;
-}) {
-  return (
-    <AnimatePresence>
-      {cocktail && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 z-40"
-            onClick={onClose}
-          />
-
-          {/* Panel */}
-          <motion.aside
-            key="panel"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{
-              type: "tween",
-              duration: 0.42,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            data-lenis-prevent
-            className="fixed top-0 right-0 h-full w-full md:w-[460px] bg-[#FAF8F5] z-50 flex flex-col overflow-y-auto shadow-2xl"
-          >
-            {/* Close */}
-            <button
-              onClick={onClose}
-              aria-label="Close recipe"
-              className="absolute top-5 right-5 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-[#1C1814]/10 hover:bg-[#1C1814]/20 transition-colors"
-            >
-              <X className="w-3.5 h-3.5 text-[#1C1814]" />
-            </button>
-
-            {/* Image */}
-            <div className="relative w-full aspect-[4/3] flex-shrink-0 bg-[#F0EBE3]">
-              <Image
-                src={cocktail.imageUrl}
-                fill
-                alt={cocktail.title}
-                className="object-cover"
-                sizes="460px"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-transparent to-transparent" />
-            </div>
-
-            {/* Content */}
-            <div className="px-8 pt-2 pb-16">
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                <span className="bg-[#1C1814] text-[#FAF8F5] px-3 py-1 rounded-full font-mono text-[8px] uppercase tracking-[0.15em]">
-                  {cocktail.base}
-                </span>
-                <span className="border border-[#E8E3DC] text-[#9A8F84] px-3 py-1 rounded-full font-mono text-[8px] uppercase tracking-[0.15em]">
-                  {cocktail.difficulty}
-                </span>
-                <span className="border border-[#E8E3DC] text-[#9A8F84] px-3 py-1 rounded-full font-mono text-[8px] uppercase tracking-[0.15em]">
-                  {cocktail.category}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h2
-                className="font-playfair italic text-[#1C1814] leading-[1.05] mb-5"
-                style={{ fontSize: "clamp(26px, 3.5vw, 36px)" }}
-              >
-                {cocktail.title}
-              </h2>
-
-              {/* Description */}
-              <p className="font-mono text-[11px] text-[#9A8F84] leading-[1.85] mb-8">
-                {cocktail.description}
-              </p>
-
-              <div className="h-px bg-[#E8E3DC] mb-8" />
-
-              {/* Ingredients */}
-              <div className="mb-8">
-                <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#9A8F84] mb-5">
-                  Ingredients
-                </p>
-                <ul className="space-y-3">
-                  {cocktail.ingredients.map((ing) => (
-                    <li
-                      key={ing.id}
-                      className="flex justify-between items-baseline border-b border-[#F0EBE3] pb-3 last:border-0"
-                    >
-                      <span className="font-playfair italic text-[#1C1814] text-[15px]">
-                        {ing.name}
-                      </span>
-                      <span className="font-mono text-[10px] text-[#9A8F84] ml-4 flex-shrink-0">
-                        {ing.amount}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="h-px bg-[#E8E3DC] mb-8" />
-
-              {/* Method */}
-              <div className="mb-8">
-                <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#9A8F84] mb-4">
-                  Method
-                </p>
-                <p className="font-mono text-[12px] text-[#1C1814] leading-[1.9]">
-                  {cocktail.method}
-                </p>
-              </div>
-
-              {/* Garnish */}
-              {cocktail.garnish && (
-                <>
-                  <div className="h-px bg-[#E8E3DC] mb-8" />
-                  <div>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#9A8F84] mb-3">
-                      Garnish
-                    </p>
-                    <p className="font-playfair italic text-[#1C1814] text-[16px]">
-                      {cocktail.garnish}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          </motion.aside>
-        </>
-      )}
-    </AnimatePresence>
-  );
-}
-
 // ─── Hero animation variants ──────────────────────────────────────────────────
 
 const heroStagger = {
@@ -295,29 +65,15 @@ const heroLine = {
 
 export default function Cocktails({
   cocktails,
+  signatureCocktails,
 }: {
   cocktails: CocktailWithIngredients[];
+  signatureCocktails: SignatureCocktail[];
 }) {
   const [activeBase, setActiveBase] = useState("All");
   const [activeDifficulty, setActiveDifficulty] = useState("All");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selected, setSelected] = useState<CocktailWithIngredients | null>(
-    null,
-  );
-
-  const lenis = useLenis();
-
-  useEffect(() => {
-    if (!lenis) return;
-    if (selected) {
-      lenis.stop();
-    } else {
-      lenis.start();
-    }
-    return () => {
-      lenis.start();
-    };
-  }, [selected, lenis]);
+  const filterBarRef = useRef<HTMLDivElement>(null);
 
   const bases = useMemo(
     () => ["All", ...uniq(cocktails.map((c) => c.base))],
@@ -388,8 +144,88 @@ export default function Cocktails({
         </motion.p>
       </section>
 
+      {/* ── Amrit's Signature section ───────────────────────────── */}
+      {signatureCocktails.length > 0 && (
+        <section
+          className="flex flex-col md:flex-row px-5 py-10 md:px-10 md:py-[60px]"
+          style={{ backgroundColor: "#0f0f0f" }}
+        >
+          {/* Left: info */}
+          <div className="md:w-[40%] flex-shrink-0 flex flex-col justify-center md:pr-12 mb-8 md:mb-0">
+            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#8A8278]">
+              Signatures by
+            </p>
+            <h2
+              className="font-playfair italic text-[#F5F0E8] leading-tight mt-3"
+              style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
+            >
+              Amrit
+            </h2>
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8B1A1A] mt-2">
+              Brand Ambassador · Drink It Nepal
+            </p>
+            <p className="font-playfair italic text-[14px] text-[#C8BFB0] mt-4">
+              8 original cocktails. Each one a story.
+            </p>
+            <button
+              onClick={() => {
+                setActiveCategory("Signature");
+                filterBarRef.current?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group inline-flex items-center gap-2 mt-6 w-fit font-mono text-[10px] uppercase tracking-[0.14em] text-[#F5F0E8]"
+            >
+              <span>Explore his signatures</span>
+              <span className="transition-transform duration-200 [@media(hover:hover)]:group-hover:translate-x-1">
+                →
+              </span>
+            </button>
+          </div>
+
+          {/* Right: horizontal scroll row */}
+          <div className="flex-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-3" style={{ minWidth: "max-content" }}>
+              {signatureCocktails.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/cocktails/${c.slug}`}
+                  className="group flex-shrink-0 overflow-hidden"
+                  style={{
+                    width: 180,
+                    borderRadius: 10,
+                    border: "0.5px solid rgba(255,255,255,0.1)",
+                  }}
+                >
+                  <div className="relative overflow-hidden" style={{ height: 200 }}>
+                    <Image
+                      src={c.imageUrl}
+                      alt={c.title}
+                      fill
+                      className="object-cover transition-transform duration-500 [@media(hover:hover)]:group-hover:scale-105"
+                      sizes="180px"
+                    />
+                  </div>
+                  <div
+                    style={{
+                      padding: "10px 12px",
+                      backgroundColor: "rgba(255,255,255,0.04)",
+                    }}
+                  >
+                    <p className="font-playfair italic text-[13px] text-[#F5F0E8]">
+                      {c.title}
+                    </p>
+                    <p className="font-mono text-[8px] text-[#8A8278] uppercase tracking-[0.08em] mt-1">
+                      {c.base}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Filter bar ──────────────────────────────────────────── */}
-      <div className="top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E8E3DC]">
+      <div ref={filterBarRef} className="top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E8E3DC]">
         <div className="px-6 md:px-12 lg:px-16 py-4 flex flex-col gap-2.5">
           {/* Base */}
           <div className="flex items-center gap-12">
@@ -460,12 +296,7 @@ export default function Cocktails({
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5"
             >
               {filtered.map((c, i) => (
-                <CatalogCard
-                  key={c.id}
-                  cocktail={c}
-                  index={i}
-                  onClick={() => setSelected(c)}
-                />
+                <CatalogCard key={c.id} cocktail={c} index={i} />
               ))}
             </motion.div>
           ) : (
@@ -489,9 +320,6 @@ export default function Cocktails({
           )}
         </AnimatePresence>
       </div>
-
-      {/* ── Recipe drawer ────────────────────────────────────────── */}
-      <RecipeDrawer cocktail={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }
