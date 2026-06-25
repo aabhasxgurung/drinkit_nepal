@@ -1,18 +1,9 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { CocktailWithIngredients } from "@/lib/types";
 import CatalogCard from "./CatalogCard";
-
-type SignatureCocktail = {
-  slug: string;
-  title: string;
-  imageUrl: string;
-  base: string;
-};
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -65,15 +56,12 @@ const heroLine = {
 
 export default function Cocktails({
   cocktails,
-  signatureCocktails,
 }: {
   cocktails: CocktailWithIngredients[];
-  signatureCocktails: SignatureCocktail[];
 }) {
   const [activeBase, setActiveBase] = useState("All");
   const [activeDifficulty, setActiveDifficulty] = useState("All");
   const [activeCategory, setActiveCategory] = useState("All");
-  const filterBarRef = useRef<HTMLDivElement>(null);
 
   const bases = useMemo(
     () => ["All", ...uniq(cocktails.map((c) => c.base))],
@@ -144,88 +132,8 @@ export default function Cocktails({
         </motion.p>
       </section>
 
-      {/* ── Amrit's Signature section ───────────────────────────── */}
-      {signatureCocktails.length > 0 && (
-        <section
-          className="flex flex-col md:flex-row px-5 py-10 md:px-10 md:py-[60px]"
-          style={{ backgroundColor: "#0f0f0f" }}
-        >
-          {/* Left: info */}
-          <div className="md:w-[40%] flex-shrink-0 flex flex-col justify-center md:pr-12 mb-8 md:mb-0">
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#8A8278]">
-              Signatures by
-            </p>
-            <h2
-              className="font-playfair italic text-[#F5F0E8] leading-tight mt-3"
-              style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
-            >
-              Amrit
-            </h2>
-            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8B1A1A] mt-2">
-              Brand Ambassador · Drink It Nepal
-            </p>
-            <p className="font-playfair italic text-[14px] text-[#C8BFB0] mt-4">
-              8 original cocktails. Each one a story.
-            </p>
-            <button
-              onClick={() => {
-                setActiveCategory("Signature");
-                filterBarRef.current?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="group inline-flex items-center gap-2 mt-6 w-fit font-mono text-[10px] uppercase tracking-[0.14em] text-[#F5F0E8]"
-            >
-              <span>Explore his signatures</span>
-              <span className="transition-transform duration-200 [@media(hover:hover)]:group-hover:translate-x-1">
-                →
-              </span>
-            </button>
-          </div>
-
-          {/* Right: horizontal scroll row */}
-          <div className="flex-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex gap-3" style={{ minWidth: "max-content" }}>
-              {signatureCocktails.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/cocktails/${c.slug}`}
-                  className="group flex-shrink-0 overflow-hidden"
-                  style={{
-                    width: 180,
-                    borderRadius: 10,
-                    border: "0.5px solid rgba(255,255,255,0.1)",
-                  }}
-                >
-                  <div className="relative overflow-hidden" style={{ height: 200 }}>
-                    <Image
-                      src={c.imageUrl}
-                      alt={c.title}
-                      fill
-                      className="object-cover transition-transform duration-500 [@media(hover:hover)]:group-hover:scale-105"
-                      sizes="180px"
-                    />
-                  </div>
-                  <div
-                    style={{
-                      padding: "10px 12px",
-                      backgroundColor: "rgba(255,255,255,0.04)",
-                    }}
-                  >
-                    <p className="font-playfair italic text-[13px] text-[#F5F0E8]">
-                      {c.title}
-                    </p>
-                    <p className="font-mono text-[8px] text-[#8A8278] uppercase tracking-[0.08em] mt-1">
-                      {c.base}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ── Filter bar ──────────────────────────────────────────── */}
-      <div ref={filterBarRef} className="top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E8E3DC]">
+      <div className="top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E8E3DC]">
         <div className="px-6 md:px-12 lg:px-16 py-4 flex flex-col gap-2.5">
           {/* Base */}
           <div className="flex items-center gap-12">
