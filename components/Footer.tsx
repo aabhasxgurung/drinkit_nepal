@@ -104,7 +104,7 @@ const Footer = () => {
                   >
                     <Phone className="h-3 w-3 text-[#9A8F84] flex-shrink-0 mt-[3px] group-hover:text-[#7B0323] transition-colors" />
                     <span className="font-mono text-[11px] text-[#FAF8F5]/55 group-hover:text-[#FAF8F5] transition-colors leading-relaxed">
-                      +977 9819810683
+                      +977 9801359489
                     </span>
                   </a>
                 </li>
@@ -124,7 +124,7 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="h-3 w-3 text-[#9A8F84] flex-shrink-0 mt-[3px]" />
                   <span className="font-mono text-[11px] text-[#FAF8F5]/55 leading-relaxed">
-                    Baluatar, Kathmandu
+                    Baluwatar, Kathmandu
                   </span>
                 </li>
               </ul>
