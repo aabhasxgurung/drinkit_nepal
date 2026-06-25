@@ -51,7 +51,10 @@ export default function ContactClient({
             >
               start a
             </motion.span>
-            <motion.span variants={heroLine} className="block pl-[5%] md:pl-[8%]">
+            <motion.span
+              variants={heroLine}
+              className="block pl-[5%] md:pl-[8%]"
+            >
               conversation.
             </motion.span>
           </h1>
@@ -89,7 +92,7 @@ export default function ContactClient({
               <br />
               <span style={{ color: "#7B0323" }}>information.</span>
             </h2>
-            <p className="font-mono text-[12px] text-[#9A8F84] leading-[2.1] mb-12 max-w-[400px]">
+            <p className="font-mono text-[16px] text-[#5C5248] leading-[1.7] mb-12 max-w-[420px]">
               Our team is here to assist with our premium liquor selection,
               distribution services, and partnership opportunities.
             </p>
@@ -100,15 +103,15 @@ export default function ContactClient({
                   key={info.id}
                   className="border-t border-[#E8E3DC] pt-5 pb-5 pr-8"
                 >
-                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#7B0323] mb-2">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7B0323] mb-3">
                     {info.title}
                   </p>
-                  <p className="font-playfair italic text-[#1C1814] text-[17px] leading-[1.5]">
+                  <p className="font-mono text-[#1C1814] text-[18px] md:text-[18px] leading-[1.6]">
                     {info.value}
                     {info.subValue && (
                       <>
                         <br />
-                        <span className="font-mono not-italic text-[10px] text-[#9A8F84] tracking-wide">
+                        <span className="font-mono text-[14px] text-[#9A8F84] tracking-wide">
                           {info.subValue}
                         </span>
                       </>

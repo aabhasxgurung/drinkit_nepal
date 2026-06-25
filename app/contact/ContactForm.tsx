@@ -6,6 +6,7 @@ import { form_inputFields } from "./contactData";
 
 const ContactForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -65,12 +66,15 @@ const ContactForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
+          setFormSubmitted(false);
+          setSubmitError(false);
           try {
             await handleSubmit(values);
             setFormSubmitted(true);
             resetForm();
           } catch (err) {
             console.error(err);
+            setSubmitError(true);
           } finally {
             setSubmitting(false);
           }
@@ -86,13 +90,25 @@ const ContactForm = () => {
         }) => (
           <Form className="space-y-8">
             {formSubmitted ? (
-              <div className="border-t border-b border-[#69B578]/40 py-5">
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#69B578] mb-2">
+              <div className="border-t border-b border-[#69B578]/40 py-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#69B578] mb-3">
                   Message Received
                 </p>
-                <p className="font-mono text-[11px] text-[#9A8F84] leading-[1.95]">
+                <p className="font-sans text-[16px] md:text-[17px] text-[#5C5248] leading-[1.7]">
                   Thank you for reaching out — we&apos;ll get back to you
                   shortly.
+                </p>
+              </div>
+            ) : null}
+
+            {submitError ? (
+              <div className="border-t border-b border-[#7B0323]/40 py-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#7B0323] mb-3">
+                  Something Went Wrong
+                </p>
+                <p className="font-sans text-[16px] md:text-[17px] text-[#5C5248] leading-[1.7]">
+                  We couldn&apos;t send your message. Please try again, or email
+                  us directly at the address listed.
                 </p>
               </div>
             ) : null}
