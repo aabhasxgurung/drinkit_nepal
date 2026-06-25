@@ -2,16 +2,22 @@
 
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
-import { PAGE_STYLES } from "./contactData";
-import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
 import type { ContactInfo } from "@prisma/client";
-import TopoPattern from "@/components/ui/TopoPattern";
 
-const ICON_BY_TYPE: Record<string, React.ReactNode> = {
-  address: <MapPin className="h-5 w-5 text-wine-900" />,
-  email: <Mail className="h-5 w-5 text-wine-900" />,
-  phone: <Phone className="h-5 w-5 text-wine-900" />,
+// ─── Animation variants ───────────────────────────────────────────────────────
+
+const heroStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+};
+
+const heroLine = {
+  hidden: { opacity: 0, y: 44 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 export default function ContactClient({
@@ -20,97 +26,104 @@ export default function ContactClient({
   contactInfo: ContactInfo[];
 }) {
   return (
-    <div className="min-h-screen bg-[#FAF8F5]">
-      {/* Hero Section */}
-      <div className="relative h-[40vh] overflow-hidden bg-[#F5EBDA]">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src="/home/footerbg.png"
-            fill
-            alt="Cocktails background"
-            className="object-contain object-bottom"
-            priority
-          />
+    <div className="bg-[#FAF8F5]">
+      {/* ── Hero ────────────────────────────────────────────────── */}
+      <section className="bg-[#1C1814] min-h-[80vh] flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-[96px] md:pt-[128px] pb-14">
+        <motion.div variants={heroStagger} initial="hidden" animate="visible">
+          <motion.p
+            variants={heroLine}
+            className="font-mono uppercase tracking-[0.22em] text-[9px] text-[#9A8F84] mb-10 md:mb-14"
+          >
+            Contact&nbsp;&nbsp;·&nbsp;&nbsp;Partnership&nbsp;&nbsp;·&nbsp;&nbsp;Nepal
+          </motion.p>
+
+          <h1
+            className="font-playfair italic text-[#FAF8F5] leading-[0.88] pb-3"
+            style={{ fontSize: "clamp(70px, 11vw, 182px)" }}
+          >
+            <motion.span variants={heroLine} className="block">
+              Let&apos;s
+            </motion.span>
+            <motion.span
+              variants={heroLine}
+              className="block pl-[12%] md:pl-[16%]"
+              style={{ color: "#7B0323" }}
+            >
+              start a
+            </motion.span>
+            <motion.span
+              variants={heroLine}
+              className="block pl-[5%] md:pl-[8%]"
+            >
+              conversation.
+            </motion.span>
+          </h1>
         </motion.div>
-        <div className="absolute inset-0 flex items-center justify-center">
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.55, duration: 0.7 }}
+          className="font-mono text-[10px] text-[#9A8F84] mt-12 max-w-[320px] leading-[1.9] uppercase tracking-wider"
+        >
+          Questions about our products, distribution, or partnerships — our team
+          replies within 24 hours.
+        </motion.p>
+      </section>
+
+      {/* ── Contact Info + Form ─────────────────────────────────── */}
+      <section className="px-6 md:px-12 lg:px-16 py-24 md:py-36">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+          {/* Left — contact information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-5xl md:text-7xl font-serif text-black mb-4">
-              Get In Touch
-            </h1>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto px-4 font-sans">
-              We&apos;d love to hear from you. Whether you have a question about
-              our products, partnership opportunities, or anything else, our
-              team is ready to answer all your inquiries.
+            <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10">
+              Reach Us
             </p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Contact Info + Form */}
-      <section className={`${PAGE_STYLES.sectionPadding} relative overflow-hidden`}>
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <TopoPattern opacity={0.04} />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-10"
+            <h2
+              className="font-playfair italic text-[#1C1814] leading-[1.05] mb-8"
+              style={{ fontSize: "clamp(28px, 4.5vw, 64px)" }}
             >
-              <div>
-                <h2 className={PAGE_STYLES.headingText}>
-                  Contact Information
-                </h2>
-                <p className={PAGE_STYLES.paragraphText}>
-                  Our dedicated team is here to assist you with any inquiries
-                  regarding our premium liquor selection, distribution services,
-                  or partnership opportunities.
-                </p>
+              Contact
+              <br />
+              <span style={{ color: "#7B0323" }}>information.</span>
+            </h2>
+            <p className="font-mono text-[16px] text-[#5C5248] leading-[1.7] mb-12 max-w-[420px]">
+              Our team is here to assist with our premium liquor selection,
+              distribution services, and partnership opportunities.
+            </p>
 
-                <div className="space-y-6">
-                  {contactInfo.map((info) => (
-                    <div key={info.id} className={PAGE_STYLES.contactItem}>
-                      <div className={PAGE_STYLES.iconWrapper}>
-                        {ICON_BY_TYPE[info.type] ?? (
-                          <MapPin className="h-5 w-5 text-wine-900" />
-                        )}
-                      </div>
-                      <div>
-                        <h3 className={PAGE_STYLES.textContainer}>
-                          {info.title}
-                        </h3>
-                        <p className={PAGE_STYLES.contentText}>
-                          {info.value}
-                          {info.subValue && (
-                            <>
-                              <br />
-                              {info.subValue}
-                            </>
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+              {contactInfo.map((info) => (
+                <div
+                  key={info.id}
+                  className="border-t border-[#E8E3DC] pt-5 pb-5 pr-8"
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7B0323] mb-3">
+                    {info.title}
+                  </p>
+                  <p className="font-mono text-[#1C1814] text-[18px] md:text-[18px] leading-[1.6]">
+                    {info.value}
+                    {info.subValue && (
+                      <>
+                        <br />
+                        <span className="font-mono text-[14px] text-[#9A8F84] tracking-wide">
+                          {info.subValue}
+                        </span>
+                      </>
+                    )}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-            {/* Contact Form */}
-            <ContactForm />
-          </div>
+          {/* Right — contact form */}
+          <ContactForm />
         </div>
       </section>
     </div>

@@ -41,7 +41,7 @@ export default function AnimatedBrandSection({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(el);
@@ -73,7 +73,7 @@ export default function AnimatedBrandSection({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(track);
@@ -84,11 +84,7 @@ export default function AnimatedBrandSection({
     <section
       id={`brand-${brand.slug}`}
       className="pt-[48px] md:pt-[80px]"
-      style={
-        brandIndex > 0
-          ? { borderTop: "0.5px solid #E8E3DC" }
-          : undefined
-      }
+      style={brandIndex > 0 ? { borderTop: "0.5px solid #E8E3DC" } : undefined}
     >
       {/* Brand header — constrained width */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">

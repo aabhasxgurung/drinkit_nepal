@@ -6,6 +6,8 @@ import "./globals.css";
 import SmoothScrolling from "@/components/ui/SmoothScrolling";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import AgeVerification from "@/components/AgeVerification";
+import PageTransition from "@/components/PageTransition";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -53,9 +55,10 @@ export default function RootLayout({
       <body
         className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} antialiased`}
       >
+        <AgeVerification />
         <SmoothScrolling>
           <Navbar />
-          {children}
+          <PageTransition>{children}</PageTransition>
           <Footer />
         </SmoothScrolling>
         <div aria-hidden="true" className="grain-overlay" />

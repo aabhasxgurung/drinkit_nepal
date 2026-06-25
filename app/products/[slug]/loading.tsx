@@ -1,55 +1,78 @@
 export default function Loading() {
   return (
-    <div className="flex flex-col lg:flex-row bg-[#0f0f0f] min-h-screen">
-      {/* Left panel skeleton */}
-      <div className="relative lg:w-[45%] bg-[#0f0f0f]">
-        <div className="relative w-full aspect-[3/4] lg:aspect-auto lg:h-screen">
-          {/* Bottle placeholder */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-40 h-72 bg-white/5 rounded-xl animate-pulse" />
+    <div>
+      {/* Hero */}
+      <div
+        className="flex flex-col lg:flex-row"
+        style={{ backgroundColor: "#1C1814", minHeight: "100svh" }}
+      >
+        {/* Left — text */}
+        <div className="lg:w-[52%] px-6 md:px-12 lg:px-16 pt-28 md:pt-36 pb-12 lg:pb-20 flex flex-col justify-between order-2 lg:order-1">
+          <div className="space-y-5">
+            <div className="h-2 w-32 bg-white/10 rounded animate-pulse" />
+            <div className="h-14 w-72 bg-white/10 rounded animate-pulse" />
+            <div className="space-y-2 pt-2">
+              <div className="h-2.5 w-full max-w-md bg-white/[0.06] rounded animate-pulse" />
+              <div className="h-2.5 w-4/5 max-w-sm bg-white/[0.06] rounded animate-pulse" />
+              <div className="h-2.5 w-3/5 max-w-xs bg-white/[0.06] rounded animate-pulse" />
+            </div>
           </div>
-          {/* Text placeholder at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10 space-y-3">
-            <div className="h-2 w-24 bg-white/10 rounded animate-pulse" />
-            <div className="h-8 w-56 bg-white/10 rounded animate-pulse" />
-            <div className="h-2 w-36 bg-white/10 rounded animate-pulse" />
-          </div>
-        </div>
-      </div>
-
-      {/* Right panel skeleton */}
-      <div className="lg:w-[55%] bg-[#FAF8F5] px-6 md:px-12 lg:px-14 xl:px-20 pt-12 lg:pt-24 pb-28 space-y-14">
-        {/* Pulled quote */}
-        <div className="space-y-3">
-          <div className="h-6 w-full bg-[#E8E3DC] rounded animate-pulse" />
-          <div className="h-6 w-5/6 bg-[#E8E3DC] rounded animate-pulse" />
-          <div className="h-6 w-3/4 bg-[#E8E3DC] rounded animate-pulse" />
-        </div>
-
-        {/* Spec pills */}
-        <div className="flex gap-4">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-3 w-16 bg-[#E8E3DC] rounded animate-pulse" />
-          ))}
-        </div>
-
-        {/* Botanicals */}
-        <div className="space-y-4">
-          <div className="h-2 w-20 bg-[#E8E3DC] rounded animate-pulse" />
-          <div className="flex flex-wrap gap-2">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="h-7 w-20 bg-[#EDE8E1] rounded-full animate-pulse" />
+          <div className="flex gap-8 pt-8" style={{ borderTop: "0.5px solid rgba(255,255,255,0.08)" }}>
+            {[24, 20, 28, 18].map((w, i) => (
+              <div key={i}>
+                <div className="h-1.5 w-10 bg-white/[0.15] rounded animate-pulse mb-2" />
+                <div className={`h-2.5 w-${w} bg-white/[0.06] rounded animate-pulse`} />
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Tasting notes */}
-        <div className="space-y-4">
-          <div className="h-2 w-24 bg-[#E8E3DC] rounded animate-pulse" />
-          <div className="space-y-2">
-            <div className="h-5 w-full bg-[#E8E3DC] rounded animate-pulse" />
-            <div className="h-5 w-4/5 bg-[#E8E3DC] rounded animate-pulse" />
-          </div>
+        {/* Right — bottle placeholder */}
+        <div
+          className="relative lg:w-[48%] order-1 lg:order-2"
+          style={{ minHeight: "55svh" }}
+        >
+          <div className="absolute inset-10 bg-white/[0.03] rounded-2xl animate-pulse" />
+        </div>
+      </div>
+
+      {/* Tasting notes */}
+      <div
+        className="px-6 md:px-12 lg:px-16 py-20 md:py-28 space-y-10"
+        style={{ backgroundColor: "#FAF8F5" }}
+      >
+        <div className="h-2 w-24 bg-[#E8E3DC] rounded animate-pulse" />
+        <div className="grid md:grid-cols-3 gap-10">
+          {["Nose", "Palate", "Finish"].map((n) => (
+            <div key={n} className="space-y-3">
+              <div className="h-2 w-12 bg-[#E8E3DC] rounded animate-pulse" />
+              <div className="space-y-2">
+                <div className="h-3 w-full bg-[#F0EBE5] rounded animate-pulse" />
+                <div className="h-3 w-5/6 bg-[#F0EBE5] rounded animate-pulse" />
+                <div className="h-3 w-4/5 bg-[#F0EBE5] rounded animate-pulse" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Specs */}
+      <div
+        className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
+        style={{ backgroundColor: "#1C1814" }}
+      >
+        <div className="grid md:grid-cols-3 gap-16">
+          {[5, 3, 4].map((rows, col) => (
+            <div key={col} className="space-y-4">
+              <div className="h-1.5 w-20 bg-white/10 rounded animate-pulse mb-6" />
+              {Array.from({ length: rows }).map((_, i) => (
+                <div key={i} className="flex justify-between py-3.5" style={{ borderBottom: "0.5px solid rgba(255,255,255,0.06)" }}>
+                  <div className="h-2 w-16 bg-white/[0.1] rounded animate-pulse" />
+                  <div className="h-2 w-20 bg-white/[0.06] rounded animate-pulse" />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </div>

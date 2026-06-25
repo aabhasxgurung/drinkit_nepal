@@ -15,7 +15,7 @@ export const CONTACT_INFO = {
     title: "Call Us",
     content: (
       <>
-        +977 9819810683
+        +977 9801359489
         <br />
         Mon–Fri from 9am to 6pm
       </>

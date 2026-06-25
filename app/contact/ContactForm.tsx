@@ -1,15 +1,12 @@
-import { InputField } from "@/components/ui/Input";
 import { Form, Formik } from "formik";
-import { Send } from "lucide-react";
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { form_inputFields } from "./contactData";
 
-// Array of input field configurations
-
 const ContactForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -43,114 +40,136 @@ const ContactForm = () => {
     }
   };
 
+  const fieldBase =
+    "w-full bg-transparent border-b border-[#E8E3DC] py-3 font-mono text-[13px] text-[#1C1814] placeholder:text-[#C4BBB0] focus:outline-none focus:border-[#1C1814] transition-colors duration-300";
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="bg-white rounded-2xl p-8 md:p-10 elegant-shadow">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-          Send Us a Message
-        </h2>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={async (values, { setSubmitting }) => {
-            try {
-              await handleSubmit(values);
-              setFormSubmitted(true);
-            } catch (err) {
-              console.error(err);
-              // you could show an error state here
-            } finally {
-              setSubmitting(false);
-            }
-          }}
-        >
-          {({
-            values,
-            errors,
-            handleChange,
-            handleBlur,
-            touched,
-            isSubmitting,
-          }) => (
-            <Form className="space-y-5">
-              {formSubmitted ? (
-                <div className="bg-green-50 text-green-800 p-4 rounded-lg mb-6 font-sans">
-                  <p className="font-medium">Thank you for your message!</p>
-                  <p className="mt-1">
-                    We have received your inquiry and will get back to you
-                    shortly.
-                  </p>
+      <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10">
+        Send a Message
+      </p>
+      <h2
+        className="font-playfair italic text-[#1C1814] leading-[1.05] mb-12"
+        style={{ fontSize: "clamp(28px, 4.5vw, 64px)" }}
+      >
+        Drop us
+        <br />
+        <span style={{ color: "#7B0323" }}>a line.</span>
+      </h2>
+
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          setFormSubmitted(false);
+          setSubmitError(false);
+          try {
+            await handleSubmit(values);
+            setFormSubmitted(true);
+            resetForm();
+          } catch (err) {
+            console.error(err);
+            setSubmitError(true);
+          } finally {
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({
+          values,
+          errors,
+          handleChange,
+          handleBlur,
+          touched,
+          isSubmitting,
+        }) => (
+          <Form className="space-y-8">
+            {formSubmitted ? (
+              <div className="border-t border-b border-[#69B578]/40 py-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#69B578] mb-3">
+                  Message Received
+                </p>
+                <p className="font-sans text-[16px] md:text-[17px] text-[#5C5248] leading-[1.7]">
+                  Thank you for reaching out — we&apos;ll get back to you
+                  shortly.
+                </p>
+              </div>
+            ) : null}
+
+            {submitError ? (
+              <div className="border-t border-b border-[#7B0323]/40 py-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#7B0323] mb-3">
+                  Something Went Wrong
+                </p>
+                <p className="font-sans text-[16px] md:text-[17px] text-[#5C5248] leading-[1.7]">
+                  We couldn&apos;t send your message. Please try again, or email
+                  us directly at the address listed.
+                </p>
+              </div>
+            ) : null}
+
+            {form_inputFields.map((field) => {
+              const fieldName = field.name as keyof typeof values;
+              const hasError = touched[fieldName] && errors[fieldName];
+
+              return (
+                <div key={field.name}>
+                  <label
+                    htmlFor={field.name}
+                    className="block font-mono text-[9px] uppercase tracking-[0.18em] text-[#9A8F84] mb-3"
+                  >
+                    {field.label}
+                  </label>
+
+                  {field.isMultiline ? (
+                    <textarea
+                      id={field.name}
+                      name={field.name}
+                      rows={4}
+                      value={values[fieldName]}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder={field.placeholder}
+                      className={`${fieldBase} resize-none`}
+                    />
+                  ) : (
+                    <input
+                      id={field.name}
+                      name={field.name}
+                      type={field.type}
+                      value={values[fieldName]}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder={field.placeholder}
+                      className={fieldBase}
+                    />
+                  )}
+
+                  {hasError && (
+                    <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#7B0323] mt-2">
+                      {errors[fieldName]}
+                    </p>
+                  )}
                 </div>
-              ) : null}
-              {form_inputFields.map((field) => {
-                const fieldName = field.name as keyof typeof values;
+              );
+            })}
 
-                return (
-                  <InputField
-                    key={field.name}
-                    name={field.name}
-                    label={field.label}
-                    type={field.type}
-                    placeholder={field.placeholder}
-                    isMultiline={field.isMultiline}
-                    value={values[fieldName]}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    touched={touched[fieldName]}
-                    error={errors[fieldName]}
-                  />
-                );
-              })}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-medium text-white transition-colors ${
-                  isSubmitting
-                    ? "bg-wine-800 cursor-not-allowed"
-                    : "bg-wine-900 hover:bg-wine-800"
-                }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-5 w-5" />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </button>
-            </Form>
-          )}
-        </Formik>
-      </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex items-center justify-center gap-3 bg-[#1C1814] px-8 py-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#FAF8F5] hover:bg-[#2C2018] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Sending…" : "Send Message"}
+              {!isSubmitting && <span>→</span>}
+            </button>
+          </Form>
+        )}
+      </Formik>
     </motion.div>
   );
 };

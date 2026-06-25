@@ -28,9 +28,9 @@ const C = {
 
   // Product bottles
   hapusaBottle:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredHapusa_hbrchu.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820669/hapusa_odr7kb.png",
   greaterThanBottle:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/greaterThanFeatured_onn79k.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820669/gt_mdyr5s.png",
   whistlerBottle:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/whistlerbottle_tmoco5.png",
   cheninBlanc:
@@ -61,19 +61,27 @@ const C = {
   cherryLiqueur:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/luxardo-cherry_hlnyxc.webp",
   tripleSec:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/luxardotriple_eaimmo.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820418/triplesec_jbjalj.png",
   hazelnut:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/angioletto_tzd5nh.png",
   absinthe:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/absinthe_cab1vj.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/absinthe-la-fata_beqj2b.png",
   rhubarbBitter:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/rhubarb_tqyjmk.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820418/rhubarb_ptcehb.png",
   chamomileBitter:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/chamolie_v0lssi.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/chamomile_zefg8u.png",
   orangeBitter:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/orange_lszg3x.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820418/orange_hhcmzm.png",
   coffeeBitter:
-    "https://res.cloudinary.com/dvhoi2xg1/image/upload/coffee_amkvht.jpg",
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/coffee_j6jsqm.png",
+  merrysIrishCream:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/irishcream_ugipjv.png",
+  merrysWhiteChocolate:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820418/whitechocolate_hx1qdl.png",
+  broCode:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/brocodebottle_c4dd3b.png",
+  bongaBonga:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/bongabongab_giwncn.png",
 
   // Featured / hero images
   featHapusa:
@@ -148,6 +156,27 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredLux_rbv8jd.png",
   angiolettoLime:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/angioletto_tzd5nh.png",
+
+  // Amrit's signature cocktails
+  summerScandal: "/signature/summerscandal.jpeg",
+  underTheFigTree: "/signature/underthefigtree.jpeg",
+  midNightOffering: "/signature/midnightoffering.jpeg",
+  ohMami: "/signature/ohmami.jpeg",
+  wildSeduction: "/signature/wildseduction.jpeg",
+  purpleTease: "/signature/purpletree.jpeg",
+  smokeAndDust: "/signature/smokeanddust.jpeg",
+
+  // Unassigned — assign when cocktail recipes are ready
+  broCodeSpritz:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1781087516/brocodespritz_dyq5pa.jpg",
+  luxardoAperitivoCocktail:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1781087516/luxardoaperitivo_irbpyx.jpg",
+  pandorasBox:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1781087516/pandorasbox_xabkpq.jpg",
+  velvetEspresso:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1781087517/velvetespresso_d3ywej.jpg",
+  whistlersFashioned:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1781087517/whistlersfashioned_gfcwt8.jpg",
 } as const;
 
 // ── Brands ────────────────────────────────────────────────────────────────────
@@ -186,6 +215,30 @@ const brands = [
     name: "Greater Than",
     logo: C.greaterThanLogo,
     description: "India's first London Dry Gin, copper pot distilled in Goa.",
+    country: "India",
+  },
+  {
+    slug: "merrys",
+    name: "Merry's",
+    logo: "/home/Merrys_Logo.png",
+    description:
+      "Robert A. Merry & Co. Ltd — premium Irish cream liqueurs blended with Irish whiskey and fresh dairy cream.",
+    country: "Ireland",
+  },
+  {
+    slug: "bro-code",
+    name: "Bro Code",
+    logo: "/home/brocode.png",
+    description:
+      "India's boldest high-strength beer — brewed from premium barley malt for those who don't compromise.",
+    country: "India",
+  },
+  {
+    slug: "bonga-bonga",
+    name: "Bonga Bonga",
+    logo: "/home/Bongalogo.png",
+    description:
+      "A vibrant mystery liqueur with a playful, fruity character that defies easy categorization.",
     country: "India",
   },
 ];
@@ -886,6 +939,113 @@ const products = [
       "Essential for espresso cocktails",
     ],
   },
+
+  // ── Merry's ────────────────────────────────────────────────────────────────
+  {
+    slug: "merrys-irish-cream",
+    name: "Merry's Irish Cream",
+    brandSlug: "merrys",
+    category: "liqueur",
+    description:
+      "Smooth, indulgent Irish cream liqueur from Robert A. Merry & Co. Ltd. Blended from Irish whiskey, fresh dairy cream, and natural cocoa — rich enough to sip alone, versatile enough for cocktails.",
+    image: C.merrysIrishCream,
+    volume: "700ml",
+    alcoholPercentage: "17% ABV",
+    country: "Ireland",
+    region: "Ireland",
+    flavors: "Irish Whiskey, Fresh Cream, Cocoa, Vanilla, Toffee",
+    tastingNotes:
+      "Velvety smooth on the nose with rich cream and cocoa. The palate delivers warm Irish whiskey, chocolate toffee, and a hint of vanilla. Long, luscious finish with lingering cream.",
+    servingSuggestion:
+      "Serve neat over ice, stirred into coffee, or blended into a Mudslide. Also extraordinary poured over vanilla ice cream as a simple dessert.",
+    awards: [],
+    pairings: ["Coffee", "Dark chocolate", "Vanilla ice cream"],
+    highlights: [
+      "Blended from Irish whiskey and fresh dairy cream",
+      "Rich cocoa and vanilla character",
+      "Versatile — neat, on ice, or in cocktails",
+    ],
+  },
+  {
+    slug: "merrys-white-chocolate",
+    name: "Merry's White Chocolate Irish Cream",
+    brandSlug: "merrys",
+    category: "liqueur",
+    description:
+      "A luxuriously sweet Irish cream liqueur with a white chocolate twist from Robert A. Merry & Co. Ltd. The same smooth, whiskey-cream base as the original — elevated with rich white chocolate and cocoa butter.",
+    image: C.merrysWhiteChocolate,
+    volume: "700ml",
+    alcoholPercentage: "17% ABV",
+    country: "Ireland",
+    region: "Ireland",
+    flavors:
+      "White Chocolate, Fresh Cream, Cocoa Butter, Vanilla, Irish Whiskey",
+    tastingNotes:
+      "Sweet white chocolate and cream on the nose with a warm whiskey underpinning. Rich and indulgent on the palate — cocoa butter, vanilla, and cream in perfect balance. Long, sweet, creamy finish.",
+    servingSuggestion:
+      "Serve chilled over ice or use as a base for dessert cocktails. Extraordinary poured over strawberry or vanilla ice cream.",
+    awards: [],
+    pairings: ["White chocolate desserts", "Vanilla ice cream", "Coffee"],
+    highlights: [
+      "White chocolate variant of the classic Irish cream",
+      "Smooth, indulgent, and dessert-ready",
+      "From Robert A. Merry & Co. Ltd — Ireland",
+    ],
+  },
+
+  // ── Bro Code ───────────────────────────────────────────────────────────────
+  {
+    slug: "bro-code-beer",
+    name: "Bro Code",
+    brandSlug: "bro-code",
+    category: "beer",
+    description:
+      "India's boldest high-strength beer — brewed from premium barley malt for a full-bodied, smooth finish that belies its strength. Bro Code is built for those who don't compromise.",
+    image: C.broCode,
+    volume: "650ml",
+    alcoholPercentage: "15% ABV",
+    country: "India",
+    region: "India",
+    flavors: "Barley Malt, Grain, Subtle Hops, Clean Finish",
+    tastingNotes:
+      "Light golden with a smooth, malt-forward character on the nose. Clean and surprisingly easy-drinking on the palate with subtle hop bitterness and a warm, full-bodied finish.",
+    servingSuggestion:
+      "Serve well chilled at 4–6°C. Best enjoyed straight from the bottle or poured into a chilled glass with salted snacks.",
+    awards: [],
+    pairings: ["Spiced street food", "Grilled meats", "Indian snacks"],
+    highlights: [
+      "15% ABV — India's highest-strength beer",
+      "Brewed from premium barley malt",
+      "Smooth finish despite high strength",
+    ],
+  },
+
+  // ── Bonga Bonga ────────────────────────────────────────────────────────────
+  {
+    slug: "bonga-bonga-mystery-liqueur",
+    name: "Bonga Bonga Mystery Liqueur",
+    brandSlug: "bonga-bonga",
+    category: "liqueur",
+    description:
+      "The mystery is half the fun. Bonga Bonga is a vibrant, colorful liqueur with a playful character that defies easy categorization — fruity, sweet, and utterly distinctive. Every pour is a conversation starter.",
+    image: C.bongaBonga,
+    volume: "700ml",
+    alcoholPercentage: "14.9% ABV",
+    country: "India",
+    region: "India",
+    flavors: "Tropical Fruit, Sweet Berry, Citrus, Playful Spice",
+    tastingNotes:
+      "Vibrant and fruit-forward on the nose with a bright tropical sweetness. Light and playful on the palate with juicy fruit character and a clean, refreshing finish.",
+    servingSuggestion:
+      "Serve over ice or mix with soda for a simple, fun highball. Excellent as a party cocktail base — shake with lime and top with ginger beer.",
+    awards: [],
+    pairings: ["Light snacks", "Spiced appetizers", "Tropical fruit"],
+    highlights: [
+      "Mystery liqueur — the flavor is the surprise",
+      "Vibrant, fun, and endlessly mixable",
+      "A conversation starter in every glass",
+    ],
+  },
 ];
 
 // ── Cocktails ─────────────────────────────────────────────────────────────────
@@ -917,8 +1077,8 @@ const cocktails: Array<{
     description:
       "A mountain twist on the Italian aperitivo classic, featuring Timbur-infused Hapusa Gin for a subtle Himalayan numbing sensation alongside Campari and sweet vermouth.",
     imageUrl: C.himalayanNegroni,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Modern",
     base: "Hapusa",
     method: "Stir",
     garnish: "Orange peel",
@@ -941,8 +1101,8 @@ const cocktails: Array<{
     description:
       "A fruity, refreshing smash that pairs Hapusa Gin with apricot jam, fresh apple juice, and lime for a boldly seasonal serve.",
     imageUrl: C.apricotSmash,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Medium,
+    category: "Modern",
     base: "Hapusa",
     method: "Shake",
     garnish: "Dried apricot, mint sprig",
@@ -991,7 +1151,7 @@ const cocktails: Array<{
     description:
       "A sophisticated gin sour with Hapusa at the base, finished with a red wine float for a striking two-tone visual and a complex flavour profile.",
     imageUrl: C.nySour,
-    difficulty: CocktailDifficulty.Easy,
+    difficulty: CocktailDifficulty.Medium,
     category: "Classic",
     base: "Hapusa",
     method: "Shake",
@@ -1016,7 +1176,7 @@ const cocktails: Array<{
     description:
       "Often called a mojito for gin lovers. Fresh mint, lime, and Greater Than Gin — simple, clean, and endlessly refreshing.",
     imageUrl: C.southside,
-    difficulty: CocktailDifficulty.Easy,
+    difficulty: CocktailDifficulty.Medium,
     category: "Classic",
     base: "Greater Than",
     method: "Shake and fine strain",
@@ -1062,8 +1222,8 @@ const cocktails: Array<{
     description:
       "Vibrant and herbal. Muddled fresh basil releases a peppery aroma that complements the clean juniper and citrus notes of Greater Than perfectly.",
     imageUrl: C.ginBasil,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Medium,
+    category: "Modern Classic",
     base: "Greater Than",
     method: "Shake",
     garnish: "Basil sprig",
@@ -1107,7 +1267,7 @@ const cocktails: Array<{
     description:
       "A daiquiri variation created for Ernest Hemingway himself — tart and complex with maraschino and grapefruit, no sugar added.",
     imageUrl: C.hemingway,
-    difficulty: CocktailDifficulty.Easy,
+    difficulty: CocktailDifficulty.Medium,
     category: "Classic",
     base: "Maraschino Originale",
     method: "Shake and double strain",
@@ -1132,7 +1292,7 @@ const cocktails: Array<{
       "A simple, elegant highball showcasing the nutty cherry notes of Maraschino Originale, lengthened with tonic and lifted with absinthe.",
     imageUrl: C.maratonic,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Maraschino Originale",
     method: "Build",
     garnish: "Rosemary sprig, cucumber slice",
@@ -1159,7 +1319,7 @@ const cocktails: Array<{
     description:
       "A pre-Prohibition classic with a pale sky-blue hue. Gin, maraschino, and lemon — floral, complex, and effortlessly beautiful in the glass.",
     imageUrl: C.aviation,
-    difficulty: CocktailDifficulty.Easy,
+    difficulty: CocktailDifficulty.Medium,
     category: "Classic",
     base: "Maraschino Originale",
     method: "Shake and double strain",
@@ -1186,8 +1346,8 @@ const cocktails: Array<{
     description:
       "A lively, blood-red fizz built around the intense cherry character of Sangue Morlacco, brightened with lemon and gin.",
     imageUrl: C.morlaccoFizz,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Medium,
+    category: "Modern",
     base: "Cherry Liqueur",
     method: "Shake and fine strain",
     garnish: "Luxardo cherry",
@@ -1215,7 +1375,7 @@ const cocktails: Array<{
       "A rich, deeply fruited twist on the Negroni — Sangue Morlacco stands in for Campari, adding a concentrated cherry sweetness alongside the vermouth.",
     imageUrl: C.cherryNegroni,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Cherry Liqueur",
     method: "Stir",
     garnish: "Lemon zest, Luxardo cherry",
@@ -1242,7 +1402,7 @@ const cocktails: Array<{
       "A breezy, cherry-forward highball — gin and Sangue Morlacco lengthened with soda. A perfect long drink for a warm evening.",
     imageUrl: C.luxiStyle,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Cherry Liqueur",
     method: "Build",
     garnish: "Rosemary, lemon zest",
@@ -1269,7 +1429,7 @@ const cocktails: Array<{
       "Holiday in a glass. Luxardo Aperitivo and Triple Sec shake together with fresh pink grapefruit for a bright, bittersweet serve.",
     imageUrl: C.vacanza,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Triple Sec",
     method: "Shake and strain",
     garnish: "Grapefruit zest",
@@ -1295,7 +1455,7 @@ const cocktails: Array<{
     description:
       "A silky, sharp pre-Prohibition classic. Gin, triple sec, and fresh lemon — elegant in its simplicity and properly citrusy.",
     imageUrl: C.whiteLady,
-    difficulty: CocktailDifficulty.Easy,
+    difficulty: CocktailDifficulty.Medium,
     category: "Classic",
     base: "Triple Sec",
     method: "Shake and strain",
@@ -1414,7 +1574,7 @@ const cocktails: Array<{
       "A Spritz-style serve layering Limoncello, Luxardo Bitter, and sweet vermouth — bright, complex, and topped with soda for lift.",
     imageUrl: C.sorrentino,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Luxardo Bitter",
     method: "Build over ice",
     garnish: "Orange peel",
@@ -1436,8 +1596,8 @@ const cocktails: Array<{
     description:
       "A tropical explosion of rum, pineapple, and lime with the anise punch of Sambuca and the herbal edge of Luxardo Bitter.",
     imageUrl: C.jungleSamba,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Modern",
     base: "Luxardo Sambuca",
     method: "Shake and strain",
     garnish: "Orange peel",
@@ -1513,8 +1673,8 @@ const cocktails: Array<{
     description:
       "Complex and layered — gin, aperitivo, and maraschino with lime. A house cocktail that shows what Luxardo's range can do together.",
     imageUrl: C.ilSanto,
-    difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Modern",
     base: "Luxardo Aperitivo",
     method: "Shake and strain",
     garnish: "Orange zest",
@@ -1547,7 +1707,7 @@ const cocktails: Array<{
       "Simple and indulgent — Luxardo's hazelnut liqueur with fresh lime. The citrus cuts the sweetness and makes it unexpectedly easy to drink.",
     imageUrl: C.angiolettoLime,
     difficulty: CocktailDifficulty.Easy,
-    category: "Classic",
+    category: "Modern",
     base: "Luxardo Angioletto",
     method: "Stir over ice",
     garnish: "Lime wedges",
@@ -1559,6 +1719,253 @@ const cocktails: Array<{
         order: 0,
       },
       { amount: "15ml", name: "Fresh lime juice", order: 1 },
+    ],
+  },
+];
+
+// ── Bartenders ────────────────────────────────────────────────────────────────
+// TODO: move to admin UI once the Bartender model is fully established
+const bartenders = [
+  {
+    // TODO: confirm full legal name spelling
+    name: "Amrit Tamang Waiba",
+    slug: "amrit-tamang-waiba",
+    role: "Brand Ambassador",
+    // TODO: replace with real bio
+    bio: "Brand Ambassador for Drink It Nepal. A passionate cocktail creator known for boundary-pushing, flavour-forward signature serves across Kathmandu.",
+    // TODO: replace with real quote
+    quote: "Every great cocktail tells a story — I just help you find yours.",
+    // TODO: add real Instagram handle
+    instagramHandle: null as string | null,
+    photoUrl: "/home/bartender.jpg",
+  },
+];
+
+// ── Amrit's signature cocktails ───────────────────────────────────────────────
+// TODO: add real cocktail photography to Cloudinary and replace all imageUrl placeholders
+type AmritCocktailInput = {
+  slug: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  difficulty: CocktailDifficulty;
+  category: string;
+  base: string;
+  method: string;
+  garnish?: string;
+  ingredients: IngredientInput[];
+};
+
+const amritCocktails: AmritCocktailInput[] = [
+  {
+    slug: "summer-scandal",
+    title: "Summer Scandal",
+    base: "Greater Than",
+    method: "Shake and double strain",
+    garnish: "3 drops basil oil",
+    difficulty: CocktailDifficulty.Easy,
+    category: "Signature",
+    description:
+      "A smoky, tangy twist featuring strawberry infused gin with smoked tomato water and dry vermouth.",
+    imageUrl: C.summerScandal,
+    ingredients: [
+      {
+        amount: "45ml",
+        name: "Strawberry Infused Greater Than Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      { amount: "20ml", name: "Dry Vermouth", order: 1 },
+      { amount: "20ml", name: "Smoked Tomato Water Cordial", order: 2 },
+      { amount: "15ml", name: "Lime Juice", order: 3 },
+    ],
+  },
+  {
+    slug: "under-the-fig-tree",
+    title: "Under The Fig Tree",
+    base: "Hapusa",
+    method: "Batched & stirred",
+    garnish: "Fig leaf circle & orange zest",
+    difficulty: CocktailDifficulty.Medium,
+    category: "Signature",
+    description:
+      "Fig leaf infused Hapusa meets toasted coconut Luxardo Bitter Rosso — a deeply aromatic, contemplative serve.",
+    imageUrl: C.underTheFigTree,
+    ingredients: [
+      {
+        amount: "45ml",
+        name: "Fig Leaf Infused Hapusa Himalayan Dry Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
+      {
+        amount: "20ml",
+        name: "Toasted Coconut Infused Luxardo Bitter Rosso",
+        productSlug: "luxardo-bitter-rosso",
+        order: 1,
+      },
+      {
+        amount: "10ml",
+        name: "Luxardo Angioletto Hazelnut Liqueur",
+        productSlug: "luxardo-hazelnut-liqueur",
+        order: 2,
+      },
+      { amount: "10ml", name: "Dry Vermouth", order: 3 },
+      { amount: "1 drop", name: "Saline Solution", order: 4 },
+    ],
+  },
+  {
+    slug: "mid-night-offering",
+    title: "Mid Night Offering",
+    base: "The Whistler",
+    method: "Batched and stirred",
+    garnish: "Dates & orange zest",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Signature",
+    description:
+      "Whistler's Triple Oak Whiskey intensified with black garlic and coffee — a dark, complex ritual in a glass.",
+    imageUrl: C.midNightOffering,
+    ingredients: [
+      {
+        amount: "60ml",
+        name: "Whistler's Triple Oak Whiskey",
+        productSlug: "the-whistler-irish-whiskey",
+        order: 0,
+      },
+      { amount: "10ml", name: "Black Garlic & Coffee Cordial", order: 1 },
+      { amount: "2 dsh", name: "Saline Solution", order: 2 },
+      {
+        amount: "3 dsh",
+        name: "Coffee Bitter",
+        productSlug: "luxardo-coffee-bitter",
+        order: 3,
+      },
+      {
+        amount: "2 dsh",
+        name: "Orange Bitter",
+        productSlug: "luxardo-orange-bitter",
+        order: 4,
+      },
+    ],
+  },
+  {
+    slug: "oh-mami",
+    title: "Oh Mami",
+    base: "Hapusa",
+    method: "Batched and stirred",
+    garnish: "Burnt cherry tomatoes",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Signature",
+    description:
+      "A clarified, umami-forward cocktail — Hapusa meets tomato, fig, timmur and milk for an unforgettable savoury serve.",
+    imageUrl: C.ohMami,
+    ingredients: [
+      {
+        amount: "50ml",
+        name: "Hapusa Himalayan Dry Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
+      { amount: "22.5ml", name: "Fig & Timmur Cordial", order: 1 },
+      { amount: "22.5ml", name: "Lime Juice", order: 2 },
+      { amount: "22.5ml", name: "Tomato Juice", order: 3 },
+      { amount: "3 dsh", name: "Tabasco Sauce", order: 4 },
+      { amount: "3 dsh", name: "Worcestershire Sauce", order: 5 },
+      { amount: "25ml", name: "Milk", order: 6 },
+    ],
+  },
+  {
+    slug: "wild-seduction",
+    title: "Wild Seduction",
+    base: "The Whistler",
+    method: "Stir",
+    garnish: "Mushroom",
+    difficulty: CocktailDifficulty.Medium,
+    category: "Signature",
+    description:
+      "Whiskey stirred with shiitake cordial and MSG — deeply savoury, umami-rich, and utterly unexpected.",
+    imageUrl: C.wildSeduction,
+    ingredients: [
+      {
+        amount: "60ml",
+        name: "Whistler's Triple Oak Whiskey",
+        productSlug: "the-whistler-irish-whiskey",
+        order: 0,
+      },
+      { amount: "10ml", name: "Shiitake Cordial", order: 1 },
+      { amount: "4 drops", name: "MSG Solution", order: 2 },
+      {
+        amount: "2 dsh",
+        name: "Rhubarb Bitters",
+        productSlug: "luxardo-rhubarb-bitter",
+        order: 3,
+      },
+    ],
+  },
+  {
+    slug: "purple-tease",
+    title: "Purple Tease",
+    base: "Greater Than",
+    method: "Shake",
+    garnish: "Lavender",
+    difficulty: CocktailDifficulty.Easy,
+    category: "Signature",
+    description:
+      "Lavender infused gin shaken with tropical fruits and strawberry foam — vibrant, playful and aromatic.",
+    imageUrl: C.purpleTease,
+    ingredients: [
+      {
+        amount: "60ml",
+        name: "Lavender Infused Greater Than London Dry Gin",
+        productSlug: "greater-than-london-dry-gin",
+        order: 0,
+      },
+      { amount: "20ml", name: "Orange Oleo Saccharum", order: 1 },
+      { amount: "20ml", name: "Lime Juice", order: 2 },
+      { amount: "20ml", name: "Pineapple Juice", order: 3 },
+      { amount: "30ml", name: "Mango Puree", order: 4 },
+      { amount: "top", name: "Strawberry Foam", order: 5 },
+    ],
+  },
+  {
+    slug: "smoke-and-dust",
+    title: "Smoke & Dust",
+    base: "Hapusa",
+    method: "Shake and strain",
+    garnish: "Smoked orange peel",
+    difficulty: CocktailDifficulty.Advanced,
+    category: "Signature",
+    description:
+      "Hapusa and Sangue Morlacco lifted with liquid smoke and orange — a theatrical, complex cocktail with depth.",
+    imageUrl: C.smokeAndDust,
+    ingredients: [
+      {
+        amount: "20ml",
+        name: "Hapusa Himalayan Dry Gin",
+        productSlug: "hapusa-himalayan-dry-gin",
+        order: 0,
+      },
+      {
+        amount: "20ml",
+        name: "Luxardo Sangue Morlacco",
+        productSlug: "luxardo-cherry-liqueur",
+        order: 1,
+      },
+      { amount: "2 drops", name: "Liquid Smoke", order: 2 },
+      { amount: "20ml", name: "Orange Juice", order: 3 },
+      {
+        amount: "20ml",
+        name: "Luxardo Maraschino Originale",
+        productSlug: "luxardo-maraschino-originale",
+        order: 4,
+      },
+      {
+        amount: "2 dash",
+        name: "Luxardo Orange Bitters",
+        productSlug: "luxardo-orange-bitter",
+        order: 5,
+      },
+      { amount: "10ml", name: "Lime Juice", order: 6 },
     ],
   },
 ];
@@ -1675,6 +2082,55 @@ async function main() {
       where: { slug: cocktail.slug },
       update: { ...cocktail, ingredients: { create: resolvedIngredients } },
       create: { ...cocktail, ingredients: { create: resolvedIngredients } },
+    });
+  }
+
+  // ── Bartenders ────────────────────────────────────────────────────────────
+  console.log("  → Bartenders");
+  for (const bartender of bartenders) {
+    await prisma.bartender.upsert({
+      where: { slug: bartender.slug },
+      update: bartender,
+      create: bartender,
+    });
+  }
+
+  const bartenderRows = await prisma.bartender.findMany({
+    select: { id: true, slug: true },
+  });
+  const bartenderIdBySlug = new Map(bartenderRows.map((b) => [b.slug, b.id]));
+
+  // ── Amrit's signature cocktails ───────────────────────────────────────────
+  console.log("  → Amrit's signature cocktails");
+  const amritId = bartenderIdBySlug.get("amrit-tamang-waiba")!;
+  for (const { ingredients, ...cocktail } of amritCocktails) {
+    const existing = await prisma.cocktail.findUnique({
+      where: { slug: cocktail.slug },
+      select: { id: true },
+    });
+    if (existing) {
+      await prisma.cocktailIngredient.deleteMany({
+        where: { cocktailId: existing.id },
+      });
+    }
+    const resolvedIngredients = ingredients.map(({ productSlug, ...rest }) => ({
+      ...rest,
+      ...(productSlug && productIdBySlug.has(productSlug)
+        ? { productId: productIdBySlug.get(productSlug) }
+        : {}),
+    }));
+    await prisma.cocktail.upsert({
+      where: { slug: cocktail.slug },
+      update: {
+        ...cocktail,
+        bartenderId: amritId,
+        ingredients: { create: resolvedIngredients },
+      },
+      create: {
+        ...cocktail,
+        bartenderId: amritId,
+        ingredients: { create: resolvedIngredients },
+      },
     });
   }
 

@@ -33,6 +33,10 @@ model Product {
   category            String
   flavors             String?
   grapeVarietal       String?
+  tastingNotes        String?
+  region              String?
+  servingSuggestion   String?
+  awards              String[]
   pairings            String[]
   highlights          String[]
   isFeatured          Boolean              @default(false)
@@ -43,6 +47,20 @@ model Product {
   updatedAt           DateTime             @updatedAt
   cocktailIngredients CocktailIngredient[]
   brand               Brand                @relation(fields: [brandId], references: [id])
+}
+
+model Bartender {
+  id                Int        @id @default(autoincrement())
+  name              String
+  slug              String     @unique
+  role              String
+  bio               String
+  quote             String
+  instagramHandle   String?
+  photoUrl          String
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  cocktails         Cocktail[]
 }
 
 model Cocktail {
@@ -58,8 +76,10 @@ model Cocktail {
   garnish       String?
   isFeatured    Boolean              @default(false)
   featuredOrder Int?
+  bartenderId   Int?
   createdAt     DateTime             @default(now())
   updatedAt     DateTime             @updatedAt
+  bartender     Bartender?           @relation(fields: [bartenderId], references: [id])
   ingredients   CocktailIngredient[]
 }
 

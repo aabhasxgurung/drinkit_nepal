@@ -7,15 +7,13 @@ import Link from "next/link";
 /* ── Brand data ──────────────────────────────────────────────────── */
 interface BrandData {
   number: string;
-  logo: string;
+  logo?: string;
   name: string;
   category: string;
   origin: string;
   expressions: number;
   link: string;
-  bottle: string;
-  tilt: number;
-  tint: string; // rgba string for the card top-section tint
+  tint: string;
 }
 
 const BRANDS: BrandData[] = [
@@ -24,60 +22,80 @@ const BRANDS: BrandData[] = [
     logo: "/home/hapusalogo.png",
     name: "Hapusa",
     category: "Craft Gin",
-    origin: "Himachal Pradesh, India",
+    origin: "India",
     expressions: 2,
     link: "/products?brand=hapusa",
-    bottle: "/home/hapusa.png",
-    tilt: -8,
-    tint: "rgba(27, 67, 50, 0.07)",
+    tint: "rgba(27, 67, 50, 0.05)",
   },
   {
     number: "02",
     logo: "/home/Luxardologo.png",
     name: "Luxardo",
     category: "Italian Liqueur",
-    origin: "Padova, Italy",
+    origin: "Italy",
     expressions: 13,
     link: "/products?brand=luxardo",
-    bottle: "/sula/luxardo_maraschino_originale.png",
-    tilt: 6,
-    tint: "rgba(123, 3, 35, 0.07)",
+    tint: "rgba(123, 3, 35, 0.05)",
   },
   {
     number: "03",
     logo: "/home/sulalogo.png",
     name: "Sula",
     category: "Indian Wine",
-    origin: "Nashik, India",
+    origin: "India",
     expressions: 8,
     link: "/products?brand=sula",
-    bottle: "/sula/cheninBlanc.png",
-    tilt: -5,
-    tint: "rgba(146, 64, 14, 0.07)",
+    tint: "rgba(146, 64, 14, 0.05)",
   },
   {
     number: "04",
     logo: "/home/whistler.png",
     name: "The Whistler",
     category: "Irish Whiskey",
-    origin: "County Louth, Ireland",
+    origin: "Ireland",
     expressions: 1,
     link: "/products?brand=whistler",
-    bottle: "/sula/whistlerbottle.png",
-    tilt: 10,
-    tint: "rgba(30, 58, 95, 0.07)",
+    tint: "rgba(30, 58, 95, 0.05)",
   },
   {
     number: "05",
     logo: "/home/greaterthanlogo.png",
     name: "Greater Than",
     category: "London Dry Gin",
-    origin: "New Delhi, India",
+    origin: "India",
     expressions: 1,
     link: "/products?brand=greater-than",
-    bottle: "/home/greaterthan.png",
-    tilt: -7,
-    tint: "rgba(120, 53, 15, 0.07)",
+    tint: "rgba(120, 53, 15, 0.05)",
+  },
+  {
+    number: "06",
+    logo: "/home/Merrys_Logo.png",
+    name: "Merry's",
+    category: "Vermouth & Amaro",
+    origin: "Ireland",
+    expressions: 1,
+    link: "/products?brand=merrys",
+    tint: "rgba(120, 53, 15, 0.05)",
+  },
+  {
+    number: "07",
+    logo: "/home/Bongalogo.png",
+    name: "Bonga Bonga Mystery Liqueur",
+    category: "Liqueur",
+    origin: "India",
+    expressions: 1,
+    link: "/products?brand=bonga-bonga",
+    tint: "rgba(120, 53, 15, 0.05)",
+  },
+  {
+    number: "08",
+    logo: "/home/brocode.png",
+    name: "Bro Code",
+    category: "Strong Beer",
+    origin: "India",
+    expressions: 3,
+    link: "/products?brand=bro-code",
+    tint: "rgba(202, 138, 4, 0.05)",
   },
 ];
 
@@ -134,9 +152,9 @@ export default function OurBrands() {
   return (
     <section
       ref={sectionRef}
-      // h-auto on mobile; 500vh on desktop gives scroll room for 5 brands.
+      // h-auto on mobile; (n-1)*100vh on desktop gives one vh per brand transition.
       // NO overflow-hidden here — that breaks position:sticky on the child.
-      className="w-full h-auto md:h-[500vh]"
+      className="w-full h-auto md:h-[770vh]"
       style={{ backgroundColor: "#FAF8F5" }}
     >
       {/* ══ DESKTOP ════════════════════════════════════════════════════ */}
@@ -180,11 +198,14 @@ export default function OurBrands() {
           {/* Subtext */}
           <p
             className="text-[13px] leading-relaxed mb-10"
-            style={{ color: "#9A8F84", maxWidth: 260 }}
+            style={{
+              color: "#9A8F84",
+              maxWidth: 260,
+              fontVariant: "normal",
+              textTransform: "none",
+            }}
           >
-            Five brands. Each one handpicked.
-            <br />
-            Each one here for a reason.
+            Eight brands. Each one handpicked. Each one here for a reason.
           </p>
 
           {/* Active brand origin hint */}
@@ -238,8 +259,8 @@ export default function OurBrands() {
                   href={brand.link}
                   className="ob-brand-card relative shrink-0 flex flex-col rounded-2xl overflow-hidden transition-all duration-700 no-underline"
                   style={{
-                    width: "clamp(300px, 40vw, 380px)",
-                    height: "78vh",
+                    width: "clamp(280px, 36vw, 340px)",
+                    height: 320,
                     background: "#FFFFFF",
                     border: "0.5px solid #E8E3DC",
                     boxShadow: isActive
@@ -255,115 +276,85 @@ export default function OurBrands() {
                     pointerEvents: isActive ? "auto" : "none",
                   }}
                 >
-                  {/* ── Card top: bottle image + tint ─────────── */}
+                  {/* Brand number badge */}
+                  <span
+                    className="absolute top-3 right-4 font-mono text-[10px] z-10"
+                    style={{ color: "#C8C0B8" }}
+                  >
+                    {brand.number}
+                  </span>
+
+                  {/* ── Logo area: 200px tall, 32px padding ───────── */}
                   <div
-                    className="relative"
+                    className="flex items-center justify-center shrink-0"
                     style={{
-                      height: "58%",
+                      height: 200,
                       background: brand.tint,
-                      overflow: "hidden",
+                      padding: 32,
                     }}
                   >
-                    {/* Brand number badge */}
-                    <span
-                      className="absolute top-4 right-4 font-mono text-[10px] z-10"
-                      style={{ color: "#C8C0B8" }}
-                    >
-                      {brand.number}
-                    </span>
-
-                    {/* Bottle with tilt */}
-                    <div
-                      className="absolute inset-0 flex items-center justify-center"
-                      style={{ transform: `rotate(${brand.tilt}deg)` }}
-                    >
-                      <Image
-                        src={brand.bottle}
-                        fill
-                        alt={`${brand.name} bottle`}
-                        sizes="380px"
-                        style={{ objectFit: "contain", padding: "32px" }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* ── Card bottom: brand identity ────────────── */}
-                  <div
-                    className="flex flex-col justify-between"
-                    style={{
-                      height: "42%",
-                      padding: "20px 28px 24px",
-                    }}
-                  >
-                    {/* Logo + name */}
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        {/* Logo box */}
-                        <div
-                          className="relative rounded-xl overflow-hidden shrink-0 w-48"
-                          style={{
-                            background: "#EDE8E1",
-                            border: "0.5px solid #DDD8D0",
-                          }}
-                        >
-                          <Image
-                            src={brand.logo}
-                            alt={`${brand.name} logo`}
-                            width={180}
-                            height={90}
-                            style={{ objectFit: "contain", padding: "4px" }}
-                          />
-                        </div>
-
-                        <div>
-                          <h3
-                            className="font-playfair italic font-normal leading-none"
-                            style={{
-                              fontSize: "clamp(22px, 2.2vw, 30px)",
-                              color: "#1C1814",
-                            }}
-                          >
-                            {brand.name}
-                          </h3>
-                          <p
-                            className="text-[8px] uppercase tracking-[0.14em] mt-1"
-                            style={{ color: "#9A8F84" }}
-                          >
-                            {brand.category}
-                          </p>
-                        </div>
+                    {brand.logo ? (
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={brand.logo}
+                          fill
+                          alt={`${brand.name} logo`}
+                          sizes="340px"
+                          style={{ objectFit: "contain" }}
+                        />
                       </div>
-
-                      <p
-                        className="font-mono text-[9px]"
+                    ) : (
+                      <span
+                        className="font-playfair italic text-[11px] tracking-[0.06em]"
                         style={{ color: "#C8C0B8" }}
                       >
-                        {brand.origin}
+                        Logo coming soon
+                      </span>
+                    )}
+                  </div>
+
+                  {/* ── Thin rule ─────────────────────────────────── */}
+                  <div style={{ borderTop: "0.5px solid #E8E3DC" }} />
+
+                  {/* ── Bottom info strip ─────────────────────────── */}
+                  <div
+                    className="flex items-center justify-between flex-1"
+                    style={{ padding: "0 20px" }}
+                  >
+                    {/* Left: name + category */}
+                    <div>
+                      <h3
+                        className="font-playfair italic font-normal leading-none"
+                        style={{
+                          fontSize: "clamp(20px, 2vw, 24px)",
+                          color: "#1C1814",
+                        }}
+                      >
+                        {brand.name}
+                      </h3>
+                      <p
+                        className="font-mono text-[8px] mt-1"
+                        style={{ color: "#9A8F84" }}
+                      >
+                        {brand.category}
                       </p>
                     </div>
 
-                    {/* Expressions + CTA */}
-                    <div
-                      className="flex items-end justify-between"
-                      style={{
-                        borderTop: "0.5px solid #E8E3DC",
-                        paddingTop: 14,
-                      }}
+                    {/* Right: expressions · CTA */}
+                    <p
+                      className="font-mono text-[9px] text-right"
+                      style={{ color: "#6B6259" }}
                     >
+                      {/* {brand.expressions}{" "}
+                      {brand.expressions === 1 ? "expression" : "expressions"} */}
+                      <span style={{ color: "#C8C0B8" }}> · </span>
                       <span
-                        className="font-mono text-[11px]"
-                        style={{ color: "#6B6259" }}
-                      >
-                        {brand.expressions}{" "}
-                        {brand.expressions === 1 ? "expression" : "expressions"}
-                      </span>
-                      <span
-                        className="text-[9px] uppercase tracking-[0.12em] transition-transform duration-200 hover:translate-x-0.5"
+                        className="uppercase tracking-[0.1em]"
                         style={{ color: "#8B1A1A" }}
                       >
                         See products →
                       </span>
-                    </div>
+                    </p>
                   </div>
                 </Link>
               );
@@ -392,9 +383,13 @@ export default function OurBrands() {
           </h2>
           <p
             className="text-[13px] leading-relaxed"
-            style={{ color: "#9A8F84" }}
+            style={{
+              color: "#9A8F84",
+              fontVariant: "normal",
+              textTransform: "none",
+            }}
           >
-            Five brands. Each one handpicked.
+            Eight brands. Each one handpicked. Each one here for a reason.
           </p>
         </div>
 
@@ -409,89 +404,73 @@ export default function OurBrands() {
               href={brand.link}
               className="snap-center shrink-0 rounded-2xl overflow-hidden flex flex-col no-underline"
               style={{
-                width: 280,
-                height: 380,
+                width: 240,
                 background: "#FFFFFF",
                 border: "0.5px solid #E8E3DC",
                 boxShadow: "0 4px 20px rgba(28,24,20,0.08)",
               }}
             >
-              {/* Bottle image */}
+              {/* Logo area */}
               <div
-                className="relative flex items-center justify-center"
-                style={{ height: "55%", background: brand.tint }}
+                className="flex items-center justify-center shrink-0"
+                style={{ height: 140, background: brand.tint, padding: 24 }}
               >
-                <div
-                  className="absolute inset-0"
-                  style={{ transform: `rotate(${brand.tilt}deg)` }}
-                >
-                  <Image
-                    src={brand.bottle}
-                    fill
-                    alt={`${brand.name} bottle`}
-                    sizes="280px"
-                    style={{ objectFit: "contain", padding: "24px" }}
-                  />
-                </div>
-              </div>
-
-              {/* Info */}
-              <div
-                className="flex flex-col justify-between flex-1"
-                style={{ padding: "16px 20px 18px" }}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div
-                    className="relative rounded-lg overflow-hidden shrink-0"
-                    style={{
-                      width: 30,
-                      height: 30,
-                      background: "#EDE8E1",
-                      border: "0.5px solid #DDD8D0",
-                    }}
-                  >
+                {brand.logo ? (
+                  <div className="relative w-full h-full">
                     <Image
                       src={brand.logo}
                       fill
                       alt={`${brand.name} logo`}
-                      sizes="30px"
-                      style={{ objectFit: "contain", padding: "3px" }}
+                      sizes="240px"
+                      style={{ objectFit: "contain" }}
                     />
                   </div>
-                  <div>
-                    <h3
-                      className="font-playfair italic font-normal leading-none"
-                      style={{ fontSize: 20, color: "#1C1814" }}
-                    >
-                      {brand.name}
-                    </h3>
-                    <p
-                      className="text-[7px] uppercase tracking-[0.14em] mt-0.5"
-                      style={{ color: "#9A8F84" }}
-                    >
-                      {brand.category}
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  className="flex items-center justify-between"
-                  style={{ borderTop: "0.5px solid #E8E3DC", paddingTop: 10 }}
-                >
+                ) : (
                   <span
-                    className="font-mono text-[10px]"
-                    style={{ color: "#6B6259" }}
+                    className="font-playfair italic text-[10px] tracking-[0.06em]"
+                    style={{ color: "#C8C0B8" }}
                   >
-                    {brand.expressions}{" "}
-                    {brand.expressions === 1 ? "expression" : "expressions"}
+                    Logo coming soon
                   </span>
+                )}
+              </div>
+
+              {/* Thin rule */}
+              <div style={{ borderTop: "0.5px solid #E8E3DC" }} />
+
+              {/* Bottom info strip */}
+              <div
+                className="flex items-center justify-between flex-1"
+                style={{ padding: "0 16px" }}
+              >
+                <div>
+                  <h3
+                    className="font-playfair italic font-normal leading-none"
+                    style={{ fontSize: 18, color: "#1C1814" }}
+                  >
+                    {brand.name}
+                  </h3>
+                  <p
+                    className="font-mono text-[7px] mt-0.5"
+                    style={{ color: "#9A8F84" }}
+                  >
+                    {brand.category}
+                  </p>
+                </div>
+                <p
+                  className="font-mono text-[8px] text-right"
+                  style={{ color: "#6B6259" }}
+                >
+                  {brand.expressions}{" "}
+                  {brand.expressions === 1 ? "expression" : "expressions"}
+                  <br />
                   <span
-                    className="text-[8px] uppercase tracking-[0.12em]"
+                    className="uppercase tracking-[0.1em]"
                     style={{ color: "#8B1A1A" }}
                   >
                     See products →
                   </span>
-                </div>
+                </p>
               </div>
             </Link>
           ))}

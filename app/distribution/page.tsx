@@ -50,10 +50,6 @@ const BENEFITS = [
     body: "Access brands not available anywhere else in Nepal — import exclusivity you can build a menu around.",
   },
   {
-    title: "Consistent Supply",
-    body: "No stockouts. We hold safety inventory so your back bar never runs dry mid-service.",
-  },
-  {
     title: "Staff Training",
     body: "Complimentary brand ambassador sessions for your team — pour confidently, sell compellingly.",
   },
@@ -75,7 +71,9 @@ const REGIONS = [
   { area: "Kathmandu", status: "Active" },
   { area: "Lalitpur", status: "Active" },
   { area: "Bhaktapur", status: "Active" },
-  { area: "Pokhara", status: "Coming Soon" },
+  { area: "Pokhara", status: "Active" },
+  { area: "Butwal", status: "Active" },
+  { area: "Bhairahawa", status: "Active" },
 ];
 
 const STATS = [
@@ -215,9 +213,9 @@ export default function DistributionPage() {
               <span style={{ color: "#7B0323" }}>serving.</span>
             </h2>
             <p className="font-mono text-[12px] text-[#9A8F84] leading-[2.1] mb-12 max-w-[400px]">
-              We currently operate across the Kathmandu Valley with plans to
-              expand into Pokhara and beyond. Our logistics ensure every bottle
-              arrives in perfect condition.
+              We currently operate across the Kathmandu Valley, Pokhara, Butwal,
+              and Bhairahawa, with plans to expand further. Our logistics ensure
+              every bottle arrives in perfect condition.
             </p>
 
             <div className="grid grid-cols-2 gap-0">
