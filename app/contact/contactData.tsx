@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 export const CONTACT_INFO = {
   LOCATION: {
     title: "Our Location",
-    content: <>Baluwatar, Kathmandu</>,
+    content: <>Mandikhatar, Kathmandu</>,
     icon: <MapPin className="h-5 w-5 text-wine-900" />,
   },
   EMAIL: {

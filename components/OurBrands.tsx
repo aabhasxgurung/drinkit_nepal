@@ -71,7 +71,7 @@ const BRANDS: BrandData[] = [
     number: "06",
     logo: "/home/Merrys_Logo.png",
     name: "Merry's",
-    category: "Vermouth & Amaro",
+    category: "Irish Cream Liqueur",
     origin: "Ireland",
     expressions: 1,
     link: "/products?brand=merrys",

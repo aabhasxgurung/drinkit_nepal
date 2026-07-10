@@ -1074,7 +1074,7 @@ const cocktails: Array<{
     slug: "himalayan-negroni",
     title: "Himalayan Negroni",
     description:
-      "A mountain twist on the Italian aperitivo classic, featuring Timbur-infused Hapusa Gin for a subtle Himalayan numbing sensation alongside Campari and sweet vermouth.",
+      "A mountain twist on the Italian aperitivo classic, featuring Timbur-infused Hapusa Gin for a subtle Himalayan numbing sensation alongside Luxardo Bitter Rosso and sweet vermouth.",
     imageUrl: C.himalayanNegroni,
     difficulty: CocktailDifficulty.Advanced,
     category: "Modern",
@@ -1091,7 +1091,7 @@ const cocktails: Array<{
         order: 0,
       },
       { amount: "15ml", name: "Sweet Vermouth", order: 1 },
-      { amount: "15ml", name: "Campari", order: 2 },
+      { amount: "15ml", name: "Luxardo Bitter Rosso", order: 2 },
     ],
   },
   {
@@ -2010,7 +2010,7 @@ const contactInfo = [
   {
     type: "address",
     title: "Our Location",
-    value: "Baluwatar, Kathmandu",
+    value: "Mandikhatar, Kathmandu",
     subValue: null,
   },
   {
@@ -2022,7 +2022,7 @@ const contactInfo = [
   {
     type: "phone",
     title: "Call Us",
-    value: "+977 9819810683",
+    value: "+977 9801359489",
     subValue: "Mon–Fri, 9am – 6pm",
   },
 ];

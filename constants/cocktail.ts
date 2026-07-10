@@ -16,14 +16,14 @@ export interface CocktailDataProps {
 export const cocktailsData: CocktailDataProps[] = [
   {
     id: "1",
-    title: "Himalyan Negroni",
+    title: "Himalayan Negroni",
     description:
-      "A mountain twist on the classic Italian aperitivo, featuring Timbur-infused Hapusa Gin for a unique numbing sensation paired with the bitterness of Campari and Vermouth.",
+      "A mountain twist on the classic Italian aperitivo, featuring Timbur-infused Hapusa Gin for a unique numbing sensation paired with the bitterness of Luxardo Bitter Rosso and Vermouth.",
     ingredients: [
       "30ml Hapusa Gin",
       "Timbur (Himalayan Sichuan Pepper) Infused",
       "15ml Vermouth",
-      "15ml Campari",
+      "15ml Luxardo Bitter Rosso",
     ],
     imageUrl: "/sula/featuredHapusa.jpg",
     difficulty: "Easy",
@@ -53,7 +53,7 @@ export const cocktailsData: CocktailDataProps[] = [
   },
   {
     id: "3",
-    title: "Himalyan Gimlet",
+    title: "Himalayan Gimlet",
     description:
       "A crisp and citrusy classic reinvented with Himalayan Gin, offering a perfect balance of sweet and sour notes.",
     ingredients: ["60ml Hapusa Gin", "20ml Sugar syrup", "20ml Lime juice"],

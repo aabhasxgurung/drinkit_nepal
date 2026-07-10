@@ -41,12 +41,12 @@ const JOURNEY = [
   {
     year: "2020",
     title: "Founded",
-    body: "Drink It Nepal is established with a singular mission: bring the world&apos;s finest spirits to Kathmandu&apos;s bars and tables.",
+    body: "Drink It Nepal is established with a singular mission: bring the world's finest spirits to Kathmandu's bars and tables.",
   },
   {
     year: "2021",
     title: "First Portfolio",
-    body: "We launch our founding portfolio of five handpicked international brands spanning Scotch, gin, and premium rum.",
+    body: "We launch our founding portfolio of five handpicked international brands spanning gin, wine, and craft liqueurs.",
   },
   {
     year: "2022",
@@ -56,12 +56,12 @@ const JOURNEY = [
   {
     year: "2023",
     title: "Cocktail Culture",
-    body: "We begin hosting bartender education programmes, elevating Nepal&apos;s craft cocktail scene from the ground up.",
+    body: "We begin hosting bartender education programmes, elevating Nepal's craft cocktail scene from the ground up.",
   },
   {
     year: "2024",
     title: "Growing Portfolio",
-    body: "New spirits categories added — tequila, cognac, and craft liqueurs join an ever-expanding family.",
+    body: "New categories added — Irish whiskey, Irish cream liqueurs, and strong beer join an ever-expanding family.",
   },
 ];
 
@@ -152,9 +152,9 @@ export default function AboutPage() {
               Drink It Nepal is the country&apos;s premier spirits importer and
               distributor, bringing the world&apos;s finest distilleries to
               Kathmandu&apos;s tables and bars. Founded in 2020, we&apos;ve
-              built a curated portfolio spanning heritage Scotch whiskies, craft
-              gins, premium rums, and beyond — each label chosen for its story,
-              quality, and character.
+              built a curated portfolio spanning craft gins, Irish whiskey,
+              fine wines, Italian liqueurs, and beyond — each label chosen for
+              its story, quality, and character.
             </motion.p>
           </motion.div>
 
@@ -205,12 +205,12 @@ export default function AboutPage() {
                 {
                   n: "II",
                   title: "Quality",
-                  body: "From temperature-controlled warehousing to white-glove delivery, we treat every bottle like it belongs in a collector&apos;s cellar.",
+                  body: "From temperature-controlled warehousing to white-glove delivery, we treat every bottle like it belongs in a collector's cellar.",
                 },
                 {
                   n: "III",
                   title: "Education",
-                  body: "We invest in Nepal&apos;s bartending community through tastings, masterclasses, and one-on-one brand training.",
+                  body: "We invest in Nepal's bartending community through tastings, masterclasses, and one-on-one brand training.",
                 },
               ].map((pillar) => (
                 <div
@@ -275,11 +275,11 @@ export default function AboutPage() {
               {[
                 {
                   title: "Hotels & Bars",
-                  body: "Premium on-trade partners across Kathmandu&apos;s finest hospitality venues.",
+                  body: "Premium on-trade partners across Kathmandu's finest hospitality venues.",
                 },
                 {
                   title: "Restaurants",
-                  body: "Curated wine and spirits lists for Nepal&apos;s leading dining destinations.",
+                  body: "Curated wine and spirits lists for Nepal's leading dining destinations.",
                 },
                 {
                   title: "Retail",
