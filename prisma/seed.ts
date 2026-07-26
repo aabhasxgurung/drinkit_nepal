@@ -254,7 +254,7 @@ const brands = [
     name: "Merry's",
     logo: "/home/Merrys_Logo.png",
     description:
-      "Robert A. Merry & Co. Ltd — premium Irish cream liqueurs blended with Irish whiskey and fresh dairy cream.",
+      "Robert A. Merry & Co. Ltd, premium Irish cream liqueurs blended with Irish whiskey and fresh dairy cream.",
     country: "Ireland",
   },
   {
@@ -262,7 +262,7 @@ const brands = [
     name: "Bro Code",
     logo: "/home/brocode.png",
     description:
-      "India's boldest high-strength beer — brewed from premium barley malt for those who don't compromise.",
+      "India's boldest high-strength beer, brewed from premium barley malt for those who don't compromise.",
     country: "India",
   },
   {
@@ -278,7 +278,7 @@ const brands = [
     name: "VOGA Italia",
     logo: C.vogaLogo,
     description:
-      "Contemporary Italian wines in the iconic cylindrical bottle with re-sealable cap — modern design meets classic Italian winemaking.",
+      "Contemporary Italian wines in the iconic cylindrical bottle with re-sealable cap, modern design meets classic Italian winemaking.",
     country: "Italy",
   },
   {
@@ -286,7 +286,7 @@ const brands = [
     name: "Galanti",
     logo: C.galantiLogo,
     description:
-      "Italian sparkling wine house from the Veneto — celebratory spumante and Prosecco crafted in an approachable, elegant style.",
+      "Italian sparkling wine house from the Veneto, celebratory spumante and Prosecco crafted in an approachable, elegant style.",
     country: "Italy",
   },
   {
@@ -294,7 +294,7 @@ const brands = [
     name: "Ca' del Lago",
     logo: C.caDelLagoLogo,
     description:
-      "Classic regional Italian wines — honest, food-friendly expressions of Italy's great appellations, from the Veneto to Tuscany.",
+      "Classic regional Italian wines, honest, food-friendly expressions of Italy's great appellations, from the Veneto to Tuscany.",
     country: "Italy",
   },
 ];
@@ -308,7 +308,7 @@ const products = [
     brandSlug: "hapusa",
     category: "gin",
     description:
-      "Hapusa is a premium Himalayan dry gin, distilled with foraged botanicals found close to the snowline. Juniper — known as Hapusa in Sanskrit — gives this gin its name and its wild, piney character. Each bottle is a portrait of the Himalayas.",
+      "Hapusa is a premium Himalayan dry gin, distilled with foraged botanicals found close to the snowline. Juniper, known as Hapusa in Sanskrit, gives this gin its name and its wild, piney character. Each bottle is a portrait of the Himalayas.",
     image: C.hapusaBottle,
     featuredImage: C.featHapusa,
     backgroundImage: C.hapusaBg,
@@ -322,11 +322,11 @@ const products = [
       "Pine forests and wildflowers on the nose with a distinctly earthy Himalayan quality. The palate brings bold juniper, tart raw mango, and a warming ginger heat. Long, delicately spiced finish with lingering piney juniper.",
     servingSuggestion:
       "Best served neat from the freezer to let the botanicals open up slowly. In a G&T, pair with a slice of raw mango, a sprig of rosemary, and quality Indian tonic.",
-    awards: ["Gold — India International Spirits Challenge"],
+    awards: ["Gold - India International Spirits Challenge"],
     pairings: [],
     highlights: [
       "Himalayan juniper foraged close to the snowline",
-      "Seven botanicals — all sourced within India",
+      "Seven botanicals, all sourced within India",
       "Distilled in small batches in Goa",
     ],
     isFeatured: true,
@@ -340,7 +340,7 @@ const products = [
     brandSlug: "greater-than",
     category: "gin",
     description:
-      "India's first London Dry Gin, copper pot distilled in Goa with nine botanicals sourced from India and around the world. Clean, classic, and unapologetically bold — built for the Martini glass as much as the highball.",
+      "India's first London Dry Gin, copper pot distilled in Goa with nine botanicals sourced from India and around the world. Clean, classic, and unapologetically bold, built for the Martini glass as much as the highball.",
     image: C.greaterThanBottle,
     featuredImage: C.featGreaterThan,
     volume: "700ml",
@@ -352,7 +352,7 @@ const products = [
     tastingNotes:
       "Clean juniper and fresh lemon peel on the nose, with a soft floral note from chamomile. Bright citrus and coriander lead on the palate, giving way to a warm, clean ginger finish.",
     servingSuggestion:
-      "Ideal in a classic Martini with dry vermouth and a lemon twist. In a G&T, keep it simple — quality Indian tonic and a long strip of lemon peel.",
+      "Ideal in a classic Martini with dry vermouth and a lemon twist. In a G&T, keep it simple, quality Indian tonic and a long strip of lemon peel.",
     awards: [],
     pairings: [],
     highlights: [
@@ -371,7 +371,7 @@ const products = [
     brandSlug: "the-whistler",
     category: "whiskey",
     description:
-      "Triple-distilled and aged in ex-bourbon barrels, The Whistler is a blended Irish whiskey built around smoothness. Honey, vanilla, and salted caramel define the character — approachable enough for newcomers, considered enough for the serious drinker.",
+      "Triple-distilled and aged in ex-bourbon barrels, The Whistler is a blended Irish whiskey built around smoothness. Honey, vanilla, and salted caramel define the character, approachable enough for newcomers, considered enough for the serious drinker.",
     image: C.whistlerBottle,
     featuredImage: C.featWhistler,
     volume: "700ml",
@@ -380,7 +380,7 @@ const products = [
     region: "County Louth, Ireland",
     flavors: "Honey, Vanilla, Salted Caramel, Toasted Oak, Dried Fruit",
     tastingNotes:
-      "Gentle honey and vanilla on the nose with a soft toasted grain quality. Smooth on the palate — caramel sweetness, a touch of oak, and subtle dried fruit. Clean, mellow finish with lingering salted caramel.",
+      "Gentle honey and vanilla on the nose with a soft toasted grain quality. Smooth on the palate, caramel sweetness, a touch of oak, and subtle dried fruit. Clean, mellow finish with lingering salted caramel.",
     servingSuggestion:
       "Serve neat or with a single large ice cube to open it up slowly. Exceptional in an Old Fashioned with a good Demerara syrup and a fat orange peel.",
     awards: [],
@@ -423,7 +423,7 @@ const products = [
     ],
     highlights: [
       "India's best-selling white wine",
-      "Off-dry style — ideal for first-time wine drinkers",
+      "Off-dry style, ideal for first-time wine drinkers",
       "Sustainably farmed grapes",
     ],
   },
@@ -433,7 +433,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "India's most loved dessert wine — the first Indian wine to win Silver at both the Paris Wine Cup and Decanter World Wine Awards. Concentrated, honeyed, and luxuriously sweet with a defining streak of acidity that keeps it from tipping into excess.",
+      "India's most loved dessert wine, the first Indian wine to win Silver at both the Paris Wine Cup and Decanter World Wine Awards. Concentrated, honeyed, and luxuriously sweet with a defining streak of acidity that keeps it from tipping into excess.",
     image: C.lateHarvest,
     volume: "750ml",
     alcoholPercentage: "11% ABV",
@@ -444,7 +444,7 @@ const products = [
       "Intensely aromatic nose of dried apricot, mango, and honeyed richness. Full-bodied palate with concentrated sweetness balanced by vibrant acidity. Long, complex finish with layers of stone fruit.",
     servingSuggestion:
       "Serve well chilled at 6–8°C. A natural match for blue cheese, foie gras, crème brûlée, and gulab jamun.",
-    awards: ["Silver — Paris Wine Cup", "Silver — Decanter World Wine Awards"],
+    awards: ["Silver - Paris Wine Cup", "Silver - Decanter World Wine Awards"],
     grapeVarietal: "85% Chenin Blanc, 15% Muscat",
     pairings: ["Blue cheese", "Crème brûlée", "Gulab jamun", "Foie gras"],
     highlights: [
@@ -490,7 +490,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "India's first and only Gold winner at the International Wine Challenge. A sparkling rosé that delivers an exuberant burst of tropical fruit — peach, passion fruit, and guava — in a vibrant, celebratory package.",
+      "India's first and only Gold winner at the International Wine Challenge. A sparkling rosé that delivers an exuberant burst of tropical fruit, peach, passion fruit, and guava, in a vibrant, celebratory package.",
     image: C.tropical,
     featuredImage: C.featTropical,
     volume: "750ml",
@@ -502,7 +502,7 @@ const products = [
       "Vibrant salmon-pink with fine bubbles. Exuberant aromas of peach and passion fruit with a hint of guava. Light-bodied with refreshing citrus acidity and a clean, tropical finish.",
     servingSuggestion:
       "Serve very well chilled at 6–8°C. A perfect aperitif. Great with fried seafood, light salads, and spiced appetizers.",
-    awards: ["Gold — International Wine Challenge"],
+    awards: ["Gold - International Wine Challenge"],
     grapeVarietal: "70% Chenin Blanc, 30% Riesling and Syrah",
     pairings: ["Fried seafood", "Light salads", "Spiced appetizers"],
     highlights: [
@@ -518,7 +518,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "Lively and celebratory. Sula Brut is a Champagne-method sparkling wine offering crisp green apple and pear aromas with a dry, refreshing finish — a medalist at both the Paris Wine Cup and Decanter Awards.",
+      "Lively and celebratory. Sula Brut is a Champagne-method sparkling wine offering crisp green apple and pear aromas with a dry, refreshing finish, a medalist at both the Paris Wine Cup and Decanter Awards.",
     image: C.brut,
     volume: "750ml",
     alcoholPercentage: "12% ABV",
@@ -530,8 +530,8 @@ const products = [
     servingSuggestion:
       "Serve well chilled at 6–8°C as an aperitif. Works beautifully alongside fried chicken, Indian pakoras, and smoked salmon.",
     awards: [
-      "Medalist — Paris Wine Cup",
-      "Medalist — Decanter World Wine Awards",
+      "Medalist - Paris Wine Cup",
+      "Medalist - Decanter World Wine Awards",
     ],
     pairings: [
       "Smoked salmon",
@@ -561,7 +561,7 @@ const products = [
     tastingNotes:
       "Delicate aromas of ripe melon and passion fruit. Light-bodied with gentle fruitiness, refreshing citrus acidity, and a clean, lingering finish.",
     servingSuggestion:
-      "Serve chilled. Ideal as a spritz base — top with tonic and a squeeze of lime. Works as a light aperitif on its own.",
+      "Serve chilled. Ideal as a spritz base, top with tonic and a squeeze of lime. Works as a light aperitif on its own.",
     awards: [],
     grapeVarietal: "100% Chenin Blanc",
     pairings: [
@@ -571,7 +571,7 @@ const products = [
       "Aperitifs",
     ],
     highlights: [
-      "Semi-sparkling — softer fizz than a full Brut",
+      "Semi-sparkling, softer fizz than a full Brut",
       "Ideal for sparkling wine cocktails",
       "100% Chenin Blanc from Nashik",
     ],
@@ -582,7 +582,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "India's first and only sparkling red wine — a Gold Medal winner at the India Wine Awards. Pomegranate, dark berries, and warming spice in an effervescent, celebratory format.",
+      "India's first and only sparkling red wine, a Gold Medal winner at the India Wine Awards. Pomegranate, dark berries, and warming spice in an effervescent, celebratory format.",
     image: C.sparklingShiraz,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -593,7 +593,7 @@ const products = [
       "Deep ruby with energetic bubbles. Aromas of pomegranate and dark berries with smoky spice complexity. Full-flavored palate with vibrant fruitiness and a warm, spiced finish.",
     servingSuggestion:
       "Serve lightly chilled at 12–14°C. Pairs boldly with dark chocolate desserts, chili chicken, and dabeli.",
-    awards: ["Gold — India Wine Awards"],
+    awards: ["Gold - India Wine Awards"],
     grapeVarietal: "100% Shiraz",
     pairings: [
       "Dark chocolate dessert",
@@ -604,7 +604,7 @@ const products = [
     highlights: [
       "India's first and only sparkling red wine",
       "Gold Medal at the India Wine Awards",
-      "Prosecco method — fruit-forward and vibrant",
+      "Prosecco method, fruit-forward and vibrant",
     ],
   },
   {
@@ -634,7 +634,7 @@ const products = [
     ],
     highlights: [
       "India's first ever Zinfandel Rosé",
-      "Off-dry — sweet and refreshing",
+      "Off-dry, sweet and refreshing",
       "Perfect for Indian summers",
     ],
   },
@@ -644,7 +644,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "Generous, fruit-forward, and playful. India's first Zinfandel — unoaked and built to show off the grape's natural exuberance. Red berries, dark plum, and a warm cinnamon spice.",
+      "Generous, fruit-forward, and playful. India's first Zinfandel, unoaked and built to show off the grape's natural exuberance. Red berries, dark plum, and a warm cinnamon spice.",
     image: C.zinfRed,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -654,13 +654,13 @@ const products = [
     tastingNotes:
       "Aromas of red berries, blackberry, and dark plum with hints of cinnamon. Medium-bodied with soft tannins, vibrant fruitiness, and a clean, easy finish.",
     servingSuggestion:
-      "Serve at 16°C. Naturally food-friendly — works with spiced curries, cold cuts, teriyaki, and spicy noodles.",
+      "Serve at 16°C. Naturally food-friendly, works with spiced curries, cold cuts, teriyaki, and spicy noodles.",
     awards: [],
     grapeVarietal: "100% Zinfandel",
     pairings: ["Spiced curries", "Cold cuts", "Teriyaki", "Spicy noodles"],
     highlights: [
       "India's first Zinfandel",
-      "Unoaked — pure, fruit-forward expression",
+      "Unoaked, pure, fruit-forward expression",
       "Soft tannins, great food wine",
     ],
   },
@@ -672,13 +672,13 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "The cocktail world's most coveted garnish. Candied marasca cherries soaked in Luxardo's own syrup — no artificial colors, no thickening agents, no preservatives. Just the pure, deep flavor of the fruit.",
+      "The cocktail world's most coveted garnish. Candied marasca cherries soaked in Luxardo's own syrup, no artificial colors, no thickening agents, no preservatives. Just the pure, deep flavor of the fruit.",
     image: C.maraschCherries,
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Marasca Cherry, Dark Fruit Syrup, Almond, Vanilla",
     tastingNotes:
-      "Intensely sweet dark cherry flavor with a rich, thick syrup. Notes of almond and subtle bitterness from the marasca skin give balance. Concentrated and complex — nothing like a grocery store cherry.",
+      "Intensely sweet dark cherry flavor with a rich, thick syrup. Notes of almond and subtle bitterness from the marasca skin give balance. Concentrated and complex, nothing like a grocery store cherry.",
     servingSuggestion:
       "The essential garnish for Manhattans, Old Fashioneds, and Whiskey Sours. Also extraordinary over vanilla ice cream or folded into a clafoutis.",
     awards: [],
@@ -695,7 +695,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "The original. Produced since 1821, Luxardo Maraschino is crystal clear with a character unlike any other liqueur — marasca cherry distillate, roasted nuttiness, dark chocolate, and a touch of orange marmalade. The backbone of some of history's greatest cocktails.",
+      "The original. Produced since 1821, Luxardo Maraschino is crystal clear with a character unlike any other liqueur, marasca cherry distillate, roasted nuttiness, dark chocolate, and a touch of orange marmalade. The backbone of some of history's greatest cocktails.",
     image: C.maraschOriginale,
     featuredImage: C.featMaraschino,
     volume: "700ml",
@@ -705,10 +705,10 @@ const products = [
     flavors:
       "Marasca Cherry, Roasted Almond, Dark Chocolate, Vanilla, Orange Marmalade",
     tastingNotes:
-      "Crystal clear. Distinctive marasca cherry distillate on the nose with roasted nuttiness and a strong spirit character. Smooth but sharp on the palate — dark chocolate, vanilla, and a bright orange marmalade note. Long, complex finish.",
+      "Crystal clear. Distinctive marasca cherry distillate on the nose with roasted nuttiness and a strong spirit character. Smooth but sharp on the palate, dark chocolate, vanilla, and a bright orange marmalade note. Long, complex finish.",
     servingSuggestion:
       "Essential in the Aviation, Hemingway Daiquiri, and Tuxedo. Can be served straight over ice as a digestif, or used to macerate fruit for dessert.",
-    awards: ["Gold — International Spirits Challenge"],
+    awards: ["Gold - International Spirits Challenge"],
     pairings: [],
     highlights: [
       "Produced continuously since 1821",
@@ -724,7 +724,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "A traditional Italian liqueur rooted in star anise, herbs, and pure volcanic water from Luxardo's own springs. The Italian ritual of 'con la mosca' — three coffee beans, a flame, and a shot — was made for this.",
+      "A traditional Italian liqueur rooted in star anise, herbs, and pure volcanic water from Luxardo's own springs. The Italian ritual of 'con la mosca', three coffee beans, a flame, and a shot, was made for this.",
     image: C.sambuca,
     volume: "700ml",
     alcoholPercentage: "38% ABV",
@@ -749,7 +749,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Vibrant red, intensely herbal, and genuinely complex. Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants before blending — a method that preserves the integrity of each botanical. The foundation of a proper Negroni.",
+      "Vibrant red, intensely herbal, and genuinely complex. Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants before blending, a method that preserves the integrity of each botanical. The foundation of a proper Negroni.",
     image: C.bitterRosso,
     featuredImage: C.featBitter,
     volume: "700ml",
@@ -765,7 +765,7 @@ const products = [
     pairings: [],
     highlights: [
       "Botanicals infused separately to preserve individual character",
-      "Naturally vibrant red — no artificial color",
+      "Naturally vibrant red, no artificial color",
       "Lower ABV makes it versatile as a Campari alternative",
     ],
     isFeatured: true,
@@ -777,7 +777,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "A lighter-style Italian aperitivo made from a balanced infusion of citrus fruits, herbs, and roots. Zesty orange, pink grapefruit, and a gentle rhubarb bitterness — built for the Spritz.",
+      "A lighter-style Italian aperitivo made from a balanced infusion of citrus fruits, herbs, and roots. Zesty orange, pink grapefruit, and a gentle rhubarb bitterness, built for the Spritz.",
     image: C.aperitivo,
     volume: "700ml",
     alcoholPercentage: "11% ABV",
@@ -792,7 +792,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "Lower ABV than Aperol — lighter and more refreshing",
+      "Lower ABV than Aperol, lighter and more refreshing",
       "Made from a balanced infusion of citrus, herbs, and roots",
       "The ideal Spritz base",
     ],
@@ -803,7 +803,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Produced since 1821, Luxardo's second speciality after Maraschino Originale. Sangue Morlacco — 'Morlacco Blood' — is a deep, concentrated cherry liqueur with the perfume of freshly squeezed cherry juice and a thick, syrupy body.",
+      "Produced since 1821, Luxardo's second speciality after Maraschino Originale. Sangue Morlacco, 'Morlacco Blood', is a deep, concentrated cherry liqueur with the perfume of freshly squeezed cherry juice and a thick, syrupy body.",
     image: C.cherryLiqueur,
     volume: "700ml",
     alcoholPercentage: "30% ABV",
@@ -812,13 +812,13 @@ const products = [
     flavors:
       "Marasca Cherry, Cherry Jam, Black Pepper Spice, Dark Fruit, Tartness",
     tastingNotes:
-      "Intense cherry-red. Aroma of freshly squeezed cherry juice with a warming pepper note. Thick and syrupy on the palate — concentrated cherry jam flavor with fruit tartness partially cutting the sweetness. Warm, spiced finish.",
+      "Intense cherry-red. Aroma of freshly squeezed cherry juice with a warming pepper note. Thick and syrupy on the palate, concentrated cherry jam flavor with fruit tartness partially cutting the sweetness. Warm, spiced finish.",
     servingSuggestion:
       "Key ingredient in the Blood & Sand and Singapore Sling. A Cherry Negroni built with this is extraordinary. Also excellent drizzled over vanilla panna cotta.",
     awards: [],
     pairings: [],
     highlights: [
-      "Produced since 1821 — Luxardo's second oldest recipe",
+      "Produced since 1821 · Luxardo's second oldest recipe",
       "Made from Luxardo's own marasca cherry orchards",
     ],
   },
@@ -838,12 +838,12 @@ const products = [
     tastingNotes:
       "Crystal clear with vibrant orange and mandarin aromas. Smooth, rounded citrus flavor on the palate with a natural sweetness and a clean, dry orange finish. More depth than most triple secs.",
     servingSuggestion:
-      "Essential in a Margarita, Cosmopolitan, White Lady, and Sidecar. Use anywhere Cointreau is called for — and at a higher ABV it carries further in the glass.",
+      "Essential in a Margarita, Cosmopolitan, White Lady, and Sidecar. Use anywhere Cointreau is called for, and at a higher ABV it carries further in the glass.",
     awards: [],
     pairings: [],
     highlights: [
-      "Made from three varieties of orange peel — curaçao, sweet, and mandarin",
-      "Higher ABV than most triple secs — better carry in cocktails",
+      "Made from three varieties of orange peel, curaçao, sweet, and mandarin",
+      "Higher ABV than most triple secs, better carry in cocktails",
       "Produced continuously since the 1800s",
     ],
   },
@@ -853,7 +853,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "Angioletto is made from a blending process of real hazelnut infusion with natural extracts of cocoa and vanilla. Rich, indulgent, and surprisingly complex — closer to praline in a glass than a simple nut liqueur.",
+      "Angioletto is made from a blending process of real hazelnut infusion with natural extracts of cocoa and vanilla. Rich, indulgent, and surprisingly complex, closer to praline in a glass than a simple nut liqueur.",
     image: C.hazelnut,
     volume: "700ml",
     alcoholPercentage: "24% ABV",
@@ -868,7 +868,7 @@ const products = [
     pairings: [],
     highlights: [
       "Made from real hazelnut infusion with natural cocoa and vanilla",
-      "Lower ABV — ideal as a dessert digestif",
+      "Lower ABV, ideal as a dessert digestif",
     ],
   },
   {
@@ -877,7 +877,7 @@ const products = [
     brandSlug: "luxardo",
     category: "liqueur",
     description:
-      "The 'Green Fairy.' A classic-style absinthe built from grand wormwood, green anise, and Florence fennel. High in ABV, intensely herbal, and steeped in ritual — the traditional louche is half the experience.",
+      "The 'Green Fairy.' A classic-style absinthe built from grand wormwood, green anise, and Florence fennel. High in ABV, intensely herbal, and steeped in ritual, the traditional louche is half the experience.",
     image: C.absinthe,
     volume: "700ml",
     alcoholPercentage: "70% ABV",
@@ -892,7 +892,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "70% ABV — handle with respect",
+      "70% ABV, handle with respect",
       "Traditional louche ritual with iced water and a sugar cube",
       "A few drops elevate a Sazerac beyond recognition",
     ],
@@ -905,7 +905,7 @@ const products = [
     brandSlug: "luxardo",
     category: "bitter",
     description:
-      "A bittersweet rhubarb-forward bitter with earthy gentian complexity. Tart, herbal, and intriguing — a distinctive addition to any bitter-forward cocktail or Spritz variation.",
+      "A bittersweet rhubarb-forward bitter with earthy gentian complexity. Tart, herbal, and intriguing, a distinctive addition to any bitter-forward cocktail or Spritz variation.",
     image: C.rhubarbBitter,
     volume: "700ml",
     alcoholPercentage: "30% ABV",
@@ -919,7 +919,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "Rhubarb-forward profile — distinctive and tart",
+      "Rhubarb-forward profile, distinctive and tart",
       "Versatile in cocktails as a Campari or Aperol alternative",
     ],
   },
@@ -929,7 +929,7 @@ const products = [
     brandSlug: "luxardo",
     category: "bitter",
     description:
-      "A delicate, floral bitter built around chamomile with herbal complexity. Softer than most bitters and uniquely approachable — an unexpected and elegant cocktail ingredient.",
+      "A delicate, floral bitter built around chamomile with herbal complexity. Softer than most bitters and uniquely approachable, an unexpected and elegant cocktail ingredient.",
     image: C.chamomileBitter,
     volume: "700ml",
     alcoholPercentage: "30% ABV",
@@ -943,7 +943,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "Chamomile-forward — softer and more floral than traditional bitters",
+      "Chamomile-forward, softer and more floral than traditional bitters",
       "Elegant in White Negroni variations",
     ],
   },
@@ -953,7 +953,7 @@ const products = [
     brandSlug: "luxardo",
     category: "bitter",
     description:
-      "Vibrant, citrus-forward bitter made from orange peel infusions. Bright and zesty with a dry, herbal backbone — brings immediacy and lift to cocktails that need a citrus edge.",
+      "Vibrant, citrus-forward bitter made from orange peel infusions. Bright and zesty with a dry, herbal backbone, brings immediacy and lift to cocktails that need a citrus edge.",
     image: C.orangeBitter,
     volume: "700ml",
     alcoholPercentage: "30% ABV",
@@ -967,7 +967,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "Orange peel forward — bright and immediately citrusy",
+      "Orange peel forward, bright and immediately citrusy",
       "Versatile aperitif and cocktail component",
     ],
   },
@@ -991,7 +991,7 @@ const products = [
     awards: [],
     pairings: [],
     highlights: [
-      "Coffee-forward — rich and immediately expressive",
+      "Coffee-forward, rich and immediately expressive",
       "Essential for espresso cocktails",
     ],
   },
@@ -1003,7 +1003,7 @@ const products = [
     brandSlug: "merrys",
     category: "liqueur",
     description:
-      "Smooth, indulgent Irish cream liqueur from Robert A. Merry & Co. Ltd. Blended from Irish whiskey, fresh dairy cream, and natural cocoa — rich enough to sip alone, versatile enough for cocktails.",
+      "Smooth, indulgent Irish cream liqueur from Robert A. Merry & Co. Ltd. Blended from Irish whiskey, fresh dairy cream, and natural cocoa, rich enough to sip alone, versatile enough for cocktails.",
     image: C.merrysIrishCream,
     volume: "700ml",
     alcoholPercentage: "17% ABV",
@@ -1019,7 +1019,7 @@ const products = [
     highlights: [
       "Blended from Irish whiskey and fresh dairy cream",
       "Rich cocoa and vanilla character",
-      "Versatile — neat, on ice, or in cocktails",
+      "Versatile, neat, on ice, or in cocktails",
     ],
   },
   {
@@ -1028,7 +1028,7 @@ const products = [
     brandSlug: "merrys",
     category: "liqueur",
     description:
-      "A luxuriously sweet Irish cream liqueur with a white chocolate twist from Robert A. Merry & Co. Ltd. The same smooth, whiskey-cream base as the original — elevated with rich white chocolate and cocoa butter.",
+      "A luxuriously sweet Irish cream liqueur with a white chocolate twist from Robert A. Merry & Co. Ltd. The same smooth, whiskey-cream base as the original, elevated with rich white chocolate and cocoa butter.",
     image: C.merrysWhiteChocolate,
     volume: "700ml",
     alcoholPercentage: "17% ABV",
@@ -1036,7 +1036,7 @@ const products = [
     region: "Ireland",
     flavors: "White Chocolate, Fresh Cream, Cocoa Butter, Vanilla, Irish Whiskey",
     tastingNotes:
-      "Sweet white chocolate and cream on the nose with a warm whiskey underpinning. Rich and indulgent on the palate — cocoa butter, vanilla, and cream in perfect balance. Long, sweet, creamy finish.",
+      "Sweet white chocolate and cream on the nose with a warm whiskey underpinning. Rich and indulgent on the palate, cocoa butter, vanilla, and cream in perfect balance. Long, sweet, creamy finish.",
     servingSuggestion:
       "Serve chilled over ice or use as a base for dessert cocktails. Extraordinary poured over strawberry or vanilla ice cream.",
     awards: [],
@@ -1044,7 +1044,7 @@ const products = [
     highlights: [
       "White chocolate variant of the classic Irish cream",
       "Smooth, indulgent, and dessert-ready",
-      "From Robert A. Merry & Co. Ltd — Ireland",
+      "From Robert A. Merry & Co. Ltd, Ireland",
     ],
   },
 
@@ -1055,7 +1055,7 @@ const products = [
     brandSlug: "bro-code",
     category: "beer",
     description:
-      "India's boldest high-strength beer — brewed from premium barley malt for a full-bodied, smooth finish that belies its strength. Bro Code is built for those who don't compromise.",
+      "India's boldest high-strength beer, brewed from premium barley malt for a full-bodied, smooth finish that belies its strength. Bro Code is built for those who don't compromise.",
     image: C.broCode,
     volume: "650ml",
     alcoholPercentage: "15% ABV",
@@ -1069,7 +1069,7 @@ const products = [
     awards: [],
     pairings: ["Spiced street food", "Grilled meats", "Indian snacks"],
     highlights: [
-      "15% ABV — India's highest-strength beer",
+      "15% ABV, India's highest-strength beer",
       "Brewed from premium barley malt",
       "Smooth finish despite high strength",
     ],
@@ -1082,7 +1082,7 @@ const products = [
     brandSlug: "bonga-bonga",
     category: "liqueur",
     description:
-      "The mystery is half the fun. Bonga Bonga is a vibrant, colorful liqueur with a playful character that defies easy categorization — fruity, sweet, and utterly distinctive. Every pour is a conversation starter.",
+      "The mystery is half the fun. Bonga Bonga is a vibrant, colorful liqueur with a playful character that defies easy categorization, fruity, sweet, and utterly distinctive. Every pour is a conversation starter.",
     image: C.bongaBonga,
     volume: "700ml",
     alcoholPercentage: "14.9% ABV",
@@ -1092,11 +1092,11 @@ const products = [
     tastingNotes:
       "Vibrant and fruit-forward on the nose with a bright tropical sweetness. Light and playful on the palate with juicy fruit character and a clean, refreshing finish.",
     servingSuggestion:
-      "Serve over ice or mix with soda for a simple, fun highball. Excellent as a party cocktail base — shake with lime and top with ginger beer.",
+      "Serve over ice or mix with soda for a simple, fun highball. Excellent as a party cocktail base, shake with lime and top with ginger beer.",
     awards: [],
     pairings: ["Light snacks", "Spiced appetizers", "Tropical fruit"],
     highlights: [
-      "Mystery liqueur — the flavor is the surprise",
+      "Mystery liqueur, the flavor is the surprise",
       "Vibrant, fun, and endlessly mixable",
       "A conversation starter in every glass",
     ],
@@ -1109,7 +1109,7 @@ const products = [
     brandSlug: "voga-italia",
     category: "wine",
     description:
-      "VOGA's flagship white in the iconic cylindrical bottle. Crafted from fruit grown in delle Venezie — the Veneto, Friuli-Venezia Giulia, and Trentino Alto Adige, Italy's top regions for Pinot Grigio. Subtle, elegant, and mineral-clean.",
+      "VOGA's flagship white in the iconic cylindrical bottle. Crafted from fruit grown in delle Venezie, the Veneto, Friuli-Venezia Giulia, and Trentino Alto Adige, Italy's top regions for Pinot Grigio. Subtle, elegant, and mineral-clean.",
     image: C.vogaPinotGrigio,
     volume: "750ml",
     alcoholPercentage: "12% ABV",
@@ -1125,7 +1125,7 @@ const products = [
     pairings: ["Light seafood", "Grilled chicken", "Creamy pasta", "Aperitivo"],
     highlights: [
       "Iconic cylindrical bottle with re-sealable cap",
-      "Fruit from delle Venezie — Italy's top Pinot Grigio regions",
+      "Fruit from delle Venezie, Italy's top Pinot Grigio regions",
       "Light, clean, and mineral-driven",
     ],
   },
@@ -1145,7 +1145,7 @@ const products = [
     tastingNotes:
       "Vibrant and spritzy with aromas of spiced peach, golden raisin, and honeysuckle. Fruity-sweet medium body with fresh citrus and ripe apricot, finishing on green apple and a delicate chalky note.",
     servingSuggestion:
-      "Serve well chilled at 6–8°C. Perfect as an aperitif or dessert wine — a natural match for spicy Asian cuisine, fresh berries, and lemon meringue pie.",
+      "Serve well chilled at 6–8°C. Perfect as an aperitif or dessert wine, a natural match for spicy Asian cuisine, fresh berries, and lemon meringue pie.",
     awards: [],
     grapeVarietal: "100% Moscato",
     pairings: ["Spicy Asian cuisine", "Fresh berries", "Lemon meringue pie", "Fruit desserts"],
@@ -1161,7 +1161,7 @@ const products = [
     brandSlug: "voga-italia",
     category: "wine",
     description:
-      "VOGA's classic frizzante Moscato in the chic cylindrical bottle. Naturally sweet with a lively, gentle sparkle — grapes from the Pavia hills of Lombardy deliver absolute refreshment at just 7.5% ABV.",
+      "VOGA's classic frizzante Moscato in the chic cylindrical bottle. Naturally sweet with a lively, gentle sparkle, grapes from the Pavia hills of Lombardy deliver absolute refreshment at just 7.5% ABV.",
     image: C.vogaMoscatoIgp,
     volume: "750ml",
     alcoholPercentage: "7.5% ABV",
@@ -1171,13 +1171,13 @@ const products = [
     tastingNotes:
       "Aromas of spiced peach, golden raisin, and honeysuckle. Vibrant and spritzy with a fruity-sweet medium body, finishing on green apple, white nut, and a delicate chalky note. Unoaked and refreshingly clean.",
     servingSuggestion:
-      "Serve well chilled at 6–8°C. A versatile sweet sipper — pair with spicy Asian dishes, fresh berries, lemon meringue pie, and fruit cobblers.",
+      "Serve well chilled at 6–8°C. A versatile sweet sipper, pair with spicy Asian dishes, fresh berries, lemon meringue pie, and fruit cobblers.",
     awards: [],
     grapeVarietal: "100% Moscato",
     pairings: ["Spicy Asian dishes", "Fresh berries", "Lemon meringue pie", "Fruit cobblers"],
     highlights: [
-      "Frizzante style — gently sparkling and naturally sweet",
-      "Just 7.5% ABV — light and endlessly refreshing",
+      "Frizzante style, gently sparkling and naturally sweet",
+      "Just 7.5% ABV, light and endlessly refreshing",
       "Chic cylindrical bottle with re-sealable cap",
     ],
   },
@@ -1187,7 +1187,7 @@ const products = [
     brandSlug: "voga-italia",
     category: "wine",
     description:
-      "A smooth, sun-ripened Merlot from Sicily in VOGA's unmistakable cylindrical bottle. Unoaked and fruit-forward — juicy dark berries, soft tannins, and a rounded vanilla warmth that makes it dangerously easy to drink.",
+      "A smooth, sun-ripened Merlot from Sicily in VOGA's unmistakable cylindrical bottle. Unoaked and fruit-forward, juicy dark berries, soft tannins, and a rounded vanilla warmth that makes it dangerously easy to drink.",
     image: C.vogaMerlot,
     volume: "750ml",
     alcoholPercentage: "13% ABV",
@@ -1202,7 +1202,7 @@ const products = [
     grapeVarietal: "85% Merlot, 15% other authorized varieties",
     pairings: ["Grilled meats", "Tomato-based pasta", "Pizza", "Medium-aged cheese"],
     highlights: [
-      "Sun-ripened Sicilian fruit — smooth and generous",
+      "Sun-ripened Sicilian fruit, smooth and generous",
       "Unoaked, fruit-forward style",
       "Iconic cylindrical bottle with re-sealable cap",
     ],
@@ -1215,7 +1215,7 @@ const products = [
     brandSlug: "galanti",
     category: "wine",
     description:
-      "Galanti's celebratory extra dry spumante from the Veneto. Pale yellow with brilliant reflections and extremely fine bubbles — citrus, white flowers, and a touch of toasted brioche in an elegant, approachable style.",
+      "Galanti's celebratory extra dry spumante from the Veneto. Pale yellow with brilliant reflections and extremely fine bubbles, citrus, white flowers, and a touch of toasted brioche in an elegant, approachable style.",
     image: C.galantiCuveePrivata,
     volume: "750ml",
     alcoholPercentage: "11% ABV",
@@ -1226,11 +1226,11 @@ const products = [
     tastingNotes:
       "Pale, almost transparent yellow with extremely fine bubbles. Expressive aromas of Granny Smith apple, lime, and white flowers with a touch of toasted brioche. Lively, refreshing attack with creamy mousse and a pleasantly long, fluid finish.",
     servingSuggestion:
-      "Serve well chilled at 6–8°C in a flute. A perfect celebratory aperitif — pairs with light seafood, fried appetizers, and soft cheeses. Also an excellent Spritz base.",
+      "Serve well chilled at 6–8°C in a flute. A perfect celebratory aperitif, pairs with light seafood, fried appetizers, and soft cheeses. Also an excellent Spritz base.",
     awards: [],
     pairings: ["Light seafood", "Fried appetizers", "Soft cheeses", "Aperitivo"],
     highlights: [
-      "Extra dry spumante — crisp with a hint of softness",
+      "Extra dry spumante, crisp with a hint of softness",
       "Extremely fine, persistent bubbles",
       "Elegant celebratory style from the Veneto",
     ],
@@ -1243,7 +1243,7 @@ const products = [
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
-      "A crisp, fresh Pinot Grigio from delle Venezie with a fuller-bodied, unoaked style. Pear drops, white peaches, and a hint of elderflower — an honest, food-friendly Italian white for everyday drinking.",
+      "A crisp, fresh Pinot Grigio from delle Venezie with a fuller-bodied, unoaked style. Pear drops, white peaches, and a hint of elderflower, an honest, food-friendly Italian white for everyday drinking.",
     image: C.caDelLagoPinotGrigio,
     volume: "750ml",
     alcoholPercentage: "12% ABV",
@@ -1253,13 +1253,13 @@ const products = [
     tastingNotes:
       "Radiant pale golden hue. Delicious balance of pear drops, white peach, and hints of elderflower on the nose. Crisp and fresh on the palate with good mouth-feel and a lovely balance of fruit and acidity.",
     servingSuggestion:
-      "Serve chilled at 8–10°C. Pairs with light salads, grilled fish, chicken, and antipasti — or simply as a crisp aperitif.",
+      "Serve chilled at 8–10°C. Pairs with light salads, grilled fish, chicken, and antipasti, or simply as a crisp aperitif.",
     awards: [],
     grapeVarietal: "100% Pinot Grigio",
     pairings: ["Grilled fish", "Light salads", "Antipasti", "Chicken dishes"],
     highlights: [
       "Fuller-bodied yet unoaked style",
-      "Delle Venezie DOC — Italy's Pinot Grigio heartland",
+      "Delle Venezie DOC, Italy's Pinot Grigio heartland",
       "Crisp, fresh, and food-friendly",
     ],
   },
@@ -1269,7 +1269,7 @@ const products = [
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
-      "A classic Soave from the volcanic hills east of Verona, made from the Garganega grape. Zesty citrus, white peach, and the appellation's signature bitter-almond finish — one of Italy's great-value white wines.",
+      "A classic Soave from the volcanic hills east of Verona, made from the Garganega grape. Zesty citrus, white peach, and the appellation's signature bitter-almond finish, one of Italy's great-value white wines.",
     image: C.caDelLagoSoave,
     volume: "750ml",
     alcoholPercentage: "11.5% ABV",
@@ -1295,7 +1295,7 @@ const products = [
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
-      "An unoaked Italian Chardonnay that lets the fruit do the talking. Ripe orchard fruit, melon, and citrus with a soft, rounded texture — approachable, versatile, and built for the table.",
+      "An unoaked Italian Chardonnay that lets the fruit do the talking. Ripe orchard fruit, melon, and citrus with a soft, rounded texture, approachable, versatile, and built for the table.",
     image: C.caDelLagoChardonnay,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -1310,7 +1310,7 @@ const products = [
     grapeVarietal: "100% Chardonnay",
     pairings: ["Roast chicken", "Creamy pasta", "Grilled prawns", "Mild cheeses"],
     highlights: [
-      "Unoaked — pure, fruit-forward Chardonnay",
+      "Unoaked, pure, fruit-forward Chardonnay",
       "Soft, rounded, and versatile at the table",
     ],
   },
@@ -1320,7 +1320,7 @@ const products = [
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
-      "A Sangiovese-based Chianti from the heart of Tuscany. Dark cherry, blackcurrant, and a savory earthy edge with lively acidity — the honest, food-loving red that built Italy's reputation at the dinner table.",
+      "A Sangiovese-based Chianti from the heart of Tuscany. Dark cherry, blackcurrant, and a savory earthy edge with lively acidity, the honest, food-loving red that built Italy's reputation at the dinner table.",
     image: C.caDelLagoChianti,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -1330,12 +1330,12 @@ const products = [
     tastingNotes:
       "Bright ruby red. Aromas of ripe dark cherry and blackcurrant open up with air, revealing subtle earthy and strawberry notes. Medium-bodied with lively acidity, dusty tannins, and a savory, persistent finish.",
     servingSuggestion:
-      "Serve at 16–18°C. Made for Italian food — red meats, lasagne, pizza, and tomato-based dishes.",
+      "Serve at 16–18°C. Made for Italian food, red meats, lasagne, pizza, and tomato-based dishes.",
     awards: [],
     grapeVarietal: "Sangiovese",
     pairings: ["Red meats", "Lasagne", "Pizza", "Tomato-based dishes"],
     highlights: [
-      "DOCG certified — Tuscany's benchmark appellation",
+      "DOCG certified, Tuscany's benchmark appellation",
       "Sangiovese-led, food-loving structure",
       "Lively acidity and a savory finish",
     ],
@@ -1346,7 +1346,7 @@ const products = [
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
-      "An approachable Italian Cabernet Sauvignon — ripe blackcurrant and dark plum with a gentle herbal edge and smooth tannins. Everything you want from the grape, in an easy-drinking, food-friendly style.",
+      "An approachable Italian Cabernet Sauvignon, ripe blackcurrant and dark plum with a gentle herbal edge and smooth tannins. Everything you want from the grape, in an easy-drinking, food-friendly style.",
     image: C.caDelLagoCabernet,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -1362,7 +1362,7 @@ const products = [
     pairings: ["Grilled steak", "Roast lamb", "Hard cheeses", "Hearty pasta"],
     highlights: [
       "Ripe, approachable Cabernet character",
-      "Smooth tannins — easy-drinking and food-friendly",
+      "Smooth tannins, easy-drinking and food-friendly",
     ],
   },
 ];
@@ -1444,7 +1444,7 @@ const cocktails: Array<{
     slug: "himalayan-gimlet",
     title: "Himalayan Gimlet",
     description:
-      "A crisp, citrusy classic reinvented with Hapusa Gin — perfect balance of sweet and sour with the gin's wild botanicals at the center.",
+      "A crisp, citrusy classic reinvented with Hapusa Gin, perfect balance of sweet and sour with the gin's wild botanicals at the center.",
     imageUrl: C.gimlet,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1493,7 +1493,7 @@ const cocktails: Array<{
     slug: "southside",
     title: "Southside",
     description:
-      "Often called a mojito for gin lovers. Fresh mint, lime, and Greater Than Gin — simple, clean, and endlessly refreshing.",
+      "Often called a mojito for gin lovers. Fresh mint, lime, and Greater Than Gin, simple, clean, and endlessly refreshing.",
     imageUrl: C.southside,
     difficulty: CocktailDifficulty.Medium,
     category: "Classic",
@@ -1518,7 +1518,7 @@ const cocktails: Array<{
     slug: "greater-martini",
     title: "Greater Martini",
     description:
-      "The quintessential gin cocktail — clean and elegant. Greater Than's botanicals shine with just a touch of dry vermouth and a lemon twist.",
+      "The quintessential gin cocktail, clean and elegant. Greater Than's botanicals shine with just a touch of dry vermouth and a lemon twist.",
     imageUrl: C.greaterMartini,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1562,7 +1562,7 @@ const cocktails: Array<{
     slug: "greater-salty-dog",
     title: "Greater Salty Dog",
     description:
-      "Tangy and savory — grapefruit juice, hibiscus syrup, and Greater Than Gin in a salt-rimmed glass. One of the most underrated gin serves.",
+      "Tangy and savory, grapefruit juice, hibiscus syrup, and Greater Than Gin in a salt-rimmed glass. One of the most underrated gin serves.",
     imageUrl: C.saltyDog,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1584,7 +1584,7 @@ const cocktails: Array<{
     slug: "hemingway-special",
     title: "Hemingway Special",
     description:
-      "A daiquiri variation created for Ernest Hemingway himself — tart and complex with maraschino and grapefruit, no sugar added.",
+      "A daiquiri variation created for Ernest Hemingway himself, tart and complex with maraschino and grapefruit, no sugar added.",
     imageUrl: C.hemingway,
     difficulty: CocktailDifficulty.Medium,
     category: "Classic",
@@ -1636,7 +1636,7 @@ const cocktails: Array<{
     slug: "aviation",
     title: "Aviation",
     description:
-      "A pre-Prohibition classic with a pale sky-blue hue. Gin, maraschino, and lemon — floral, complex, and effortlessly beautiful in the glass.",
+      "A pre-Prohibition classic with a pale sky-blue hue. Gin, maraschino, and lemon, floral, complex, and effortlessly beautiful in the glass.",
     imageUrl: C.aviation,
     difficulty: CocktailDifficulty.Medium,
     category: "Classic",
@@ -1691,7 +1691,7 @@ const cocktails: Array<{
     slug: "cherry-negroni",
     title: "Cherry Negroni",
     description:
-      "A rich, deeply fruited twist on the Negroni — Sangue Morlacco stands in for Campari, adding a concentrated cherry sweetness alongside the vermouth.",
+      "A rich, deeply fruited twist on the Negroni, Sangue Morlacco stands in for Campari, adding a concentrated cherry sweetness alongside the vermouth.",
     imageUrl: C.cherryNegroni,
     difficulty: CocktailDifficulty.Easy,
     category: "Modern",
@@ -1718,7 +1718,7 @@ const cocktails: Array<{
     slug: "luxi-style",
     title: "Luxi Style",
     description:
-      "A breezy, cherry-forward highball — gin and Sangue Morlacco lengthened with soda. A perfect long drink for a warm evening.",
+      "A breezy, cherry-forward highball, gin and Sangue Morlacco lengthened with soda. A perfect long drink for a warm evening.",
     imageUrl: C.luxiStyle,
     difficulty: CocktailDifficulty.Easy,
     category: "Modern",
@@ -1772,7 +1772,7 @@ const cocktails: Array<{
     slug: "white-lady",
     title: "White Lady",
     description:
-      "A silky, sharp pre-Prohibition classic. Gin, triple sec, and fresh lemon — elegant in its simplicity and properly citrusy.",
+      "A silky, sharp pre-Prohibition classic. Gin, triple sec, and fresh lemon, elegant in its simplicity and properly citrusy.",
     imageUrl: C.whiteLady,
     difficulty: CocktailDifficulty.Medium,
     category: "Classic",
@@ -1799,7 +1799,7 @@ const cocktails: Array<{
     slug: "margarita",
     title: "Margarita",
     description:
-      "The world's most ordered cocktail. Earthy tequila, bright lime, and orange liqueur — deceptively simple, deceptively hard to get right.",
+      "The world's most ordered cocktail. Earthy tequila, bright lime, and orange liqueur, deceptively simple, deceptively hard to get right.",
     imageUrl: C.margarita,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1821,7 +1821,7 @@ const cocktails: Array<{
     slug: "negroni",
     title: "Negroni",
     description:
-      "The iconic Italian aperitivo. Equal parts gin, vermouth, and bitter — perfectly balanced, bittersweet, and impossible to improve upon.",
+      "The iconic Italian aperitivo. Equal parts gin, vermouth, and bitter, perfectly balanced, bittersweet, and impossible to improve upon.",
     imageUrl: C.negroni,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1848,7 +1848,7 @@ const cocktails: Array<{
     slug: "bitter-shakerato",
     title: "Bitter Shakerato",
     description:
-      "An Italian institution. Luxardo Bitter shaken hard with ice until cold and frothy, strained into a coupe — intensely herbal and refreshing.",
+      "An Italian institution. Luxardo Bitter shaken hard with ice until cold and frothy, strained into a coupe, intensely herbal and refreshing.",
     imageUrl: C.shakerato,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1868,7 +1868,7 @@ const cocktails: Array<{
     slug: "boulevardier",
     title: "Boulevardier",
     description:
-      "The Negroni's autumnal cousin — rye whisky replaces gin, adding a spicy warmth that pairs beautifully with Luxardo Bitter and sweet vermouth.",
+      "The Negroni's autumnal cousin, rye whisky replaces gin, adding a spicy warmth that pairs beautifully with Luxardo Bitter and sweet vermouth.",
     imageUrl: C.boulevardier,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1890,7 +1890,7 @@ const cocktails: Array<{
     slug: "sorrentino",
     title: "Sorrentino",
     description:
-      "A Spritz-style serve layering Limoncello, Luxardo Bitter, and sweet vermouth — bright, complex, and topped with soda for lift.",
+      "A Spritz-style serve layering Limoncello, Luxardo Bitter, and sweet vermouth, bright, complex, and topped with soda for lift.",
     imageUrl: C.sorrentino,
     difficulty: CocktailDifficulty.Easy,
     category: "Modern",
@@ -1943,7 +1943,7 @@ const cocktails: Array<{
     slug: "aperitivo-spritz",
     title: "Aperitivo Spritz",
     description:
-      "The quintessential sunset drink. Luxardo Aperitivo and Prosecco with soda — light, bubbly, and bittersweet. Named after the city, made for the moment.",
+      "The quintessential sunset drink. Luxardo Aperitivo and Prosecco with soda, light, bubbly, and bittersweet. Named after the city, made for the moment.",
     imageUrl: C.aperitivoSpritz,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1965,7 +1965,7 @@ const cocktails: Array<{
     slug: "bicicletta",
     title: "Bicicletta",
     description:
-      "Drier and more bitter than the Spritz — Luxardo Aperitivo with Aranciata Amara, named after the wobbly bicycle rides home.",
+      "Drier and more bitter than the Spritz, Luxardo Aperitivo with Aranciata Amara, named after the wobbly bicycle rides home.",
     imageUrl: C.bicicletta,
     difficulty: CocktailDifficulty.Easy,
     category: "Classic",
@@ -1990,7 +1990,7 @@ const cocktails: Array<{
     slug: "il-santo",
     title: "Il Santo",
     description:
-      "Complex and layered — gin, aperitivo, and maraschino with lime. A house cocktail that shows what Luxardo's range can do together.",
+      "Complex and layered, gin, aperitivo, and maraschino with lime. A house cocktail that shows what Luxardo's range can do together.",
     imageUrl: C.ilSanto,
     difficulty: CocktailDifficulty.Advanced,
     category: "Modern",
@@ -2023,7 +2023,7 @@ const cocktails: Array<{
     slug: "angioletto-and-lime",
     title: "Angioletto & Lime",
     description:
-      "Simple and indulgent — Luxardo's hazelnut liqueur with fresh lime. The citrus cuts the sweetness and makes it unexpectedly easy to drink.",
+      "Simple and indulgent, Luxardo's hazelnut liqueur with fresh lime. The citrus cuts the sweetness and makes it unexpectedly easy to drink.",
     imageUrl: C.angiolettoLime,
     difficulty: CocktailDifficulty.Easy,
     category: "Modern",
@@ -2053,7 +2053,7 @@ const bartenders = [
     // TODO: replace with real bio
     bio: "Brand Ambassador for Drink It Nepal. A passionate cocktail creator known for boundary-pushing, flavour-forward signature serves across Kathmandu.",
     // TODO: replace with real quote
-    quote: "Every great cocktail tells a story — I just help you find yours.",
+    quote: "Every great cocktail tells a story, I just help you find yours.",
     // TODO: add real Instagram handle
     instagramHandle: null as string | null,
     photoUrl: "/home/bartender.jpg",
@@ -2108,7 +2108,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Medium,
     category: "Signature",
     description:
-      "Fig leaf infused Hapusa meets toasted coconut Luxardo Bitter Rosso — a deeply aromatic, contemplative serve.",
+      "Fig leaf infused Hapusa meets toasted coconut Luxardo Bitter Rosso, a deeply aromatic, contemplative serve.",
     imageUrl: C.underTheFigTree,
     ingredients: [
       {
@@ -2142,7 +2142,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Advanced,
     category: "Signature",
     description:
-      "Whistler's Triple Oak Whiskey intensified with black garlic and coffee — a dark, complex ritual in a glass.",
+      "Whistler's Triple Oak Whiskey intensified with black garlic and coffee, a dark, complex ritual in a glass.",
     imageUrl: C.midNightOffering,
     ingredients: [
       {
@@ -2176,7 +2176,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Advanced,
     category: "Signature",
     description:
-      "A clarified, umami-forward cocktail — Hapusa meets tomato, fig, timmur and milk for an unforgettable savoury serve.",
+      "A clarified, umami-forward cocktail, Hapusa meets tomato, fig, timmur and milk for an unforgettable savoury serve.",
     imageUrl: C.ohMami,
     ingredients: [
       {
@@ -2202,7 +2202,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Medium,
     category: "Signature",
     description:
-      "Whiskey stirred with shiitake cordial and MSG — deeply savoury, umami-rich, and utterly unexpected.",
+      "Whiskey stirred with shiitake cordial and MSG, deeply savoury, umami-rich, and utterly unexpected.",
     imageUrl: C.wildSeduction,
     ingredients: [
       {
@@ -2230,7 +2230,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Easy,
     category: "Signature",
     description:
-      "Lavender infused gin shaken with tropical fruits and strawberry foam — vibrant, playful and aromatic.",
+      "Lavender infused gin shaken with tropical fruits and strawberry foam, vibrant, playful and aromatic.",
     imageUrl: C.purpleTease,
     ingredients: [
       {
@@ -2255,7 +2255,7 @@ const amritCocktails: AmritCocktailInput[] = [
     difficulty: CocktailDifficulty.Advanced,
     category: "Signature",
     description:
-      "Hapusa and Sangue Morlacco lifted with liquid smoke and orange — a theatrical, complex cocktail with depth.",
+      "Hapusa and Sangue Morlacco lifted with liquid smoke and orange, a theatrical, complex cocktail with depth.",
     imageUrl: C.smokeAndDust,
     ingredients: [
       {

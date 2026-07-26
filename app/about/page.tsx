@@ -61,7 +61,7 @@ const JOURNEY = [
   {
     year: "2024",
     title: "Growing Portfolio",
-    body: "New categories added — Irish whiskey, Irish cream liqueurs, and strong beer join an ever-expanding family.",
+    body: "New categories added, Irish whiskey, Irish cream liqueurs, and strong beer join an ever-expanding family.",
   },
 ];
 
@@ -134,7 +134,7 @@ export default function AboutPage() {
               variants={fadeUp}
               className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10"
             >
-              01 — Who We Are
+              01 · Who We Are
             </motion.p>
             <motion.h2
               variants={fadeUp}
@@ -153,7 +153,7 @@ export default function AboutPage() {
               distributor, bringing the world&apos;s finest distilleries to
               Kathmandu&apos;s tables and bars. Founded in 2020, we&apos;ve
               built a curated portfolio spanning craft gins, Irish whiskey,
-              fine wines, Italian liqueurs, and beyond — each label chosen for
+              fine wines, Italian liqueurs, and beyond, each label chosen for
               its story, quality, and character.
             </motion.p>
           </motion.div>
@@ -180,7 +180,7 @@ export default function AboutPage() {
               variants={fadeUp}
               className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10"
             >
-              02 — What We Stand For
+              02 · What We Stand For
             </motion.p>
             <motion.h2
               variants={fadeUp}
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 {
                   n: "I",
                   title: "Curation",
-                  body: "Every bottle earns its place. We source only spirits that represent the pinnacle of their category — no fillers, no shortcuts.",
+                  body: "Every bottle earns its place. We source only spirits that represent the pinnacle of their category, no fillers, no shortcuts.",
                 },
                 {
                   n: "II",
@@ -256,7 +256,7 @@ export default function AboutPage() {
               variants={fadeUp}
               className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#9A8F84] mb-10"
             >
-              03 — Who We Serve
+              03 · Who We Serve
             </motion.p>
             <motion.h2
               variants={fadeUp}

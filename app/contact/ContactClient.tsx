@@ -66,7 +66,7 @@ export default function ContactClient({
           transition={{ delay: 0.55, duration: 0.7 }}
           className="font-mono text-[10px] text-[#9A8F84] mt-12 max-w-[320px] leading-[1.9] uppercase tracking-wider"
         >
-          Questions about our products, distribution, or partnerships — our team
+          Questions about our products, distribution, or partnerships, our team
           replies within 24 hours.
         </motion.p>
       </section>

@@ -95,7 +95,7 @@ const ContactForm = () => {
                   Message Received
                 </p>
                 <p className="font-sans text-[16px] md:text-[17px] text-[#5C5248] leading-[1.7]">
-                  Thank you for reaching out — we&apos;ll get back to you
+                  Thank you for reaching out, we&apos;ll get back to you
                   shortly.
                 </p>
               </div>

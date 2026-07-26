@@ -8,8 +8,8 @@ const BARTENDERS = [
     name: "Anil Shrestha",
     slug: "amrit-tamang-waiba",
     role: "Brand Ambassador · Drink It Nepal",
-    bio: "A decade behind the bar, building Nepal's cocktail culture one glass at a time. Trained across Southeast Asia, now rooted in Kathmandu — bringing the world's best spirits to local palates.",
-    quote: "Every great cocktail tells a story — I just help you find yours.",
+    bio: "A decade behind the bar, building Nepal's cocktail culture one glass at a time. Trained across Southeast Asia, now rooted in Kathmandu, bringing the world's best spirits to local palates.",
+    quote: "Every great cocktail tells a story, I just help you find yours.",
     instagramHandle: "anilshrestha.bar",
     // TODO: replace with real bartender portrait
     photoUrl: "/home/bartender.jpg",
@@ -29,12 +29,12 @@ const BARTENDERS = [
         venue: "Hotel Yak & Yeti",
       },
       {
-        name: "Bar Takeover — Alchemy",
+        name: "Bar Takeover at Alchemy",
         type: "Takeover",
         venue: "Alchemy Bar, Thamel",
       },
       {
-        name: "Private Tasting — Hapusa Launch",
+        name: "Private Tasting: Hapusa Launch",
         type: "Brand Event",
         venue: "Dwarika's Hotel",
       },

@@ -25,7 +25,7 @@ const STEPS = [
   {
     n: "01",
     title: "Reach Out",
-    body: "Contact our distribution team with your venue details, location, and spirit preferences. No form — just a conversation.",
+    body: "Contact our distribution team with your venue details, location, and spirit preferences. No form, just a conversation.",
   },
   {
     n: "02",
@@ -47,11 +47,11 @@ const STEPS = [
 const BENEFITS = [
   {
     title: "Exclusive Labels",
-    body: "Access brands not available anywhere else in Nepal — import exclusivity you can build a menu around.",
+    body: "Access brands not available anywhere else in Nepal, import exclusivity you can build a menu around.",
   },
   {
     title: "Staff Training",
-    body: "Complimentary brand ambassador sessions for your team — pour confidently, sell compellingly.",
+    body: "Complimentary brand ambassador sessions for your team: pour confidently, sell compellingly.",
   },
   {
     title: "Menu Support",

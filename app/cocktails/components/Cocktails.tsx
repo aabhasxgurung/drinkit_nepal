@@ -127,7 +127,7 @@ export default function Cocktails({
           transition={{ delay: 0.55, duration: 0.7 }}
           className="font-mono text-[10px] text-[#9A8F84] mt-12 max-w-[260px] leading-[1.9] uppercase tracking-wider"
         >
-          Crafted with the world&apos;s finest spirits — available at your
+          Crafted with the world&apos;s finest spirits, available at your
           favourite Kathmandu bar.
         </motion.p>
       </section>

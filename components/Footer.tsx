@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
 
           <p className="font-mono text-[10px] text-[#9A8F84] mt-10 md:mt-14 max-w-[280px] leading-[1.8] uppercase tracking-wider">
-            Premium spirits sourced from the world&apos;s finest distilleries —
+            Premium spirits sourced from the world&apos;s finest distilleries,
             brought to Kathmandu.
           </p>
         </div>

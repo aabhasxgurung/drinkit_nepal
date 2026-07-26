@@ -122,7 +122,7 @@ export function Detail({
   return (
     <div style={{ background: CREAM }}>
       {/* ════════════════════════════════════════════════════════════════════
-          HERO — bottle + everything essential, calm
+          HERO, bottle + everything essential, calm
       ════════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-16 pt-24 md:pt-28 pb-20 md:pb-28">
         <Link
@@ -319,7 +319,7 @@ export function Detail({
       )}
 
       {/* ════════════════════════════════════════════════════════════════════
-          FROM THE HOUSE — brand + more bottles
+          FROM THE HOUSE, brand + more bottles
       ════════════════════════════════════════════════════════════════════ */}
       <section
         className="px-6 md:px-12 lg:px-16 py-20 md:py-28"
@@ -390,7 +390,7 @@ export function Detail({
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          MAKE IT INTO — cocktails (dark)
+          MAKE IT INTO, cocktails (dark)
       ════════════════════════════════════════════════════════════════════ */}
       {cocktails.length > 0 && (
         <section

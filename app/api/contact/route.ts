@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       from: "Drink It Nepal <contact@drinkitnepal.com>",
       to: process.env.CONTACT_EMAIL!,
       replyTo: email,
-      subject: `New message from ${name} — Drink It Nepal`,
+      subject: `New message from ${name} - Drink It Nepal`,
       html: `<div style="font-family: sans-serif; line-height: 1.6;">
         <h2>New Contact Form Submission</h2>
         ${rows}

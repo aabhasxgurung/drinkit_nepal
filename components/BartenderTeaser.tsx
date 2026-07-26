@@ -7,7 +7,7 @@ const BARTENDER = {
   name: "Amrit Tamang Waiba",
   slug: "amrit-tamang-waiba",
   title: "Brand Ambassador · Drink It Nepal",
-  quote: "Every great cocktail tells a story — I just help you find yours.",
+  quote: "Every great cocktail tells a story, I just help you find yours.",
   // TODO: replace with real bartender portrait
   photoUrl: "/home/bartender.jpg",
 };
