@@ -24,7 +24,7 @@ const ContactForm = () => {
   });
 
   const handleSubmit = async (values: typeof initialValues) => {
-    const res = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
+    const res = await fetch("/api/contact/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

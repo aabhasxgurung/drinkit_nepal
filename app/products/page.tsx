@@ -9,6 +9,9 @@ const BRAND_META: Record<string, string> = {
   sula: "Nashik, India · Est. 1999",
   "robert-merry": "Ireland",
   "indo-spirits": "India",
+  "voga-italia": "Delle Venezie · Sicily · Pavia, Italy",
+  galanti: "Veneto, Italy",
+  "ca-del-lago": "Veneto & Tuscany, Italy",
 };
 
 const NAO_SPIRITS_SLUGS = ["hapusa", "greater-than"];

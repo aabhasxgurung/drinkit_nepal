@@ -97,6 +97,36 @@ const BRANDS: BrandData[] = [
     link: "/products?brand=bro-code",
     tint: "rgba(202, 138, 4, 0.05)",
   },
+  {
+    number: "09",
+    logo: "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051069/VOGA_logo_q7rwzy.png",
+    name: "VOGA Italia",
+    category: "Italian Wine",
+    origin: "Italy",
+    expressions: 4,
+    link: "/products?brand=voga-italia",
+    tint: "rgba(28, 24, 20, 0.05)",
+  },
+  {
+    number: "10",
+    logo: "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051070/GALANTI_logo_lkkqr1.png",
+    name: "Galanti",
+    category: "Italian Sparkling Wine",
+    origin: "Italy",
+    expressions: 1,
+    link: "/products?brand=galanti",
+    tint: "rgba(202, 138, 4, 0.05)",
+  },
+  {
+    number: "11",
+    logo: "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051068/CA_DEL_LAGO_logo_bxb96i.png",
+    name: "Ca' del Lago",
+    category: "Italian Wine",
+    origin: "Italy",
+    expressions: 5,
+    link: "/products?brand=ca-del-lago",
+    tint: "rgba(30, 58, 95, 0.05)",
+  },
 ];
 
 /* ── Component ───────────────────────────────────────────────────── */
@@ -154,7 +184,7 @@ export default function OurBrands() {
       ref={sectionRef}
       // h-auto on mobile; (n-1)*100vh on desktop gives one vh per brand transition.
       // NO overflow-hidden here — that breaks position:sticky on the child.
-      className="w-full h-auto md:h-[770vh]"
+      className="w-full h-auto md:h-[1070vh]"
       style={{ backgroundColor: "#FAF8F5" }}
     >
       {/* ══ DESKTOP ════════════════════════════════════════════════════ */}
@@ -205,7 +235,7 @@ export default function OurBrands() {
               textTransform: "none",
             }}
           >
-            Eight brands. Each one handpicked. Each one here for a reason.
+            Eleven brands. Each one handpicked. Each one here for a reason.
           </p>
 
           {/* Active brand origin hint */}
@@ -389,7 +419,7 @@ export default function OurBrands() {
               textTransform: "none",
             }}
           >
-            Eight brands. Each one handpicked. Each one here for a reason.
+            Eleven brands. Each one handpicked. Each one here for a reason.
           </p>
         </div>
 

@@ -83,6 +83,38 @@ const C = {
   bongaBonga:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1778820417/bongabongab_giwncn.png",
 
+  // VOGA Italia
+  vogaLogo:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051069/VOGA_logo_q7rwzy.png",
+  vogaPinotGrigio:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051072/VOGA_Pinot_Grigio_mfuwug.png",
+  vogaMoscatoGold:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051071/VOGA_moscatoGold_Rev_cktgno.png",
+  vogaMerlot:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051069/VOGA_Merlot_bjbwou.png",
+  vogaMoscatoIgp:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785052338/VOGA%20MOSCATO%20IGP.webp",
+
+  // Galanti
+  galantiLogo:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051070/GALANTI_logo_lkkqr1.png",
+  galantiCuveePrivata:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051071/GALANTI_Cuve%CC%81e_Spumante_Privata_fhyc6b.png",
+
+  // Ca' del Lago
+  caDelLagoLogo:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051068/CA_DEL_LAGO_logo_bxb96i.png",
+  caDelLagoPinotGrigio:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051068/CA_DEL_LAGO_Pinot_Grigio_jwptxe.png",
+  caDelLagoSoave:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051068/CA_DEL_LAGO_soave_doc_hdoq9c.png",
+  caDelLagoChardonnay:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051068/CA_DEL_LAGO_chardonnay_l0tymi.png",
+  caDelLagoChianti:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051067/CA_DEL_LAGO_chianti_DOCG_lpw6yx.png",
+  caDelLagoCabernet:
+    "https://res.cloudinary.com/dvhoi2xg1/image/upload/v1785051067/CA_DEL_LAGO_cabernet_sauvignon_cznqni.png",
+
   // Featured / hero images
   featHapusa:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/featuredHapusa_hbrchu.jpg",
@@ -240,6 +272,30 @@ const brands = [
     description:
       "A vibrant mystery liqueur with a playful, fruity character that defies easy categorization.",
     country: "India",
+  },
+  {
+    slug: "voga-italia",
+    name: "VOGA Italia",
+    logo: C.vogaLogo,
+    description:
+      "Contemporary Italian wines in the iconic cylindrical bottle with re-sealable cap — modern design meets classic Italian winemaking.",
+    country: "Italy",
+  },
+  {
+    slug: "galanti",
+    name: "Galanti",
+    logo: C.galantiLogo,
+    description:
+      "Italian sparkling wine house from the Veneto — celebratory spumante and Prosecco crafted in an approachable, elegant style.",
+    country: "Italy",
+  },
+  {
+    slug: "ca-del-lago",
+    name: "Ca' del Lago",
+    logo: C.caDelLagoLogo,
+    description:
+      "Classic regional Italian wines — honest, food-friendly expressions of Italy's great appellations, from the Veneto to Tuscany.",
+    country: "Italy",
   },
 ];
 
@@ -1043,6 +1099,270 @@ const products = [
       "Mystery liqueur — the flavor is the surprise",
       "Vibrant, fun, and endlessly mixable",
       "A conversation starter in every glass",
+    ],
+  },
+
+  // ── VOGA Italia ────────────────────────────────────────────────────────────
+  {
+    slug: "voga-pinot-grigio",
+    name: "VOGA Pinot Grigio",
+    brandSlug: "voga-italia",
+    category: "wine",
+    description:
+      "VOGA's flagship white in the iconic cylindrical bottle. Crafted from fruit grown in delle Venezie — the Veneto, Friuli-Venezia Giulia, and Trentino Alto Adige, Italy's top regions for Pinot Grigio. Subtle, elegant, and mineral-clean.",
+    image: C.vogaPinotGrigio,
+    volume: "750ml",
+    alcoholPercentage: "12% ABV",
+    country: "Italy",
+    region: "Delle Venezie DOC, Italy",
+    flavors: "White Peach, Yellow Apple, Ripe Pear, Citrus Zest, White Flowers",
+    tastingNotes:
+      "Subtle, elegant aromas of peach pulp, yellow apples, and white flowers. The palate is light and clean with vibrant lemon, green apple, and melon, balanced acidity, and a mineral, spring-water-like finish.",
+    servingSuggestion:
+      "Serve well chilled at 8–10°C. Delicious as an aperitivo, and pairs with light seafood, chicken, and rich, creamy pasta dishes.",
+    awards: [],
+    grapeVarietal: "100% Pinot Grigio",
+    pairings: ["Light seafood", "Grilled chicken", "Creamy pasta", "Aperitivo"],
+    highlights: [
+      "Iconic cylindrical bottle with re-sealable cap",
+      "Fruit from delle Venezie — Italy's top Pinot Grigio regions",
+      "Light, clean, and mineral-driven",
+    ],
+  },
+  {
+    slug: "voga-moscato-gold",
+    name: "VOGA Moscato Gold",
+    brandSlug: "voga-italia",
+    category: "wine",
+    description:
+      "A naturally sweet sparkling Moscato in VOGA's signature gold cylindrical bottle. Grapes come from the Oltrepò Pavese in Lombardy, where magnesium-rich soils intensify the aromatics. Low in alcohol, high in charm.",
+    image: C.vogaMoscatoGold,
+    volume: "750ml",
+    alcoholPercentage: "7.5% ABV",
+    country: "Italy",
+    region: "Oltrepò Pavese, Lombardy, Italy",
+    flavors: "Spiced Peach, Ripe Apricot, Golden Raisin, Honeysuckle, Fresh Citrus",
+    tastingNotes:
+      "Vibrant and spritzy with aromas of spiced peach, golden raisin, and honeysuckle. Fruity-sweet medium body with fresh citrus and ripe apricot, finishing on green apple and a delicate chalky note.",
+    servingSuggestion:
+      "Serve well chilled at 6–8°C. Perfect as an aperitif or dessert wine — a natural match for spicy Asian cuisine, fresh berries, and lemon meringue pie.",
+    awards: [],
+    grapeVarietal: "100% Moscato",
+    pairings: ["Spicy Asian cuisine", "Fresh berries", "Lemon meringue pie", "Fruit desserts"],
+    highlights: [
+      "Naturally sweet sparkling Moscato at just 7.5% ABV",
+      "Magnesium-rich Oltrepò Pavese soils intensify the aromatics",
+      "Signature gold cylindrical bottle",
+    ],
+  },
+  {
+    slug: "voga-moscato-igp",
+    name: "VOGA Moscato IGP",
+    brandSlug: "voga-italia",
+    category: "wine",
+    description:
+      "VOGA's classic frizzante Moscato in the chic cylindrical bottle. Naturally sweet with a lively, gentle sparkle — grapes from the Pavia hills of Lombardy deliver absolute refreshment at just 7.5% ABV.",
+    image: C.vogaMoscatoIgp,
+    volume: "750ml",
+    alcoholPercentage: "7.5% ABV",
+    country: "Italy",
+    region: "Provincia di Pavia IGP, Lombardy, Italy",
+    flavors: "Spiced Peach, Golden Raisin, Honeysuckle, Green Apple, Fresh Citrus",
+    tastingNotes:
+      "Aromas of spiced peach, golden raisin, and honeysuckle. Vibrant and spritzy with a fruity-sweet medium body, finishing on green apple, white nut, and a delicate chalky note. Unoaked and refreshingly clean.",
+    servingSuggestion:
+      "Serve well chilled at 6–8°C. A versatile sweet sipper — pair with spicy Asian dishes, fresh berries, lemon meringue pie, and fruit cobblers.",
+    awards: [],
+    grapeVarietal: "100% Moscato",
+    pairings: ["Spicy Asian dishes", "Fresh berries", "Lemon meringue pie", "Fruit cobblers"],
+    highlights: [
+      "Frizzante style — gently sparkling and naturally sweet",
+      "Just 7.5% ABV — light and endlessly refreshing",
+      "Chic cylindrical bottle with re-sealable cap",
+    ],
+  },
+  {
+    slug: "voga-merlot",
+    name: "VOGA Merlot",
+    brandSlug: "voga-italia",
+    category: "wine",
+    description:
+      "A smooth, sun-ripened Merlot from Sicily in VOGA's unmistakable cylindrical bottle. Unoaked and fruit-forward — juicy dark berries, soft tannins, and a rounded vanilla warmth that makes it dangerously easy to drink.",
+    image: C.vogaMerlot,
+    volume: "750ml",
+    alcoholPercentage: "13% ABV",
+    country: "Italy",
+    region: "Terre Siciliane, Sicily, Italy",
+    flavors: "Dark Berries, Black Plum, Vanilla, Soft Spice, Hint of Tobacco",
+    tastingNotes:
+      "Deep ruby with bluish reflections. Fruity berry aromas lead to a smooth, rounded palate of dark plum and vanilla with a subtle tobacco note. Balanced body, gentle acidity, and soft tannins on the finish.",
+    servingSuggestion:
+      "Serve at 16–18°C. A versatile red for grilled meats, pasta with tomato-based sauces, pizza, and medium-aged cheeses.",
+    awards: [],
+    grapeVarietal: "85% Merlot, 15% other authorized varieties",
+    pairings: ["Grilled meats", "Tomato-based pasta", "Pizza", "Medium-aged cheese"],
+    highlights: [
+      "Sun-ripened Sicilian fruit — smooth and generous",
+      "Unoaked, fruit-forward style",
+      "Iconic cylindrical bottle with re-sealable cap",
+    ],
+  },
+
+  // ── Galanti ────────────────────────────────────────────────────────────────
+  {
+    slug: "galanti-cuvee-privata-spumante",
+    name: "Galanti Cuvée Privata Spumante Extra Dry",
+    brandSlug: "galanti",
+    category: "wine",
+    description:
+      "Galanti's celebratory extra dry spumante from the Veneto. Pale yellow with brilliant reflections and extremely fine bubbles — citrus, white flowers, and a touch of toasted brioche in an elegant, approachable style.",
+    image: C.galantiCuveePrivata,
+    volume: "750ml",
+    alcoholPercentage: "11% ABV",
+    country: "Italy",
+    region: "Veneto, Italy",
+    flavors:
+      "Green Apple, Lime, White Flowers, Apricot, Toasted Brioche",
+    tastingNotes:
+      "Pale, almost transparent yellow with extremely fine bubbles. Expressive aromas of Granny Smith apple, lime, and white flowers with a touch of toasted brioche. Lively, refreshing attack with creamy mousse and a pleasantly long, fluid finish.",
+    servingSuggestion:
+      "Serve well chilled at 6–8°C in a flute. A perfect celebratory aperitif — pairs with light seafood, fried appetizers, and soft cheeses. Also an excellent Spritz base.",
+    awards: [],
+    pairings: ["Light seafood", "Fried appetizers", "Soft cheeses", "Aperitivo"],
+    highlights: [
+      "Extra dry spumante — crisp with a hint of softness",
+      "Extremely fine, persistent bubbles",
+      "Elegant celebratory style from the Veneto",
+    ],
+  },
+
+  // ── Ca' del Lago ───────────────────────────────────────────────────────────
+  {
+    slug: "ca-del-lago-pinot-grigio",
+    name: "Ca' del Lago Pinot Grigio",
+    brandSlug: "ca-del-lago",
+    category: "wine",
+    description:
+      "A crisp, fresh Pinot Grigio from delle Venezie with a fuller-bodied, unoaked style. Pear drops, white peaches, and a hint of elderflower — an honest, food-friendly Italian white for everyday drinking.",
+    image: C.caDelLagoPinotGrigio,
+    volume: "750ml",
+    alcoholPercentage: "12% ABV",
+    country: "Italy",
+    region: "Delle Venezie DOC, Italy",
+    flavors: "Pear Drops, White Peach, Elderflower, Citrus, Stone Fruit",
+    tastingNotes:
+      "Radiant pale golden hue. Delicious balance of pear drops, white peach, and hints of elderflower on the nose. Crisp and fresh on the palate with good mouth-feel and a lovely balance of fruit and acidity.",
+    servingSuggestion:
+      "Serve chilled at 8–10°C. Pairs with light salads, grilled fish, chicken, and antipasti — or simply as a crisp aperitif.",
+    awards: [],
+    grapeVarietal: "100% Pinot Grigio",
+    pairings: ["Grilled fish", "Light salads", "Antipasti", "Chicken dishes"],
+    highlights: [
+      "Fuller-bodied yet unoaked style",
+      "Delle Venezie DOC — Italy's Pinot Grigio heartland",
+      "Crisp, fresh, and food-friendly",
+    ],
+  },
+  {
+    slug: "ca-del-lago-soave",
+    name: "Ca' del Lago Soave DOC",
+    brandSlug: "ca-del-lago",
+    category: "wine",
+    description:
+      "A classic Soave from the volcanic hills east of Verona, made from the Garganega grape. Zesty citrus, white peach, and the appellation's signature bitter-almond finish — one of Italy's great-value white wines.",
+    image: C.caDelLagoSoave,
+    volume: "750ml",
+    alcoholPercentage: "11.5% ABV",
+    country: "Italy",
+    region: "Soave DOC, Veneto, Italy",
+    flavors: "Citrus, White Peach, Green Apple, White Flowers, Bitter Almond",
+    tastingNotes:
+      "Pale straw yellow. Delicate aromas of white flowers, apple, and citrus. Zesty and fresh on the palate with white peach, a saline mineral streak, and Soave's signature bitter-almond note on the finish.",
+    servingSuggestion:
+      "Serve chilled at 8–10°C. A natural partner for seafood risotto, grilled white fish, fresh cheeses, and light vegetarian dishes.",
+    awards: [],
+    grapeVarietal: "Garganega",
+    pairings: ["Seafood risotto", "Grilled white fish", "Fresh cheeses", "Light vegetarian dishes"],
+    highlights: [
+      "Classic Garganega from the volcanic hills of Soave",
+      "Signature bitter-almond finish",
+      "One of Italy's great-value DOC whites",
+    ],
+  },
+  {
+    slug: "ca-del-lago-chardonnay",
+    name: "Ca' del Lago Chardonnay",
+    brandSlug: "ca-del-lago",
+    category: "wine",
+    description:
+      "An unoaked Italian Chardonnay that lets the fruit do the talking. Ripe orchard fruit, melon, and citrus with a soft, rounded texture — approachable, versatile, and built for the table.",
+    image: C.caDelLagoChardonnay,
+    volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
+    country: "Italy",
+    region: "Veneto, Italy",
+    flavors: "Yellow Apple, Melon, Citrus, Peach, White Blossom",
+    tastingNotes:
+      "Bright straw yellow. Inviting aromas of yellow apple, melon, and white blossom. Soft and rounded on the palate with ripe peach and citrus, fresh balancing acidity, and a clean, fruit-driven finish.",
+    servingSuggestion:
+      "Serve chilled at 8–10°C. Pairs with roast chicken, creamy pasta, grilled prawns, and mild cheeses.",
+    awards: [],
+    grapeVarietal: "100% Chardonnay",
+    pairings: ["Roast chicken", "Creamy pasta", "Grilled prawns", "Mild cheeses"],
+    highlights: [
+      "Unoaked — pure, fruit-forward Chardonnay",
+      "Soft, rounded, and versatile at the table",
+    ],
+  },
+  {
+    slug: "ca-del-lago-chianti",
+    name: "Ca' del Lago Chianti DOCG",
+    brandSlug: "ca-del-lago",
+    category: "wine",
+    description:
+      "A Sangiovese-based Chianti from the heart of Tuscany. Dark cherry, blackcurrant, and a savory earthy edge with lively acidity — the honest, food-loving red that built Italy's reputation at the dinner table.",
+    image: C.caDelLagoChianti,
+    volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
+    country: "Italy",
+    region: "Chianti DOCG, Tuscany, Italy",
+    flavors: "Dark Cherry, Blackcurrant, Red Plum, Dried Herbs, Earthy Spice",
+    tastingNotes:
+      "Bright ruby red. Aromas of ripe dark cherry and blackcurrant open up with air, revealing subtle earthy and strawberry notes. Medium-bodied with lively acidity, dusty tannins, and a savory, persistent finish.",
+    servingSuggestion:
+      "Serve at 16–18°C. Made for Italian food — red meats, lasagne, pizza, and tomato-based dishes.",
+    awards: [],
+    grapeVarietal: "Sangiovese",
+    pairings: ["Red meats", "Lasagne", "Pizza", "Tomato-based dishes"],
+    highlights: [
+      "DOCG certified — Tuscany's benchmark appellation",
+      "Sangiovese-led, food-loving structure",
+      "Lively acidity and a savory finish",
+    ],
+  },
+  {
+    slug: "ca-del-lago-cabernet-sauvignon",
+    name: "Ca' del Lago Cabernet Sauvignon",
+    brandSlug: "ca-del-lago",
+    category: "wine",
+    description:
+      "An approachable Italian Cabernet Sauvignon — ripe blackcurrant and dark plum with a gentle herbal edge and smooth tannins. Everything you want from the grape, in an easy-drinking, food-friendly style.",
+    image: C.caDelLagoCabernet,
+    volume: "750ml",
+    alcoholPercentage: "12.5% ABV",
+    country: "Italy",
+    region: "Veneto, Italy",
+    flavors: "Blackcurrant, Dark Plum, Black Cherry, Green Herbs, Sweet Spice",
+    tastingNotes:
+      "Deep ruby red. Ripe blackcurrant and dark plum on the nose with a subtle herbaceous lift. Medium-bodied with smooth, supple tannins, juicy dark fruit, and a warm, gently spiced finish.",
+    servingSuggestion:
+      "Serve at 16–18°C. Pairs with grilled steak, roast lamb, hard cheeses, and hearty pasta dishes.",
+    awards: [],
+    grapeVarietal: "100% Cabernet Sauvignon",
+    pairings: ["Grilled steak", "Roast lamb", "Hard cheeses", "Hearty pasta"],
+    highlights: [
+      "Ripe, approachable Cabernet character",
+      "Smooth tannins — easy-drinking and food-friendly",
     ],
   },
 ];

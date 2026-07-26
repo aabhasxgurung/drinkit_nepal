@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Cormorant_Garamond, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import SmoothScrolling from "@/components/ui/SmoothScrolling";
@@ -55,6 +56,8 @@ export default function RootLayout({
       <body
         className={`${trajanPro.className} ${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} antialiased`}
       >
+        <Analytics />
+
         <AgeVerification />
         <SmoothScrolling>
           <Navbar />
