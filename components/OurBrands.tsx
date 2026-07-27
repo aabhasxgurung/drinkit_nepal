@@ -43,7 +43,7 @@ const BRANDS: BrandData[] = [
     name: "Sula",
     category: "Indian Wine",
     origin: "India",
-    expressions: 10,
+    expressions: 9,
     link: "/products?brand=sula",
     tint: "rgba(146, 64, 14, 0.05)",
   },

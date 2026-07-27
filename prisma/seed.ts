@@ -35,9 +35,6 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/whistlerbottle_tmoco5.png",
   cheninBlanc:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/cheninBlanc_zlx7mv.png",
-  // TODO: placeholder cropped from the 2026 catalogue PDF (p.28). Replace with a
-  // proper transparent-background bottle cutout on Cloudinary like the others.
-  sauvignonBlanc: "/sula/sauvignonBlanc.jpg",
   lateHarvest:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/lateharvest_ey1vzi.png",
   shirazCabernet:
@@ -408,38 +405,6 @@ const products = [
   },
 
   // ── Sula wines ─────────────────────────────────────────────────────────────
-  {
-    slug: "sula-sauvignon-blanc",
-    name: "Sula Sauvignon Blanc",
-    brandSlug: "sula",
-    category: "wine",
-    description:
-      "India's first ever Sauvignon Blanc, made in a New Zealand style with bright, refreshing acidity. Green apple and guava lead, with the varietal's signature green bell pepper note running underneath. Crisp, aromatic, and unmistakably itself.",
-    image: C.sauvignonBlanc,
-    volume: "750ml",
-    country: "India",
-    region: "Nashik Valley, Maharashtra, India",
-    flavors: "Green Apple, Guava, Bell Pepper, Fresh Citrus",
-    tastingNotes:
-      "Aromatic nose of green apple and guava with a distinct green bell pepper lift. Crisp and dry on the palate with refreshing acidity and a clean, zesty finish.",
-    servingSuggestion:
-      "Serve well chilled at 8–10°C. Excellent with Caesar salad, asparagus, paneer tikka, and hara bhara kebab.",
-    priceWholesale: 1995,
-    priceMrp: 2195,
-    awards: [],
-    grapeVarietal: "100% Sauvignon Blanc",
-    pairings: [
-      "Caesar salad",
-      "Asparagus",
-      "Paneer tikka",
-      "Hara bhara kebab",
-    ],
-    highlights: [
-      "India's first ever Sauvignon Blanc",
-      "New Zealand style with refreshing acidity",
-      "Estate bottled in Nashik",
-    ],
-  },
   {
     slug: "sula-chenin-blanc",
     name: "Sula Chenin Blanc",
