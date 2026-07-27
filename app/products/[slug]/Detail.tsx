@@ -112,11 +112,21 @@ export function Detail({
   const pairings = product.pairings ?? [];
   const country = product.country ?? product.brand.country;
 
+  // MRP only — the wholesale rate is a trade price and stays out of the UI.
+  const mrp =
+    product.priceMrp != null
+      ? `NPR ${product.priceMrp.toLocaleString("en-IN", {
+          minimumFractionDigits: product.priceMrp % 1 === 0 ? 0 : 2,
+          maximumFractionDigits: 2,
+        })}`
+      : null;
+
   const specs = [
     { label: "Origin", value: country },
     { label: "Strength", value: product.alcoholPercentage },
     { label: "Volume", value: product.volume },
     { label: "Style", value: product.category },
+    { label: "MRP", value: mrp },
   ].filter((s): s is { label: string; value: string } => !!s.value);
 
   return (
@@ -211,6 +221,18 @@ export function Detail({
                 </div>
               ))}
             </motion.div>
+
+            {product.priceNote && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="font-mono uppercase mt-5"
+                style={{ fontSize: 9, letterSpacing: "0.16em", color: FAINT }}
+              >
+                Also available — {product.priceNote}
+              </motion.p>
+            )}
           </div>
         </div>
       </section>

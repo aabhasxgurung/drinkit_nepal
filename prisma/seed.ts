@@ -35,6 +35,9 @@ const C = {
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/whistlerbottle_tmoco5.png",
   cheninBlanc:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/cheninBlanc_zlx7mv.png",
+  // TODO: placeholder cropped from the 2026 catalogue PDF (p.28). Replace with a
+  // proper transparent-background bottle cutout on Cloudinary like the others.
+  sauvignonBlanc: "/sula/sauvignonBlanc.jpg",
   lateHarvest:
     "https://res.cloudinary.com/dvhoi2xg1/image/upload/lateharvest_ey1vzi.png",
   shirazCabernet:
@@ -317,16 +320,22 @@ const products = [
     country: "India",
     region: "Himachal Pradesh & Goa, India",
     flavors:
-      "Himalayan Juniper, Coriander Seeds, Raw Mango, Gondhoraj Lime, Ginger, Turmeric, Almonds",
+      "Himalayan Juniper, Coriander Seeds, Turmeric, Ginger, Gondhoraj Lime, Cardamom, Raw Mango, Almond",
     tastingNotes:
       "Pine forests and wildflowers on the nose with a distinctly earthy Himalayan quality. The palate brings bold juniper, tart raw mango, and a warming ginger heat. Long, delicately spiced finish with lingering piney juniper.",
     servingSuggestion:
       "Best served neat from the freezer to let the botanicals open up slowly. In a G&T, pair with a slice of raw mango, a sprig of rosemary, and quality Indian tonic.",
-    awards: ["Gold - India International Spirits Challenge"],
+    priceWholesale: 6818,
+    priceMrp: 7500,
+    awards: [
+      "95 Points - IWSC",
+      "Gold - SIP Awards",
+      "Gold - Bartender Spirits Awards",
+    ],
     pairings: [],
     highlights: [
       "Himalayan juniper foraged close to the snowline",
-      "Seven botanicals, all sourced within India",
+      "Eight botanicals sourced across the terroirs of India",
       "Distilled in small batches in Goa",
     ],
     isFeatured: true,
@@ -340,7 +349,7 @@ const products = [
     brandSlug: "greater-than",
     category: "gin",
     description:
-      "India's first London Dry Gin, copper pot distilled in Goa with nine botanicals sourced from India and around the world. Clean, classic, and unapologetically bold, built for the Martini glass as much as the highball.",
+      "India's first craft gin. A classic London Dry made in a copper pot still with nine botanicals sourced from India and around the world, juniper from Macedonia, orange peel from Spain, angelica root from Germany, and the rest from India. Fresh citrus over a clean juniper backbone, built for the Martini glass as much as the highball.",
     image: C.greaterThanBottle,
     featuredImage: C.featGreaterThan,
     volume: "700ml",
@@ -353,11 +362,13 @@ const products = [
       "Clean juniper and fresh lemon peel on the nose, with a soft floral note from chamomile. Bright citrus and coriander lead on the palate, giving way to a warm, clean ginger finish.",
     servingSuggestion:
       "Ideal in a classic Martini with dry vermouth and a lemon twist. In a G&T, keep it simple, quality Indian tonic and a long strip of lemon peel.",
+    priceWholesale: 4800,
+    priceMrp: 5280,
     awards: [],
     pairings: [],
     highlights: [
-      "India's first London Dry Gin",
-      "Copper pot distilled in Goa",
+      "India's first craft gin",
+      "Made in a copper pot still",
       "Nine botanicals from India and around the world",
     ],
     isFeatured: true,
@@ -367,11 +378,11 @@ const products = [
   // ── The Whistler ───────────────────────────────────────────────────────────
   {
     slug: "the-whistler-irish-whiskey",
-    name: "The Whistler Irish Whiskey",
+    name: "The Whistler Triple Oak Irish Whiskey",
     brandSlug: "the-whistler",
     category: "whiskey",
     description:
-      "Triple-distilled and aged in ex-bourbon barrels, The Whistler is a blended Irish whiskey built around smoothness. Honey, vanilla, and salted caramel define the character, approachable enough for newcomers, considered enough for the serious drinker.",
+      "A premium Irish whiskey matured in three different oak casks for added depth and complexity. The Whistler Triple Oak balances sweetness and spice in equal measure, honey, vanilla, and salted caramel over a warm oak frame. Approachable enough for newcomers, considered enough for the serious drinker.",
     image: C.whistlerBottle,
     featuredImage: C.featWhistler,
     volume: "700ml",
@@ -380,21 +391,55 @@ const products = [
     region: "County Louth, Ireland",
     flavors: "Honey, Vanilla, Salted Caramel, Toasted Oak, Dried Fruit",
     tastingNotes:
-      "Gentle honey and vanilla on the nose with a soft toasted grain quality. Smooth on the palate, caramel sweetness, a touch of oak, and subtle dried fruit. Clean, mellow finish with lingering salted caramel.",
+      "Gentle honey and vanilla on the nose with a soft toasted grain quality. Smooth on the palate, caramel sweetness, a touch of oak, and subtle dried fruit. Clean, mellow finish with a balance of sweetness and gentle spice.",
     servingSuggestion:
-      "Serve neat or with a single large ice cube to open it up slowly. Exceptional in an Old Fashioned with a good Demerara syrup and a fat orange peel.",
+      "Best served neat, with ice, or with a splash of water. Equally suited to classic whiskey cocktails, exceptional in an Old Fashioned with a good Demerara syrup and a fat orange peel.",
+    priceWholesale: 5740.91,
+    priceMrp: 6315,
     awards: [],
     pairings: ["Dark chocolate", "Smoked salmon", "Hard aged cheeses"],
     highlights: [
-      "Triple distilled for exceptional smoothness",
-      "Aged in ex-bourbon barrels",
-      "Blended Irish whiskey",
+      "Matured in three different oak casks",
+      "Balanced sweetness and spice",
+      "Premium Irish whiskey from County Louth",
     ],
     isFeatured: true,
     featuredOrder: 2,
   },
 
   // ── Sula wines ─────────────────────────────────────────────────────────────
+  {
+    slug: "sula-sauvignon-blanc",
+    name: "Sula Sauvignon Blanc",
+    brandSlug: "sula",
+    category: "wine",
+    description:
+      "India's first ever Sauvignon Blanc, made in a New Zealand style with bright, refreshing acidity. Green apple and guava lead, with the varietal's signature green bell pepper note running underneath. Crisp, aromatic, and unmistakably itself.",
+    image: C.sauvignonBlanc,
+    volume: "750ml",
+    country: "India",
+    region: "Nashik Valley, Maharashtra, India",
+    flavors: "Green Apple, Guava, Bell Pepper, Fresh Citrus",
+    tastingNotes:
+      "Aromatic nose of green apple and guava with a distinct green bell pepper lift. Crisp and dry on the palate with refreshing acidity and a clean, zesty finish.",
+    servingSuggestion:
+      "Serve well chilled at 8–10°C. Excellent with Caesar salad, asparagus, paneer tikka, and hara bhara kebab.",
+    priceWholesale: 1995,
+    priceMrp: 2195,
+    awards: [],
+    grapeVarietal: "100% Sauvignon Blanc",
+    pairings: [
+      "Caesar salad",
+      "Asparagus",
+      "Paneer tikka",
+      "Hara bhara kebab",
+    ],
+    highlights: [
+      "India's first ever Sauvignon Blanc",
+      "New Zealand style with refreshing acidity",
+      "Estate bottled in Nashik",
+    ],
+  },
   {
     slug: "sula-chenin-blanc",
     name: "Sula Chenin Blanc",
@@ -413,6 +458,9 @@ const products = [
       "Aromas of tropical fruit with hints of honey and beeswax. Off-dry palate with ripe guava and lychee, balanced by refreshing acidity. Clean, fruit-forward finish that lingers gently.",
     servingSuggestion:
       "Serve chilled at 8–10°C. Pairs beautifully with light salads, fried seafood, vegetarian Indian dishes, and Gujarati thali.",
+    priceWholesale: 1995,
+    priceMrp: 2195,
+    priceNote: "375ml — NPR 1,210",
     awards: [],
     grapeVarietal: "100% Chenin Blanc",
     pairings: [
@@ -429,28 +477,36 @@ const products = [
   },
   {
     slug: "sula-late-harvest",
-    name: "Sula Late Harvest",
+    name: "Sula Late Harvest Chenin Blanc",
     brandSlug: "sula",
     category: "wine",
     description:
-      "India's most loved dessert wine, the first Indian wine to win Silver at both the Paris Wine Cup and Decanter World Wine Awards. Concentrated, honeyed, and luxuriously sweet with a defining streak of acidity that keeps it from tipping into excess.",
+      "India's first still dessert wine and its first ever Late Harvest Chenin Blanc. Concentrated, honeyed, and luxuriously sweet with a defining streak of acidity that keeps it from tipping into excess.",
     image: C.lateHarvest,
     volume: "750ml",
     alcoholPercentage: "11% ABV",
     country: "India",
     region: "Nashik Valley, Maharashtra, India",
-    flavors: "Dried Apricot, Mango, Golden Raisins, Honey, Orange Blossom",
+    flavors: "Dried Apricot, Mango, Golden Raisins, Honey, Luscious Acidity",
     tastingNotes:
-      "Intensely aromatic nose of dried apricot, mango, and honeyed richness. Full-bodied palate with concentrated sweetness balanced by vibrant acidity. Long, complex finish with layers of stone fruit.",
+      "Rich aromas of apricot, mango, and raisins. Full-bodied palate with concentrated sweetness balanced by luscious acidity. Long, complex finish with layers of stone fruit.",
     servingSuggestion:
-      "Serve well chilled at 6–8°C. A natural match for blue cheese, foie gras, crème brûlée, and gulab jamun.",
-    awards: ["Silver - Paris Wine Cup", "Silver - Decanter World Wine Awards"],
-    grapeVarietal: "85% Chenin Blanc, 15% Muscat",
-    pairings: ["Blue cheese", "Crème brûlée", "Gulab jamun", "Foie gras"],
+      "Serve well chilled at 6–8°C. A natural match for cheese cake, panna cotta, qubani-ka-meetha, gulab jamun, and blue cheese.",
+    priceWholesale: 2150,
+    priceMrp: 2365,
+    awards: ["Indian Consumer Choice Award"],
+    grapeVarietal: "100% Chenin Blanc",
+    pairings: [
+      "Cheese cake",
+      "Panna cotta",
+      "Qubani-ka-meetha",
+      "Gulab jamun",
+      "Blue cheese",
+    ],
     highlights: [
-      "First Indian wine to win Silver at the Paris Wine Cup",
-      "Silver at Decanter World Wine Awards",
-      "India's first Late Harvest Chenin Blanc",
+      "India's first still dessert wine",
+      "India's first ever Late Harvest Chenin Blanc",
+      "Indian consumer choice award winning",
     ],
   },
   {
@@ -470,7 +526,10 @@ const products = [
     tastingNotes:
       "Deep ruby. Aromas of dark cherry, blackberry, and black pepper with mocha undertones. Medium-full body with silky tannins and an earthy, persistent finish.",
     servingSuggestion:
-      "Serve at 16–18°C. An excellent partner for barbecued meats, chicken tikka masala, rajma masala, and aged hard cheeses.",
+      "Serve at 16–18°C. An excellent partner for barbecued meats, chicken tikka masala, rajma masala, and mutton roganjosh.",
+    priceWholesale: 1995,
+    priceMrp: 2195,
+    priceNote: "375ml — NPR 1,210",
     awards: [],
     grapeVarietal: "85% Shiraz, 15% Cabernet Sauvignon",
     pairings: [
@@ -486,11 +545,11 @@ const products = [
   },
   {
     slug: "sula-tropical-rose",
-    name: "Sula Tropical Rosé",
+    name: "Sula Brut Tropicale",
     brandSlug: "sula",
     category: "wine",
     description:
-      "India's first and only Gold winner at the International Wine Challenge. A sparkling rosé that delivers an exuberant burst of tropical fruit, peach, passion fruit, and guava, in a vibrant, celebratory package.",
+      "A special edition sparkling rosé that delivers an exuberant burst of tropical fruit, peach and passion fruit with hints of guava on the finish, in a vibrant, celebratory package.",
     image: C.tropical,
     featuredImage: C.featTropical,
     volume: "750ml",
@@ -501,14 +560,18 @@ const products = [
     tastingNotes:
       "Vibrant salmon-pink with fine bubbles. Exuberant aromas of peach and passion fruit with a hint of guava. Light-bodied with refreshing citrus acidity and a clean, tropical finish.",
     servingSuggestion:
-      "Serve very well chilled at 6–8°C. A perfect aperitif. Great with fried seafood, light salads, and spiced appetizers.",
-    awards: ["Gold - International Wine Challenge"],
+      "Serve very well chilled at 6–8°C. A perfect aperitif. Great with fried seafood appetizers, salads, anda masala, and white sauce pasta.",
+    priceWholesale: 2400,
+    priceMrp: 2640,
+    awards: [],
     grapeVarietal: "70% Chenin Blanc, 30% Riesling and Syrah",
-    pairings: ["Fried seafood", "Light salads", "Spiced appetizers"],
-    highlights: [
-      "India's first and only Gold winner at the International Wine Challenge",
-      "Special edition sparkling rosé",
+    pairings: [
+      "Fried seafood appetizers",
+      "Salads",
+      "Anda masala",
+      "White sauce pasta",
     ],
+    highlights: ["Special edition sparkling rosé"],
     isFeatured: true,
     featuredOrder: 5,
   },
@@ -518,7 +581,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "Lively and celebratory. Sula Brut is a Champagne-method sparkling wine offering crisp green apple and pear aromas with a dry, refreshing finish, a medalist at both the Paris Wine Cup and Decanter Awards.",
+      "Lively and celebratory. Sula Brut is a light sparkling fruity wine offering crisp apple and pear aromas with a dry, refreshing finish. Perfect for everyday celebrations and versatile enough to carry a meal from appetizers to mains.",
     image: C.brut,
     volume: "750ml",
     alcoholPercentage: "12% ABV",
@@ -528,21 +591,22 @@ const products = [
     tastingNotes:
       "Fine, persistent bubbles. Aromas of crisp green apple and pear with a subtle toasty note. Dry palate with lively citrus acidity and a clean, fresh finish.",
     servingSuggestion:
-      "Serve well chilled at 6–8°C as an aperitif. Works beautifully alongside fried chicken, Indian pakoras, and smoked salmon.",
-    awards: [
-      "Medalist - Paris Wine Cup",
-      "Medalist - Decanter World Wine Awards",
-    ],
+      "Serve well chilled at 6–8°C as an aperitif. Works beautifully alongside salad, French fries, smoked salmon, fried chicken, Indian pakoras, and hara bhara kebab.",
+    priceWholesale: 2500,
+    priceMrp: 2750,
+    awards: [],
+    grapeVarietal: "Up to 80% Chenin Blanc, 20% Riesling and Viognier",
     pairings: [
       "Smoked salmon",
       "Fried chicken",
       "Indian pakoras",
+      "Hara bhara kebab",
       "French fries",
     ],
     highlights: [
-      "Champagne-method sparkling wine",
-      "Medalist at Paris Wine Cup and Decanter Awards",
-      "Light, dry, and versatile",
+      "Light sparkling fruity wine",
+      "Perfect for everyday celebrations",
+      "Pairs with a range of food, from appetizers to mains",
     ],
   },
   {
@@ -562,6 +626,8 @@ const products = [
       "Delicate aromas of ripe melon and passion fruit. Light-bodied with gentle fruitiness, refreshing citrus acidity, and a clean, lingering finish.",
     servingSuggestion:
       "Serve chilled. Ideal as a spritz base, top with tonic and a squeeze of lime. Works as a light aperitif on its own.",
+    priceWholesale: 2100,
+    priceMrp: 2310,
     awards: [],
     grapeVarietal: "100% Chenin Blanc",
     pairings: [
@@ -593,6 +659,8 @@ const products = [
       "Deep ruby with energetic bubbles. Aromas of pomegranate and dark berries with smoky spice complexity. Full-flavored palate with vibrant fruitiness and a warm, spiced finish.",
     servingSuggestion:
       "Serve lightly chilled at 12–14°C. Pairs boldly with dark chocolate desserts, chili chicken, and dabeli.",
+    priceWholesale: 2400,
+    priceMrp: 2640,
     awards: ["Gold - India Wine Awards"],
     grapeVarietal: "100% Shiraz",
     pairings: [
@@ -623,18 +691,20 @@ const products = [
     tastingNotes:
       "Bright pink. Fresh cranberry and citrus on the nose. Off-dry palate with juicy strawberry and stone fruit, crisp acidity, and a clean, refreshing finish.",
     servingSuggestion:
-      "Serve well chilled. Great with spicy Indian dishes, Chinese appetizers, and as a standalone summer sipper.",
+      "Serve well chilled. Great with salad, Chinese appetizers, Indian pakoras, and chicken or paneer chilli.",
+    priceWholesale: 1995,
+    priceMrp: 2195,
     awards: [],
     grapeVarietal: "100% Zinfandel",
     pairings: [
-      "Spiced Indian dishes",
+      "Salad",
       "Chinese appetizers",
-      "Paneer chilli",
-      "Light salads",
+      "Indian pakoras",
+      "Chicken / paneer chilli",
     ],
     highlights: [
       "India's first ever Zinfandel Rosé",
-      "Off-dry, sweet and refreshing",
+      "Light, refreshing wine with a great mouthfeel",
       "Perfect for Indian summers",
     ],
   },
@@ -644,7 +714,7 @@ const products = [
     brandSlug: "sula",
     category: "wine",
     description:
-      "Generous, fruit-forward, and playful. India's first Zinfandel, unoaked and built to show off the grape's natural exuberance. Red berries, dark plum, and a warm cinnamon spice.",
+      "Generous, fruit-forward, and playful. India's first Zinfandel, with 15% of the blend aged in American oak barrels to add complexity to the wine. Red berries, blackberries, plums, and a warm hint of cinnamon.",
     image: C.zinfRed,
     volume: "750ml",
     alcoholPercentage: "12.5% ABV",
@@ -654,13 +724,16 @@ const products = [
     tastingNotes:
       "Aromas of red berries, blackberry, and dark plum with hints of cinnamon. Medium-bodied with soft tannins, vibrant fruitiness, and a clean, easy finish.",
     servingSuggestion:
-      "Serve at 16°C. Naturally food-friendly, works with spiced curries, cold cuts, teriyaki, and spicy noodles.",
+      "Serve at 16°C. Naturally food-friendly, works with curries, cold cuts, spicy noodles, and teriyaki.",
+    priceWholesale: 1995,
+    priceMrp: 2195,
+    priceNote: "375ml — NPR 1,210",
     awards: [],
     grapeVarietal: "100% Zinfandel",
-    pairings: ["Spiced curries", "Cold cuts", "Teriyaki", "Spicy noodles"],
+    pairings: ["Curries", "Cold cuts", "Spicy noodles", "Teriyaki"],
     highlights: [
       "India's first Zinfandel",
-      "Unoaked, pure, fruit-forward expression",
+      "15% of the blend aged in American oak barrels",
       "Soft tannins, great food wine",
     ],
   },
@@ -674,6 +747,8 @@ const products = [
     description:
       "The cocktail world's most coveted garnish. Candied marasca cherries soaked in Luxardo's own syrup, no artificial colors, no thickening agents, no preservatives. Just the pure, deep flavor of the fruit.",
     image: C.maraschCherries,
+    volume: "400g can",
+    alcoholPercentage: "0% ABV (alcohol-free)",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Marasca Cherry, Dark Fruit Syrup, Almond, Vanilla",
@@ -681,6 +756,8 @@ const products = [
       "Intensely sweet dark cherry flavor with a rich, thick syrup. Notes of almond and subtle bitterness from the marasca skin give balance. Concentrated and complex, nothing like a grocery store cherry.",
     servingSuggestion:
       "The essential garnish for Manhattans, Old Fashioneds, and Whiskey Sours. Also extraordinary over vanilla ice cream or folded into a clafoutis.",
+    priceWholesale: 2020.96,
+    priceMrp: 2223.1,
     awards: [],
     pairings: [],
     highlights: [
@@ -698,7 +775,7 @@ const products = [
       "The original. Produced since 1821, Luxardo Maraschino is crystal clear with a character unlike any other liqueur, marasca cherry distillate, roasted nuttiness, dark chocolate, and a touch of orange marmalade. The backbone of some of history's greatest cocktails.",
     image: C.maraschOriginale,
     featuredImage: C.featMaraschino,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "32% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -708,6 +785,8 @@ const products = [
       "Crystal clear. Distinctive marasca cherry distillate on the nose with roasted nuttiness and a strong spirit character. Smooth but sharp on the palate, dark chocolate, vanilla, and a bright orange marmalade note. Long, complex finish.",
     servingSuggestion:
       "Essential in the Aviation, Hemingway Daiquiri, and Tuxedo. Can be served straight over ice as a digestif, or used to macerate fruit for dessert.",
+    priceWholesale: 6120.5,
+    priceMrp: 6732.6,
     awards: ["Gold - International Spirits Challenge"],
     pairings: [],
     highlights: [
@@ -726,7 +805,7 @@ const products = [
     description:
       "A traditional Italian liqueur rooted in star anise, herbs, and pure volcanic water from Luxardo's own springs. The Italian ritual of 'con la mosca', three coffee beans, a flame, and a shot, was made for this.",
     image: C.sambuca,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "38% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -736,6 +815,8 @@ const products = [
       "Intensely sweet with a bold, clean anise character on the nose. Syrupy mouthfeel with rich liquorice and fennel. Long, warming herbal finish that lingers.",
     servingSuggestion:
       "The classic ritual: serve neat at room temperature with three coffee beans ('con la mosca'), light briefly, extinguish, swirl, and sip. Also works beautifully in coffee cocktails.",
+    priceWholesale: 5865.1,
+    priceMrp: 6451.6,
     awards: [],
     pairings: [],
     highlights: [
@@ -752,7 +833,7 @@ const products = [
       "Vibrant red, intensely herbal, and genuinely complex. Luxardo Bitter is made by separately infusing citrus fruits, bitter herbs, and fragrant plants before blending, a method that preserves the integrity of each botanical. The foundation of a proper Negroni.",
     image: C.bitterRosso,
     featuredImage: C.featBitter,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "25% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -761,6 +842,8 @@ const products = [
       "Bright red with an intense herbal and citrus aroma. Complex gentian bitterness balanced with blood orange and sweet herbs on the palate. Persistent, gently bitter finish with a clean herbal warmth.",
     servingSuggestion:
       "The foundation of a proper Negroni or Boulevardier. Equally excellent over ice with soda and an orange slice as a standalone aperitif.",
+    priceWholesale: 5220.9,
+    priceMrp: 5743,
     awards: [],
     pairings: [],
     highlights: [
@@ -779,7 +862,7 @@ const products = [
     description:
       "A lighter-style Italian aperitivo made from a balanced infusion of citrus fruits, herbs, and roots. Zesty orange, pink grapefruit, and a gentle rhubarb bitterness, built for the Spritz.",
     image: C.aperitivo,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "11% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -789,6 +872,8 @@ const products = [
       "Vibrant orange-amber. Zesty orange marmalade and grapefruit on the nose with a floral, herbal lift. Lightly bitter palate with a clean, refreshing finish that invites the next sip.",
     servingSuggestion:
       "Build the classic Aperitivo Spritz: 3 parts Prosecco, 2 parts Luxardo Aperitivo, 1 part soda. Serve over ice with an orange wheel. Lower ABV than Aperol.",
+    priceWholesale: 4445.2,
+    priceMrp: 4889.7,
     awards: [],
     pairings: [],
     highlights: [
@@ -805,7 +890,7 @@ const products = [
     description:
       "Produced since 1821, Luxardo's second speciality after Maraschino Originale. Sangue Morlacco, 'Morlacco Blood', is a deep, concentrated cherry liqueur with the perfume of freshly squeezed cherry juice and a thick, syrupy body.",
     image: C.cherryLiqueur,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "30% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -815,6 +900,8 @@ const products = [
       "Intense cherry-red. Aroma of freshly squeezed cherry juice with a warming pepper note. Thick and syrupy on the palate, concentrated cherry jam flavor with fruit tartness partially cutting the sweetness. Warm, spiced finish.",
     servingSuggestion:
       "Key ingredient in the Blood & Sand and Singapore Sling. A Cherry Negroni built with this is extraordinary. Also excellent drizzled over vanilla panna cotta.",
+    priceWholesale: 5566.6,
+    priceMrp: 6123.3,
     awards: [],
     pairings: [],
     highlights: [
@@ -830,7 +917,7 @@ const products = [
     description:
       "Produced since the first half of the 1800s, Luxardo Triplum is a traditional triple sec made from the dried and distilled peels of curaçao oranges, sweet oranges, and mandarins. Smooth, rounded, and properly citrusy.",
     image: C.tripleSec,
-    volume: "700ml",
+    volume: "750ml",
     alcoholPercentage: "39% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
@@ -839,6 +926,8 @@ const products = [
       "Crystal clear with vibrant orange and mandarin aromas. Smooth, rounded citrus flavor on the palate with a natural sweetness and a clean, dry orange finish. More depth than most triple secs.",
     servingSuggestion:
       "Essential in a Margarita, Cosmopolitan, White Lady, and Sidecar. Use anywhere Cointreau is called for, and at a higher ABV it carries further in the glass.",
+    priceWholesale: 5363.3,
+    priceMrp: 5899.7,
     awards: [],
     pairings: [],
     highlights: [
@@ -855,8 +944,8 @@ const products = [
     description:
       "Angioletto is made from a blending process of real hazelnut infusion with natural extracts of cocoa and vanilla. Rich, indulgent, and surprisingly complex, closer to praline in a glass than a simple nut liqueur.",
     image: C.hazelnut,
-    volume: "700ml",
-    alcoholPercentage: "24% ABV",
+    volume: "750ml",
+    alcoholPercentage: "22% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Toasted Hazelnut, Cocoa, Vanilla, Almond, Walnut, Mocha",
@@ -864,6 +953,8 @@ const products = [
       "Rich, lightly syrupy. Intense toasted hazelnut on the nose with cocoa and warm biscuit. Walnut, almond, and mocha notes on the palate, with hints of vanilla and citrus. Long, indulgent finish.",
     servingSuggestion:
       "Serve neat as a digestif over a single ice cube. Excellent in espresso cocktails and extraordinary poured warm over vanilla gelato.",
+    priceWholesale: 5490.3,
+    priceMrp: 6039.3,
     awards: [],
     pairings: [],
     highlights: [
@@ -879,8 +970,8 @@ const products = [
     description:
       "The 'Green Fairy.' A classic-style absinthe built from grand wormwood, green anise, and Florence fennel. High in ABV, intensely herbal, and steeped in ritual, the traditional louche is half the experience.",
     image: C.absinthe,
-    volume: "700ml",
-    alcoholPercentage: "70% ABV",
+    volume: "750ml",
+    alcoholPercentage: "60% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors:
@@ -889,10 +980,12 @@ const products = [
       "Brilliant green, going milky white on the louche. Intense herbal and anise aromatics with a distinctly medicinal, complex nose. Bold anise leads the palate with wormwood bitterness, fennel, and a long herbal finish.",
     servingSuggestion:
       "Pour 30ml into a glass. Place a sugar cube on a slotted spoon. Slowly drip 90ml of ice-cold water over the cube to trigger the louche. A few drops in a Sazerac or Corpse Reviver No. 2 are transformative.",
+    priceWholesale: 8500.5,
+    priceMrp: 9350.6,
     awards: [],
     pairings: [],
     highlights: [
-      "70% ABV, handle with respect",
+      "60% ABV, handle with respect",
       "Traditional louche ritual with iced water and a sugar cube",
       "A few drops elevate a Sazerac beyond recognition",
     ],
@@ -907,8 +1000,8 @@ const products = [
     description:
       "A bittersweet rhubarb-forward bitter with earthy gentian complexity. Tart, herbal, and intriguing, a distinctive addition to any bitter-forward cocktail or Spritz variation.",
     image: C.rhubarbBitter,
-    volume: "700ml",
-    alcoholPercentage: "30% ABV",
+    volume: "200ml",
+    alcoholPercentage: "44% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Rhubarb, Gentian Root, Chinese Rhubarb, Earthy Herbs",
@@ -916,6 +1009,8 @@ const products = [
       "Tart rhubarb and earthy bitter herbs on the nose. Fresh and slightly sweet on entry, turning drier with gentian bitterness mid-palate. Clean, mildly bitter finish.",
     servingSuggestion:
       "Add a few dashes to a whiskey sour for a tart twist. Works in Negroni variations and Aperol Spritz substitutions. Try it with prosecco and soda.",
+    priceWholesale: 2975.9,
+    priceMrp: 3273.5,
     awards: [],
     pairings: [],
     highlights: [
@@ -931,8 +1026,8 @@ const products = [
     description:
       "A delicate, floral bitter built around chamomile with herbal complexity. Softer than most bitters and uniquely approachable, an unexpected and elegant cocktail ingredient.",
     image: C.chamomileBitter,
-    volume: "700ml",
-    alcoholPercentage: "30% ABV",
+    volume: "200ml",
+    alcoholPercentage: "44% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Chamomile, Honey, Floral Herbs, Gentle Bitterness",
@@ -940,6 +1035,8 @@ const products = [
       "Floral chamomile tea aroma with a light honey sweetness. Soft and approachable on the palate with gentle herbal bitterness. Clean, subtly floral finish.",
     servingSuggestion:
       "Pairs beautifully with gin in a White Negroni variation. Add to gin and tonic for a floral dimension, or sip straight over ice as a gentle aperitif.",
+    priceWholesale: 2975.9,
+    priceMrp: 3273.5,
     awards: [],
     pairings: [],
     highlights: [
@@ -955,8 +1052,8 @@ const products = [
     description:
       "Vibrant, citrus-forward bitter made from orange peel infusions. Bright and zesty with a dry, herbal backbone, brings immediacy and lift to cocktails that need a citrus edge.",
     image: C.orangeBitter,
-    volume: "700ml",
-    alcoholPercentage: "30% ABV",
+    volume: "200ml",
+    alcoholPercentage: "44% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Orange Peel, Blood Orange, Citrus Zest, Bitter Herbs",
@@ -964,6 +1061,8 @@ const products = [
       "Bright orange peel on the nose with a clean zesty lift. Orange marmalade on the palate balanced by herbal bitterness. Dry, clean, citrus-driven finish.",
     servingSuggestion:
       "Excellent in a Spritz with prosecco and soda. Add to a gin and tonic for citrus depth, or use in any cocktail where you'd reach for a citrus bitter.",
+    priceWholesale: 2975.9,
+    priceMrp: 3273.5,
     awards: [],
     pairings: [],
     highlights: [
@@ -979,8 +1078,8 @@ const products = [
     description:
       "Rich, dark, and deeply coffee-forward. Made from coffee infusions with complementary herbal bitterness. A serious ingredient for espresso cocktails and after-dinner serves.",
     image: C.coffeeBitter,
-    volume: "700ml",
-    alcoholPercentage: "30% ABV",
+    volume: "200ml",
+    alcoholPercentage: "44% ABV",
     country: "Italy",
     region: "Torreglia, Padova, Italy",
     flavors: "Roasted Coffee, Dark Chocolate, Espresso, Bitter Herbs",
@@ -988,6 +1087,8 @@ const products = [
       "Intense roasted coffee and dark chocolate on the nose. Rich espresso on the palate with herbal bitterness and a hint of cocoa. Long, warming, coffee-driven finish.",
     servingSuggestion:
       "The foundation of a proper Espresso Martini or Coffee Negroni. Excellent poured over vanilla ice cream, or stirred into an Old Fashioned with bourbon.",
+    priceWholesale: 2975.9,
+    priceMrp: 3273.5,
     awards: [],
     pairings: [],
     highlights: [
@@ -999,7 +1100,7 @@ const products = [
   // ── Merry's ────────────────────────────────────────────────────────────────
   {
     slug: "merrys-irish-cream",
-    name: "Merry's Irish Cream",
+    name: "Merry's Irish Cream Original",
     brandSlug: "merrys",
     category: "liqueur",
     description:
@@ -1014,6 +1115,8 @@ const products = [
       "Velvety smooth on the nose with rich cream and cocoa. The palate delivers warm Irish whiskey, chocolate toffee, and a hint of vanilla. Long, luscious finish with lingering cream.",
     servingSuggestion:
       "Serve neat over ice, stirred into coffee, or blended into a Mudslide. Also extraordinary poured over vanilla ice cream as a simple dessert.",
+    priceWholesale: 4449.99,
+    priceMrp: 4894.99,
     awards: [],
     pairings: ["Coffee", "Dark chocolate", "Vanilla ice cream"],
     highlights: [
@@ -1024,7 +1127,7 @@ const products = [
   },
   {
     slug: "merrys-white-chocolate",
-    name: "Merry's White Chocolate Irish Cream",
+    name: "Merry's Irish Cream White Chocolate",
     brandSlug: "merrys",
     category: "liqueur",
     description:
@@ -1039,6 +1142,8 @@ const products = [
       "Sweet white chocolate and cream on the nose with a warm whiskey underpinning. Rich and indulgent on the palate, cocoa butter, vanilla, and cream in perfect balance. Long, sweet, creamy finish.",
     servingSuggestion:
       "Serve chilled over ice or use as a base for dessert cocktails. Extraordinary poured over strawberry or vanilla ice cream.",
+    priceWholesale: 4449.99,
+    priceMrp: 4894.99,
     awards: [],
     pairings: ["White chocolate desserts", "Vanilla ice cream", "Coffee"],
     highlights: [
@@ -1053,25 +1158,27 @@ const products = [
     slug: "bro-code-beer",
     name: "Bro Code",
     brandSlug: "bro-code",
-    category: "beer",
+    category: "carbonated beverage",
     description:
-      "India's boldest high-strength beer, brewed from premium barley malt for a full-bodied, smooth finish that belies its strength. Bro Code is built for those who don't compromise.",
+      "A sweet, fruity, lightly fizzy carbonated alcoholic beverage in a 250ml beer-style glass bottle. At 15% ABV it carries far more punch than its size suggests, clear to light-coloured, easy-drinking, and built for the night out rather than the tasting room.",
     image: C.broCode,
-    volume: "650ml",
+    volume: "250ml",
     alcoholPercentage: "15% ABV",
     country: "India",
     region: "India",
-    flavors: "Barley Malt, Grain, Subtle Hops, Clean Finish",
+    flavors: "Sweet, Fruity, Fizzy",
     tastingNotes:
-      "Light golden with a smooth, malt-forward character on the nose. Clean and surprisingly easy-drinking on the palate with subtle hop bitterness and a warm, full-bodied finish.",
+      "Clear to light-coloured with visible carbonation. Sweet and fruity on the nose and palate, with a slight fizz carrying the flavour and a clean, quick finish.",
     servingSuggestion:
-      "Serve well chilled at 4–6°C. Best enjoyed straight from the bottle or poured into a chilled glass with salted snacks.",
+      "Serve well chilled straight from the bottle. Best over ice on a hot day, or as a ready-made mixer base with lime and soda.",
+    priceWholesale: 509.31,
+    priceMrp: 560,
     awards: [],
     pairings: ["Spiced street food", "Grilled meats", "Indian snacks"],
     highlights: [
-      "15% ABV, India's highest-strength beer",
-      "Brewed from premium barley malt",
-      "Smooth finish despite high strength",
+      "15% ABV in a 250ml bottle",
+      "Sweet, fruity, and slightly fizzy",
+      "Beer-style glass bottle, carbonated alcoholic beverage",
     ],
   },
 
@@ -1082,23 +1189,25 @@ const products = [
     brandSlug: "bonga-bonga",
     category: "liqueur",
     description:
-      "The mystery is half the fun. Bonga Bonga is a vibrant, colorful liqueur with a playful character that defies easy categorization, fruity, sweet, and utterly distinctive. Every pour is a conversation starter.",
+      "The mystery is half the fun. Bonga Bonga is built on a blend of more than 40 herbs and botanicals, sweet and herbal up front, fruity through the middle, with spicy notes on the finish. A genuine mystery liqueur at a serious 30% ABV, poured from an unmistakable twin-necked bottle.",
     image: C.bongaBonga,
-    volume: "700ml",
-    alcoholPercentage: "14.9% ABV",
+    volume: "750ml",
+    alcoholPercentage: "30% ABV",
     country: "India",
     region: "India",
-    flavors: "Tropical Fruit, Sweet Berry, Citrus, Playful Spice",
+    flavors: "Sweet Herbs, Botanicals, Fruit, Warm Spice",
     tastingNotes:
-      "Vibrant and fruit-forward on the nose with a bright tropical sweetness. Light and playful on the palate with juicy fruit character and a clean, refreshing finish.",
+      "Complex herbal aromatics from a base of 40+ herbs and botanicals. Sweet and herbal on entry, turning fruity mid-palate, with spicy notes lifting a long, warming finish.",
     servingSuggestion:
-      "Serve over ice or mix with soda for a simple, fun highball. Excellent as a party cocktail base, shake with lime and top with ginger beer.",
+      "Serve chilled as a shot straight from the twin-necked bottle, or over ice as a herbal digestif. Also mixes well with cola, ginger beer, or citrus soda.",
+    priceWholesale: 6431.81,
+    priceMrp: 7075,
     awards: [],
-    pairings: ["Light snacks", "Spiced appetizers", "Tropical fruit"],
+    pairings: ["Light snacks", "Spiced appetizers", "Grilled meats"],
     highlights: [
-      "Mystery liqueur, the flavor is the surprise",
-      "Vibrant, fun, and endlessly mixable",
-      "A conversation starter in every glass",
+      "Mystery liqueur built on 40+ herbs and botanicals",
+      "Sweet, herbal, and fruity with spicy notes",
+      "Iconic twin-necked bottle, made for sharing",
     ],
   },
 
@@ -1120,7 +1229,9 @@ const products = [
       "Subtle, elegant aromas of peach pulp, yellow apples, and white flowers. The palate is light and clean with vibrant lemon, green apple, and melon, balanced acidity, and a mineral, spring-water-like finish.",
     servingSuggestion:
       "Serve well chilled at 8–10°C. Delicious as an aperitivo, and pairs with light seafood, chicken, and rich, creamy pasta dishes.",
-    awards: [],
+    priceWholesale: 3181,
+    priceMrp: 3500,
+    awards: ["Gold - Asia Wine Trophy 2023", "Gold - Mundus Vini 2023"],
     grapeVarietal: "100% Pinot Grigio",
     pairings: ["Light seafood", "Grilled chicken", "Creamy pasta", "Aperitivo"],
     highlights: [
@@ -1131,33 +1242,35 @@ const products = [
   },
   {
     slug: "voga-moscato-gold",
-    name: "VOGA Moscato Gold",
+    name: "VOGA Moscato Spumante Gold Edition",
     brandSlug: "voga-italia",
     category: "wine",
     description:
-      "A naturally sweet sparkling Moscato in VOGA's signature gold cylindrical bottle. Grapes come from the Oltrepò Pavese in Lombardy, where magnesium-rich soils intensify the aromatics. Low in alcohol, high in charm.",
+      "A naturally sweet sparkling Moscato in VOGA's signature gold cylindrical bottle. Crisp and lusciously sweet, with concentrated flavours of nectarine, peach, and apple balanced by a vibrant acidity. Low in alcohol, high in charm.",
     image: C.vogaMoscatoGold,
     volume: "750ml",
     alcoholPercentage: "7.5% ABV",
     country: "Italy",
-    region: "Oltrepò Pavese, Lombardy, Italy",
+    region: "Piemonte, Italy",
     flavors: "Spiced Peach, Ripe Apricot, Golden Raisin, Honeysuckle, Fresh Citrus",
     tastingNotes:
       "Vibrant and spritzy with aromas of spiced peach, golden raisin, and honeysuckle. Fruity-sweet medium body with fresh citrus and ripe apricot, finishing on green apple and a delicate chalky note.",
     servingSuggestion:
       "Serve well chilled at 6–8°C. Perfect as an aperitif or dessert wine, a natural match for spicy Asian cuisine, fresh berries, and lemon meringue pie.",
+    priceWholesale: 4000,
+    priceMrp: 4400,
     awards: [],
     grapeVarietal: "100% Moscato",
     pairings: ["Spicy Asian cuisine", "Fresh berries", "Lemon meringue pie", "Fruit desserts"],
     highlights: [
       "Naturally sweet sparkling Moscato at just 7.5% ABV",
-      "Magnesium-rich Oltrepò Pavese soils intensify the aromatics",
+      "Concentrated peach and nectarine, balanced by vibrant acidity",
       "Signature gold cylindrical bottle",
     ],
   },
   {
     slug: "voga-moscato-igp",
-    name: "VOGA Moscato IGP",
+    name: "VOGA Moscato Provincia di Pavia IGT Frizzante",
     brandSlug: "voga-italia",
     category: "wine",
     description:
@@ -1172,7 +1285,9 @@ const products = [
       "Aromas of spiced peach, golden raisin, and honeysuckle. Vibrant and spritzy with a fruity-sweet medium body, finishing on green apple, white nut, and a delicate chalky note. Unoaked and refreshingly clean.",
     servingSuggestion:
       "Serve well chilled at 6–8°C. A versatile sweet sipper, pair with spicy Asian dishes, fresh berries, lemon meringue pie, and fruit cobblers.",
-    awards: [],
+    priceWholesale: 3181,
+    priceMrp: 3500,
+    awards: ["Gold - Berliner Wine Trophy 2023"],
     grapeVarietal: "100% Moscato",
     pairings: ["Spicy Asian dishes", "Fresh berries", "Lemon meringue pie", "Fruit cobblers"],
     highlights: [
@@ -1198,8 +1313,10 @@ const products = [
       "Deep ruby with bluish reflections. Fruity berry aromas lead to a smooth, rounded palate of dark plum and vanilla with a subtle tobacco note. Balanced body, gentle acidity, and soft tannins on the finish.",
     servingSuggestion:
       "Serve at 16–18°C. A versatile red for grilled meats, pasta with tomato-based sauces, pizza, and medium-aged cheeses.",
+    priceWholesale: 3181,
+    priceMrp: 3500,
     awards: [],
-    grapeVarietal: "85% Merlot, 15% other authorized varieties",
+    grapeVarietal: "100% Merlot",
     pairings: ["Grilled meats", "Tomato-based pasta", "Pizza", "Medium-aged cheese"],
     highlights: [
       "Sun-ripened Sicilian fruit, smooth and generous",
@@ -1211,7 +1328,7 @@ const products = [
   // ── Galanti ────────────────────────────────────────────────────────────────
   {
     slug: "galanti-cuvee-privata-spumante",
-    name: "Galanti Cuvée Privata Spumante Extra Dry",
+    name: "Galanti Sparkling Private Cuvée",
     brandSlug: "galanti",
     category: "wine",
     description:
@@ -1227,6 +1344,9 @@ const products = [
       "Pale, almost transparent yellow with extremely fine bubbles. Expressive aromas of Granny Smith apple, lime, and white flowers with a touch of toasted brioche. Lively, refreshing attack with creamy mousse and a pleasantly long, fluid finish.",
     servingSuggestion:
       "Serve well chilled at 6–8°C in a flute. A perfect celebratory aperitif, pairs with light seafood, fried appetizers, and soft cheeses. Also an excellent Spritz base.",
+    priceWholesale: 2200,
+    priceMrp: 2420,
+    grapeVarietal: "Italian white varietals",
     awards: [],
     pairings: ["Light seafood", "Fried appetizers", "Soft cheeses", "Aperitivo"],
     highlights: [
@@ -1239,27 +1359,29 @@ const products = [
   // ── Ca' del Lago ───────────────────────────────────────────────────────────
   {
     slug: "ca-del-lago-pinot-grigio",
-    name: "Ca' del Lago Pinot Grigio",
+    name: "Ca' del Lago Pinot Grigio Provincia di Pavia IGT",
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
       "A crisp, fresh Pinot Grigio from delle Venezie with a fuller-bodied, unoaked style. Pear drops, white peaches, and a hint of elderflower, an honest, food-friendly Italian white for everyday drinking.",
     image: C.caDelLagoPinotGrigio,
     volume: "750ml",
-    alcoholPercentage: "12% ABV",
+    alcoholPercentage: "11% ABV",
     country: "Italy",
-    region: "Delle Venezie DOC, Italy",
+    region: "Provincia di Pavia IGT, Lombardia, Italy",
     flavors: "Pear Drops, White Peach, Elderflower, Citrus, Stone Fruit",
     tastingNotes:
       "Radiant pale golden hue. Delicious balance of pear drops, white peach, and hints of elderflower on the nose. Crisp and fresh on the palate with good mouth-feel and a lovely balance of fruit and acidity.",
     servingSuggestion:
       "Serve chilled at 8–10°C. Pairs with light salads, grilled fish, chicken, and antipasti, or simply as a crisp aperitif.",
+    priceWholesale: 2150,
+    priceMrp: 2365,
     awards: [],
     grapeVarietal: "100% Pinot Grigio",
     pairings: ["Grilled fish", "Light salads", "Antipasti", "Chicken dishes"],
     highlights: [
       "Fuller-bodied yet unoaked style",
-      "Delle Venezie DOC, Italy's Pinot Grigio heartland",
+      "Provincia di Pavia IGT, Northern Italy",
       "Crisp, fresh, and food-friendly",
     ],
   },
@@ -1279,7 +1401,9 @@ const products = [
     tastingNotes:
       "Pale straw yellow. Delicate aromas of white flowers, apple, and citrus. Zesty and fresh on the palate with white peach, a saline mineral streak, and Soave's signature bitter-almond note on the finish.",
     servingSuggestion:
-      "Serve chilled at 8–10°C. A natural partner for seafood risotto, grilled white fish, fresh cheeses, and light vegetarian dishes.",
+      "Serve chilled at 6–8°C. A natural partner for seafood risotto, grilled white fish, fresh cheeses, and light vegetarian dishes.",
+    priceWholesale: 2150,
+    priceMrp: 2365,
     awards: [],
     grapeVarietal: "Garganega",
     pairings: ["Seafood risotto", "Grilled white fish", "Fresh cheeses", "Light vegetarian dishes"],
@@ -1291,14 +1415,14 @@ const products = [
   },
   {
     slug: "ca-del-lago-chardonnay",
-    name: "Ca' del Lago Chardonnay",
+    name: "Ca' del Lago Chardonnay d'Italia",
     brandSlug: "ca-del-lago",
     category: "wine",
     description:
       "An unoaked Italian Chardonnay that lets the fruit do the talking. Ripe orchard fruit, melon, and citrus with a soft, rounded texture, approachable, versatile, and built for the table.",
     image: C.caDelLagoChardonnay,
     volume: "750ml",
-    alcoholPercentage: "12.5% ABV",
+    alcoholPercentage: "11% ABV",
     country: "Italy",
     region: "Veneto, Italy",
     flavors: "Yellow Apple, Melon, Citrus, Peach, White Blossom",
@@ -1306,6 +1430,8 @@ const products = [
       "Bright straw yellow. Inviting aromas of yellow apple, melon, and white blossom. Soft and rounded on the palate with ripe peach and citrus, fresh balancing acidity, and a clean, fruit-driven finish.",
     servingSuggestion:
       "Serve chilled at 8–10°C. Pairs with roast chicken, creamy pasta, grilled prawns, and mild cheeses.",
+    priceWholesale: 2150,
+    priceMrp: 2365,
     awards: [],
     grapeVarietal: "100% Chardonnay",
     pairings: ["Roast chicken", "Creamy pasta", "Grilled prawns", "Mild cheeses"],
@@ -1331,6 +1457,8 @@ const products = [
       "Bright ruby red. Aromas of ripe dark cherry and blackcurrant open up with air, revealing subtle earthy and strawberry notes. Medium-bodied with lively acidity, dusty tannins, and a savory, persistent finish.",
     servingSuggestion:
       "Serve at 16–18°C. Made for Italian food, red meats, lasagne, pizza, and tomato-based dishes.",
+    priceWholesale: 2545,
+    priceMrp: 2800,
     awards: [],
     grapeVarietal: "Sangiovese",
     pairings: ["Red meats", "Lasagne", "Pizza", "Tomato-based dishes"],
@@ -1349,7 +1477,7 @@ const products = [
       "An approachable Italian Cabernet Sauvignon, ripe blackcurrant and dark plum with a gentle herbal edge and smooth tannins. Everything you want from the grape, in an easy-drinking, food-friendly style.",
     image: C.caDelLagoCabernet,
     volume: "750ml",
-    alcoholPercentage: "12.5% ABV",
+    alcoholPercentage: "11% ABV",
     country: "Italy",
     region: "Veneto, Italy",
     flavors: "Blackcurrant, Dark Plum, Black Cherry, Green Herbs, Sweet Spice",
@@ -1357,6 +1485,8 @@ const products = [
       "Deep ruby red. Ripe blackcurrant and dark plum on the nose with a subtle herbaceous lift. Medium-bodied with smooth, supple tannins, juicy dark fruit, and a warm, gently spiced finish.",
     servingSuggestion:
       "Serve at 16–18°C. Pairs with grilled steak, roast lamb, hard cheeses, and hearty pasta dishes.",
+    priceWholesale: 2150,
+    priceMrp: 2365,
     awards: [],
     grapeVarietal: "100% Cabernet Sauvignon",
     pairings: ["Grilled steak", "Roast lamb", "Hard cheeses", "Hearty pasta"],

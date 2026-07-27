@@ -36,6 +36,9 @@ model Product {
   tastingNotes        String?
   region              String?
   servingSuggestion   String?
+  priceWholesale      Float?
+  priceMrp            Float?
+  priceNote           String?
   awards              String[]
   pairings            String[]
   highlights          String[]
